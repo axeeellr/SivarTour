@@ -1,0 +1,108 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --background: #0E1821;
+    --blue: #98badf;
+    --red: #ed735c;
+    --green: #cece8d;
+    --white: #f0f4ef;
+}
+
+i:hover{
+    transform: none;
+    box-shadow: none;
+}
+
+body{
+    font-family: 'Prompt', sans-serif;
+    background-color: var(--background);
+    backgrosund: radial-gradient(at left center, rgb(14, 24, 33), rgb(41, 65, 85));
+    backgrosund-position: 100vh;
+}
+
+.routes__container{
+    display: flex;
+    flex-direction: column;
+}
+
+.routes__top{
+    width: 100%;
+    height: 20vh;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    padding: 0 calc(3px + 3vw) 0 calc(3px + 3vw);
+    background: radial-gradient(at center center, rgb(152, 186, 223), rgb(206, 206, 141), rgb(152, 186, 223));
+    background-position: 100vh;
+    box-shadow: 0px 0px 35px 0px rgba(0,0,0,0.75);
+    z-index: 99;
+}
+
+.route{
+    display: flex;
+    align-items: center;
+    gap: calc(1px + 1vw);
+    border: 2px solid var(--background);
+    padding: calc(0.5px + 0.5vw) calc(1.5px + 1.5vw);
+    border-radius: 10px;
+    color: var(--background);
+}
+
+.route i{
+    font-size: calc(1.6px + 1.6vw);
+}
+
+.route h2{
+    font-size: calc(1.5px + 1.5vw);
+}
+
+.route input[type="search"]{
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: calc(1.3px + 1.3vw);
+    padding: calc(0.5px + 0.5vw) 0;
+}
+
+
+
+.route__connection{
+    margin: 0 calc(1px + 1vw);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: calc(0.3px + 0.3vw);
+}
+
+.route__connection i{
+    font-size: calc(0.9px + 0.9vw);
+    color: var(--background);
+}
+
+.route__new{
+    margin: 0 calc(1.4px + 1.4vw);
+    font-size: calc(1.9px + 1.9vw);
+    display: flex;
+    align-items: center;
+    color: var(--background);
+    cursor: pointer;
+}
+
+.route__new:hover{
+    color: var(--red);
+}
+
+.routes__bottom{
+    width: 100%;
+    height: 80vh;
+}
+
+.routes__bottom iframe{
+    width: 100%;
+    height: 100%;
+    border: none;
+}
