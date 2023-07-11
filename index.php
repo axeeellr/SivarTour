@@ -24,6 +24,9 @@
     <link rel="stylesheet" href="css/index.css">
     <!--Frameworks-->
     <script src="https://cdn.jsdelivr.net/npm/kute.js@2.1.2/dist/kute.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/awesomplete/1.1.2/awesomplete.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/awesomplete/1.1.2/awesomplete.min.js"></script>
     <!--FontAwesome-->
     <script src="https://kit.fontawesome.com/61fb4717c0.js" crossorigin="anonymous"></script>
     <title>Document</title>
@@ -63,12 +66,16 @@
         <button class="hero__button">COMENZAR &nbsp;<i class="fa-sharp fa-solid fa-arrow-right"></i></button>
         
         <form class="hero__search" id="hero__search" action="filtered.php">
-            <input type="search" autofocus="autofocus" placeholder="¿Dónde?">
-            <input type="search" autofocus="autofocus" placeholder="Tipo">
+            <input type="search" id="dondeInput" autofocus="autofocus" placeholder="Departamento" class="awesomplete" data-list="Ahuachapán, Cabañas, Chalatenango, Cuscatlán, Morazán, La Libertad, La Paz, La Unión, San Miguel, San Salvador, San Vicente, Santa Ana, Sonsonate, Usulután">
+            <input type="search" id="tipoInput" autofocus="autofocus" placeholder="Tipo" class="awesomplete" data-list="Playa, Campo, Cabañas, Parque, Bosque, Lago, Montaña, Ruinas">
             <input type="submit" value="" class="red__button search__button">
         </form>
     </div>
 
+    <script>
+        new Awesomplete(document.querySelector("#dondeInput"));
+        new Awesomplete(document.querySelector("#tipoInput"));
+    </script>
     <script>
         const tween = KUTE.fromTo(
           '#blob1',
