@@ -58,18 +58,43 @@ $data = mysqli_fetch_array($run);
         </div>
         <div class="profile__right">
             <div class="right__info">
-                <img src="https://holatelcel.com/wp-content/uploads/2019/07/perros-2.jpg" alt="">
+                <img src="https://holatelcel.com/wp-content/uploads/2019/07/perros-2.jpg">
                 <h1>Nombre de Usuario</h1>
+                <h3>usuario@gmail.com</h3>
                 <button>Validar correo</button>
             </div>
             <div class="right__edit">
-                <input type="text" placeholder="Fecha de nacimiento">
+                <!--<input type="text" placeholder="Fecha de nacimiento">
                 <input type="text" placeholder="Rellenooo">
                 <input type="text" placeholder="Fecha de nacimiento">
                 <input type="text" placeholder="Rellenooo">
                 <input type="text" placeholder="Fecha de nacimiento">
                 <input type="text" placeholder="Rellenooo">
-                <input type="submit" value="Guardar">
+                <input type="submit" value="Guardar">-->
+                <div class="input-field">
+                    <input type="text" required spellcheck="false"> 
+                    <label>Enter email</label>
+                </div>
+                <div class="input-field">
+                    <input type="text" required spellcheck="false"> 
+                    <label>Enter email</label>
+                </div>
+                <div class="input-field">
+                    <input type="text" required spellcheck="false"> 
+                    <label>Enter email</label>
+                </div>
+                <div class="input-field">
+                    <input type="text" required spellcheck="false"> 
+                    <label>Enter email</label>
+                </div>
+                <div class="input-field">
+                    <input type="text" required spellcheck="false"> 
+                    <label>Enter email</label>
+                </div>
+                <div class="input-field">
+                    <input type="text" required spellcheck="false"> 
+                    <label>Enter email</label>
+                </div>
             </div>
         </div>
     </div>

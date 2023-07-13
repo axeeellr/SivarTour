@@ -28,12 +28,13 @@ body{
 .header {
     width: 100%;
     height: 15vh;
-    positsion: absolute;
+    position: relative;
     color: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
     color: rgb(186, 196, 200);
+    z-index: 99;
 }
 
 .header__logo{
@@ -93,6 +94,11 @@ body{
     margin-left: calc(2px + 2vw);
 }
 
+.left__lately h1, .left__saved h1{
+    font-size: calc(2.3px + 2.3vw);
+    font-weight: bold;
+}
+
 .lately__content, .saved__content{
     display: flex;
     flex-direction: column;
@@ -101,25 +107,92 @@ body{
 
 .profile__right{
     width: 35%;
-    height: 85vh;
-    background-color: red;
+    height: 115vh;
+    background: radial-gradient(at center center, rgb(152, 186, 223), rgb(206, 206, 141), rgb(152, 186, 223));
+    background-sisze: 100vh;
 }
 
 .right__info{
-    height: 40%;
+    height: 45%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: end;
     align-items: center;
+    gaps: calc(0.5px + 0.5vw);
 }
 
 .right__info img{
-    height: calc(8px + 8vw);
-    width: calc(8px + 8vw);
+    height: calc(9px + 9vw);
+    width: calc(9px + 9vw);
     border-radius: 5px;
-    background-coslor: brown;
+}
+
+.right__info h1{
+    font-size: calc(1.7px + 1.7vw);
+    color: var(--background);
+}
+
+.right__info h3{
+    font-size: calc(1.2px + 1.2vw);
+    font-weight: lighter;
+    color: var(--background);
+}
+
+.right__info button{
+    padding: calc(0.4px + 0.4vw) calc(1.7px + 1.7vw);
+    border-radius: 15px;
+    border: none;
+    background-color: var(--red);
+    color: var(--background);
+    font-size: calc(1px + 1vw);
+    font-family: 'Prompt', sans-serif;
+    font-weight: bold;
+    margin: 0;
 }
 
 .right__edit{
-    height: 60%;
+    heigsht: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: calc(1.7px + 1.7vw);
+    margin: calc(3px + 3vw) auto;
+}
+
+.input-field {
+    position: relative;
+}
+
+.input-field input {
+    border: 2px solid var(--background);
+    background-color: transparent;
+    font-family: 'Prompt', sans-serif;
+    padding: calc(0.5px + 0.5vw) calc(0.5px + 0.5vw);
+    border-radius: 7px;
+    font-size: calc(1px + 1vw);
+    width: calc(12px + 12vw);
+}
+
+.input-field label {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    color: var(--background);
+    font-size: calc(1px + 1vw);
+    pointer-events: none;
+    transition: 0.3s;
+}
+
+input:focus {
+    border: 2px solid var(--red);
+}
+
+input:focus~label,
+input:valid~label {
+    top: -10px;
+    left: 0;
+    font-size: calc(1px + 1vw);
+    padding: 0 2px;
 }
