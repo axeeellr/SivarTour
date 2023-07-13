@@ -33,31 +33,45 @@ $data = mysqli_fetch_array($run);
         <img src="img/logo.png" alt="" class="header__logo">
         <i class="fa-regular fa-circle-question"></i>
     </header>
-    <div class="profile__header">
-        <div class="profile__info">
-            <img src="<?php echo $data['img']; ?>">
-            <h1><?php echo $data['name']; ?></h1>
-        </div>
-        <div class="profile__collections">
-            <div class="collection__favs">
-                <h1>Mis colecciones</h1>
-                <p>Malls</p>
-                <p>Playas de La Libertad</p>
-                <p>Playas de Sonsonate</p>
+    <div class="profile__container">
+        <div class="profile__left">
+            <div class="left__lately">
+                <div class="lately__title">
+                    <h1>Vistos recientemente</h1>
+                </div>
+                <div class="lately__content">
+                    <h2>Playa El Tunco</h2>
+                    <h2>El Boquerón</h2>
+                    <h2>Furesa</h2>
+                    <h2>Plaza Mundo</h2>
+                </div>
             </div>
-            <div class="collection__see">
-                <h1>Recientemente vistos</h1>
-                <p>El Tunco</p>
-                <p>Centro Comercial Las Cascadas</p>
-                <p>Parque El Principito</p>
-                <p>Playa Las Hojas</p>
-                <p>Ciudadela Don Bosco</p>
+            <div class="left__saved">
+                <div class="saved__title">
+                    <h1>Mis colecciones</h1>
+                </div>
+                <div class="saved__content">
+                    <h2>Playas</h2>
+                    <h2>Malls</h2>
+                </div>
             </div>
         </div>
-        <a href="php/logout.php">Salir</a>
-    </div>
-    <div class="profile__body">
-
+        <div class="profile__right">
+            <div class="right__info">
+                <img src="https://holatelcel.com/wp-content/uploads/2019/07/perros-2.jpg" alt="">
+                <h1>Nombre de Usuario</h1>
+                <button>Validar correo</button>
+            </div>
+            <div class="right__edit">
+                <input type="text" placeholder="Fecha de nacimiento">
+                <input type="text" placeholder="Rellenooo">
+                <input type="text" placeholder="Fecha de nacimiento">
+                <input type="text" placeholder="Rellenooo">
+                <input type="text" placeholder="Fecha de nacimiento">
+                <input type="text" placeholder="Rellenooo">
+                <input type="submit" value="Guardar">
+            </div>
+        </div>
     </div>
     <script>
         document.querySelector('.header__logo').addEventListener('click', function(){

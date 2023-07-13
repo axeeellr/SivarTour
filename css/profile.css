@@ -28,7 +28,7 @@ body{
 .header {
     width: 100%;
     height: 15vh;
-    position: absolute;
+    positsion: absolute;
     color: white;
     display: flex;
     justify-content: space-between;
@@ -68,68 +68,58 @@ body{
 
 /* PROFILE */
 
-.profile__header{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
+.profile__container{
     width: 100%;
-    gap: 7%;
+    height: 85vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.profile__info{
+.profile__left{
+    width: 65%;
+    height: 85vh;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
-    gap: calc(0.7px + 0.7vw);
+}
+
+.left__lately, .left__saved{
     height: 50%;
-    padding: calc(2px + 2vw);
-    background: radial-gradient(at center center, rgb(152, 186, 223), rgb(206, 206, 141), rgb(152, 186, 223));
-    background-size: 40vh;
-    border-radius: 10px;
-    box-shadow: 0px 0px 50px 0px rgba(0,0,0,0.75);
-}
-
-.profile__info img{
-    height: 90%;
-    width: calc(17px + 17vw);
-    height: calc(17px + 17vw);
-    object-fit: cover;
-    border-radius: 10px;
-}
-
-.profile__info h1{
-    color: var(--background);
-    font-size: calc(2.3px + 2.3vw);
-}
-
-.profile__collections{
-    height: 60%;
     display: flex;
-    align-items: flex-start;
+    flex-direction: column;
     justify-content: center;
-    gap: calc(5px + 5vw);
+    gap: calc(1.5px + 1.5vw);
+    margin-left: calc(2px + 2vw);
 }
 
-.profile__collections h1{
-    margin-bottom: calc(1.5px + 1.5vw);
-    font-size: calc(2px + 2vw);
-    color: var(--red);
+.lately__content, .saved__content{
+    display: flex;
+    flex-direction: column;
+    gap: calc(0.5px + 0.5vw);
 }
 
-.profile__collections p{
-    margin: calc(1px + 1vw) 0;
-    font-size: calc(1.3px + 1.3vw);
-    color: var(--blue);
-    cursor: pointer;
+.profile__right{
+    width: 35%;
+    height: 85vh;
+    background-color: red;
 }
 
-.profile__collections p:hover{
-    background-color: var(--green);
-    backgdround: radial-gradient(at center center, rgb(152, 186, 223), rgb(206, 206, 141), rgb(152, 186, 223));
-    backgrousnd-size: 200vh;
-    color: var(--background);
-    padding: 2% 3%;
-    border-radius: 7px;
+.right__info{
+    height: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.right__info img{
+    height: calc(8px + 8vw);
+    width: calc(8px + 8vw);
+    border-radius: 5px;
+    background-coslor: brown;
+}
+
+.right__edit{
+    height: 60%;
 }
