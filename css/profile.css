@@ -97,12 +97,33 @@ body{
 .left__lately h1, .left__saved h1{
     font-size: calc(2.3px + 2.3vw);
     font-weight: bold;
+    color: var(--red);
 }
 
-.lately__content, .saved__content{
+.lately__content{
     display: flex;
     flex-direction: column;
     gap: calc(0.5px + 0.5vw);
+}
+
+.saved__content{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: calc(1px + 1vw);
+}
+
+.saved__content h2{
+    padding: calc(0.7px + 0.7vw) calc(2.7px + 2.7vw);
+    border: 2px solid var(--white);
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.lately__content h2, .saved__content h2{
+    font-size: calc(1.6px + 1.6vw);
+    color: var(--white);
+    font-weight: lighter;
 }
 
 .profile__right{
@@ -110,6 +131,7 @@ body{
     height: 115vh;
     background: radial-gradient(at center center, rgb(152, 186, 223), rgb(206, 206, 141), rgb(152, 186, 223));
     background-sisze: 100vh;
+    box-shadow: 0px 0px 35px 0px rgba(0,0,0,0.75);
 }
 
 .right__info{
@@ -118,7 +140,7 @@ body{
     flex-direction: column;
     justify-content: end;
     align-items: center;
-    gaps: calc(0.5px + 0.5vw);
+    gap: calc(0.5px + 0.5vw);
 }
 
 .right__info img{
@@ -135,6 +157,7 @@ body{
 .right__info h3{
     font-size: calc(1.2px + 1.2vw);
     font-weight: lighter;
+    margin-top: calc(-0.5px + -0.5vw);
     color: var(--background);
 }
 
@@ -142,12 +165,19 @@ body{
     padding: calc(0.4px + 0.4vw) calc(1.7px + 1.7vw);
     border-radius: 15px;
     border: none;
-    background-color: var(--red);
-    color: var(--background);
+    background-color: var(--background);
+    color: var(--white);
     font-size: calc(1px + 1vw);
     font-family: 'Prompt', sans-serif;
-    font-weight: bold;
     margin: 0;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.right__info button:hover{
+    background-color: var(--red);
+    color: var(--background);
+    font-weight: bold;
 }
 
 .right__edit{
@@ -195,4 +225,24 @@ input:valid~label {
     left: 0;
     font-size: calc(1px + 1vw);
     padding: 0 2px;
+    color: var(--red);
+}
+
+.right__edit input[type="submit"]{
+    padding: calc(0.4px + 0.4vw) calc(1.7px + 1.7vw);
+    border-radius: 15px;
+    border: none;
+    background-color: var(--background);
+    color: var(--white);
+    font-size: calc(1px + 1vw);
+    font-family: 'Prompt', sans-serif;
+    margin: 0;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.right__edit input[type="submit"]:hover{
+    background-color: var(--red);
+    color: var(--background);
+    font-weight: bold;
 }

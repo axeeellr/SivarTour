@@ -64,13 +64,6 @@ $data = mysqli_fetch_array($run);
                 <button>Validar correo</button>
             </div>
             <div class="right__edit">
-                <!--<input type="text" placeholder="Fecha de nacimiento">
-                <input type="text" placeholder="Rellenooo">
-                <input type="text" placeholder="Fecha de nacimiento">
-                <input type="text" placeholder="Rellenooo">
-                <input type="text" placeholder="Fecha de nacimiento">
-                <input type="text" placeholder="Rellenooo">
-                <input type="submit" value="Guardar">-->
                 <div class="input-field">
                     <input type="text" required spellcheck="false"> 
                     <label>Enter email</label>
@@ -95,6 +88,7 @@ $data = mysqli_fetch_array($run);
                     <input type="text" required spellcheck="false"> 
                     <label>Enter email</label>
                 </div>
+                <input type="submit" value="Guardar">
             </div>
         </div>
     </div>
