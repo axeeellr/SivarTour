@@ -130,7 +130,6 @@ body{
     width: 35%;
     height: 115vh;
     background: radial-gradient(at center center, rgb(152, 186, 223), rgb(206, 206, 141), rgb(152, 186, 223));
-    background-sisze: 100vh;
     box-shadow: 0px 0px 35px 0px rgba(0,0,0,0.75);
 }
 
@@ -181,7 +180,6 @@ body{
 }
 
 .right__edit{
-    heigsht: 60%;
     display: flex;
     align-items: center;
     justify-content: center;

@@ -313,29 +313,63 @@
                 <div id="image-display"></div>
             </div>
             <div class="newplace__info">
-                <div class="newplace__info__top">
-                    <input type="text" placeholder="Nombre" name="" id="">
-                    <input type="text" placeholder="Descripción" name="" id="">
-                    <input type="text" placeholder="URL del mapa" name="" id="">
+                <div class="info__title">
+                    <h1>Tú también puedes subir lugares!</h1>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eaque molestias id culpa amet impedit? Vero consequatur ipsum earum iure odio?</p>
                 </div>
-                <div class="newplace__info__bottom">
-                    <div class="info__bottom__restaurant">
-                        <input type="text" name="" placeholder="Nombre del restaurante" id="">
-                        <input type="file" id="files" name="files[]">
-                        <output id="list"></output>
-                    </div>
-                    <div class="info__bottom__restaurant">
-                        <input type="text" placeholder="Nombre del restaurante" name="" id="">
-                        <input type="file" id="files" name="files[]">
-                        <output id="list"></output>
-                    </div>
-                    <div class="info__bottom__restaurant">
-                        <input type="text" name="" placeholder="Nombre del restaurante" id="">
-                        <input type="file" id="files" name="files[]">
-                        <output id="list"></output>
-                    </div>
-                    <input type="submit" class="send" value="Aceptar">
+                <div class="input__field">
+                    <input type="text" required spellcheck="false"> 
+                    <label>Nombre</label>
                 </div>
+                <div class="input__field">
+                    <input type="text" required spellcheck="false"> 
+                    <label>Descripción</label>
+                </div>
+                <div class="input__field">
+                    <input type="text" required spellcheck="false"> 
+                    <label>URL del mapa</label>
+                </div>
+                <div class="input__field">
+                    <select>
+                        <option value="AH">Ahuachapán</option>
+                        <option value="CA">Cabañas</option>
+                        <option value="CH">Chalatenango</option>
+                        <option value="CU">Cuscatlán</option>
+                        <option value="LB">La Libertad</option>
+                        <option value="PZ">La Paz</option>
+                        <option value="UN">La Unión</option>
+                        <option value="MO">Morazán</option>
+                        <option value="SM">San Miguel</option>
+                        <option value="SS">San Salvador</option>
+                        <option value="SV">San Vicente</option>
+                        <option value="SA">Santa Ana</option>
+                        <option value="SO">Sonsonate</option>
+                        <option value="US">Usulután</option>
+                    </select>
+                </div>
+                <div class="input__field">
+                    <select name="" id="">
+                        <option value="">Playa</option>
+                        <option value="">Campo</option>
+                        <option value="">Cabañas</option>
+                        <option value="">Parque</option>
+                        <option value="">Bosque</option>
+                        <option value="">Lago</option>
+                        <option value="">Ruinas</option>
+                        <option value="">Volcán</option>
+                        <option value="">Centro Comercial</option>
+                        <option value="">Canchas</option>
+                        <option value="">Otro</option>
+                    </select>
+                </div>
+                <div class="input__field">
+                    <select name="" id="">
+                        <option value="">Todo público</option>
+                        <option value="">Solo mayores de 18</option>
+                        <option value="">Especial para niños</option>
+                    </select>
+                </div>
+                <input type="submit" value="Enviar">
             </div>
         </div>
     </div>

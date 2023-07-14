@@ -67,7 +67,7 @@
         
         <form class="hero__search" id="hero__search" action="filtered.php">
             <input type="search" id="dondeInput" autofocus="autofocus" placeholder="Departamento" class="awesomplete" data-list="Ahuachapán, Cabañas, Chalatenango, Cuscatlán, Morazán, La Libertad, La Paz, La Unión, San Miguel, San Salvador, San Vicente, Santa Ana, Sonsonate, Usulután">
-            <input type="search" id="tipoInput" autofocus="autofocus" placeholder="Tipo" class="awesomplete" data-list="Playa, Campo, Cabañas, Parque, Bosque, Lago, Montaña, Ruinas">
+            <input type="search" id="tipoInput" autofocus="autofocus" placeholder="Tipo" class="awesomplete" data-list="Playa, Campo, Cabañas, Parque, Bosque, Lago, Ruinas, Volcán, Centro Comercial, Canchas, Otro">
             <input type="submit" value="" class="red__button search__button">
         </form>
     </div>

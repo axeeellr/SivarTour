@@ -26,7 +26,6 @@ body{
     box-sizing: border-box;
     font-family: 'Prompt', sans-serif;
     background: radial-gradient(at center center, rgb(14, 24, 33), rgb(41, 65, 85));
-    backgrosund-position: 100vh;
 }
 
 .new__place{
@@ -87,7 +86,6 @@ body{
 .hero{
     height: 100vh;
     width: 100%;
-    positsion: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -193,10 +191,8 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    backgrounsd-color: violet;
     gap: 5%;
     flex-wrap: wrap;
-    paddsing: 3% 0;
 }
 
 .card{
@@ -251,7 +247,6 @@ body{
 }
 
 .pagination li {
-    displasy: inline-block;
     margin: calc(1px + 1vw);
     box-shadow: 0 5px 25px rgb(1 1 1 / 10%);
     text-decoration: none;
@@ -290,7 +285,6 @@ body{
 .current-page,
 .dots {
     background: #ccc;
-    widths: 5%;
     border-radius: 10px;
     cursor: pointer;
 }
@@ -411,7 +405,7 @@ body{
     display: none;
 }
 
-label {
+.newplace__img label {
     display: block;
     position: relative;
     background-color: var(--red);
@@ -462,66 +456,99 @@ label {
 
 .newplace__info{
     width: 70%;
-    height: 100%;
+    height: 400;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: calc(1.7px + 1.7vw);
+    padding-top: calc(1px + 1vw);
     margin: auto 0;
+}
+
+.info__title h1{
+    text-align: center;
+    font-size: calc(1.7px + 1.7vw);
+    color: var(--red);
+}
+
+.info__title p{
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+    font-size: calc(1px + 1vw);
+    color: var(--background);
 }
 
 .newplace__info input::placeholder{
     color: rgb(14, 24, 33, 0.6);
 }
 
-.newplace__info__top{
-    height: 35%;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 0 5%;
+.input__field {
+    position: relative;
+    margin: 0;
+    padding: 0;
 }
 
-.newplace__info__top input{
+.input__field input, .input__field select{
+    border: 2px solid var(--background);
     background-color: transparent;
-    border: none;
-    border-bottom: 2px solid var(--background);
-    font-size: calc(1.1px + 1.1vw);
-    padding: calc(0.5px + 0.5vw) calc(0.5px + 0.5vw);
     font-family: 'Prompt', sans-serif;
-    width: 45%;
-}
-
-.newplace__info__top input:nth-child(3){
-    width: 95%;
-}
-
-.newplace__info__bottom{
-    height: 65%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    flex-wrsap: wrap;
-    gap: 5%;
-}
-
-.info__bottom__restaurant{
-    display: flex;
-    justify-content: start;
-    align-items: center;
-    gap: 0 5%;
-    padding: calc(1px + 1vw);
-    width: 95%;
-    background-coslor: var(--background);
-}
-
-.info__bottom__restaurant input[type="text"]{
-    background-color: transparent;
-    border: none;
-    border-bottom: 2px solid var(--background);
-    font-size: calc(1.1px + 1.1vw);
     padding: calc(0.5px + 0.5vw) calc(0.5px + 0.5vw);
-    font-family: 'Prompt', sans-serif;
+    border-radius: 7px;
+    font-size: calc(1px + 1vw);
+    width: calc(20px + 20vw);
 }
+
+.input__field select{
+    outline: none;
+}
+
+.input__field label {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    color: var(--background);
+    font-size: calc(1px + 1vw);
+    pointer-events: none;
+    transition: 0.3s;
+}
+
+.input__field input:focus, .input__field select:focus {
+    border: 2px solid var(--red);
+}
+
+.input__field input:focus~label,
+.input__field input:valid~label {
+    top: -10px;
+    left: 0;
+    font-size: calc(1px + 1vw);
+    padding: 0 2px;
+    color: var(--red);
+}
+
+.newplace__info input[type="submit"]{
+    padding: calc(0.4px + 0.4vw) calc(1.7px + 1.7vw);
+    border-radius: 15px;
+    border: none;
+    background-color: var(--background);
+    color: var(--white);
+    font-size: calc(1px + 1vw);
+    font-family: 'Prompt', sans-serif;
+    margin: 0;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.newplace__info input[type="submit"]:hover{
+    background-color: var(--red);
+    color: var(--background);
+    font-weight: bold;
+}
+
+
+
 
 .thumb{
     height: 50px;
