@@ -32,9 +32,10 @@ if (!isset($_SESSION['user_token'])) {
         <div class="place__hero__text">
             <h1>Playa El Tunco</h1>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam sit atque corrupti sapiente nam a ea veritatis.</p>
-            <div class="hero__text__button">
-                <i class="fa-regular fa-heart"></i>
-            </div>
+            <form class="hero__text__button">
+                <button type="submit"><i class="fa-regular fa-star"></i></button>
+                <button type="submit"><i class="fa-regular fa-rectangle-list"></i></button>
+            </form>
         </div>
         <div class="place__hero__img">
             <img class="hero__img" src="https://live.staticflickr.com/7842/46038993015_11978f4826_b.jpg" alt="">
@@ -169,6 +170,15 @@ if (!isset($_SESSION['user_token'])) {
                 <img src="https://media-cdn.tripadvisor.com/media/photo-s/16/1f/8c/70/dale-dale-cafe.jpg" alt="">
                 <h2>Rock & Roe´s</h2>
             </div>
+        </div>
+    </div>
+    <div class="popup__container">
+        <div class="popup">
+            <i class="fa-solid fa-xmark close"></i>
+            <h2>Agrega El Tunco a tus colecciones</h2>
+            <button>Playas</button>
+            <button>Malls</button>
+            <i class="fa-solid fa-plus"></i>
         </div>
     </div>
 

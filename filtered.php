@@ -76,16 +76,33 @@
             <option value=""></option>
         </select>
         <select name="" id="">
-            <option value="">¿Dónde?</option>
-            <option value="">San Salvador</option>
-            <option value="">San Miguel</option>
-            <option value="">La Libertad</option>
+            <option value="AH">Ahuachapán</option>
+            <option value="CA">Cabañas</option>
+            <option value="CH">Chalatenango</option>
+            <option value="CU">Cuscatlán</option>
+            <option value="LB">La Libertad</option>
+            <option value="PZ">La Paz</option>
+            <option value="UN">La Unión</option>
+            <option value="MO">Morazán</option>
+            <option value="SM">San Miguel</option>
+            <option value="SS">San Salvador</option>
+            <option value="SV">San Vicente</option>
+            <option value="SA">Santa Ana</option>
+            <option value="SO">Sonsonate</option>
+            <option value="US">Usulután</option>
         </select>
         <select name="" id="">
-            <option value="">Tipo</option>
             <option value="">Playa</option>
-            <option value="">Montaña</option>
+            <option value="">Campo</option>
+            <option value="">Cabañas</option>
+            <option value="">Parque</option>
             <option value="">Bosque</option>
+            <option value="">Lago</option>
+            <option value="">Ruinas</option>
+            <option value="">Volcán</option>
+            <option value="">Centro Comercial</option>
+            <option value="">Canchas</option>
+            <option value="">Otro</option>
         </select>
         <select name="" id="">
             <option value="">Público</option>

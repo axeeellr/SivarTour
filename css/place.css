@@ -109,17 +109,13 @@ body{
 
 .hero__text__button i{
     color: var(--white);
-    font-size: calc(1.7px + 1.7vw); 
 }
 
 .hero__text__button button{
-    background-color: var(--red);
+    font-size: calc(1.7px + 1.7vw); 
+    background-color: transparent;
     border: none;
-    padding: calc(0.5px + 0.5vw) calc(1.2px + 1.2vw);
-    border-radius: 3px;
     color: var(--white);
-    text-transform: uppercase;
-    font-weight: bold;
 }
 
 .place__hero__img{
@@ -415,7 +411,7 @@ body{
 .review__comment input[type="submit"]{
     height: calc(4.3px + 4.3vw);
     width: calc(4.3px + 4.3vw);
-    background-image: url(/img/send.png);
+    background-image: url(img/send.png);
     background-repeat: no-repeat;
     background-size: 2.8vw;
     background-color: transparent;
@@ -453,4 +449,36 @@ body{
 
 .route h2{
     font-size: calc(1.4px + 1.4vw);
+}
+
+.popup__container{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgb(0, 0, 0, 0.5);
+    z-index: 99;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup{
+    position: absolute;
+    height: 45%;
+    width: 40%;
+    background-color: var(--white);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.close{
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: calc(1px + 1vw);
+    font-size: calc(1.5px + 1.5vw);
 }
