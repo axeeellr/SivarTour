@@ -34,7 +34,7 @@ if (!isset($_SESSION['user_token'])) {
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam sit atque corrupti sapiente nam a ea veritatis.</p>
             <form class="hero__text__button">
                 <button type="submit"><i class="fa-regular fa-star"></i></button>
-                <button type="submit"><i class="fa-regular fa-rectangle-list"></i></button>
+                <i class="fa-regular fa-rectangle-list collection"></i>
             </form>
         </div>
         <div class="place__hero__img">
@@ -178,9 +178,20 @@ if (!isset($_SESSION['user_token'])) {
             <h2>Agrega El Tunco a tus colecciones</h2>
             <button>Playas</button>
             <button>Malls</button>
-            <i class="fa-solid fa-plus"></i>
+            <i class="fa-solid fa-plus new"></i>
         </div>
     </div>
+
+
+    <script>
+        document.querySelector('.collection').addEventListener('click', function(){
+            document.querySelector('.popup__container').classList.add('visible');
+        })
+
+        document.querySelector('.close').addEventListener('click', function(){
+            document.querySelector('.popup__container').classList.remove('visible');
+        });
+    </script>
 
     <script>
         document.querySelector('.header__logo').addEventListener('click', function(){

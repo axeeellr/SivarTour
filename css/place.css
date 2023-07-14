@@ -107,15 +107,11 @@ body{
     gap: 5%;
 }
 
-.hero__text__button i{
-    color: var(--white);
-}
-
-.hero__text__button button{
+.hero__text__button i, .hero__text__button button{
     font-size: calc(1.7px + 1.7vw); 
+    color: var(--white);
     background-color: transparent;
     border: none;
-    color: var(--white);
 }
 
 .place__hero__img{
@@ -452,6 +448,7 @@ body{
 }
 
 .popup__container{
+    display: none;
     position: fixed;
     top: 0;
     left: 0;
@@ -459,20 +456,51 @@ body{
     bottom: 0;
     background-color: rgb(0, 0, 0, 0.5);
     z-index: 99;
-    display: flex;
     justify-content: center;
     align-items: center;
 }
 
+.visible{
+    display: flex;
+}
+
 .popup{
     position: absolute;
-    height: 45%;
-    width: 40%;
+    min-height: 45%;
+    width: 35%;
     background-color: var(--white);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: calc(1.1px + 1.1vw);
+    border-radius: 7px;
+    box-shadow: 0px 0px 50px 0px rgba(0,0,0,0.75);
+}
+
+.popup h2{
+    color: var(--red);
+    font-size: calc(1.6px + 1.6vw);
+    width: 90%;
+    text-align: center;
+    margin-bottom: calc(1px + 1vw);
+}
+
+.popup button{
+    padding: calc(0.7px + 0.7vw) calc(2.7px + 2.7vw);
+    width: calc(10px + 10vw);
+    border: none;
+    background-color: var(--background);
+    color: var(--white);
+    border-radius: 7px;
+    font-size: calc(1.2px + 1.2vw);
+    box-shadow: 0px 0px 25px 0px rgba(0,0,0,0.40);
+}
+
+.new{
+    border: 2px solid var(--background);
+    border-radius: 50%;
+    padding: calc(0.5px + 0.5vw) calc(0.6px + 0.6vw);
 }
 
 .close{

@@ -58,35 +58,38 @@ $data = mysqli_fetch_array($run);
         </div>
         <div class="profile__right">
             <div class="right__info">
-                <img src="https://holatelcel.com/wp-content/uploads/2019/07/perros-2.jpg">
-                <h1>Nombre de Usuario</h1>
-                <h3>usuario@gmail.com</h3>
-                <button>Validar correo</button>
+                <img src="<?php echo $data['img']?>">
+                <h1><?php echo $data['name'] ?></h1>
+                <h3><?php echo $data['email'] ?></h3>
+                <div class="info__buttons">
+                    <button>Validar correo</button>
+                    <a href="php/logout.php"><button>Cerrar Sesión</button></a>
+                </div>
             </div>
             <div class="right__edit">
                 <div class="input-field">
                     <input type="text" required spellcheck="false"> 
-                    <label>Enter email</label>
+                    <label>Nombre de usuario</label>
                 </div>
                 <div class="input-field">
                     <input type="text" required spellcheck="false"> 
-                    <label>Enter email</label>
+                    <label>Edad</label>
                 </div>
                 <div class="input-field">
                     <input type="text" required spellcheck="false"> 
-                    <label>Enter email</label>
+                    <label>Sexo</label>
                 </div>
                 <div class="input-field">
                     <input type="text" required spellcheck="false"> 
-                    <label>Enter email</label>
+                    <label>Número telefónico</label>
                 </div>
                 <div class="input-field">
                     <input type="text" required spellcheck="false"> 
-                    <label>Enter email</label>
+                    <label>Dirección</label>
                 </div>
                 <div class="input-field">
                     <input type="text" required spellcheck="false"> 
-                    <label>Enter email</label>
+                    <label>Idioma</label>
                 </div>
                 <input type="submit" value="Guardar">
             </div>
