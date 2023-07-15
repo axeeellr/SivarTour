@@ -1,8 +1,15 @@
 <?php
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 include 'connection.php';
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+
 $error = "";
 session_start();
+
+
 
 
 /****** G E T   U R L ******/
@@ -149,6 +156,9 @@ if(isset($_POST['register'])) {
     }
 }
 
+
+
+
 /****** A G R E G A R   C O M E N T A R I O ******/
 if (isset($_POST['newComment'])) {
     $comment = $_POST['comment'];
@@ -161,6 +171,61 @@ if (isset($_POST['newComment'])) {
     } else {
         echo "Error al guardar el comentario: " . mysqli_error($connection);
     }
+}
+
+
+
+
+if (isset($_POST['activeEmail'])) {
+
+    $email_user = 'sivartour.travel@gmail.com';
+
+   $email_password = 'bfvglsxmsjpbbknz';
+
+   $the_subject = "Holaa";
+
+   $mensaje_correo = "Probando sonido";
+
+   $address_to = 'axelramireezz@gmail.com'; 
+
+   $from_name = 'Cursos de programación';
+
+   $phpmailer = new PHPMailer();
+
+   $phpmailer->Username = $email_user;
+
+   $phpmailer->Password = $email_password;
+
+   $phpmailer->SMTPSecure = 'tls'; 
+
+   $phpmailer->Host = 'smtp.gmail.com';
+
+   $phpmailer->Port = 587; 
+
+   $phpmailer->isSMTP(); 
+
+   $phpmailer->SMTPAuth = true;
+
+   $phpmailer->setFrom($phpmailer->Username,$from_name);
+
+   $phpmailer->AddAddress($address_to); 
+
+   $phpmailer->FromName = 'Programación Online';  
+
+   $phpmailer->Subject = $the_subject;
+
+   $phpmailer->Body = $mensaje_correo;
+
+   $phpmailer->IsHTML(true);
+   if (!$phpmailer->Send()) {
+
+    echo "no";
+ 
+  }else{
+ 
+    echo "si";  
+ 
+  }
 }
 
 ?>

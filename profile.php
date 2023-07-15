@@ -61,10 +61,10 @@ $data = mysqli_fetch_array($run);
                 <img src="<?php echo $data['img']?>">
                 <h1><?php echo $data['name'] ?></h1>
                 <h3><?php echo $data['email'] ?></h3>
-                <div class="info__buttons">
-                    <button>Validar correo</button>
+                <form method="post" class="info__buttons">
+                    <button type="submit" name="activeEmail">Validar correo</button>
                     <a href="php/logout.php"><button>Cerrar Sesión</button></a>
-                </div>
+                </form>
             </div>
             <div class="right__edit">
                 <div class="input-field">
