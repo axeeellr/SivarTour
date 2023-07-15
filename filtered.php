@@ -127,7 +127,7 @@
                     ?>
                         <a href="place.php" class="card">
                             <div class="card__img">
-                                <img src="" alt="">
+                                <img src="https://conexioncapital.co/wp-content/uploads/2017/09/Captura-1-2.jpg" alt="">
                             </div>
                             <div class="card__info">
                                 <h2><?php echo $data['name'] ?></h2>
@@ -152,21 +152,7 @@
                 </div>
                 <?php
             ?>
-            <!--<a class="card" href="place.php">
-                <div class="card__img">
-                    <img src="https://turismo.sv/wp-content/uploads/2019/06/el-tunco-1.jpg" alt="">
-                </div>
-                <div class="card__info">
-                    <h2>Playa El Tunco</h2>
-                    <div class="card__info__stars">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                    </div>
-                </div>
-            </a>
+            <!--
             <a href="place.php" class="card">
                 <div class="card__img">
                     <img src="https://elsalvadorviajar.com/wp-content/uploads/2021/09/Visita-Playa-la-Costa-del-Sol.jpg" alt="">
@@ -182,161 +168,7 @@
                     </div>
                 </div>
             </a>
-            <a href="place.php" class="card">
-                <div class="card__img">
-                    <img src="https://turismo.sv/wp-content/uploads/2019/06/el-tunco-1.jpg" alt="">
-                </div>
-                <div class="card__info">
-                    <h2>Playa El Tunco</h2>
-                    <div class="card__info__stars">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                    </div>
-                </div>
-            </a>
-            <a href="place.php" class="card">
-                <div class="card__img">
-                    <img src="https://turismo.sv/wp-content/uploads/2019/06/el-tunco-1.jpg" alt="">
-                </div>
-                <div class="card__info">
-                    <h2>Playa El Tunco</h2>
-                    <div class="card__info__stars">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                    </div>
-                </div>
-            </a>
-            <a href="place.php" class="card">
-                <div class="card__img">
-                    <img src="https://elsalvadorviajar.com/wp-content/uploads/2021/09/Visita-Playa-la-Costa-del-Sol.jpg" alt="">
-                </div>
-                <div class="card__info">
-                    <h2>Playa El Tunco</h2>
-                    <div class="card__info__stars">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                    </div>
-                </div>
-            </a>
-            <a href="place.php" class="card">
-                <div class="card__img">
-                    <img src="https://turismo.sv/wp-content/uploads/2019/06/el-tunco-1.jpg" alt="">
-                </div>
-                <div class="card__info">
-                    <h2>Playa El Tunco</h2>
-                    <div class="card__info__stars">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                    </div>
-                </div>
-            </a>
-        </div>
-
-
-        <div class="cards">
-            <a href="place.php" class="card">
-                <div class="card__img">
-                    <img src="https://turismo.sv/wp-content/uploads/2019/06/el-tunco-1.jpg" alt="">
-                </div>
-                <div class="card__info">
-                    <h2>Playa San Diego</h2>
-                    <div class="card__info__stars">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                    </div>
-                </div>
-            </a>
-            <a href="place.php" class="card">
-                <div class="card__img">
-                    <img src="https://elsalvadorviajar.com/wp-content/uploads/2021/09/Visita-Playa-la-Costa-del-Sol.jpg" alt="">
-                </div>
-                <div class="card__info">
-                    <h2>Playa Cocos</h2>
-                    <div class="card__info__stars">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                    </div>
-                </div>
-            </a>
-            <a href="place.php" class="card">
-                <div class="card__img">
-                    <img src="https://turismo.sv/wp-content/uploads/2019/06/el-tunco-1.jpg" alt="">
-                </div>
-                <div class="card__info">
-                    <h2>Playa El Tunco</h2>
-                    <div class="card__info__stars">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                    </div>
-                </div>
-            </a>
-            <a href="place.php" class="card">
-                <div class="card__img">
-                    <img src="https://turismo.sv/wp-content/uploads/2019/06/el-tunco-1.jpg" alt="">
-                </div>
-                <div class="card__info">
-                    <h2>Playa El Tunco</h2>
-                    <div class="card__info__stars">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                    </div>
-                </div>
-            </a>
-            <a href="place.php" class="card">
-                <div class="card__img">
-                    <img src="https://elsalvadorviajar.com/wp-content/uploads/2021/09/Visita-Playa-la-Costa-del-Sol.jpg" alt="">
-                </div>
-                <div class="card__info">
-                    <h2>Playa El Tunco</h2>
-                    <div class="card__info__stars">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                    </div>
-                </div>
-            </a>
-            <a href="place.php" class="card">
-                <div class="card__img">
-                    <img src="https://turismo.sv/wp-content/uploads/2019/06/el-tunco-1.jpg" alt="">
-                </div>
-                <div class="card__info">
-                    <h2>Playa El Tunco</h2>
-                    <div class="card__info__stars">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                    </div>
-                </div>
-            </a>
-        </div>-->
+            -->
     </div>
     <div class="pagination">
         <li class="page-item previous-page disable"><a class="page-link" href="#"><i class="fa-sharp fa-solid fa-arrow-left"></i></a></li>
