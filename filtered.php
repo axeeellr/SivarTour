@@ -98,10 +98,10 @@
             <option value="">Parque</option>
             <option value="">Bosque</option>
             <option value="">Lago</option>
-            <option value="">Ruinas</option>
+            <option value="">Sitio Arqueológico</option>
             <option value="">Volcán</option>
             <option value="">Centro Comercial</option>
-            <option value="">Canchas</option>
+            <option value="">Montaña</option>
             <option value="">Otro</option>
         </select>
         <select name="" id="">
@@ -114,8 +114,45 @@
         <!--<a href=""><i class="fa-solid fa-arrows-rotate"></i></a>-->
     </div>
     <div class="container">
-        <div class="cards">
-            <a class="card" href="place.php">
+            <?php
+                $sql = "SELECT * FROM places";
+                $run = mysqli_query($connection, $sql);
+                
+                $count = 0;
+
+                ?>
+                <div class="cards">
+                <?php
+                while ($data = mysqli_fetch_array($run)) {
+                    ?>
+                        <a href="place.php" class="card">
+                            <div class="card__img">
+                                <img src="" alt="">
+                            </div>
+                            <div class="card__info">
+                                <h2><?php echo $data['name'] ?></h2>
+                                <div class="card__info__stars">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                </div>
+                            </div>
+                        </a>
+                    <?php
+                    $count++;
+
+                    if ($count == 6) {
+                        echo '</div>';
+                        echo '<div class="cards">';
+                        $count = 0; 
+                    }
+                }?>
+                </div>
+                <?php
+            ?>
+            <!--<a class="card" href="place.php">
                 <div class="card__img">
                     <img src="https://turismo.sv/wp-content/uploads/2019/06/el-tunco-1.jpg" alt="">
                 </div>
@@ -299,7 +336,7 @@
                     </div>
                 </div>
             </a>
-        </div>
+        </div>-->
     </div>
     <div class="pagination">
         <li class="page-item previous-page disable"><a class="page-link" href="#"><i class="fa-sharp fa-solid fa-arrow-left"></i></a></li>
