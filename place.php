@@ -49,76 +49,43 @@ if (!isset($_SESSION['user_token'])) {
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15518.822923180502!2d-89.39168865541143!3d13.492221739967512!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f7cd59f22c8da2b%3A0xc9cb9224ff2461d7!2sPlaya%20El%20Tunco!5e0!3m2!1ses-419!2ssv!4v1687746316597!5m2!1ses-419!2ssv" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
             <div class="body__left__review">
-                <form class="review__comment">
-                    <input type="text" name="" id="" placeholder="Escribe tu comentario">
-                    <input type="submit" value="">
+                <form method="post" class="review__comment">
+                    <input type="text" name="comment" id="" placeholder="Escribe tu comentario">
+                    <input type="submit" value="" name="newComment">
                 </form>
+
                 <div class="slider">
-                    <div class="slider__container active">
-                        <div class="slider__user">
-                            <img src="https://cdn-icons-png.flaticon.com/512/1946/1946429.png" alt="">
-                            <h2>Christian Daniel</h2>
-                            <div class="user__info">
-                                <h3>Maestro viajero</h3>
-                                <div class="info__points">
-                                    <i class="fa-solid fa-heart"></i>
-                                    <p>4.96</p>
+                    <?php
+                        $query = "SELECT * FROM comments INNER JOIN users ON comments.id_user = users.id" /* WHERE comments.id_place = $_GET["id"] */;
+                        $resultado = mysqli_query($connection, $query);
+
+                        $x = 0;
+
+                        while ($data = mysqli_fetch_assoc($resultado)) {
+                        $claseActiva = ($x === 0) ? 'active' : '';
+                        ?>
+                        <div class="slider__container <?php echo $claseActiva?>">
+                            <div class="slider__user">
+                                <img src="https://cdn-icons-png.flaticon.com/512/1946/1946429.png" alt="">
+                                <h2><?php echo $data['name']; ?></h2>
+                                <div class="user__info">
+                                    <h3>Maestro viajero</h3>
+                                    <div class="info__points">
+                                        <i class="fa-solid fa-heart"></i>
+                                        <p>4.96</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="slider__text">
-                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellat deleniti in aut iste eius culpa odio.</p>
-                        </div>
-                    </div>
-                    <div class="slider__container">
-                        <div class="slider__user">
-                            <img src="https://cdn-icons-png.flaticon.com/512/1946/1946429.png" alt="">
-                            <h2>Axel Ramírez</h2>
-                            <div class="user__info">
-                                <h3>Maestro viajero</h3>
-                                <div class="info__points">
-                                    <i class="fa-solid fa-heart"></i>
-                                    <p>4.96</p>
-                                </div>
+                            <div class="slider__text">
+                                <p><?php echo $data['comment']; ?></p>
                             </div>
                         </div>
-                        <div class="slider__text">
-                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellat deleniti in aut iste eius culpa odio.</p>
-                        </div>
-                    </div>
-                    <div class="slider__container">
-                        <div class="slider__user">
-                            <img src="https://cdn-icons-png.flaticon.com/512/1946/1946429.png" alt="">
-                            <h2>Bad Bunny</h2>
-                            <div class="user__info">
-                                <h3>Maestro viajero</h3>
-                                <div class="info__points">
-                                    <i class="fa-solid fa-heart"></i>
-                                    <p>4.96</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="slider__text">
-                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellat deleniti in aut iste eius culpa odio.</p>
-                        </div>
-                    </div>
-                    <div class="slider__container">
-                        <div class="slider__user">
-                            <img src="https://cdn-icons-png.flaticon.com/512/1946/1946429.png" alt="">
-                            <h2>El Fercho</h2>
-                            <div class="user__info">
-                                <h3>Maestro viajero</h3>
-                                <div class="info__points">
-                                    <i class="fa-solid fa-heart"></i>
-                                    <p>4.96</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="slider__text">
-                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellat deleniti in aut iste eius culpa odio.</p>
-                        </div>
-                    </div>
-                    <div class="slider__container">
+                    <?php
+                    $x++;
+                    }
+                    ?>
+                
+                    <!--<div class="slider__container">
                         <div class="slider__user">
                             <img src="https://cdn-icons-png.flaticon.com/512/1946/1946429.png" alt="">
                             <h2>Manfredo Quintanilla</h2>
@@ -133,7 +100,7 @@ if (!isset($_SESSION['user_token'])) {
                         <div class="slider__text">
                             <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellat deleniti in aut iste eius culpa odio.</p>
                         </div>
-                    </div>
+                    </div>-->
                 </div>
                 <nav class="slider-nav">
                     <ul>

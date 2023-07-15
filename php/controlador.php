@@ -54,6 +54,7 @@ if (isset($_GET['code'])) {
     if (mysqli_num_rows($run)) {
         $userInfo = mysqli_fetch_assoc($run);
         $token = $userInfo['token'];
+        $id = $userInfo['id'];
 
     } else {
         //si no está registrado
@@ -62,6 +63,7 @@ if (isset($_GET['code'])) {
 
         if ($run) {
             $token = $userInfo['token'];
+            $id = $userInfo['id'];
         }else {
             $error = "No se ha podido crear el usuario";
             die();
@@ -69,6 +71,7 @@ if (isset($_GET['code'])) {
     }
 
     $_SESSION['user_token'] = $token;
+    $_SESSION['user_id'] = $id;
     $_SESSION['isLogin'] = 'si';
 }
 
@@ -88,8 +91,10 @@ if(isset($_POST['login'])) {
     
     if($nums == 1){
         $token = $data['token'];
+        $id = $data['id'];
         $_SESSION['isLogin'] = 'si';
         $_SESSION['user_token'] = $token;
+        $_SESSION['user_id'] = $id;
         header('Location: ' . $_SESSION['url']);
     }else if ($nums == 0){
         $error = "Los datos no coinciden";
@@ -129,10 +134,14 @@ if(isset($_POST['register'])) {
 
     } else {
         $resultado = mysqli_query($connection, $consulta_sql);
+
+        $data = mysqli_fetch_assoc($resultado);
+        $id = $data['id'];
         
         if($resultado){
             $_SESSION['isLogin'] = 'si';
             $_SESSION['user_token'] = $token;
+            $_SESSION['user_id'] = $id;
             header('Location: ' . $_SESSION['url']);
         }else{
             $error = "Ha ocurrido un error";
@@ -140,5 +149,18 @@ if(isset($_POST['register'])) {
     }
 }
 
+/****** A G R E G A R   C O M E N T A R I O ******/
+if (isset($_POST['newComment'])) {
+    $comment = $_POST['comment'];
+    $id = $_SESSION['user_id'];
+
+    $query = "INSERT INTO comments (id_user, comment) VALUES ('$id','$comment')";
+
+    if (mysqli_query($connection, $query)) {
+        header('Location: place.php', true, 303);
+    } else {
+        echo "Error al guardar el comentario: " . mysqli_error($connection);
+    }
+}
 
 ?>
