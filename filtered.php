@@ -114,7 +114,6 @@
             <option value="Solo mayores de 18">Solo mayores de 18</option>
             <option value="Especial para niños">Especial para niños</option>
         </select>
-        <input type="submit" value="" id="filterBtn">
         <!--<a href=""><i class="fa-solid fa-arrows-rotate"></i></a>-->
     </div>
     <div class="container">

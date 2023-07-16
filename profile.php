@@ -63,7 +63,7 @@ $data = mysqli_fetch_array($run);
                 <h3><?php echo $data['email'] ?></h3>
                 <form method="post" class="info__buttons">
                     <button type="submit" name="activeEmail">Validar correo</button>
-                    <a href="php/logout.php"><button>Cerrar Sesión</button></a>
+                    <button class="logout">Cerrar Sesión</button>
                 </form>
             </div>
             <div class="right__edit">
@@ -98,6 +98,11 @@ $data = mysqli_fetch_array($run);
     <script>
         document.querySelector('.header__logo').addEventListener('click', function(){
             location.href = 'index.php';
+        })
+
+        document.querySelector('.logout').addEventListener('click', function(e){
+            e.preventDefault();
+            location.href = 'php/logout.php';
         })
     </script>
 </body>
