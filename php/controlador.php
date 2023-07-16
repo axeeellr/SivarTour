@@ -3,10 +3,9 @@
 require 'vendor/autoload.php';
 include 'connection.php';
 
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\SMTP;
-
 $error = "";
+$mensaje = "";
+$submensaje = "";
 session_start();
 
 
@@ -142,7 +141,7 @@ if(isset($_POST['register'])) {
     } else {
         $resultado = mysqli_query($connection, $consulta_sql);
 
-        $data = mysqli_fetch_assoc($resultado);
+        $data = mysqli_fetch_assoc($validarCorreo);
         $id = $data['id'];
         
         if($resultado){
@@ -176,59 +175,27 @@ if (isset($_POST['newComment'])) {
 
 
 
-if (isset($_POST['activeEmail'])) {
+/****** V E R I F I C A R   C O D I G O ******/
+if (isset($_POST['veriCode'])) {
+    $code = $_POST['code'];
 
-    $email_user = 'sivartour.travel@gmail.com';
+    $sql = "SELECT * FROM users WHERE token = '{$_SESSION['user_token']}'";
+    $run = mysqli_query($connection, $sql);
 
-   $email_password = 'bfvglsxmsjpbbknz';
-
-   $the_subject = "Holaa";
-
-   $mensaje_correo = "Probando sonido";
-
-   $address_to = 'axelramireezz@gmail.com'; 
-
-   $from_name = 'Cursos de programación';
-
-   $phpmailer = new PHPMailer();
-
-   $phpmailer->Username = $email_user;
-
-   $phpmailer->Password = $email_password;
-
-   $phpmailer->SMTPSecure = 'tls'; 
-
-   $phpmailer->Host = 'smtp.gmail.com';
-
-   $phpmailer->Port = 587; 
-
-   $phpmailer->isSMTP(); 
-
-   $phpmailer->SMTPAuth = true;
-
-   $phpmailer->setFrom($phpmailer->Username,$from_name);
-
-   $phpmailer->AddAddress($address_to); 
-
-   $phpmailer->FromName = 'Programación Online';  
-
-   $phpmailer->Subject = $the_subject;
-
-   $phpmailer->Body = $mensaje_correo;
-
-   $phpmailer->IsHTML(true);
-   if (!$phpmailer->Send()) {
-
-    echo "no";
- 
-  }else{
- 
-    echo "si";  
- 
-  }
+    if ($row = mysqli_fetch_assoc($run)) {
+        $codedb = $row['code']; // Código almacenado en la base de datos
+    
+        if ($code == $codedb) {
+            $mensaje = "Tu cuenta ha sido activada";
+            $submensaje = "Ya puedes usar todas las funcionalidades de nuestro sitio web";
+            $sqll = "UPDATE users SET verified = 1 WHERE token = '{$_SESSION['user_token']}'";
+            $runn = mysqli_query($connection, $sqll);
+        } else {
+            $mensaje = "Código incorrecto";
+            $submensaje = "Ocurrió un error, intenta nuevamente";
+        }
+    }
 }
-
-
 
 
 ?>

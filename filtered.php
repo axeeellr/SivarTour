@@ -8,6 +8,13 @@
                 }
                 </style>
         <?php
+    }
+    
+    $sql = "SELECT * FROM users WHERE token = '{$_SESSION['user_token']}'";
+    $run = mysqli_query($connection, $sql);
+    $data = mysqli_fetch_array($run);
+
+    if ($data['verified'] == 1) {
         echo '<i class="fa-regular fa-square-plus new__place"></i>';
     }
 ?>
