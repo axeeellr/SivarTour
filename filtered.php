@@ -183,35 +183,37 @@
         </div>
     </div>
     <div class="newplace__container">
-        <div class="newplace">
+        <form method="post" class="newplace" enctype="multipart/form-data">
             <i class="fa-solid fa-xmark close__newplace"></i>
             <div class="newplace__img">
-                <input type="file" id="upload-button" multiple accept="image/*" />
+                <input type="file" name="images[]" id="upload-button" required multiple accept="image/*" />
                 <label for="upload-button">
                     <i class="fa-solid fa-upload"></i>&nbsp; Escoge las fotos
                 </label>
+                <p>Recuerda que el total de fotografías es 3</p>
                 <div id="error"></div>
                 <div id="image-display"></div>
             </div>
             <div class="newplace__info">
                 <div class="info__title">
-                    <h1>Tú también puedes subir lugares!</h1>
+                    <h1>Tú también puedes publicar lugares!</h1>
                     <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eaque molestias id culpa amet impedit? Vero consequatur ipsum earum iure odio?</p>
                 </div>
                 <div class="input__field">
-                    <input type="text" required spellcheck="false"> 
+                    <input type="text" name="name" required spellcheck="false"> 
                     <label>Nombre</label>
                 </div>
                 <div class="input__field">
-                    <input type="text" required spellcheck="false"> 
+                    <input type="text" name="description" required spellcheck="false"> 
                     <label>Descripción</label>
                 </div>
                 <div class="input__field">
-                    <input type="text" required spellcheck="false"> 
+                    <input type="text" name="url" required spellcheck="false"> 
                     <label>URL del mapa</label>
                 </div>
                 <div class="input__field">
-                    <select>
+                    <select name="department">
+                        <option value="" selected disabled>Departamento</option>
                         <option value="AH">Ahuachapán</option>
                         <option value="CA">Cabañas</option>
                         <option value="CH">Chalatenango</option>
@@ -229,30 +231,32 @@
                     </select>
                 </div>
                 <div class="input__field">
-                    <select name="" id="">
-                        <option value="">Playa</option>
-                        <option value="">Campo</option>
-                        <option value="">Cabañas</option>
-                        <option value="">Parque</option>
-                        <option value="">Bosque</option>
-                        <option value="">Lago</option>
-                        <option value="">Ruinas</option>
-                        <option value="">Volcán</option>
-                        <option value="">Centro Comercial</option>
-                        <option value="">Canchas</option>
-                        <option value="">Otro</option>
+                    <select name="type" id="type">
+                        <option value="" selected disabled>Tipo</option>
+                        <option value="Playa">Playa</option>
+                        <option value="Campo">Campo</option>
+                        <option value="Cabañas">Cabañas</option>
+                        <option value="Parque">Parque</option>
+                        <option value="Bosque">Bosque</option>
+                        <option value="Lago">Lago</option>
+                        <option value="Sitio Arqueológico">Sitio Arqueológico</option>
+                        <option value="Volcán">Volcán</option>
+                        <option value="Centro Comercial">Centro Comercial</option>
+                        <option value="Montaña">Montaña</option>
+                        <option value="Otro">Otro</option>
                     </select>
                 </div>
                 <div class="input__field">
-                    <select name="" id="">
-                        <option value="">Todo público</option>
-                        <option value="">Solo mayores de 18</option>
-                        <option value="">Especial para niños</option>
+                    <select name="public" id="">
+                        <option value="" selected disabled>Público</option>
+                        <option value="Todo público">Todo público</option>
+                        <option value="Solo mayores de 18">Solo mayores de 18</option>
+                        <option value="Especial para niños">Especial para niños</option>
                     </select>
                 </div>
-                <input type="submit" value="Enviar">
+                <input type="submit" value="Enviar" name="newPlace">
             </div>
-        </div>
+        </form>
     </div>
 
     <script>

@@ -425,6 +425,15 @@ body{
     box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.40);
 }
 
+.newplace__img p{
+    width: 85%;
+    margin: 0 auto;
+    text-align: center;
+    font-size: calc(0.9px + 0.9vw);
+    color: var(--background);
+    margin-top: calc(0.5px + 0.5vw);
+}
+
 #image-display {
     position: relative;
     width: 90%;

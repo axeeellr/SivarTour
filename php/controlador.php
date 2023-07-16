@@ -243,4 +243,11 @@ if (isset($_POST['userData'])) {
     }
 
 }
+
+
+
+
+if (isset($_POST['newPlace'])) {
+    echo "si";
+}
 ?>
