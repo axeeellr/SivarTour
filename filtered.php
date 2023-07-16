@@ -29,6 +29,8 @@
     <link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css&quot;>
     <!--JQuery-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" charset="utf-8"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <!--FontAwesome-->
     <script src="https://kit.fontawesome.com/61fb4717c0.js" crossorigin="anonymous"></script>
     <title>Document</title>
@@ -75,110 +77,95 @@
             <option value=""></option>
             <option value=""></option>
         </select>
-        <select name="" id="">
-            <option value="AH">Ahuachapán</option>
-            <option value="CA">Cabañas</option>
-            <option value="CH">Chalatenango</option>
-            <option value="CU">Cuscatlán</option>
-            <option value="LB">La Libertad</option>
-            <option value="PZ">La Paz</option>
-            <option value="UN">La Unión</option>
-            <option value="MO">Morazán</option>
-            <option value="SM">San Miguel</option>
-            <option value="SS">San Salvador</option>
-            <option value="SV">San Vicente</option>
-            <option value="SA">Santa Ana</option>
-            <option value="SO">Sonsonate</option>
-            <option value="US">Usulután</option>
+        <select name="" id="department">
+            <option value="">Departamento</option>
+            <option value="Ahuachapán">Ahuachapán</option>
+            <option value="Cabañas">Cabañas</option>
+            <option value="Chalatenango">Chalatenango</option>
+            <option value="Cuscatlán">Cuscatlán</option>
+            <option value="La Libertad">La Libertad</option>
+            <option value="La Paz">La Paz</option>
+            <option value="La Unión">La Unión</option>
+            <option value="Morazán">Morazán</option>
+            <option value="San Miguel">San Miguel</option>
+            <option value="San Salvador">San Salvador</option>
+            <option value="San Vicente">San Vicente</option>
+            <option value="Santa Ana">Santa Ana</option>
+            <option value="Sonsonate">Sonsonate</option>
+            <option value="Usulután">Usulután</option>
         </select>
-        <select name="" id="">
-            <option value="">Playa</option>
-            <option value="">Campo</option>
-            <option value="">Cabañas</option>
-            <option value="">Parque</option>
-            <option value="">Bosque</option>
-            <option value="">Lago</option>
-            <option value="">Sitio Arqueológico</option>
-            <option value="">Volcán</option>
-            <option value="">Centro Comercial</option>
-            <option value="">Montaña</option>
-            <option value="">Otro</option>
+        <select name="" id="type">
+            <option value="">Tipo</option>
+            <option value="Playa">Playa</option>
+            <option value="Campo">Campo</option>
+            <option value="Cabañas">Cabañas</option>
+            <option value="Parque">Parque</option>
+            <option value="Bosque">Bosque</option>
+            <option value="Lago">Lago</option>
+            <option value="Sitio Arqueológico">Sitio Arqueológico</option>
+            <option value="Volcán">Volcán</option>
+            <option value="Centro Comercial">Centro Comercial</option>
+            <option value="Montaña">Montaña</option>
+            <option value="Otro">Otro</option>
         </select>
-        <select name="" id="">
+        <select name="" id="public">
             <option value="">Público</option>
-            <option value="">Todo público</option>
-            <option value="">Solo mayores de 18</option>
-            <option value="">Especial para niños</option>
+            <option value="Todo público">Todo público</option>
+            <option value="Solo mayores de 18">Solo mayores de 18</option>
+            <option value="Especial para niños">Especial para niños</option>
         </select>
-        <input type="submit" value="">
+        <input type="submit" value="" id="filterBtn">
         <!--<a href=""><i class="fa-solid fa-arrows-rotate"></i></a>-->
     </div>
     <div class="container">
-            <?php
-                $sql = "SELECT * FROM places";
-                $run = mysqli_query($connection, $sql);
-                
-                $count = 0;
+        <?php
+            $sql = "SELECT * FROM places";
+            $run = mysqli_query($connection, $sql);
+            
+            $count = 0;
 
-                ?>
-                <div class="cards">
-                <?php
-                while ($data = mysqli_fetch_array($run)) {
-                    ?>
-                        <a href="place.php" class="card">
-                            <div class="card__img">
-                                <img src="https://conexioncapital.co/wp-content/uploads/2017/09/Captura-1-2.jpg" alt="">
-                            </div>
-                            <div class="card__info">
-                                <h2><?php echo $data['name'] ?></h2>
-                                <div class="card__info__stars">
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                </div>
-                            </div>
-                        </a>
-                    <?php
-                    $count++;
-
-                    if ($count == 6) {
-                        echo '</div>';
-                        echo '<div class="cards">';
-                        $count = 0; 
-                    }
-                }?>
-                </div>
-                <?php
             ?>
-            <!--
-            <a href="place.php" class="card">
-                <div class="card__img">
-                    <img src="https://elsalvadorviajar.com/wp-content/uploads/2021/09/Visita-Playa-la-Costa-del-Sol.jpg" alt="">
-                </div>
-                <div class="card__info">
-                    <h2>Playa El Tunco</h2>
-                    <div class="card__info__stars">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                    </div>
-                </div>
-            </a>
-            -->
+            <div id="placesContainer" class="cards">
+            <?php
+            while ($data = mysqli_fetch_array($run)) {
+                ?>
+                    <a href="place.php" class="card">
+                        <div class="card__img">
+                            <img src="https://conexioncapital.co/wp-content/uploads/2017/09/Captura-1-2.jpg" alt="">
+                        </div>
+                        <div class="card__info">
+                            <h2><?php echo $data['name'] ?></h2>
+                            <div class="card__info__stars">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                        </div>
+                    </a>
+                <?php
+                $count++;
+
+                if ($count == 6) {
+                    echo '</div>';
+                    echo '<div class="cards">';
+                    $count = 0; 
+                }
+            }?>
+            </div>
+            <?php
+        ?>
     </div>
-    <div class="pagination">
-        <li class="page-item previous-page disable"><a class="page-link" href="#"><i class="fa-sharp fa-solid fa-arrow-left"></i></a></li>
-        <li class="page-item current-page active"><a class="page-link" href="#">1</a></li>
-        <li class="page-item dots"><a class="page-link" href="#">...</a></li>
-        <li class="page-item current-page"><a class="page-link" href="#">5</a></li>
-        <li class="page-item current-page"><a class="page-link" href="#">6</a></li>
-        <li class="page-item dots"><a class="page-link" href="#">...</a></li>
-        <li class="page-item current-page"><a class="page-link" href="#">10</a></li>
-        <li class="page-item next-page"><a class="page-link" href="#"><i class="fa-sharp fa-solid fa-arrow-right"></i></a></li>
+    <div id="paginationContainer" class="pagination">
+            <li class="page-item previous-page disable"><a class="page-link" href=""><i class="fa-sharp fa-solid fa-arrow-left"></i></a></li>
+            <li class="page-item current-page active"><a class="page-link" href="">1</a></li>
+            <li class="page-item dots"><a class="page-link" href="">...</a></li>
+            <li class="page-item current-page"><a class="page-link" href="">5</a></li>
+            <li class="page-item current-page"><a class="page-link" href="">6</a></li>
+            <li class="page-item dots"><a class="page-link" href="">...</a></li>
+            <li class="page-item current-page"><a class="page-link" href="">10</a></li>
+            <li class="page-item next-page"><a class="page-link" href=""><i class="fa-sharp fa-solid fa-arrow-right"></i></a></li>
     </div>
     <div class="popup__container">
         <div class="popup">
@@ -259,6 +246,83 @@
             </div>
         </div>
     </div>
+
+    <script>
+        
+        $(document).ready(function() {
+        var currentPage = 1; // Página actual
+        var totalPlaces = 0; // Número total de lugares filtrados
+
+        function getFilteredPlaces(page) {
+            var department = $('#department').val();
+            var type = $('#type').val();
+            var public = $('#public').val();
+
+            $.ajax({
+            url: 'filters.php',
+            method: 'POST',
+            data: { department: department, type: type, public: public },
+            success: function(response) {
+                // Obtener los lugares filtrados
+                var filteredPlaces = $(response).find('.card');
+
+                // Actualizar el número total de lugares filtrados
+                totalPlaces = filteredPlaces.length;
+
+                // Calcular el número total de páginas
+                var totalPages = Math.ceil(totalPlaces / 6);
+
+                // Asegurarse de que la página actual no supere el límite de páginas
+                if (page > totalPages) {
+                page = totalPages;
+                }
+
+                // Calcular el índice de inicio y fin de los lugares en la página actual
+                var startIndex = (page - 1) * 6;
+                var endIndex = Math.min(startIndex + 5, totalPlaces - 1);
+
+                // Obtener los lugares para la página actual
+                var places = filteredPlaces.slice(startIndex, endIndex + 1);
+
+                // Actualizar el contenido de los lugares y la paginación
+                $('#placesContainer').html(places);
+                generatePagination(totalPages, page);
+            }
+            });
+        }
+
+        function generatePagination(totalPages, currentPage) {
+            var paginationHTML = '';
+
+            if (totalPages > 1) {
+            paginationHTML += '<li class="page-item previous-page' + (currentPage === 1 ? ' disabled' : '') + '"><a class="page-link" href="#"><i class="fa-sharp fa-solid fa-arrow-left"></i></a></li>';
+
+            for (var i = 1; i <= totalPages; i++) {
+                paginationHTML += '<li class="page-item' + (i === currentPage ? ' current-page active' : '') + '"><a class="page-link" href="#">' + i + '</a></li>';
+            }
+
+            paginationHTML += '<li class="page-item next-page' + (currentPage === totalPages ? ' disabled' : '') + '"><a class="page-link" href="#"><i class="fa-sharp fa-solid fa-arrow-right"></i></a></li>';
+            }
+
+            $('#paginationContainer').html(paginationHTML);
+        }
+
+        $('#paginationContainer').on('click', '.page-item', function(e) {
+            e.preventDefault();
+            var page = $(this).text();
+            currentPage = parseInt(page);
+            getFilteredPlaces(currentPage);
+        });
+
+        $('select').on('change', function() {
+            currentPage = 1;
+            getFilteredPlaces(currentPage);
+        });
+
+        getFilteredPlaces(currentPage);
+        });
+
+    </script>
 
 
     <script>
