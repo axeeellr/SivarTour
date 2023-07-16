@@ -120,6 +120,11 @@ body{
     cursor: pointer;
 }
 
+.saved__content h2:hover{
+    background-color: var(--white);
+    color: var(--background);
+}
+
 .lately__content h2, .saved__content h2{
     font-size: calc(1.6px + 1.6vw);
     color: var(--white);
@@ -190,6 +195,8 @@ body{
 
 .input-field {
     position: relative;
+    display: flex;
+    align-items: center;
 }
 
 .input-field input {
@@ -213,12 +220,26 @@ body{
     transition: 0.3s;
 }
 
+.input-field i{
+    position: absolute;
+    right: 10px;
+}
+
+.input-field input[type="number"]::-webkit-inner-spin-button,
+.input-field input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 input:focus {
     border: 2px solid var(--red);
 }
 
-input:focus~label,
-input:valid~label {
+input:focus~i{
+    color: var(--red);
+}
+
+input:focus~label {
     top: -10px;
     left: 0;
     font-size: calc(1px + 1vw);

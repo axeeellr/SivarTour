@@ -64,18 +64,8 @@
             </svg>
         </div>
         <button class="hero__button">COMENZAR &nbsp;<i class="fa-sharp fa-solid fa-arrow-right"></i></button>
-        
-        <form class="hero__search" id="hero__search" action="filtered.php">
-            <input type="search" id="dondeInput" autofocus="autofocus" placeholder="Departamento" class="awesomplete" data-list="Ahuachapán, Cabañas, Chalatenango, Cuscatlán, Morazán, La Libertad, La Paz, La Unión, San Miguel, San Salvador, San Vicente, Santa Ana, Sonsonate, Usulután">
-            <input type="search" id="tipoInput" autofocus="autofocus" placeholder="Tipo" class="awesomplete" data-list="Playa, Campo, Cabañas, Parque, Bosque, Lago, Ruinas, Volcán, Centro Comercial, Canchas, Otro">
-            <input type="submit" value="" class="red__button search__button">
-        </form>
     </div>
 
-    <script>
-        new Awesomplete(document.querySelector("#dondeInput"));
-        new Awesomplete(document.querySelector("#tipoInput"));
-    </script>
     <script>
         const tween = KUTE.fromTo(
           '#blob1',
@@ -86,8 +76,7 @@
     </script>
     <script>
         document.querySelector('.hero__button').addEventListener('click', function(e){
-            document.querySelector('.hero__button').classList.add('invisible');
-            document.getElementById('hero__search').style.display = 'flex';
+            location.href = 'filtered.php';
         });
     </script>
 </body>

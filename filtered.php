@@ -10,12 +10,14 @@
         <?php
     }
     
-    $sql = "SELECT * FROM users WHERE token = '{$_SESSION['user_token']}'";
-    $run = mysqli_query($connection, $sql);
-    $data = mysqli_fetch_array($run);
-
-    if ($data['verified'] == 1) {
-        echo '<i class="fa-regular fa-square-plus new__place"></i>';
+    if (isset($_SESSION['isLogin'])) {
+        $sql = "SELECT * FROM users WHERE token = '{$_SESSION['user_token']}'";
+        $run = mysqli_query($connection, $sql);
+        $data = mysqli_fetch_array($run);
+    
+        if ($data['verified'] == 1) {
+            echo '<i class="fa-regular fa-square-plus new__place"></i>';
+        }
     }
 ?>
 <!DOCTYPE html>
@@ -57,23 +59,23 @@
 
     <div class="hero">
 
-        <svg id="visual" viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg"
+        <svg id="visual" viewBox="0 0 960 540"  xmlns="http://www.w3.org/2000/svg"
             xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">
-            <g transform="translate(468.33061402365865 277.80104108680837)">
+            <g transform="translate(447.1003487837197 265.51596821062077)">
                 <path id="blob1"
-                    d="M166.4 -173.1C191.4 -141.4 170.7 -70.7 170 -0.7C169.3 69.3 188.6 138.6 163.6 183.3C138.6 227.9 69.3 248 9.9 238.1C-49.5 228.2 -99 188.3 -140 143.7C-181 99 -213.5 49.5 -215.3 -1.8C-217 -53 -188.1 -106.1 -147.1 -137.7C-106.1 -169.4 -53 -179.7 8.8 -188.5C70.7 -197.4 141.4 -204.8 166.4 -173.1"
-                    fill="#F0F4EF">
+                    d="M150.6 -128.1C195.6 -105.6 232.8 -52.8 227.1 -5.7C221.5 41.5 173 83 128 111.6C83 140.3 41.5 156.2 3.8 152.4C-33.9 148.6 -67.9 125.2 -96.7 96.5C-125.5 67.9 -149.3 33.9 -158.1 -8.8C-167 -51.6 -160.9 -103.2 -132.1 -125.7C-103.2 -148.2 -51.6 -141.6 0.6 -142.2C52.8 -142.8 105.6 -150.6 150.6 -128.1"
+                    fill="#ED735C">
                 </path>
             </g>
-            <g transform="translate(442.1587426736651 248.8769763985242)" style="visibility: hidden;">
+            <g transform="translate(483.8593365141332 273.18306880966463)" style="visibility: hidden;">
                 <path id="blob2"
-                    d="M151.2 -132C195.3 -107 230.2 -53.5 230.3 0.1C230.4 53.7 195.8 107.5 151.6 155.3C107.5 203.1 53.7 245.1 -8.5 253.6C-70.7 262 -141.4 237.1 -178.8 189.3C-216.1 141.4 -220 70.7 -209.7 10.4C-199.3 -50 -174.6 -99.9 -137.3 -124.9C-99.9 -149.9 -50 -150 1.8 -151.7C53.5 -153.5 107 -157 151.2 -132"
-                    fill="#F0F4EF">
+                    d="M142.8 -144.5C178.1 -107.5 195.1 -53.7 200 4.9C205 63.6 197.9 127.3 162.6 160.3C127.3 193.3 63.6 195.6 15.9 179.7C-31.8 163.8 -63.6 129.6 -107.1 96.6C-150.6 63.6 -205.8 31.8 -209 -3.2C-212.2 -38.2 -163.4 -76.4 -119.9 -113.4C-76.4 -150.4 -38.2 -186.2 7.8 -194C53.7 -201.7 107.5 -181.5 142.8 -144.5"
+                    fill="#ED735C">
                 </path>
             </g>
         </svg>
 
-        <img src="img/playas.png" alt="" class="hero__text">
+        <img src="img/explora.png" alt="" class="hero__text">
         <i class="fa-solid fa-chevron-down"><a href="#filters"></a></i>
     </div>
 

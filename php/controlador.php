@@ -198,4 +198,49 @@ if (isset($_POST['veriCode'])) {
 }
 
 
+
+
+if (isset($_POST['userData'])) {
+    $username = $_POST['username'];
+    $age = $_POST['age'];
+    $sex = $_POST['sex'];
+    $number = $_POST['number'];
+    $address = $_POST['address'];
+    $language = $_POST['language'];
+
+    $sql = "UPDATE users SET";
+    $updates = array();
+
+    if (!empty($username)) {
+        $updates[] = "username = '$username'";
+    }
+
+    if (!empty($age)) {
+        $updates[] = "age = '$age'";
+    }
+
+    if (!empty($sex)) {
+        $updates[] = "sex = '$sex'";
+    }
+
+    if (!empty($number)) {
+        $updates[] = "number = '$number'";
+    }
+
+    if (!empty($address)) {
+        $updates[] = "address = '$address'";
+    }
+
+    if (!empty($language)) {
+        $updates[] = "language = '$language'";
+    }
+
+    if (!empty($updates)) {
+        $sql .= " " . implode(", ", $updates);
+        $sql .= " WHERE token = '{$_SESSION['user_token']}'";
+        $run = mysqli_query($connection, $sql);
+        header('Location: profile.php', true, 303);
+    }
+
+}
 ?>

@@ -90,33 +90,39 @@ if ($data['verified'] == 1) {
                     <button class="logout">Cerrar Sesión</button>
                 </form>
             </div>
-            <div class="right__edit">
+            <form method="post" class="right__edit">
                 <div class="input-field">
-                    <input type="text" required spellcheck="false"> 
-                    <label>Nombre de usuario</label>
+                    <input type="text" name="username" spellcheck="false" onfocus="this.placeholder = 'Nombre de usuario'" onblur="this.placeholder = ''"> 
+                    <label><?php echo empty($data['username']) ? "Nombre de usuario" : $data['username'];?></label>
+                    <i class="fa-solid fa-pen"></i>
                 </div>
                 <div class="input-field">
-                    <input type="text" required spellcheck="false"> 
-                    <label>Edad</label>
+                    <input type="number" min="10" max="99" name="age" spellcheck="false" onfocus="this.placeholder = 'Edad'" onblur="this.placeholder = ''"> 
+                    <label><?php echo empty($data['age']) ? "Edad" : $data['age'];?></label>
+                    <i class="fa-solid fa-pen"></i>
                 </div>
                 <div class="input-field">
-                    <input type="text" required spellcheck="false"> 
-                    <label>Sexo</label>
+                    <input type="text" name="sex" spellcheck="false" onfocus="this.placeholder = 'Sexo'" onblur="this.placeholder = ''"> 
+                    <label><?php echo empty($data['sex']) ? "Sexo" : $data['sex'];?></label>
+                    <i class="fa-solid fa-pen"></i>
                 </div>
                 <div class="input-field">
-                    <input type="text" required spellcheck="false"> 
-                    <label>Número telefónico</label>
+                    <input type="number" name="number" spellcheck="false" onfocus="this.placeholder = 'Número telefónico'" onblur="this.placeholder = ''"> 
+                    <label><?php echo empty($data['number']) ? "Número telefónico" : $data['number'];?></label>
+                    <i class="fa-solid fa-pen"></i>
                 </div>
                 <div class="input-field">
-                    <input type="text" required spellcheck="false"> 
-                    <label>Dirección</label>
+                    <input type="text" name="address" spellcheck="false" onfocus="this.placeholder = 'Dirección'" onblur="this.placeholder = ''"> 
+                    <label><?php echo empty($data['address']) ? "Dirección" : $data['address'];?></label>
+                    <i class="fa-solid fa-pen"></i>
                 </div>
                 <div class="input-field">
-                    <input type="text" required spellcheck="false"> 
-                    <label>Idioma</label>
+                    <input type="text" name="language" spellcheck="false"onfocus="this.placeholder = 'Idioma'" onblur="this.placeholder = ''"> 
+                    <label><?php echo empty($data['language']) ? "Idioma" : $data['language'];?></label>
+                    <i class="fa-solid fa-pen"></i>
                 </div>
-                <input type="submit" value="Guardar">
-            </div>
+                <input type="submit" name="userData" value="Guardar">
+            </form>
         </div>
     </div>
     <div class="right__code">
