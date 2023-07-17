@@ -1,0 +1,7 @@
+git clone https://github.com/axeeellr/SivarTour.git
+1- descargar composer
+2- composer install
+3- vendor\guzzlehttp\guzzle\src\Handler\CurlFactory.php   linea 67
+3- if (is_array($this->handles) && count($this->handles) >= $this->maxHandles) {
+4- composer require phpmailer/phpmailer
+5- composer require aws/aws-sdk-php
