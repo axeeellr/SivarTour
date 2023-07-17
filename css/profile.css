@@ -147,10 +147,16 @@ body{
     gap: calc(0.5px + 0.5vw);
 }
 
-.right__info img{
+.right__info__img{
     height: calc(9px + 9vw);
     width: calc(9px + 9vw);
     border-radius: 5px;
+    background-color: var(--background);
+    color: var(--white);
+    font-size: calc(7.5px + 7.5vw);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .right__info h1{

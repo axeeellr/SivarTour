@@ -8,6 +8,11 @@ $mensaje = "";
 $submensaje = "";
 session_start();
 
+use Aws\S3\S3Client;
+use Aws\S3\Exception\S3Exception;
+$accessKey = 'AKIA46EOAGCOGN3YBO5E';
+$secretKey = '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';
+
 
 
 
@@ -160,13 +165,16 @@ if(isset($_POST['register'])) {
 
 /****** A G R E G A R   C O M E N T A R I O ******/
 if (isset($_POST['newComment'])) {
+    $_SESSION['hostt'] = $_SERVER["HTTP_HOST"];
+    $_SESSION['urll'] = $_SERVER["REQUEST_URI"];
     $comment = $_POST['comment'];
     $id = $_SESSION['user_id'];
+    $id_place = $_GET['place'];
 
-    $query = "INSERT INTO comments (id_user, comment) VALUES ('$id','$comment')";
+    $query = "INSERT INTO comments (id_user, id_place, comment) VALUES ('$id', '$id_place', '$comment')";
 
     if (mysqli_query($connection, $query)) {
-        header('Location: place.php', true, 303);
+        header('Location: ' . $_SESSION['urll'], true, 303);
     } else {
         echo "Error al guardar el comentario: " . mysqli_error($connection);
     }
@@ -200,6 +208,7 @@ if (isset($_POST['veriCode'])) {
 
 
 
+/****** A C T U A L I Z A R   P E R F I L ******/
 if (isset($_POST['userData'])) {
     $username = $_POST['username'];
     $age = $_POST['age'];
@@ -247,7 +256,71 @@ if (isset($_POST['userData'])) {
 
 
 
+/****** P U B L I C A R   L U G A R ******/
 if (isset($_POST['newPlace'])) {
-    echo "si";
+    // Obtener los datos del formulario
+    $name = $_POST['name'];
+    $description = $_POST['description'];
+    $url = $_POST['url'];
+    $department = $_POST['department'];
+    $type = $_POST['type'];
+    $public = $_POST['public'];
+
+    // Validar que se hayan seleccionado exactamente 3 imágenes
+    if (isset($_FILES['images']['name']) && count($_FILES['images']['name']) === 3) {
+        // Configuración del cliente de S3
+        $s3Client = new S3Client([
+            'version' => 'latest',
+            'region' => 'us-east-2', // Reemplaza con tu región deseada
+            'credentials' => [
+                'key' => $accessKey,
+                'secret' => $secretKey,
+            ],
+        ]);
+
+        // Nombre del bucket en S3
+        $bucketName = 'sivartour';
+
+        // Carpeta en S3 con el nombre del lugar
+        $s3FolderName = $name . '/';
+
+        // Subida de las imágenes a S3
+        $imageLinks = array(); // Almacenar los enlaces de las imágenes subidas
+
+        for ($i = 0; $i < count($_FILES['images']['name']); $i++) {
+            $file = $_FILES['images']['name'][$i];
+            $tempFilePath = $_FILES['images']['tmp_name'][$i];
+            $s3FileName = $s3FolderName . $file;
+
+            // Obtener el tipo de archivo MIME para la extensión de la imagen
+            $contentType = mime_content_type($tempFilePath);
+
+            try {
+                // Subida del archivo a S3 con el encabezado "Content-Type" adecuado
+                $result = $s3Client->putObject([
+                    'Bucket' => $bucketName,
+                    'Key' => $s3FileName,
+                    'SourceFile' => $tempFilePath,
+                    'ContentType' => $contentType,
+                ]);
+
+                // Obtener el enlace público del objeto subido a S3
+                $imageLink = $s3Client->getObjectUrl($bucketName, $s3FileName);
+                $imageLinks[] = $imageLink;
+
+                echo "Imagen $file subida exitosamente a S3.<br>";
+                header("Location: filtered.php");
+            } catch (S3Exception $e) {
+                echo "Error al subir la imagen $file a S3: " . $e->getMessage() . "<br>";
+            }
+        }
+
+        $sql = "INSERT INTO places (name, description, url, img1, img2, img3, department, type, public) VALUES ('$name','$description','$url', '$imageLinks[0]', '$imageLinks[1]', '$imageLinks[2]', '$department','$type','$public')";
+        $run = mysqli_query($connection, $sql);
+
+    } else {
+        echo "Debe seleccionar exactamente 3 imágenes.<br>";
+    }
 }
+
 ?>

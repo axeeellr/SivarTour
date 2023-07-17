@@ -2,9 +2,13 @@
 require_once 'php/connection.php';
 require_once 'php/controlador.php';
 
-if (!isset($_SESSION['user_token'])) {
-    header('Location: filtered.php');
-}
+    if (!isset($_SESSION['user_token'])) {
+        header('Location: filtered.php');
+    }
+
+    $sql = "SELECT * FROM places WHERE id = '{$_GET['place']}'";
+    $run = mysqli_query($connection, $sql);
+    $dataPlace = mysqli_fetch_array($run)
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,23 +34,23 @@ if (!isset($_SESSION['user_token'])) {
     </header>
     <div class="place__hero">
         <div class="place__hero__text">
-            <h1>Playa El Tunco</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam sit atque corrupti sapiente nam a ea veritatis.</p>
+            <h1><?php echo $dataPlace['name'] ?></h1>
+            <p><?php echo $dataPlace['description'] ?></p>
             <form class="hero__text__button">
-                <button type="submit"><i class="fa-regular fa-star"></i></button>
+                <i class="fa-regular fa-star rating"></i>
                 <i class="fa-regular fa-rectangle-list collection"></i>
             </form>
         </div>
         <div class="place__hero__img">
-            <img class="hero__img" src="https://live.staticflickr.com/7842/46038993015_11978f4826_b.jpg" alt="">
-            <img class="hero__img" src="https://images.mnstatic.com/bb/95/bb95475cbbbba206ddac6ef12a8f5984.jpg" alt="">
-            <img class="hero__img one" src="https://i0.wp.com/passporterapp.com/es/blog/wp-content/uploads/2022/05/que-ver-en-el-tunco-scaled.jpg?fit=2560%2C1707&ssl=1" alt="">
+            <?php echo '<img class="hero__img" src="'.$dataPlace["img1"].'">'?>
+            <?php echo '<img class="hero__img" src="'.$dataPlace["img2"].'">'?>
+            <?php echo '<img class="hero__img one" src="'.$dataPlace["img3"].'">'?>
         </div>
     </div>
     <div class="place__body">
         <div class="place__body__left">
             <div class="body__left__map">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15518.822923180502!2d-89.39168865541143!3d13.492221739967512!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f7cd59f22c8da2b%3A0xc9cb9224ff2461d7!2sPlaya%20El%20Tunco!5e0!3m2!1ses-419!2ssv!4v1687746316597!5m2!1ses-419!2ssv" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <?php echo $dataPlace['url'] ?>
             </div>
             <div class="body__left__review">
                 <form method="post" class="review__comment">
@@ -56,7 +60,7 @@ if (!isset($_SESSION['user_token'])) {
 
                 <div class="slider">
                     <?php
-                        $query = "SELECT * FROM comments INNER JOIN users ON comments.id_user = users.id" /* WHERE comments.id_place = $_GET["id"] */;
+                        $query = "SELECT * FROM comments INNER JOIN users ON comments.id_user = users.id WHERE comments.id_place = '{$_GET['place']}'";
                         $resultado = mysqli_query($connection, $query);
 
                         $x = 0;
@@ -84,23 +88,6 @@ if (!isset($_SESSION['user_token'])) {
                     $x++;
                     }
                     ?>
-                
-                    <!--<div class="slider__container">
-                        <div class="slider__user">
-                            <img src="https://cdn-icons-png.flaticon.com/512/1946/1946429.png" alt="">
-                            <h2>Manfredo Quintanilla</h2>
-                            <div class="user__info">
-                                <h3>Maestro viajero</h3>
-                                <div class="info__points">
-                                    <i class="fa-solid fa-heart"></i>
-                                    <p>4.96</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="slider__text">
-                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellat deleniti in aut iste eius culpa odio.</p>
-                        </div>
-                    </div>-->
                 </div>
                 <nav class="slider-nav">
                     <ul>
@@ -129,20 +116,20 @@ if (!isset($_SESSION['user_token'])) {
             </div>
             <div class="body__restaurant">
                 <div class="circle"></div>
-                <img src="https://media-cdn.tripadvisor.com/media/photo-s/16/1f/8c/70/dale-dale-cafe.jpg" alt="">
-                <h2>Rock & Roe´s</h2>
+                <img src="https://images.trvl-media.com/lodging/24000000/23080000/23072000/23071905/4fa808ce.jpg?impolicy=resizecrop&rw=500&ra=fit" alt="">
+                <h2>Casa 1800</h2>
             </div>
             <div class="body__restaurant">
                 <div class="circle"></div>
-                <img src="https://media-cdn.tripadvisor.com/media/photo-s/16/1f/8c/70/dale-dale-cafe.jpg" alt="">
-                <h2>Rock & Roe´s</h2>
+                <img src="https://diarioelsalvador.com/wp-content/uploads/2020/11/f4.png" alt="">
+                <h2>Pipiris Nais</h2>
             </div>
         </div>
     </div>
     <div class="popup__container">
         <div class="popup">
             <i class="fa-solid fa-xmark close"></i>
-            <h2>Agrega El Tunco a tus colecciones</h2>
+            <h2>Agrega <?php echo $dataPlace['name']; ?> a tus colecciones</h2>
             <button>Playas</button>
             <button>Malls</button>
             <i class="fa-solid fa-plus new"></i>
@@ -158,6 +145,11 @@ if (!isset($_SESSION['user_token'])) {
         document.querySelector('.close').addEventListener('click', function(){
             document.querySelector('.popup__container').classList.remove('visible');
         });
+
+        document.querySelector('.rating').addEventListener('click', function(){
+            document.querySelector('.rating').classList.toggle('fa-regular');
+            document.querySelector('.rating').classList.toggle('fa-solid');
+        })
     </script>
 
     <script>

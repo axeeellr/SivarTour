@@ -395,13 +395,18 @@ body{
 }
 
 .review__comment input[type="text"]{
-    width: 77%;
-    padding: calc(0.7px + 0.7vw);
+    border: 2px solid var(--red);
     background-color: transparent;
-    border: none;
-    border-bottom: 2px solid var(--white);
-    color: var(--white);
+    font-family: 'Prompt', sans-serif;
+    padding: calc(0.7px + 0.7vw);
+    border-radius: 7px;
     font-size: calc(1.1px + 1.1vw);
+    width: 77%;
+    color: var(--white);
+}
+
+.review__comment input[type="text"]::placeholder{
+    color: #e5a295;
 }
 
 .review__comment input[type="submit"]{
@@ -437,6 +442,10 @@ body{
     padding: calc(1px + 1vw);
     color: var(--background);
     border-radius: 10px;
+}
+
+.route:hover{
+    background-color: #719ece;
 }
 
 .route i{
@@ -481,7 +490,7 @@ body{
 .popup h2{
     color: var(--red);
     font-size: calc(1.6px + 1.6vw);
-    width: 90%;
+    width: 80%;
     text-align: center;
     margin-bottom: calc(1px + 1vw);
 }

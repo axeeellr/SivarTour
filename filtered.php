@@ -139,7 +139,7 @@
                 ?>
                     <a href="place.php" class="card">
                         <div class="card__img">
-                            <img src="https://conexioncapital.co/wp-content/uploads/2017/09/Captura-1-2.jpg" alt="">
+                            <?php echo '<img src="'.$data["img1"].'">'?>
                         </div>
                         <div class="card__info">
                             <h2><?php echo $data['name'] ?></h2>
@@ -212,23 +212,23 @@
                     <label>URL del mapa</label>
                 </div>
                 <div class="input__field">
-                    <select name="department">
-                        <option value="" selected disabled>Departamento</option>
-                        <option value="AH">Ahuachapán</option>
-                        <option value="CA">Cabañas</option>
-                        <option value="CH">Chalatenango</option>
-                        <option value="CU">Cuscatlán</option>
-                        <option value="LB">La Libertad</option>
-                        <option value="PZ">La Paz</option>
-                        <option value="UN">La Unión</option>
-                        <option value="MO">Morazán</option>
-                        <option value="SM">San Miguel</option>
-                        <option value="SS">San Salvador</option>
-                        <option value="SV">San Vicente</option>
-                        <option value="SA">Santa Ana</option>
-                        <option value="SO">Sonsonate</option>
-                        <option value="US">Usulután</option>
-                    </select>
+                <select name="department">
+                    <option value="">Departamento</option>
+                    <option value="Ahuachapán">Ahuachapán</option>
+                    <option value="Cabañas">Cabañas</option>
+                    <option value="Chalatenango">Chalatenango</option>
+                    <option value="Cuscatlán">Cuscatlán</option>
+                    <option value="La Libertad">La Libertad</option>
+                    <option value="La Paz">La Paz</option>
+                    <option value="La Unión">La Unión</option>
+                    <option value="Morazán">Morazán</option>
+                    <option value="San Miguel">San Miguel</option>
+                    <option value="San Salvador">San Salvador</option>
+                    <option value="San Vicente">San Vicente</option>
+                    <option value="Santa Ana">Santa Ana</option>
+                    <option value="Sonsonate">Sonsonate</option>
+                    <option value="Usulután">Usulután</option>
+                </select>
                 </div>
                 <div class="input__field">
                     <select name="type" id="type">
@@ -354,15 +354,16 @@
     </script>
 
     <!-- pagina place cuando estoy logueado -->
-    <script>
-        document.querySelector('card').addEventListener('click', function(){
-            document.querySelector('popup__container').classList.add('visible');
+    <!--<script>
+        document.querySelector('.card').addEventListener('click', function(e){
+            e.preventDefault();
+            document.querySelector('.popup__container').classList.add('visible');
         })
 
         document.querySelector('fa-solid fa-xmark').addEventListener('click', function(){
-            document.querySelector('popup__container').classList.remove('visible');
+            document.querySelector('.popup__container').classList.remove('visible');
         });
-    </script>
+    </script>-->
 
     <!-- previsualizar imagen subida en el form de subir -->
     <script>

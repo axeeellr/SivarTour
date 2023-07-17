@@ -82,7 +82,7 @@ if ($data['verified'] == 1) {
         </div>
         <div class="profile__right">
             <div class="right__info">
-                <img src="<?php echo $data['img']?>">
+                <div class="right__info__img"><?php echo substr($data['name'], 0, 1); ?></div>
                 <h1><?php echo $data['name'] ?></h1>
                 <h3><?php echo $data['email'] ?></h3>
                 <form method="post" class="info__buttons">
@@ -168,7 +168,7 @@ if ($data['verified'] == 1) {
                 // Enviar los datos mediante AJAX
                 $.ajax({
                 type: 'POST',
-                url: 'mail.php', // Archivo PHP que contiene el código para enviar el correo
+                url: 'mail.php?email=<?php echo $data['email']?>', // Archivo PHP que contiene el código para enviar el correo
                 data: datosFormulario,
                 success: function(response) {
                     // Manejar la respuesta del servidor después del envío del correo

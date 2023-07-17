@@ -37,9 +37,9 @@ while ($data = mysqli_fetch_array($run)) {
   }
 
   ?>
-  <a href="place.php" class="card">
+  <a href="place.php?place=<?php echo $data['id']?>" class="card">
     <div class="card__img">
-      <img src="https://conexioncapital.co/wp-content/uploads/2017/09/Captura-1-2.jpg" alt="">
+      <?php echo '<img src="'.$data["img1"].'">'?>
     </div>
     <div class="card__info">
       <h2><?php echo $data['name'] ?></h2>

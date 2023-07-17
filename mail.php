@@ -12,7 +12,7 @@ $email_user = 'sivartour.travel@gmail.com';
 $email_password = 'bfvglsxmsjpbbknz';
 $the_subject = "Código de verificación";
 $code = rand(10000, 99999);
-$address_to = 'axelramireezz@gmail.com'; 
+$address_to = $_GET['email']; 
 $from_name = 'Cursos de programación';
 
 
