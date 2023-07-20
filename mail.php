@@ -17,6 +17,7 @@ $from_name = 'Cursos de programación';
 
 
 $phpmailer = new PHPMailer();
+// $phpmailer->SMTPDebug = 1;
 $phpmailer->Username = $email_user;
 $phpmailer->Password = $email_password;
 
