@@ -21,7 +21,6 @@ body{
     font-family: 'Prompt', sans-serif;
     background: radial-gradient(at center center, rgb(14, 24, 33), rgb(41, 65, 85));
     background-position: 100vh;
-    overflow: hidden;
 }
 
 /*  HEADER */
@@ -33,16 +32,27 @@ body{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: rgb(186, 196, 200);
+    colsor: rgb(186, 196, 200);
 }
 
 .header__logo{
-    height: 87%;
+    width: 10%;
     margin: calc(1px + 1vw);
 }
 
-.header i{
-    margin: calc(1px + 1vw);
+.header__logo img{
+    height: 85%;
+}
+
+.header__options{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 10%;
+    gap: calc(1px + 1vw);
+}
+
+.header__options i{
     font-size: calc(3px + 3vw);
     color: var(--white);
 }
@@ -65,6 +75,10 @@ body{
     border: none;
     font-family: 'Prompt', sans-serif;
     cursor: pointer;
+}
+
+.header__li:hover{
+    color: var(--red);
 }
 
 /* HERO */
@@ -168,9 +182,78 @@ body{
 }
 
 
+.body__squares{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: calc(2px + 2vw);
+}
+
+.square{
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: calc(0.5px + 0.5vw);
+    background-color: var(--blue);
+    padding: calc(1px + 1vw);
+    border-radius: 1em;
+    box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.55);
+}
+
+.square__title{
+    display: flex;
+    align-items: center;
+    height: 30%;
+    gap: calc(0.5px + 0.5vw);
+    font-size: calc(1px + 1vw);
+    color: var(--background);
+}
+
+.square p{
+    text-align: left;
+    colsor: var(--background);
+}
 
 
+.body__info{
+    width: 85%;
+    height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5% auto;
+}
 
+.body__info__img{
+    width: 60%;
+}
+
+.body__info__img img{
+    height: 100%;
+    width: 100%;
+    box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.75);
+}
+
+.body__info__text{
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    gap: calc(1px + 1vw);
+}
+
+.body__info__text h1{
+    margin: 0 10%;
+    font-size: calc(2.5px + 2.5vw);
+    color: var(--red);
+}
+
+.body__info__text p{
+    margin: 0 10%;
+    font-size: calc(1.2px + 1.2vw);
+    color: var(--white);
+}
 
 /* MOBILE */
 @media screen and (max-width: 480px) {

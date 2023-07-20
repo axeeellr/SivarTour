@@ -4,10 +4,6 @@
     scroll-behavior: smooth;
 }
 
-i:hover{
-    transform: none;
-}
-
 :root{
     --background: #0E1821;
     --blue: #98badf;
@@ -22,20 +18,9 @@ a{
 
 body{
     margin: 0;
-    padding: 0;
     box-sizing: border-box;
     font-family: 'Prompt', sans-serif;
     background: radial-gradient(at center center, rgb(14, 24, 33), rgb(41, 65, 85));
-}
-
-.new__place{
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    font-size: calc(4px + 4vw);
-    margin: 1%;
-    color: var(--white);
-    cursor: pointer;
 }
 
 /*  HEADER */
@@ -47,16 +32,26 @@ body{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: rgb(186, 196, 200);
 }
 
 .header__logo{
-    height: 87%;
+    width: 10%;
     margin: calc(1px + 1vw);
 }
 
-.header i{
-    margin: calc(1px + 1vw);
+.header__logo img{
+    height: 85%;
+}
+
+.header__options{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 10%;
+    gap: calc(1px + 1vw);
+}
+
+.header__options i{
     font-size: calc(3px + 3vw);
     color: var(--white);
 }
@@ -79,6 +74,10 @@ body{
     border: none;
     font-family: 'Prompt', sans-serif;
     cursor: pointer;
+}
+
+.header__li:hover{
+    color: var(--red);
 }
 
 /* HERO */
@@ -540,6 +539,16 @@ body{
     font-size: calc(1px + 1vw);
     padding: 0 2px;
     color: var(--red);
+}
+
+.new__place{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    font-size: calc(4px + 4vw);
+    margin: 1%;
+    color: var(--white);
+    cursor: pointer;
 }
 
 .newplace__info input[type="submit"]{

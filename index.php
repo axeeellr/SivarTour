@@ -8,6 +8,14 @@
                 }
             </style>
         <?php
+    }else {
+        ?>
+            <style>
+                .profsile{
+                    display: none;
+                }
+            </style>
+        <?php
     }
 ?>
 <!DOCTYPE html>
@@ -33,14 +41,17 @@
 </head>
 <body>
     <header class="header">
-        <img src="img/logo.png" alt="" class="header__logo">
+        <div class="header__logo"><img src="img/logo.png"></div>
         <nav class="header__nav">
             <form method="post" class="header__ul">
                 <input type="submit" name="goLogin" class="header__li" value="Registrarse">
                 <input type="submit" name="goLogin" class="header__li" value="Iniciar Sesión">
             </form>
         </nav>
-        <a href="profile.php"><i class="fa-regular fa-circle-user"></i></a>
+        <div class="header__options">
+            <a href="profile.php"><i class="fa-regular fa-circle-user"></i></a>
+            <i class="fa-solid fa-globe"></i>
+        </div>
     </header>
 
     <div class="hero">
@@ -64,6 +75,38 @@
             </svg>
         </div>
         <button class="hero__button">COMENZAR &nbsp;<i class="fa-sharp fa-solid fa-arrow-right"></i></button>
+    </div>
+    <div class="body__squares">
+        <div class="square">
+            <div class="square__title">
+                <i class="fa-solid fa-map-location-dot"></i>
+                <h2>Misión</h2>
+            </div>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut quae veniam, dolores, dicta est quas iste.</p>
+        </div>
+        <div class="square">
+            <div class="square__title">
+                <i class="fa-solid fa-map-location-dot"></i>
+                <h2>Valores</h2>
+            </div>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut quae veniam, dolores, dicta est quas iste.</p>
+        </div>
+        <div class="square">
+            <div class="square__title">
+                <i class="fa-solid fa-map-location-dot"></i>
+                <h2>Visión</h2>
+            </div>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut quae veniam, dolores, dicta est quas iste.</p>
+        </div>
+    </div>
+    <div class="body__info">
+        <div class="body__info__text">
+            <h1>Descubre El Salvador: Donde Aventura y Playa se Abrazan</h1>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Porro repellat dolore optio, impedit quos distinctio quaerat voluptatem vel minima explicabo?</p>
+        </div>
+        <div class="body__info__img">
+            <img src="https://viasatelital.com/mapas/images/el-salvador001.jpg" alt="">
+        </div>
     </div>
 
     <script>

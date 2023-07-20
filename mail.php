@@ -20,9 +20,9 @@ $phpmailer = new PHPMailer();
 $phpmailer->Username = $email_user;
 $phpmailer->Password = $email_password;
 
-$phpmailer->SMTPSecure = 'tls'; 
+$phpmailer->SMTPSecure = 'ssl'; 
 $phpmailer->Host = 'smtp.gmail.com';
-$phpmailer->Port = 587; 
+$phpmailer->Port = 465; 
 $phpmailer->isSMTP(); 
 $phpmailer->SMTPAuth = true;
 

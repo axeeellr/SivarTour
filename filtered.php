@@ -47,18 +47,20 @@
 <style><?php include 'css/filtered.css'?></style>
 <body>
     <header class="header">
-        <img src="img/logo.png" alt="" class="header__logo">
+        <div class="header__logo"><img src="img/logo.png" class="logoImg"></div>
         <nav class="header__nav">
             <form method="post" class="header__ul">
                 <input type="submit" name="goLogin" class="header__li" value="Registrarse">
                 <input type="submit" name="goLogin" class="header__li" value="Iniciar Sesión">
             </form>
         </nav>
-        <a href="profile.php"><i class="fa-regular fa-circle-user"></i></a>
+        <div class="header__options">
+            <a href="profile.php"><i class="fa-regular fa-circle-user"></i></a>
+            <i class="fa-solid fa-globe"></i>
+        </div>
     </header>
 
     <div class="hero">
-
         <svg id="visual" viewBox="0 0 960 540"  xmlns="http://www.w3.org/2000/svg"
             xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">
             <g transform="translate(447.1003487837197 265.51596821062077)">
@@ -407,7 +409,7 @@
     </script>
 
     <script>
-        document.querySelector('.header__logo').addEventListener('click', function(){
+        document.querySelector('.logoImg').addEventListener('click', function(){
             location.href = 'index.php';
         })
     </script>
