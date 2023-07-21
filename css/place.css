@@ -476,6 +476,7 @@ body{
 .popup{
     position: absolute;
     min-height: 45%;
+    min-height: 30%;
     width: 35%;
     background-color: var(--white);
     display: flex;
@@ -485,6 +486,7 @@ body{
     gap: calc(1.1px + 1.1vw);
     border-radius: 7px;
     box-shadow: 0px 0px 50px 0px rgba(0,0,0,0.75);
+    padding: calc(1.5px + 1.5vw) 0;
 }
 
 .popup h2{
@@ -495,15 +497,25 @@ body{
     margin-bottom: calc(1px + 1vw);
 }
 
-.popup button{
+.collections__container{
+    display: flex;
+    flex-direction: column;
+    gap: calc(1.1px + 1.1vw);
+}
+
+.collections{
     padding: calc(0.7px + 0.7vw) calc(2.7px + 2.7vw);
-    width: calc(10px + 10vw);
+    min-width: calc(15px + 15vw);
     border: none;
     background-color: var(--background);
     color: var(--white);
     border-radius: 7px;
     font-size: calc(1.2px + 1.2vw);
     box-shadow: 0px 0px 25px 0px rgba(0,0,0,0.40);
+}
+
+.invisiblew{
+    display: none;
 }
 
 .new{
@@ -518,4 +530,70 @@ body{
     right: 0;
     margin: calc(1px + 1vw);
     font-size: calc(1.5px + 1.5vw);
+}
+
+
+.popup__field {
+    position: relative;
+    align-items: center;
+    gap: calc(1px + 1vw);
+    display: none;
+}
+
+.visiblew{
+    display: flex;
+}
+
+.popup__field input[type="text"] {
+    border: 2px solid var(--background);
+    background-color: transparent;
+    font-family: 'Prompt', sans-serif;
+    padding: calc(0.5px + 0.5vw) calc(0.5px + 0.5vw);
+    border-radius: 7px;
+    font-size: calc(1px + 1vw);
+}
+
+.popup__field label {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    color: var(--background);
+    font-size: calc(1px + 1vw);
+    pointer-events: none;
+    transition: 0.3s;
+}
+
+.popup__field i{
+    position: absolute;
+    right: 10px;
+}
+
+.popup__field input[type="text"]:focus {
+    border: 2px solid var(--background);
+}
+
+.popup__field input[type="text"]:focus~i{
+    color: var(--background);
+}
+
+.popup__field input[type="text"]:focus~label {
+    top: -10px;
+    left: 0;
+    font-size: calc(1px + 1vw);
+    padding: 0 2px;
+    color: var(--background);
+}
+
+.popup__field input[type="submit"]{
+    padding: calc(0.5px + 0.5vw) calc(0.9px + 0.9vw);
+    border-radius: 15px;
+    border: none;
+    background-color: var(--background);
+    color: var(--white);
+    font-size: calc(1px + 1vw);
+    font-family: 'Prompt', sans-serif;
+    margin: 0;
+    cursor: pointer;
+    transition: 0.2s;
 }

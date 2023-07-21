@@ -323,4 +323,37 @@ if (isset($_POST['newPlace'])) {
     }
 }
 
+
+
+
+/****** N U E V A   C O L E C C I O N ******/
+if (isset($_POST['newCollection'])) {
+    $id_user = $_SESSION['user_id'];
+    $name = $_POST['name'];
+
+    $sql = "INSERT INTO collections (id_user, name) VALUES ('$id_user', '$name')";
+    $run = mysqli_query($connection, $sql);
+
+    if ($run) {
+        header('Location: ' . $_SESSION['urll'], true, 303);
+    }
+}
+
+
+
+
+/****** A G R E G A R   A   C O L E C C I O N ******/
+if (isset($_POST['collection'])) {
+    $id_user = $_SESSION['user_id'];
+    $id_collection = $_POST['collection'];
+    $id_place = $_GET['place'];
+
+    $sql = "INSERT INTO collections_places (id_user, id_collection, id_place) VALUES ('$id_user', '$id_collection', '$id_place')";
+    $run = mysqli_query($connection, $sql);
+
+    if ($run) {
+        header('Location: ' . $_SESSION['urll'], true, 303);
+    }
+}
+
 ?>

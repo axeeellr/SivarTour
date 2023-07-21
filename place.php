@@ -130,8 +130,23 @@ require_once 'php/controlador.php';
         <div class="popup">
             <i class="fa-solid fa-xmark close"></i>
             <h2>Agrega <?php echo $dataPlace['name']; ?> a tus colecciones</h2>
-            <button>Playas</button>
-            <button>Malls</button>
+            <form method="post" class="collections__container">
+            <?php
+                $sql = "SELECT * FROM collections WHERE id_user = {$_SESSION['user_id']}";
+                $run = mysqli_query($connection, $sql);
+
+                while ($dataCollec = mysqli_fetch_assoc($run)) {
+                    ?>
+                        <button type="submit" name="collection" class="collections" value="<?php echo $dataCollec['id']; ?>"><?php echo $dataCollec['name']; ?></button>
+                    <?php
+                }
+            ?>
+            </form>
+            <form method="post" class="popup__field">
+                <input type="text" name="name" spellcheck="false"> 
+                <label>Nombre de la colección</label>
+                <input type="submit" name="newCollection" value="Añadir">
+            </form>
             <i class="fa-solid fa-plus new"></i>
         </div>
     </div>
@@ -144,6 +159,14 @@ require_once 'php/controlador.php';
 
         document.querySelector('.close').addEventListener('click', function(){
             document.querySelector('.popup__container').classList.remove('visible');
+        });
+
+        document.querySelector('.new').addEventListener('click', function(){
+            document.querySelector('.popup__field').classList.add('visiblew');
+            document.querySelectorAll('.collections').forEach(function(elemento) {
+                elemento.classList.add('invisiblew');
+            });
+            document.querySelector('.new').classList.add('invisiblew');
         });
 
         document.querySelector('.rating').addEventListener('click', function(){

@@ -75,8 +75,16 @@ if ($data['verified'] == 1) {
                     <h1>Mis colecciones</h1>
                 </div>
                 <div class="saved__content">
-                    <h2>Playas</h2>
-                    <h2>Malls</h2>
+                <?php
+                $sql = "SELECT * FROM collections WHERE id_user = {$_SESSION['user_id']}";
+                $run = mysqli_query($connection, $sql);
+
+                while ($dataCollec = mysqli_fetch_assoc($run)){
+                    ?>
+                        <h2><?php echo $dataCollec['name'] ?></h2>
+                    <?php
+                }
+                ?>
                 </div>
             </div>
         </div>

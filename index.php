@@ -10,8 +10,8 @@
         <?php
     }else {
         ?>
-            <style>
-                .profsile{
+            <style type="text/css">
+                .profile{
                     display: none;
                 }
             </style>
@@ -29,7 +29,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300&display=swap" rel="stylesheet">
     <!--CSS-->
-    <link rel="stylesheet" href="css/index.css">
+
     <!--Frameworks-->
     <script src="https://cdn.jsdelivr.net/npm/kute.js@2.1.2/dist/kute.min.js"></script>
 
@@ -39,6 +39,7 @@
     <script src="https://kit.fontawesome.com/61fb4717c0.js" crossorigin="anonymous"></script>
     <title>Document</title>
 </head>
+<style><?php include 'css/index.css' ?></style>
 <body>
     <header class="header">
         <div class="header__logo"><img src="img/logo.png"></div>
@@ -49,7 +50,7 @@
             </form>
         </nav>
         <div class="header__options">
-            <a href="profile.php"><i class="fa-regular fa-circle-user"></i></a>
+            <a href="profile.php" class="profile"><i class="fa-regular fa-circle-user"></i></a>
             <i class="fa-solid fa-globe"></i>
         </div>
     </header>
@@ -106,6 +107,19 @@
         </div>
         <div class="body__info__img">
             <img src="https://viasatelital.com/mapas/images/el-salvador001.jpg" alt="">
+        </div>
+    </div>
+    <div class="body__title">
+        <h1>Más Sobre</h1>
+        <img src="img/title.png" alt="">
+    </div>
+    <div class="body__info">
+        <div class="body__info__img">
+            <img src="https://elsalvador.travel/system/wp-content/uploads/2021/04/Santa-Tecla-3-scaled.jpg" alt="">
+        </div>
+        <div class="body__info__text">
+            <h1>El Salvador: Tu Destino, Nuestra Pasión. ¡Aventura sin límites!</h1>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Porro repellat dolore optio, impedit quos distinctio quaerat voluptatem vel minima explicabo?</p>
         </div>
     </div>
 

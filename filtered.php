@@ -6,7 +6,15 @@
                 .header__nav{
                     display: none;
                 }
-                </style>
+            </style>
+        <?php
+    }else {
+        ?>
+            <style type="text/css">
+                .profile{
+                    display: none;
+                }
+            </style>
         <?php
     }
     
@@ -31,7 +39,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300&display=swap" rel="stylesheet">
     <!--CSS-->
-    <link rel="stylesheet" href="css/filtered.css">
+
     <!--Otros-->
     <script src="https://cdn.jsdelivr.net/npm/kute.js@2.1.2/dist/kute.min.js"></script>
     <link rel=&quot;canonical&quot; href=&quot;https://codepen.io/supah/pen/VweRLrQ&quot; />
@@ -47,7 +55,7 @@
 <style><?php include 'css/filtered.css'?></style>
 <body>
     <header class="header">
-        <div class="header__logo"><img src="img/logo.png" class="logoImg"></div>
+        <div class="header__logo"><img src="img/logo.png"></div>
         <nav class="header__nav">
             <form method="post" class="header__ul">
                 <input type="submit" name="goLogin" class="header__li" value="Registrarse">
@@ -55,7 +63,7 @@
             </form>
         </nav>
         <div class="header__options">
-            <a href="profile.php"><i class="fa-regular fa-circle-user"></i></a>
+            <a href="profile.php" class="profile"><i class="fa-regular fa-circle-user"></i></a>
             <i class="fa-solid fa-globe"></i>
         </div>
     </header>
@@ -409,7 +417,7 @@
     </script>
 
     <script>
-        document.querySelector('.logoImg').addEventListener('click', function(){
+        document.querySelector('.header__logo').addEventListener('click', function(){
             location.href = 'index.php';
         })
     </script>
