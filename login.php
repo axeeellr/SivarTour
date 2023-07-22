@@ -28,6 +28,9 @@ if (isset($_SESSION['user_token'])) {
 </head>
 <style><?php include('css/login.css') ?></style>
 <body>
+    <div class="loader__container">
+        <div class="loader"></div>
+    </div>
     <div class="container">
         <div class="forms-container">
             <?php
@@ -141,6 +144,13 @@ if (isset($_SESSION['user_token'])) {
 
         sign_in_btn.addEventListener("click", () => {
             container.classList.remove("sign-up-mode");
+        });
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+        const loaderContainer = document.querySelector(".loader__container");
+        loaderContainer.style.display = "none"; // Ocultar el loader después de que la página se haya cargado completamente
         });
     </script>
 </body>

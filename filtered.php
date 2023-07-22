@@ -54,6 +54,9 @@
 </head>
 <style><?php include 'css/filtered.css'?></style>
 <body>
+    <div class="loader__container">
+        <div class="loader"></div>
+    </div>
     <header class="header">
         <div class="header__logo"><img src="img/logo.png"></div>
         <nav class="header__nav">
@@ -363,18 +366,6 @@
         ).start();
     </script>
 
-    <!-- pagina place cuando estoy logueado -->
-    <!--<script>
-        document.querySelector('.card').addEventListener('click', function(e){
-            e.preventDefault();
-            document.querySelector('.popup__container').classList.add('visible');
-        })
-
-        document.querySelector('fa-solid fa-xmark').addEventListener('click', function(){
-            document.querySelector('.popup__container').classList.remove('visible');
-        });
-    </script>-->
-
     <!-- previsualizar imagen subida en el form de subir -->
     <script>
         function archivo(evt) {
@@ -414,6 +405,13 @@
             document.querySelector('.newplace__container').classList.remove('see');
             document.querySelector('.newplace__container').classList.add('close');
         })
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+        const loaderContainer = document.querySelector(".loader__container");
+        loaderContainer.style.display = "none"; // Ocultar el loader después de que la página se haya cargado completamente
+        });
     </script>
 
     <script>

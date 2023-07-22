@@ -28,6 +28,9 @@ require_once 'php/controlador.php';
 </head>
 <style><?php include 'css/place.css'?></style>
 <body>
+    <div class="loader__container">
+        <div class="loader"></div>
+    </div>
     <header class="header">
         <img src="img/logo.png" class="header__logo">
         <a href="profile.php"><i class="fa-regular fa-circle-user"></i></a>
@@ -150,6 +153,18 @@ require_once 'php/controlador.php';
             <i class="fa-solid fa-plus new"></i>
         </div>
     </div>
+    <?php
+        if($notice != ""){
+            ?>
+                <div class="notice__container">
+                    <div class="notice">
+                        <i class="fa-solid fa-xmark closeee"></i>
+                        <p><?php echo $notice; ?></p>
+                    </div>
+                </div>
+            <?php
+        }
+    ?>
 
 
     <script>
@@ -176,9 +191,96 @@ require_once 'php/controlador.php';
     </script>
 
     <script>
+        document.addEventListener("DOMContentLoaded", function () {
+        const loaderContainer = document.querySelector(".loader__container");
+        loaderContainer.style.display = "none"; // Ocultar el loader después de que la página se haya cargado completamente
+        });
+    </script>
+
+    <script>
+        document.querySelector('.closeee').addEventListener('click', function(){
+            document.querySelector('.notice__container').classList.add('invisiblee');
+            window.history.replaceState(null,null,window.location.href);
+        });
+    </script>
+
+    <script>
         document.querySelector('.header__logo').addEventListener('click', function(){
             location.href = 'index.php';
         })
+    </script>
+
+
+
+
+    <script>
+        // Función para obtener el valor de un parámetro en la cadena de consulta de la URL
+        function getParamFromURL(param) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(param);
+        }
+
+        // Obtener el ID del lugar de la URL
+        const lugarID = getParamFromURL('place');
+
+        // Función para guardar el ID del lugar visitado en LocalStorage
+        function guardarLugarVisitado(idLugar) {
+        let lugaresVisitados = obtenerLugaresVisitados();
+
+        // Verificar si el ID del lugar ya está en la lista y, si es así, quitarlo para reubicarlo al principio
+        const index = lugaresVisitados.indexOf(idLugar);
+        if (index !== -1) {
+            lugaresVisitados.splice(index, 1);
+        }
+
+        // Agregar el ID del lugar al inicio de la lista
+        lugaresVisitados.unshift(idLugar);
+
+        // Limitar la lista a los últimos 5 IDs de lugares visitados
+        if (lugaresVisitados.length > 5) {
+            lugaresVisitados = lugaresVisitados.slice(0, 5);
+        }
+
+        // Guardar la lista actualizada en LocalStorage
+        localStorage.setItem('lugaresVisitados', JSON.stringify(lugaresVisitados));
+        }
+
+        // Función para obtener la lista de IDs de lugares visitados desde LocalStorage
+        function obtenerLugaresVisitados() {
+        const lugaresVisitadosString = localStorage.getItem('lugaresVisitados');
+        return lugaresVisitadosString ? JSON.parse(lugaresVisitadosString) : [];
+        }
+
+        // Guardar el ID del lugar visitado en LocalStorage
+        guardarLugarVisitado(lugarID);
+    </script>
+
+
+
+    <script>
+        // Función para obtener la lista de IDs de lugares visitados desde LocalStorage
+        function obtenerLugaresVisitados() {
+        const lugaresVisitadosString = localStorage.getItem('lugaresVisitados');
+        return lugaresVisitadosString ? JSON.parse(lugaresVisitadosString) : [];
+        }
+
+        // Obtener los IDs de lugares visitados desde LocalStorage
+        const lugaresVisitados = obtenerLugaresVisitados();
+
+        // Enviar los IDs al servidor mediante una solicitud AJAX
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', 'profile.php', true);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.onreadystatechange = function() {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+            console.log('IDs enviados al servidor con éxito.');
+            } else {
+            console.error('Error al enviar los IDs al servidor.');
+            }
+        }
+        };
+        xhr.send('lugaresVisitados=' + JSON.stringify(lugaresVisitados));
     </script>
 </body>
 <script src="js/reviews.js"></script>

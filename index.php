@@ -41,6 +41,9 @@
 </head>
 <style><?php include 'css/index.css' ?></style>
 <body>
+    <div class="loader__container">
+        <div class="loader"></div>
+    </div>
     <header class="header">
         <div class="header__logo"><img src="img/logo.png"></div>
         <nav class="header__nav">
@@ -134,6 +137,13 @@
     <script>
         document.querySelector('.hero__button').addEventListener('click', function(e){
             location.href = 'filtered.php';
+        });
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+        const loaderContainer = document.querySelector(".loader__container");
+        loaderContainer.style.display = "none"; // Ocultar el loader después de que la página se haya cargado completamente
         });
     </script>
 </body>

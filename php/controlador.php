@@ -4,6 +4,7 @@ require 'vendor/autoload.php';
 include 'connection.php';
 
 $error = "";
+$notice = "";
 $mensaje = "";
 $submensaje = "";
 session_start();
@@ -328,6 +329,9 @@ if (isset($_POST['newPlace'])) {
 
 /****** N U E V A   C O L E C C I O N ******/
 if (isset($_POST['newCollection'])) {
+    $_SESSION['hostt'] = $_SERVER["HTTP_HOST"];
+    $_SESSION['urll'] = $_SERVER["REQUEST_URI"];
+    
     $id_user = $_SESSION['user_id'];
     $name = $_POST['name'];
 
@@ -335,7 +339,15 @@ if (isset($_POST['newCollection'])) {
     $run = mysqli_query($connection, $sql);
 
     if ($run) {
-        header('Location: ' . $_SESSION['urll'], true, 303);
+        $sqll = "SELECT * FROM collections WHERE id_user = '{$_SESSION['user_id']}' ORDER BY id DESC LIMIT 1";
+        $runn = mysqli_query($connection, $sqll);
+        $row = mysqli_fetch_assoc($runn);
+
+        $sqlll = "INSERT INTO collections_places (id_user, id_collection, id_place) VALUES ('{$_SESSION['user_id']}', '{$row['id']}', '{$_GET['place']}')";
+        $runnn = mysqli_query($connection, $sqlll);
+
+        $notice = "Creado y agregado exitosamente a la colección";
+        //header('Location: ' . $_SESSION['urll'], true, 303);
     }
 }
 
@@ -344,6 +356,9 @@ if (isset($_POST['newCollection'])) {
 
 /****** A G R E G A R   A   C O L E C C I O N ******/
 if (isset($_POST['collection'])) {
+    $_SESSION['hostt'] = $_SERVER["HTTP_HOST"];
+    $_SESSION['urll'] = $_SERVER["REQUEST_URI"];
+
     $id_user = $_SESSION['user_id'];
     $id_collection = $_POST['collection'];
     $id_place = $_GET['place'];
@@ -352,7 +367,8 @@ if (isset($_POST['collection'])) {
     $run = mysqli_query($connection, $sql);
 
     if ($run) {
-        header('Location: ' . $_SESSION['urll'], true, 303);
+        $notice = "Agregado exitosamente a la colección";
+        //header('Location: ' . $_SESSION['urll'], true, 303);
     }
 }
 

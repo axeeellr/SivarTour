@@ -16,6 +16,13 @@ $sql = "SELECT * FROM users WHERE token = '{$_SESSION['user_token']}'";
 $run = mysqli_query($connection, $sql);
 $data = mysqli_fetch_array($run);
 
+if (isset($_POST['lugaresVisitados'])){
+    $lugaresVisitados = json_decode($_POST['lugaresVisitados'], true);
+    $ids = implode(',', $lugaresVisitados);
+    $sqll = "SELECT nombre FROM places WHERE id IN ($ids)";
+    $runn = mysqli_query($connection, $sqll);
+}
+
 if ($data['verified'] == 1) {
     ?>
         <style type="text/css">
@@ -40,6 +47,9 @@ if ($data['verified'] == 1) {
 </head>
 <style><?php include 'css/profile.css' ?></style>
 <body>
+    <div class="loader__container">
+        <div class="loader"></div>
+    </div>
     <header class="header">
         <img src="img/logo.png" alt="" class="header__logo">
         <i class="fa-regular fa-circle-question"></i>
@@ -64,10 +74,13 @@ if ($data['verified'] == 1) {
                     <h1>Vistos recientemente</h1>
                 </div>
                 <div class="lately__content">
-                    <h2>Playa El Tunco</h2>
-                    <h2>El Boquerón</h2>
-                    <h2>Furesa</h2>
-                    <h2>Plaza Mundo</h2>
+                    <?php
+                        while($row = mysqli_fetch_assoc($runn)){
+                            ?>
+                            <h2><?php echo $row['name']; ?></h2>
+                            <?php
+                        }
+                    ?>
                 </div>
             </div>
             <div class="left__saved">
@@ -194,6 +207,13 @@ if ($data['verified'] == 1) {
             });
         });
 
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+        const loaderContainer = document.querySelector(".loader__container");
+        loaderContainer.style.display = "none"; // Ocultar el loader después de que la página se haya cargado completamente
+        });
     </script>
 </body>
 </html>

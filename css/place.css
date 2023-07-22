@@ -597,3 +597,132 @@ body{
     cursor: pointer;
     transition: 0.2s;
 }
+
+
+.loader__container{
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    background: radial-gradient(at left center, rgb(14, 24, 33), rgb(41, 65, 85));
+}
+
+.loader {
+    animation: rotate 1s infinite;
+    height: 50px;
+    width: 50px;
+}
+
+.loader:before,
+.loader:after {
+    border-radius: 50%;
+    content: '';
+    display: block;
+    height: 20px;
+    width: 20px;
+}
+
+.loader:before {
+    animation: ball1 1s infinite;
+    background-color: var(--red);
+    box-shadow: 30px 0 0 var(--white);
+    margin-bottom: 10px;
+}
+
+.loader:after {
+    animation: ball2 1s infinite;
+    background-color: var(--blue);
+    box-shadow: 30px 0 0 var(--green);
+}
+
+@keyframes rotate {
+    0% {
+        -webkit-transform: rotate(0deg) scale(0.8);
+        -moz-transform: rotate(0deg) scale(0.8);
+    }
+
+    50% {
+        -webkit-transform: rotate(360deg) scale(1.2);
+        -moz-transform: rotate(360deg) scale(1.2);
+    }
+
+    100% {
+        -webkit-transform: rotate(720deg) scale(0.8);
+        -moz-transform: rotate(720deg) scale(0.8);
+    }
+}
+
+@keyframes ball1 {
+    0% {
+        box-shadow: 30px 0 0 var(--white);
+    }
+
+    50% {
+        box-shadow: 0 0 0 var(--white);
+        margin-bottom: 0;
+        -webkit-transform: translate(15px, 15px);
+        -moz-transform: translate(15px, 15px);
+    }
+
+    100% {
+        box-shadow: 30px 0 0 var(--white);
+        margin-bottom: 10px;
+    }
+}
+
+@keyframes ball2 {
+    0% {
+        box-shadow: 30px 0 0 var(--green);
+    }
+
+    50% {
+        box-shadow: 0 0 0 var(--green);
+        margin-top: -20px;
+        -webkit-transform: translate(15px, 15px);
+        -moz-transform: translate(15px, 15px);
+    }
+
+    100% {
+        box-shadow: 30px 0 0 var(--green);
+        margin-top: 0;
+    }
+}
+
+.notice__container{
+    position: fixed;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: rgb(0, 0, 0, 0.5);
+    z-index: 99;
+    display: flex;
+    align-items: end;
+}
+
+.notice{
+    width: 100%;
+    height: 12vh;
+    background-color: var(--green);
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    position: relative;
+    color: var(--background);
+    font-weight: bold;
+    font-size: calc(1.5px + 1.5vw);
+    padding-left: calc(1px + 1vw);
+}
+
+.notice i{
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: calc(1px + 1vw);
+}
+
+.invisiblee{
+    display: none;
+}
