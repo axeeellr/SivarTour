@@ -27,6 +27,8 @@ $phpmailer->Port = 465;
 $phpmailer->isSMTP(); 
 $phpmailer->SMTPAuth = true;
 
+$phpmailer->CharSet = 'UTF-8';
+
 
 $phpmailer->setFrom($phpmailer->Username,$from_name);
 $phpmailer->AddAddress($address_to); 
@@ -34,7 +36,10 @@ $phpmailer->AddAddress($address_to);
 
 $phpmailer->FromName = 'SivarTour';  
 $phpmailer->Subject = $the_subject;
-$phpmailer->Body = $code;
+
+$email_template = file_get_contents('template.html');
+$email_template = str_replace("FGH-123-VBN", $code, $email_template);
+$phpmailer->Body = $email_template;
 
 
 $phpmailer->IsHTML(true);

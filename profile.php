@@ -16,11 +16,17 @@ $sql = "SELECT * FROM users WHERE token = '{$_SESSION['user_token']}'";
 $run = mysqli_query($connection, $sql);
 $data = mysqli_fetch_array($run);
 
-if (isset($_POST['lugaresVisitados'])){
-    $lugaresVisitados = json_decode($_POST['lugaresVisitados'], true);
-    $ids = implode(',', $lugaresVisitados);
-    $sqll = "SELECT nombre FROM places WHERE id IN ($ids)";
-    $runn = mysqli_query($connection, $sqll);
+function recursiveUrlDecode($str) {
+    while (urldecode($str) !== $str) {
+        $str = urldecode($str);
+    }
+    return $str;
+}
+
+$cookieName = 'ultimos_lugares_' . $_SESSION['user_id'];
+
+if (isset($_COOKIE[$cookieName])) {
+    $lugaresVisitadosIDs = explode(',', recursiveUrlDecode($_COOKIE[$cookieName]));
 }
 
 if ($data['verified'] == 1) {
@@ -75,10 +81,16 @@ if ($data['verified'] == 1) {
                 </div>
                 <div class="lately__content">
                     <?php
-                        while($row = mysqli_fetch_assoc($runn)){
-                            ?>
-                            <h2><?php echo $row['name']; ?></h2>
-                            <?php
+                        foreach ($lugaresVisitadosIDs as $idLugar) {
+                            $sqll = "SELECT * FROM places WHERE id = $idLugar";
+                            $runn = mysqli_query($connection, $sqll);
+
+                            if (mysqli_num_rows($runn)) {
+                                $row = $runn->fetch_assoc();
+                                ?>
+                                <h2><?php echo $row['name']; ?></h2>
+                                <?php
+                            }
                         }
                     ?>
                 </div>

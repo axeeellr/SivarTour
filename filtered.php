@@ -44,6 +44,7 @@
     <script src="https://cdn.jsdelivr.net/npm/kute.js@2.1.2/dist/kute.min.js"></script>
     <link rel=&quot;canonical&quot; href=&quot;https://codepen.io/supah/pen/VweRLrQ&quot; />
     <link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css&quot;>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDi-1W4L7N7-cIt4IClUTcZcJXTlHsdUGU&libraries=places"></script>
     <!--JQuery-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" charset="utf-8"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -221,8 +222,8 @@
                     <label>Descripción</label>
                 </div>
                 <div class="input__field">
-                    <input type="text" name="url" required spellcheck="false"> 
-                    <label>URL del mapa</label>
+                    <input type="text" id="search-place" name="url" placeholder="" required spellcheck="false">
+                    <label>Ubicación</label>
                 </div>
                 <div class="input__field">
                 <select name="department">
@@ -418,6 +419,17 @@
         document.querySelector('.header__logo').addEventListener('click', function(){
             location.href = 'index.php';
         })
+    </script>
+    <script>
+        $(document).ready(function() {
+            // Obtener el campo de entrada
+            var input = document.getElementById('search-place');
+
+            // Crear el objeto de autocompletado de Google Maps con restricciones para El Salvador
+            var autocomplete = new google.maps.places.Autocomplete(input, {
+            componentRestrictions: { country: 'sv' } // 'sv' es el código ISO 3166-1 alfa-2 de El Salvador
+            });
+        });
     </script>
 
     <script src="js/pagination.js"></script>

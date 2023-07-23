@@ -372,4 +372,40 @@ if (isset($_POST['collection'])) {
     }
 }
 
+
+
+
+/****** V I S T O S   R E C I E N T E M E N T E ******/
+if (isset($_GET['place'])) {
+    $idLugar = $_GET['place'];
+
+    // Obtener el ID del usuario desde la sesión (asegúrate de tener la sesión iniciada previamente)
+    $idUser = $_SESSION['user_id'];
+
+    // Nombre de la cookie con el ID del usuario
+    $cookieName = 'ultimos_lugares_' . $idUser;
+
+    // Verificar si la cookie de lugares visitados ya existe para este usuario
+    if (isset($_COOKIE[$cookieName])) {
+        // Obtener el valor de la cookie y convertirlo en un array
+        $lugaresVisitados = explode(',', $_COOKIE[$cookieName]);
+    } else {
+        // Si la cookie no existe, crear un array vacío
+        $lugaresVisitados = array();
+    }
+
+    // Agregar el nuevo ID del lugar al final del array de lugares visitados
+    $lugaresVisitados[] = $idLugar;
+
+    // Asegurarse de que solo haya 5 elementos en el array de lugares visitados
+    $lugaresVisitados = array_slice($lugaresVisitados, -5);
+
+    // Convertir el array de lugares visitados en una cadena
+    $lugaresVisitadosStr = implode(',', $lugaresVisitados);
+
+    // Guardar la cadena en una cookie con una duración de 30 días (puedes ajustar la duración según tus necesidades)
+    setcookie($cookieName, $lugaresVisitadosStr, time() + (30 * 24 * 60 * 60));
+}
+
+
 ?>
