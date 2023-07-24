@@ -262,7 +262,8 @@ if (isset($_POST['newPlace'])) {
     // Obtener los datos del formulario
     $name = $_POST['name'];
     $description = $_POST['description'];
-    $url = $_POST['url'];
+    $direction = $_POST['direction'];
+    $location = $_POST['location'];
     $department = $_POST['department'];
     $type = $_POST['type'];
     $public = $_POST['public'];
@@ -316,7 +317,7 @@ if (isset($_POST['newPlace'])) {
             }
         }
 
-        $sql = "INSERT INTO places (name, description, url, img1, img2, img3, department, type, public) VALUES ('$name','$description','$url', '$imageLinks[0]', '$imageLinks[1]', '$imageLinks[2]', '$department','$type','$public')";
+        $sql = "INSERT INTO places (name, description, direction, location, img1, img2, img3, department, type, public) VALUES ('$name','$description', '$direction', '$location', '$imageLinks[0]', '$imageLinks[1]', '$imageLinks[2]', '$department','$type','$public')";
         $run = mysqli_query($connection, $sql);
 
     } else {

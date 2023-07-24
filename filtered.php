@@ -197,7 +197,7 @@
         </div>
     </div>
     <div class="newplace__container">
-        <form method="post" class="newplace" enctype="multipart/form-data">
+        <form method="post" id="newPlaceForm" class="newplace" enctype="multipart/form-data">
             <i class="fa-solid fa-xmark close__newplace"></i>
             <div class="newplace__img">
                 <input type="file" name="images[]" id="upload-button" required multiple accept="image/*" />
@@ -222,7 +222,8 @@
                     <label>Descripción</label>
                 </div>
                 <div class="input__field">
-                    <input type="text" id="search-place" name="url" placeholder="" required spellcheck="false">
+                    <input type="text" id="search-place" name="direction" placeholder="" required spellcheck="false">
+                    <input type="hidden" name="location" id="location">
                     <label>Ubicación</label>
                 </div>
                 <div class="input__field">
@@ -245,7 +246,7 @@
                 </select>
                 </div>
                 <div class="input__field">
-                    <select name="type" id="type">
+                    <select name="type" id="">
                         <option value="" selected disabled>Tipo</option>
                         <option value="Playa">Playa</option>
                         <option value="Campo">Campo</option>
@@ -420,16 +421,41 @@
             location.href = 'index.php';
         })
     </script>
-    <script>
-        $(document).ready(function() {
-            // Obtener el campo de entrada
-            var input = document.getElementById('search-place');
 
-            // Crear el objeto de autocompletado de Google Maps con restricciones para El Salvador
-            var autocomplete = new google.maps.places.Autocomplete(input, {
+    <script>
+    $(document).ready(function() {
+        // Obtener el campo de entrada
+        var input = document.getElementById('search-place');
+
+        // Crear el objeto de autocompletado de Google Maps con restricciones para El Salvador
+        var autocomplete = new google.maps.places.Autocomplete(input, {
             componentRestrictions: { country: 'sv' } // 'sv' es el código ISO 3166-1 alfa-2 de El Salvador
-            });
         });
+
+        // Variable para almacenar la dirección formateada del lugar seleccionado
+        var selectedAddress = null;
+
+        // Evento que se ejecuta cuando se selecciona un lugar en el campo de autocompletado
+        autocomplete.addListener('place_changed', function() {
+        // Obtener el lugar seleccionado
+        var place = autocomplete.getPlace();
+
+        // Verificar si se seleccionó un lugar válido
+        if (place.formatted_address) {
+            // Obtener la dirección formateada del lugar
+            selectedAddress = place.formatted_address;
+        } else {
+            // Si el lugar no es válido, reiniciar la variable
+            selectedAddress = null;
+        }
+        });
+
+        // Agregar un evento al formulario para enviar la dirección al servidor cuando se envíe
+        $('#newPlaceForm').on('submit', function(event) {
+        // Asignar la dirección formateada al campo oculto en el formulario
+        $('#location').val(selectedAddress);
+        });
+    });
     </script>
 
     <script src="js/pagination.js"></script>

@@ -50,8 +50,7 @@ require_once 'php/controlador.php';
     </div>
     <div class="place__body">
         <div class="place__body__left">
-            <div class="body__left__map">
-                <?php echo $dataPlace['url'] ?>
+            <div class="body__left__map" id="map">
             </div>
             <div class="body__left__review">
                 <form method="post" class="review__comment">
@@ -202,6 +201,48 @@ require_once 'php/controlador.php';
         })
     </script>
 
+    <script>
+    function initMap() {
+        // Obtener la dirección formateada y el nombre del lugar almacenados en PHP en $dataPlace
+        var location = '<?php echo $dataPlace['location']; ?>';
+        var placeName = '<?php echo $dataPlace['direction']; ?>';
+
+        // Crear un objeto Geocoder de Google Maps para obtener más información sobre el lugar
+        var geocoder = new google.maps.Geocoder();
+
+        // Obtener la información del lugar usando el Geocoder
+        geocoder.geocode({ 'address': location }, function(results, status) {
+        if (status === 'OK' && results[0]) {
+            // Obtener el lugar detallado
+            var place = results[0];
+
+            // Obtener las coordenadas del lugar
+            var lat = place.geometry.location.lat();
+            var lng = place.geometry.location.lng();
+
+            // Construir la URL del iframe con el nombre del lugar
+            var iframeUrl = 'https://www.google.com/maps/embed/v1/place?q=' + encodeURIComponent(placeName) + '&zoom=12&key=AIzaSyDi-1W4L7N7-cIt4IClUTcZcJXTlHsdUGU';
+
+            // Crear el elemento iframe
+            var iframe = document.createElement('iframe');
+            iframe.setAttribute('src', iframeUrl);
+            iframe.setAttribute('frameborder', '0');
+            iframe.setAttribute('style', 'border:0;');
+            iframe.setAttribute('allowfullscreen', '');
+            iframe.setAttribute('loading', 'lazy');
+            iframe.setAttribute('referrerpolicy', 'no-referrer-when-downgrade');
+
+            // Agregar el iframe al elemento div con el ID 'map'
+            var mapContainer = document.getElementById('map');
+            mapContainer.appendChild(iframe);
+        } else {
+            // Manejar el caso de error si no se pueden obtener las coordenadas o información del lugar
+            console.error('Error al obtener la información del lugar.');
+        }
+        });
+    }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDi-1W4L7N7-cIt4IClUTcZcJXTlHsdUGU&callback=initMap" async defer></script>
 </body>
 <script src="js/reviews.js"></script>
 </html>
