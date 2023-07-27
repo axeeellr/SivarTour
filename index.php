@@ -41,6 +41,20 @@
 </head>
 <style><?php include 'css/index.css' ?></style>
 <body>
+    <div class="area" >
+        <ul class="circles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div >
     <div class="loader__container">
         <div class="loader"></div>
     </div>
@@ -80,7 +94,7 @@
         </div>
         <button class="hero__button">COMENZAR &nbsp;<i class="fa-sharp fa-solid fa-arrow-right"></i></button>
     </div>
-    <div class="body__squares">
+    <!--<div class="body__squares">
         <div class="square">
             <div class="square__title">
                 <i class="fa-solid fa-map-location-dot"></i>
@@ -124,7 +138,7 @@
             <h1>El Salvador: Tu Destino, Nuestra Pasión. ¡Aventura sin límites!</h1>
             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Porro repellat dolore optio, impedit quos distinctio quaerat voluptatem vel minima explicabo?</p>
         </div>
-    </div>
+    </div>-->
 
     <script>
         const tween = KUTE.fromTo(

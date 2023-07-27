@@ -96,9 +96,9 @@
     <div class="filters" id="filters">
         <select name="" id="">
             <option value="">Ordenar Por</option>
-            <option value=""></option>
-            <option value=""></option>
-            <option value=""></option>
+            <option value="">Fecha de publicación</option>
+            <option value="">Relevancia</option>
+            <option value="">A-Z</option>
         </select>
         <select name="" id="department">
             <option value="">Departamento</option>
@@ -180,14 +180,14 @@
         ?>
     </div>
     <div id="paginationContainer" class="pagination">
-            <li class="page-item previous-page disable"><a class="page-link" href=""><i class="fa-sharp fa-solid fa-arrow-left"></i></a></li>
-            <li class="page-item current-page active"><a class="page-link" href="">1</a></li>
-            <li class="page-item dots"><a class="page-link" href="">...</a></li>
-            <li class="page-item current-page"><a class="page-link" href="">5</a></li>
-            <li class="page-item current-page"><a class="page-link" href="">6</a></li>
-            <li class="page-item dots"><a class="page-link" href="">...</a></li>
-            <li class="page-item current-page"><a class="page-link" href="">10</a></li>
-            <li class="page-item next-page"><a class="page-link" href=""><i class="fa-sharp fa-solid fa-arrow-right"></i></a></li>
+        <li class="page-item previous-page disable"><a class="page-link" href=""><i class="fa-sharp fa-solid fa-arrow-left"></i></a></li>
+        <li class="page-item current-page active"><a class="page-link" href="">1</a></li>
+        <li class="page-item dots"><a class="page-link" href="">...</a></li>
+        <li class="page-item current-page"><a class="page-link" href="">5</a></li>
+        <li class="page-item current-page"><a class="page-link" href="">6</a></li>
+        <li class="page-item dots"><a class="page-link" href="">...</a></li>
+        <li class="page-item current-page"><a class="page-link" href="">10</a></li>
+        <li class="page-item next-page"><a class="page-link" href=""><i class="fa-sharp fa-solid fa-arrow-right"></i></a></li>
     </div>
     <div class="popup__container">
         <div class="popup">
