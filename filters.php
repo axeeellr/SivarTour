@@ -1,69 +1,37 @@
 <?php
+// filter_places.php
 include 'php/connection.php';
 
-$department = $_POST['department'];
-$type = $_POST['type'];
-$public = $_POST['public'];
+$department = $_POST['department'] ?? '';
+$type = $_POST['type'] ?? '';
+$public = $_POST['public'] ?? '';
 
+// Prepara la consulta SQL con los filtros seleccionados
 $sql = "SELECT * FROM places WHERE 1=1";
-
-if ($department !== '') {
+if (!empty($department)) {
   $sql .= " AND department = '$department'";
 }
-
-if ($type !== '') {
+if (!empty($type)) {
   $sql .= " AND type = '$type'";
 }
-
-if ($public !== '') {
+if (!empty($public)) {
   $sql .= " AND public = '$public'";
 }
 
+// Ejecuta la consulta
 $run = mysqli_query($connection, $sql);
 
-$count = 0;
-$containerCount = 1;
+// Prepara el array para almacenar los lugares filtrados
+$filteredPlaces = array();
 
-ob_start();
-
-echo '<div class="cards">'; // Abrir el primer contenedor "cards"
-
-while ($data = mysqli_fetch_array($run)) {
-  if ($count === 6) {
-    echo '</div>'; // Cerrar el contenedor anterior
-    echo '<div class="cards">'; // Abrir un nuevo contenedor "cards"
-    $count = 0;
-    $containerCount++;
-  }
-
-  ?>
-  <a href="place.php?place=<?php echo $data['id']?>" class="card">
-    <div class="card__img">
-      <?php echo '<img src="'.$data["img1"].'">'?>
-    </div>
-    <div class="card__info">
-      <h2><?php echo $data['name'] ?></h2>
-      <div class="card__info__stars">
-        <i class="fa-solid fa-star"></i>
-        <i class="fa-solid fa-star"></i>
-        <i class="fa-solid fa-star"></i>
-        <i class="fa-solid fa-star"></i>
-        <i class="fa-solid fa-star"></i>
-      </div>
-    </div>
-  </a>
-  <?php
-
-  $count++;
+// Almacena los resultados en el array
+while ($data = mysqli_fetch_assoc($run)) {
+  $filteredPlaces[] = $data;
 }
 
-echo '</div>'; // Cerrar el último contenedor "cards"
+// Cierra la conexión con la base de datos
+mysqli_close($connection);
 
-$html = ob_get_clean();
-
-echo $html;
+// Devuelve los resultados en formato JSON
+echo json_encode($filteredPlaces);
 ?>
-
-
-
-

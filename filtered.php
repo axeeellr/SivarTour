@@ -94,12 +94,6 @@
     </div>
 
     <div class="filters" id="filters">
-        <select name="" id="">
-            <option value="">Ordenar Por</option>
-            <option value="">Fecha de publicación</option>
-            <option value="">Relevancia</option>
-            <option value="">A-Z</option>
-        </select>
         <select name="" id="department">
             <option value="">Departamento</option>
             <option value="Ahuachapán">Ahuachapán</option>
@@ -137,47 +131,13 @@
             <option value="Solo mayores de 18">Solo mayores de 18</option>
             <option value="Especial para niños">Especial para niños</option>
         </select>
-        <!--<a href=""><i class="fa-solid fa-arrows-rotate"></i></a>-->
     </div>
     <div class="container">
-        <?php
-            $sql = "SELECT * FROM places";
-            $run = mysqli_query($connection, $sql);
-            
-            $count = 0;
-
-            ?>
+ 
             <div id="placesContainer" class="cards">
-            <?php
-            while ($data = mysqli_fetch_array($run)) {
-                ?>
-                    <a href="place.php" class="card">
-                        <div class="card__img">
-                            <?php echo '<img src="'.$data["img1"].'">'?>
-                        </div>
-                        <div class="card__info">
-                            <h2><?php echo $data['name'] ?></h2>
-                            <div class="card__info__stars">
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                            </div>
-                        </div>
-                    </a>
-                <?php
-                $count++;
-
-                if ($count == 6) {
-                    echo '</div>';
-                    echo '<div class="cards">';
-                    $count = 0; 
-                }
-            }?>
+            
             </div>
-            <?php
-        ?>
+
     </div>
     <div id="paginationContainer" class="pagination">
         <li class="page-item previous-page disable"><a class="page-link" href=""><i class="fa-sharp fa-solid fa-arrow-left"></i></a></li>
@@ -274,7 +234,7 @@
         </form>
     </div>
 
-    <script>
+    <!--<script>
         
         $(document).ready(function() {
         var currentPage = 1; // Página actual
@@ -349,6 +309,142 @@
         getFilteredPlaces(currentPage);
         });
 
+    </script>-->
+
+
+
+    <script>
+        $(document).ready(function () {
+            const itemsPerPage = 6; // Número de lugares por página
+            let currentPage = 1;
+            let filteredData = []; // Almacenar los lugares filtrados
+
+            // Función para cargar y mostrar los lugares en la página actual
+            function loadPlaces() {
+            const start = (currentPage - 1) * itemsPerPage;
+            const end = start + itemsPerPage;
+            const placesToShow = filteredData.slice(start, end);
+
+            const placesContainer = $('#placesContainer');
+            placesContainer.empty();
+
+            placesToShow.forEach((place) => {
+                const card = `
+                <a href="place.php" class="card">
+                    <div class="card__img">
+                    <img src="${place.img1}">
+                    </div>
+                    <div class="card__info">
+                    <h2>${place.name}</h2>
+                    <div class="card__info__stars">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    </div>
+                </a>
+                `;
+                placesContainer.append(card);
+            });
+            }
+
+            // Función para cargar y mostrar la paginación
+            function loadPagination() {
+            const paginationContainer = $('#paginationContainer');
+            paginationContainer.empty();
+
+            // Número de páginas según la cantidad de lugares filtrados
+            const totalPages = Math.ceil(filteredData.length / itemsPerPage);
+
+            // Crear la estructura de la paginación
+            let paginationHTML = `
+                <li class="page-item previous-page"><a class="page-link" href="#">&lt;</a></li>
+            `;
+
+            for (let i = 1; i <= totalPages; i++) {
+                paginationHTML += `<li class="page-item current-page"><a class="page-link" href="#">${i}</a></li>`;
+            }
+
+            paginationHTML += `
+                <li class="page-item next-page"><a class="page-link" href="#">&gt;</a></li>
+            `;
+
+            paginationContainer.html(paginationHTML);
+
+            // Agregar clases "active" y "disable" a los botones de paginación según la página actual
+            $('.page-item').removeClass('active');
+            $('.current-page:eq(' + (currentPage - 1) + ')').addClass('active');
+
+            if (currentPage === 1) {
+                $('.previous-page').addClass('disable');
+            }
+
+            if (currentPage === totalPages) {
+                $('.next-page').addClass('disable');
+            }
+            }
+
+            // Función para obtener los lugares filtrados mediante AJAX
+            function getFilteredPlaces() {
+            const department = $('#department').val();
+            const type = $('#type').val();
+            const publicOption = $('#public').val();
+
+            $.ajax({
+                method: 'POST',
+                url: 'filters.php', // Archivo PHP que realizará la consulta a la base de datos
+                data: { department, type, public: publicOption },
+                dataType: 'json',
+                success: function (response) {
+                filteredData = response;
+                currentPage = 1;
+                loadPagination();
+                loadPlaces();
+                },
+                error: function (error) {
+                console.error('Error al obtener los lugares filtrados:', error);
+                },
+            });
+            }
+
+            // Evento para cambiar de página
+            $(document).on('click', '.current-page', function (e) {
+            e.preventDefault();
+            currentPage = parseInt($(this).text());
+            loadPagination();
+            loadPlaces();
+            });
+
+            // Eventos para cambiar a la página anterior o siguiente
+            $(document).on('click', '.previous-page', function (e) {
+            e.preventDefault();
+            if (currentPage > 1) {
+                currentPage--;
+                loadPagination();
+                loadPlaces();
+            }
+            });
+
+            $(document).on('click', '.next-page', function (e) {
+            e.preventDefault();
+            const totalPages = Math.ceil(filteredData.length / itemsPerPage);
+            if (currentPage < totalPages) {
+                currentPage++;
+                loadPagination();
+                loadPlaces();
+            }
+            });
+
+            // Eventos para actualizar los lugares filtrados al cambiar alguna opción del filtro
+            $('#department, #type, #public').on('change', function () {
+            getFilteredPlaces();
+            });
+
+            // Cargar los lugares iniciales al cargar la página
+            getFilteredPlaces();
+        });
     </script>
 
 
@@ -458,7 +554,7 @@
     });
     </script>
 
-    <script src="js/pagination.js"></script>
+    <scripts src="js/pagination.js"></script>
     <script src="js/newPlace.js"></script>
 </body>
 </html>
