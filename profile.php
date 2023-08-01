@@ -1,7 +1,7 @@
 <?php
 
-require_once 'php/connection.php';
-require_once 'php/controlador.php';
+include 'php/connection.php';
+include 'php/controlador.php';
 
 if (isset($_SESSION['host'])) {
     unset($_SESSION['host']);
@@ -23,10 +23,12 @@ function recursiveUrlDecode($str) {
     return $str;
 }
 
-$cookieName = 'ultimos_lugares_' . $_SESSION['user_id'];
+$cookieName = 'ultimos_lugares_' . $data['id'];
 
 if (isset($_COOKIE[$cookieName])) {
     $lugaresVisitadosIDs = explode(',', recursiveUrlDecode($_COOKIE[$cookieName]));
+} else {
+    $lugaresVisitadosIDs = array();
 }
 
 if ($data['verified'] == 1) {
@@ -44,18 +46,30 @@ if ($data['verified'] == 1) {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Google Fonts-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300&display=swap" rel="stylesheet">
+    <!--CSS-->
+
+    <!--Otros-->
+    <script src="https://cdn.jsdelivr.net/npm/kute.js@2.1.2/dist/kute.min.js"></script>
+    <link rel=&quot;canonical&quot; href=&quot;https://codepen.io/supah/pen/VweRLrQ&quot; />
+    <link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css&quot;>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDi-1W4L7N7-cIt4IClUTcZcJXTlHsdUGU&libraries=places"></script>
+    <!--JQuery-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" charset="utf-8"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!--FontAwesome-->
+    <script src="https://kit.fontawesome.com/61fb4717c0.js" crossorigin="anonymous"></script>
     <title>Document</title>
 </head>
 <style><?php include 'css/profile.css' ?></style>
 <body>
-    <div class="loader__container">
-        <div class="loader"></div>
-    </div>
+    
     <header class="header">
         <img src="img/logo.png" alt="" class="header__logo">
         <i class="fa-regular fa-circle-question"></i>
@@ -101,7 +115,7 @@ if ($data['verified'] == 1) {
                 </div>
                 <div class="saved__content">
                 <?php
-                $sql = "SELECT * FROM collections WHERE id_user = {$_SESSION['user_id']}";
+                $sql = "SELECT * FROM collections WHERE id_user = {$data['id']}";
                 $run = mysqli_query($connection, $sql);
 
                 while ($dataCollec = mysqli_fetch_assoc($run)){

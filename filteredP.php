@@ -11,7 +11,7 @@
     }else {
         ?>
             <style type="text/css">
-                .option:nth-child(2), .option:nth-child(3){
+                .profile{
                     display: none;
                 }
             </style>
@@ -29,7 +29,7 @@
     }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -51,9 +51,9 @@
 
     <!--FontAwesome-->
     <script src="https://kit.fontawesome.com/61fb4717c0.js" crossorigin="anonymous"></script>
-    <title>Document</title>
+    <title>¡Descubre sitios turisticos!</title>
 </head>
-<style><?php include 'css/filtered.css'?></style>
+<style><?php include 'css/filteredP.css'?></style>
 <body>
     <div class="loader__container">
         <div class="loader"></div>
@@ -62,47 +62,19 @@
         <div class="header__logo"><img src="img/logo.png"></div>
         <nav class="header__nav">
             <form method="post" class="header__ul">
-                <input type="submit" name="goLogin" class="header__li" value="Registrarse">
-                <input type="submit" name="goLogin" class="header__li" value="Iniciar Sesión">
+                <input type="submit" name="goLogin" class="header__li" data-section="filtered" data-value="Registro" value="Registrarse">
+                <input type="submit" name="goLogin" class="header__li" data-section="filtered" data-value="Inicio Sesion" value="Iniciar Sesión">
             </form>
         </nav>
-        <div class="options__menu">
-            <div class="option notifications">
-                <div class="option__title">
-                    <i class="fa-regular fa-bell"></i>
-                    <h3>Notificaciones</h3>
-                    <i class="fa-solid fa-chevron-down hideNotis"></i>
-                </div>
-                <div class="option__info__container">
-                    <div class="option__info">
-                        <i class="fa-solid fa-xmark close"></i>
-                        <h4>Publicación rechazada</h4>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi maiores ipsum dolorum.</p>
-                    </div>
-                    <div class="option__info">
-                        <i class="fa-solid fa-xmark close"></i>
-                        <h4>Publicación aceptada</h4>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi maiores ipsum dolorum.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="option profile">
-                <i class="fa-regular fa-circle-user"></i>
-                <h3>Mi perfil</h3>
-            </div>
-            <div class="option favorites">
-                <i class="fa-regular fa-star"></i>
-                <h3>Mis favoritos</h3>
-            </div>
-            <div class="option translate">
-                <input type="checkbox" id="cambiar">
-                <label for="cambiar">aquí se cambia el idioma</label>
-            </div>
-        </div>
         <div class="header__options">
-            <!--<a href="profile.php" class="profile"><i class="fa-regular fa-circle-user"></i></a>-->
-            <!--<i class="fa-solid fa-globe"></i>-->
-            <i class="fa-solid fa-bars-staggered showMenu"></i>
+        <div id="banderas" class="header__banderas">
+                <div class="cambios_item" data-language="indexEspañol">
+                    <img src="img/españa.png" alt="">
+                </div>
+                <div class="cambios_item" data-language="indexIngles">
+                    <img src="img/inglaterra.png" alt="">
+                </div>
+            </div>
         </div>
     </header>
 
@@ -128,8 +100,14 @@
     </div>
 
     <div class="filters" id="filters">
+        <select name="" id="">
+            <option value="" data-section="filtered" data-value="Ordenar Por" >Ordenar Por</option>
+            <option value="" data-section="filtered" data-value="F.publicacion">Fecha de publicación</option>
+            <option value="" data-section="filtered" data-value="">Relevancia</option>
+            <option value="">A-Z</option>
+        </select>
         <select name="" id="department">
-            <option value="">Departamento</option>
+            <option value="" data-section="filtered" data-value="Departamento">Departamento</option>
             <option value="Ahuachapán">Ahuachapán</option>
             <option value="Cabañas">Cabañas</option>
             <option value="Chalatenango">Chalatenango</option>
@@ -146,32 +124,66 @@
             <option value="Usulután">Usulután</option>
         </select>
         <select name="" id="type">
-            <option value="">Tipo</option>
-            <option value="Playa">Playa</option>
-            <option value="Campo">Campo</option>
-            <option value="Cabañas">Cabañas</option>
-            <option value="Parque">Parque</option>
-            <option value="Bosque">Bosque</option>
-            <option value="Lago">Lago</option>
-            <option value="Sitio Arqueológico">Sitio Arqueológico</option>
-            <option value="Volcán">Volcán</option>
-            <option value="Centro Comercial">Centro Comercial</option>
-            <option value="Montaña">Montaña</option>
-            <option value="Otro">Otro</option>
+            <option value="" data-section="filtered" data-value="Tipo">Tipo</option>
+            <option value="Playa" data-section="filtered" data-value="Playa">Playa</option>
+            <option value="Campo" data-section="filtered" data-value="Campo">Campo</option>
+            <option value="Cabañas" data-section="filtered" data-value="Cabanas">Cabañas</option>
+            <option value="Parque" data-section="filtered" data-value="Parque">Parque</option>
+            <option value="Bosque" data-section="filtered" data-value="Bosque">Bosque</option>
+            <option value="Lago" data-section="filtered" data-value="Lago">Lago</option>
+            <option value="Sitio Arqueológico" data-section="filtered" data-value="Arqueologico">Sitio Arqueológico</option>
+            <option value="Volcán" data-section="filtered" data-value="Volcan">Volcán</option>
+            <option value="Centro Comercial" data-section="filtered" data-value="C.Comer">Centro Comercial</option>
+            <option value="Montaña" data-section="filtered" data-value="Montana">Montaña</option>
+            <option value="Otro" data-section="filtered" data-value="Other">Otro</option>
         </select>
         <select name="" id="public">
-            <option value="">Público</option>
-            <option value="Todo público">Todo público</option>
-            <option value="Solo mayores de 18">Solo mayores de 18</option>
-            <option value="Especial para niños">Especial para niños</option>
+            <option value="" data-section="filtered" data-value="publico">Público</option>
+            <option value="Todo público"  data-section="filtered" data-value="all">Todo público</option>
+            <option value="Solo mayores de 18"  data-section="filtered" data-value="18">Solo mayores de 18 años</option>
+            <option value="Especial para niños"  data-section="filtered" data-value="especial">Especial para niños</option>
         </select>
+        <!--<a href=""><i class="fa-solid fa-arrows-rotate"></i></a>-->
     </div>
     <div class="container">
- 
-            <div id="placesContainer" class="cards">
+        <?php
+            $sql = "SELECT * FROM places";
+            $run = mysqli_query($connection, $sql);
             
-            </div>
+            $count = 0;
 
+            ?>
+            <div id="placesContainer" class="cards">
+            <?php
+            while ($data = mysqli_fetch_array($run)) {
+                ?>
+                    <a href="place.php" class="card">
+                        <div class="card__img">
+                            <?php echo '<img src="'.$data["img1"].'">'?>
+                        </div>
+                        <div class="card__info">
+                            <h2><?php echo $data['name'] ?></h2>
+                            <div class="card__info__stars">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                        </div>
+                    </a>
+                <?php
+                $count++;
+
+                if ($count == 6) {
+                    echo '</div>';
+                    echo '<div class="cards">';
+                    $count = 0; 
+                }
+            }?>
+            </div>
+            <?php
+        ?>
     </div>
     <div id="paginationContainer" class="pagination">
         <li class="page-item previous-page disable"><a class="page-link" href=""><i class="fa-sharp fa-solid fa-arrow-left"></i></a></li>
@@ -268,7 +280,7 @@
         </form>
     </div>
 
-    <!--<script>
+    <script>
         
         $(document).ready(function() {
         var currentPage = 1; // Página actual
@@ -343,142 +355,6 @@
         getFilteredPlaces(currentPage);
         });
 
-    </script>-->
-
-
-
-    <script>
-        $(document).ready(function () {
-            const itemsPerPage = 6; // Número de lugares por página
-            let currentPage = 1;
-            let filteredData = []; // Almacenar los lugares filtrados
-
-            // Función para cargar y mostrar los lugares en la página actual
-            function loadPlaces() {
-            const start = (currentPage - 1) * itemsPerPage;
-            const end = start + itemsPerPage;
-            const placesToShow = filteredData.slice(start, end);
-
-            const placesContainer = $('#placesContainer');
-            placesContainer.empty();
-
-            placesToShow.forEach((place) => {
-                const card = `
-                <a href="place.php?place=${place.id}" class="card">
-                    <div class="card__img">
-                    <img src="${place.img1}">
-                    </div>
-                    <div class="card__info">
-                    <h2>${place.name}</h2>
-                    <div class="card__info__stars">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                    </div>
-                    </div>
-                </a>
-                `;
-                placesContainer.append(card);
-            });
-            }
-
-            // Función para cargar y mostrar la paginación
-            function loadPagination() {
-            const paginationContainer = $('#paginationContainer');
-            paginationContainer.empty();
-
-            // Número de páginas según la cantidad de lugares filtrados
-            const totalPages = Math.ceil(filteredData.length / itemsPerPage);
-
-            // Crear la estructura de la paginación
-            let paginationHTML = `
-                <li class="page-item previous-page"><a class="page-link" href="#">&lt;</a></li>
-            `;
-
-            for (let i = 1; i <= totalPages; i++) {
-                paginationHTML += `<li class="page-item current-page"><a class="page-link" href="#">${i}</a></li>`;
-            }
-
-            paginationHTML += `
-                <li class="page-item next-page"><a class="page-link" href="#">&gt;</a></li>
-            `;
-
-            paginationContainer.html(paginationHTML);
-
-            // Agregar clases "active" y "disable" a los botones de paginación según la página actual
-            $('.page-item').removeClass('active');
-            $('.current-page:eq(' + (currentPage - 1) + ')').addClass('active');
-
-            if (currentPage === 1) {
-                $('.previous-page').addClass('disable');
-            }
-
-            if (currentPage === totalPages) {
-                $('.next-page').addClass('disable');
-            }
-            }
-
-            // Función para obtener los lugares filtrados mediante AJAX
-            function getFilteredPlaces() {
-            const department = $('#department').val();
-            const type = $('#type').val();
-            const publicOption = $('#public').val();
-
-            $.ajax({
-                method: 'POST',
-                url: 'filters.php', // Archivo PHP que realizará la consulta a la base de datos
-                data: { department, type, public: publicOption },
-                dataType: 'json',
-                success: function (response) {
-                filteredData = response;
-                currentPage = 1;
-                loadPagination();
-                loadPlaces();
-                },
-                error: function (error) {
-                console.error('Error al obtener los lugares filtrados:', error);
-                },
-            });
-            }
-
-            // Evento para cambiar de página
-            $(document).on('click', '.current-page', function (e) {
-            e.preventDefault();
-            currentPage = parseInt($(this).text());
-            loadPagination();
-            loadPlaces();
-            });
-
-            // Eventos para cambiar a la página anterior o siguiente
-            $(document).on('click', '.previous-page', function (e) {
-            e.preventDefault();
-            if (currentPage > 1) {
-                currentPage--;
-                loadPagination();
-                loadPlaces();
-            }
-            });
-
-            $(document).on('click', '.next-page', function (e) {
-            e.preventDefault();
-            const totalPages = Math.ceil(filteredData.length / itemsPerPage);
-            if (currentPage < totalPages) {
-                currentPage++;
-                loadPagination();
-                loadPlaces();
-            }
-            });
-
-            // Eventos para actualizar los lugares filtrados al cambiar alguna opción del filtro
-            $('#department, #type, #public').on('change', function () {
-            getFilteredPlaces();
-            });
-
-            // Cargar los lugares iniciales al cargar la página
-            getFilteredPlaces();
-        });
     </script>
 
 
@@ -550,19 +426,6 @@
         document.querySelector('.header__logo').addEventListener('click', function(){
             location.href = 'index.php';
         })
-
-        document.querySelector('.profile').addEventListener('click', function(e){
-            location.href = 'profile.php';
-        });
-
-        document.querySelector('.showMenu').addEventListener('click', function(e){
-            document.querySelector('.options__menu').classList.toggle('show');
-            document.querySelector('.showMenu').classList.toggle('black');
-        });
-
-        document.querySelector('.hideNotis').addEventListener('click', function(e){
-            document.querySelector('.option__info__container').classList.toggle('hide');
-        });
     </script>
 
     <script>
@@ -601,7 +464,8 @@
     });
     </script>
 
-    <scripts src="js/pagination.js"></script>
+    <script src="js/pagination.js"></script>
     <script src="js/newPlace.js"></script>
+    <script src="languages/maintranslate.js" defer></script>
 </body>
 </html>

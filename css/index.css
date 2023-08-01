@@ -565,7 +565,7 @@ input:checked + label:after {
     backgsround: #4e54c8;  
     backgrosund: -webkit-linear-gradient(to left, #8f94fb, #4e54c8);  
     width: 100%;
-    height:100vh;
+    height: 100vh;
     position: absolute;
 }
 
@@ -669,7 +669,12 @@ input:checked + label:after {
     animation-duration: 15s;
 }
 
-
+hr{
+    border: 0;
+    height: 5px;
+    colosr: rgb(237, 115, 92);
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgb(237, 115, 92), rgba(0, 0, 0, 0));
+}
 
 @keyframes animate {
 

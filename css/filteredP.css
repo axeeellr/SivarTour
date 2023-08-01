@@ -17,7 +17,6 @@ a{
 
 i:hover{
     transform: none;
-    box-shadow: none;
 }
 
 body{
@@ -37,7 +36,7 @@ body{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    colsor: rgb(186, 196, 200);
+    color: rgb(186, 196, 200);
 }
 
 .header__logo{
@@ -52,164 +51,24 @@ body{
 .header__options{
     display: flex;
     align-items: center;
-    justify-content: flex-end;
-    margin-right: calc(1px + 1vw);
-    width: 10%;
-    z-index: 120;
-}
-
-.showMenu{
-    font-size: calc(3px + 3vw);
-    color: var(--white);
-    cursor: pointer;
-}
-
-.black{
-    color: var(--background);
-}
-
-.options__menu{
-    background: radial-gradient(at center center, rgb(152, 186, 223), rgb(206, 206, 141), rgb(152, 186, 223));
-    background-size: 100vh;
-    position: fixed;
-    width: 20%;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    display: none;
-    flex-direction: column;
-    gasp: calc(0.5px + 0.5vw);
-    box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.60);
-    padding-top: 15vh;
-}
-
-.option{
-    display: flex;
-    align-items: center;
-    margin: calc(1px + 1vw);
-    gap: calc(0.7px + 0.7vw);
-    cursor: default;
-}
-
-.option:hover > i, .option:hover > h3, .option__title:hover > i, .option__title:hover > h3{
-    color: var(--red);
-}
-
-.option i{
-    font-size: calc(1.5px + 1.5vw);
-    color: var(--background);
-}
-
-.option h3{
-    color: var(--background);
-    font-size: calc(1.5px + 1.5vw);
-}
-
-.notifications{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
     justify-content: center;
+    width: 22%;
     gap: calc(1px + 1vw);
-    padding-top: calc(0.5px + 0.5vw);
 }
 
-.option__title{
+
+.header__banderas{
     display: flex;
     align-items: center;
-    gap: calc(0.7px + 0.7vw);
+    justify-content: space-between;
+    width: 10%;
+    gap: calc(1px + 1vw);
+    margin:  calc(-3px + -3vw);
 }
 
-.option__title i:nth-child(3){
-    margin-left: 15%;
+.header__banderas img{
+    height: calc(3px + 3vw);
     cursor: pointer;
-}
-
-.option__info__container{
-    display: flex;
-    flex-direction: column;
-    gap: calc(1px + 1vw);
-}
-
-.hide{
-    display: none;
-}
-
-.option__info{
-    background-color: var(--blue);
-    border-radius: 10px;
-    padding: calc(1px + 1vw);
-    box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.20);
-    position: relative;
-}
-
-.option__info h4{
-    color: var(--red);
-    font-size: calc(1.1px + 1.1vw);
-}
-
-.option__info p{
-    color: var(--background);
-    font-size: calc(0.9px + 0.9vw);
-}
-
-.option__info i{
-    position: absolute;
-    right: 0;
-    top: 0;
-    font-size: calc(1.1px + 1.1vw);
-    margin: calc(0.5px + 0.5vw);
-    color: var(--red);
-}
-
-.show{
-    display: flex;
-}
-
-input[type=checkbox]{
-    height: 0;
-    width: 0;
-    visibility: hidden;
-    position: absolute;
-}
-  
-label {
-    cursor: default;
-    text-indent: -9999px;
-    width: 100px;
-    height: 50px;
-    background: var(--blue);
-    display: flex;
-    align-items: center;
-    border-radius: 90px;
-    position: relative;
-    box-shadow: 0px 0px 25px 0px rgba(0,0,0,0.45);
-}
-  
-label:after {
-    content: '';
-    position: absolute;
-    top: 5px;
-    left: 5px;
-    width: 45px;
-    height: 40px;
-    background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Bandera_de_Espa%C3%B1a.svg/1200px-Bandera_de_Espa%C3%B1a.svg.png');
-    background-size: cover;
-    background-position: center center;
-    border-radius: 90px;
-    transition: 0.3s;
-}
-  
-input:checked + label {
-    background: var(--green);
-}
-  
-input:checked + label:after {
-    left: calc(100% - 5px);
-    transform: translateX(-100%);
-    background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Flag_of_the_United_Kingdom_%281-2%29.svg/1200px-Flag_of_the_United_Kingdom_%281-2%29.svg.png');
-    background-size: cover;
-    background-position: center center;
 }
 
 .header__ul {
@@ -404,7 +263,6 @@ input:checked + label:after {
 
 .pagination {
     text-align: center;
-    user-select: none;
     display: flex;
     align-items: center;
     justify-content: center;

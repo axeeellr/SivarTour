@@ -1,0 +1,15 @@
+{
+    "controladores":{
+        "TextoInicioSesion": "¡Log In!",
+        "Correo": "Email",
+        "Contra": "Password",
+        "social_text":"You can also use",
+        "TextoRegistro":"¡Sign In!",
+        "Nombre": "Name",
+        "CorreoRegistro": "Email",
+        "ContraRegistro": "Password",
+        "Entrar":"Enter",
+        "puedesUsar": "You can also use",
+        "NoCuenta?":"Firts time?"
+    }
+    }

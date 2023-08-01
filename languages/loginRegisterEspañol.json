@@ -1,0 +1,16 @@
+{
+    "controladores":{
+        "TextoInicioSesion": "¡Inicia Sesión!",
+        "Correo": "Correo",
+        "Contra": "Contraseña",
+        "social_text":"También puedes usar",
+        "TextoRegistro":"¡Regístrate ahora!",
+        "Nombre": "Nombre",
+        "CorreoRegistro": "Correo",
+        "ContraRegistro": "Contraseña",
+        "Entrar":"Entrar",
+        "puedesUsar": "También puedes usar",
+        "NoCuenta?":"¿Primera vez?",
+        "ConCuenta": "¿Uno de nosotros?"
+    }
+}

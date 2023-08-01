@@ -1,6 +1,6 @@
 <?php 
-require_once 'php/connection.php';
-require_once 'php/controlador.php';
+include 'php/connection.php';
+include 'php/controlador.php';
 
     if (!isset($_SESSION['user_token'])) {
         header('Location: filtered.php');
@@ -28,10 +28,47 @@ require_once 'php/controlador.php';
 </head>
 <style><?php include 'css/place.css'?></style>
 <body>
-
+    
     <header class="header">
-        <img src="img/logo.png" class="header__logo">
-        <a href="profile.php"><i class="fa-regular fa-circle-user"></i></a>
+        <div class="header__logo"><img src="img/logo.png"></div>
+        <div class="options__menu">
+            <div class="option notifications">
+                <div class="option__title">
+                    <i class="fa-regular fa-bell"></i>
+                    <h3>Notificaciones</h3>
+                    <i class="fa-solid fa-chevron-down hideNotis"></i>
+                </div>
+                <div class="option__info__container">
+                    <div class="option__info">
+                        <i class="fa-solid fa-xmark close"></i>
+                        <h4>Publicación rechazada</h4>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi maiores ipsum dolorum.</p>
+                    </div>
+                    <div class="option__info">
+                        <i class="fa-solid fa-xmark close"></i>
+                        <h4>Publicación aceptada</h4>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi maiores ipsum dolorum.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="option profile">
+                <i class="fa-regular fa-circle-user"></i>
+                <h3>Mi perfil</h3>
+            </div>
+            <div class="option favorites">
+                <i class="fa-regular fa-star"></i>
+                <h3>Mis favoritos</h3>
+            </div>
+            <div class="option translate">
+                <input type="checkbox" id="cambiar">
+                <label for="cambiar">aquí se cambia el idioma</label>
+            </div>
+        </div>
+        <div class="header__options">
+            <!--<a href="profile.php" class="profile"><i class="fa-regular fa-circle-user"></i></a>-->
+            <!--<i class="fa-solid fa-globe"></i>-->
+            <i class="fa-solid fa-bars-staggered showMenu"></i>
+        </div>
     </header>
     <div class="place__hero">
         <div class="place__hero__text">
@@ -128,11 +165,11 @@ require_once 'php/controlador.php';
     </div>
     <div class="popup__container">
         <div class="popup">
-            <i class="fa-solid fa-xmark close"></i>
+            <i class="fa-solid fa-xmark closePop"></i>
             <h2>Agrega <?php echo $dataPlace['name']; ?> a tus colecciones</h2>
             <form method="post" class="collections__container">
             <?php
-                $sql = "SELECT * FROM collections WHERE id_user = {$_SESSION['user_id']}";
+                $sql = "SELECT * FROM collections WHERE id_user = '{$_SESSION['user_id']}'";
                 $run = mysqli_query($connection, $sql);
 
                 while ($dataCollec = mysqli_fetch_assoc($run)) {
@@ -144,7 +181,7 @@ require_once 'php/controlador.php';
             </form>
             <form method="post" class="popup__field">
                 <input type="text" name="name" spellcheck="false"> 
-                <label>Nombre de la colección</label>
+                <label class="label">Nombre de la colección</label>
                 <input type="submit" name="newCollection" value="Añadir">
             </form>
             <i class="fa-solid fa-plus new"></i>
@@ -169,7 +206,7 @@ require_once 'php/controlador.php';
             document.querySelector('.popup__container').classList.add('visible');
         })
 
-        document.querySelector('.close').addEventListener('click', function(){
+        document.querySelector('.closePop').addEventListener('click', function(){
             document.querySelector('.popup__container').classList.remove('visible');
         });
 
@@ -199,6 +236,19 @@ require_once 'php/controlador.php';
         document.querySelector('.header__logo').addEventListener('click', function(){
             location.href = 'index.php';
         })
+
+        document.querySelector('.profile').addEventListener('click', function(e){
+            location.href = 'profile.php';
+        });
+
+        document.querySelector('.showMenu').addEventListener('click', function(e){
+            document.querySelector('.options__menu').classList.toggle('show');
+            document.querySelector('.showMenu').classList.toggle('black');
+        });
+
+        document.querySelector('.hideNotis').addEventListener('click', function(e){
+            document.querySelector('.option__info__container').classList.toggle('hide');
+        });
     </script>
 
     <script>

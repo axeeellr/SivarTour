@@ -129,7 +129,8 @@ if(isset($_POST['register'])) {
     $consulta_sql =  "INSERT INTO users (name, email, password, token) VALUES('$nombre', '$correo', '$contraseña', '$token')";
 
     //verifico que correo no se repita en la base de datos
-    $validarCorreo = mysqli_query($connection, "SELECT * FROM users WHERE email = '$correo'"); 
+    $validar = "SELECT * FROM users WHERE email = '$correo'";
+    $validarCorreo = mysqli_query($connection, $validar);
     
     //validacion de correo existente
     if(mysqli_num_rows($validarCorreo) == 1){
@@ -381,7 +382,9 @@ if (isset($_GET['place'])) {
     $idLugar = $_GET['place'];
 
     // Obtener el ID del usuario desde la sesión (asegúrate de tener la sesión iniciada previamente)
-    $idUser = $_SESSION['user_id'];
+    $sql = mysqli_query($connection, "SELECT * FROM users WHERE token = '{$_SESSION['user_token']}'");
+    $rows = mysqli_fetch_assoc($sql);
+    $idUser = $rows['id'];
 
     // Nombre de la cookie con el ID del usuario
     $cookieName = 'ultimos_lugares_' . $idUser;

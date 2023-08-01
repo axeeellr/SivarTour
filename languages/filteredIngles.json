@@ -1,0 +1,26 @@
+{
+    "filtered":{
+        "Registro": "Sign In",
+        "Inicio Sesion": "Log in",
+        "Ordenar Por": "Sort by",
+        "F.publicacion": "Publication date",
+        "Relevancia": "Relevance",
+        "Departamento":"Departament",
+        "Tipo":"Type",
+        "Playa":"Beach",
+        "Campo":"Field",
+        "Cabanas":"Cabins",
+        "Parque":"Park",
+        "Bosque": "Forest",
+        "Lago": "Lake",
+        "Aqueologico":" Arcueological Site",
+        "Volcan": "Volcano",
+        "C.Comer": "Mall",
+        "Montana": "Mountain",
+        "Other": "Other",
+        "publico":"Public",
+        "all":"All Public",
+        "18": "Only over 18 years",
+        "especial": "Special for children"
+    }
+}

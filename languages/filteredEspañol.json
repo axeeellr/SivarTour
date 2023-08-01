@@ -1,0 +1,26 @@
+{
+    "filtered":{
+        "Registro": "Registrarse",
+        "Inicio Sesion": "Iniciar Sesión",
+        "Ordenar Por": "Ordenar Por",
+        "F.publicacion": "Fecha de publicación",
+        "Relevancia": "Relevancia",
+        "Departamento":"Departamento",
+        "Tipo":"Tipo",
+        "Playa":"Playa",
+        "Campo":"Campo",
+        "Cabanas":"Cabañas",
+        "Parque":"Parque",
+        "Bosque": "Bosque",
+        "Lago": "Lago",
+        "Aqueologico":"Sitio Arqueológico",
+        "Volcan": "Volcán",
+        "C.Comer": "Centro Comercial",
+        "Montana": "Montaña",
+        "Other": "Otro",
+        "publico":"Público",
+        "all":"Todo Público",
+        "18": "Solo mayores de 18 años",
+        "especial": "Especial para niños"
+    }
+}

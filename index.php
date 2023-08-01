@@ -135,6 +135,7 @@
         </div>
         <button class="hero__button">COMENZAR &nbsp;<i class="fa-sharp fa-solid fa-arrow-right"></i></button>
     </div>
+    <hr>
     <div class="map">
         <div class="map__info">
             <h1>EXPLORA YA!</h1>
@@ -223,6 +224,10 @@
     <script>
         document.querySelector('.hero__button').addEventListener('click', function(e){
             location.href = 'filtered.php';
+        });
+
+        document.querySelector('.profile').addEventListener('click', function(e){
+            location.href = 'profile.php';
         });
 
         document.querySelector('.showMenu').addEventListener('click', function(e){
