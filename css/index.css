@@ -66,6 +66,7 @@ body{
 
 .black{
     color: var(--background);
+    position: fixed;
 }
 
 .options__menu{
@@ -728,9 +729,14 @@ hr{
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
 }
 
-.map__img img{
+.wrp{
+    margin: 0 0 0 325px;
+}
+
+.mapimg{
     width: 70%;
     filter: invert(95%) sepia(2%) saturate(2732%) hue-rotate(82deg) brightness(120%) contrast(90%);
 }

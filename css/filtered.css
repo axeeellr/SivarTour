@@ -66,6 +66,7 @@ body{
 
 .black{
     color: var(--background);
+    position: fixed;
 }
 
 .options__menu{
