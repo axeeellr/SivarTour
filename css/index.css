@@ -687,6 +687,49 @@ input:checked + label:after {
 
 }
 
+.map{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: calc(3px + 3vw);
+    margin-top: calc(3px + 3vw);
+}
+
+.map__info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.map__info h1{
+    font-size: calc(4px + 4vw);
+    color: var(--red);
+    font-family: Arial, Helvetica, sans-serif;
+    font-weigsht: bold;
+    font-weight: 900;
+    letter-spacing: 0.2px;
+}
+
+.map__info p{
+    color: var(--white);
+    max-width: 50%;
+    text-align: center;
+    font-size: calc(1.1px + 1.1vw);
+}
+
+.map__img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.map__img img{
+    width: 70%;
+    filter: invert(95%) sepia(2%) saturate(2732%) hue-rotate(82deg) brightness(120%) contrast(90%);
+}
+
 
 
 /* TABLET */

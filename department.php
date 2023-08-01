@@ -171,15 +171,17 @@
             $('.nextArrow').on('click', function () {
                 // Obtener el primer card__container
                 const firstCard = $('.right__cards .card__container:first-child');
-    
+
+                
                 // Mover el primer card__container al final
                 $('.right__cards').append(firstCard);
-    
+                
                 // Remover la clase "active" de todos los card__img
                 $('.card__img').removeClass('active');
-    
+                
                 // Añadir la clase "active" al card__img del primer card__container
                 $('.right__cards .card__container:first-child .card__img').addClass('active');
+                firstCard.style.opacity = 0.6;
             });
     
             // Función para manejar el clic en la flecha de "prev"

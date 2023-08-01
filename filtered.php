@@ -330,7 +330,7 @@
 
             placesToShow.forEach((place) => {
                 const card = `
-                <a href="place.php" class="card">
+                <a href="place.php?place=${place.id}" class="card">
                     <div class="card__img">
                     <img src="${place.img1}">
                     </div>
