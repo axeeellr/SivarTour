@@ -120,7 +120,9 @@ if ($data['verified'] == 1) {
 
                 while ($dataCollec = mysqli_fetch_assoc($run)){
                     ?>
-                        <h2><?php echo $dataCollec['name'] ?></h2>
+                        <div class="saved__collection">
+                            <h2><?php echo $dataCollec['name'] ?></h2>
+                        </div>
                     <?php
                 }
                 ?>

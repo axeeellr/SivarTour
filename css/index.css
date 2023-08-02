@@ -82,6 +82,7 @@ body{
     gasp: calc(0.5px + 0.5vw);
     box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.60);
     padding-top: 15vh;
+    z-index: 99;
 }
 
 .option{
@@ -713,7 +714,6 @@ hr{
     font-size: calc(4px + 4vw);
     color: var(--red);
     font-family: Arial, Helvetica, sans-serif;
-    font-weigsht: bold;
     font-weight: 900;
     letter-spacing: 0.2px;
 }
@@ -741,7 +741,119 @@ hr{
     filter: invert(95%) sepia(2%) saturate(2732%) hue-rotate(82deg) brightness(120%) contrast(90%);
 }
 
+/* FOOTER */
 
+.footer {
+    position: relative;
+    background: var(--blue);
+    min-height: 70px;
+    padding: 20px 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: calc(12px + 12vw);
+}
+
+.social-icon,
+.menu {
+    position: relative;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.social-icon__item,
+.menu__item {
+    list-style: none;
+}
+
+.social-icon__link {
+    font-size: 1.8rem;
+    color: var(--background);
+    display: inline-block;
+    transition: 0.5s;
+}
+
+.social-icon__link:hover {
+    transform: translateY(-10px);
+}
+
+.menu__link {
+    font-size: 1.1rem;
+    color: var(--background);
+    display: inline-block;
+    transition: 0.5s;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.menu__link:hover {
+    opacity: 1;
+}
+
+.wave {
+    position: absolute;
+    top: -70px;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background: url("https://i.ibb.co/wQZVxxk/wave.png");
+    background-size: 1000px 100px;
+    filter: brightness(0) saturate(100%) invert(73%) sepia(48%) saturate(260%) hue-rotate(175deg) brightness(92%) contrast(88%);
+}
+
+.wave#wave1 {
+    z-index: 91;
+    opacity: 1;
+    bottom: 0;
+    animation: animateWaves 4s linear infinite;
+}
+
+.wave#wave2 {
+    z-index: 90;
+    opacity: 0.5;
+    bottom: 10px;
+    animation: animate 4s linear infinite !important;
+}
+
+.wave#wave3 {
+    z-index: 91;
+    opacity: 0.2;
+    bottom: 15px;
+    animation: animateWaves 3s linear infinite;
+}
+
+.wave#wave4 {
+    z-index: 90;
+    opacity: 0.7;
+    bottom: 20px;
+    animation: animate 3s linear infinite;
+}
+
+@keyframes animateWaves {
+    0% {
+        background-position-x: 1000px;
+    }
+
+    100% {
+        background-positon-x: 0px;
+    }
+}
+
+@keyframes animate {
+    0% {
+        background-position-x: -1000px;
+    }
+
+    100% {
+        background-positon-x: 0px;
+    }
+}
 
 /* TABLET */
 @media only screen and (min-width: 768px){

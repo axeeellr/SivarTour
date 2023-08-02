@@ -115,19 +115,22 @@ body{
     flex-wrap: wrap;
 }
 
-.saved__content h2{
+.saved__collection{
+    border-radius: 7px;
     padding: calc(0.7px + 0.7vw) calc(2.7px + 2.7vw);
     border: 2px solid var(--white);
-    border-radius: 7px;
     cursor: pointer;
 }
 
-.saved__content h2:hover{
+.saved__collection:hover{
     background-color: var(--white);
+}
+
+.saved__collection:hover > h2{
     color: var(--background);
 }
 
-.lately__content h2, .saved__content h2{
+.lately__content h2, .saved__collection h2{
     font-size: calc(1.6px + 1.6vw);
     color: var(--white);
     font-weight: lighter;

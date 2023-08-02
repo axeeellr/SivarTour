@@ -267,84 +267,24 @@
             </div>
         </form>
     </div>
-
-    <!--<script>
-        
-        $(document).ready(function() {
-        var currentPage = 1; // Página actual
-        var totalPlaces = 0; // Número total de lugares filtrados
-
-        function getFilteredPlaces(page) {
-            var department = $('#department').val();
-            var type = $('#type').val();
-            var public = $('#public').val();
-
-            $.ajax({
-            url: 'filters.php',
-            method: 'POST',
-            data: { department: department, type: type, public: public },
-            success: function(response) {
-                // Obtener los lugares filtrados
-                var filteredPlaces = $(response).find('.card');
-
-                // Actualizar el número total de lugares filtrados
-                totalPlaces = filteredPlaces.length;
-
-                // Calcular el número total de páginas
-                var totalPages = Math.ceil(totalPlaces / 6);
-
-                // Asegurarse de que la página actual no supere el límite de páginas
-                if (page > totalPages) {
-                page = totalPages;
-                }
-
-                // Calcular el índice de inicio y fin de los lugares en la página actual
-                var startIndex = (page - 1) * 6;
-                var endIndex = Math.min(startIndex + 5, totalPlaces - 1);
-
-                // Obtener los lugares para la página actual
-                var places = filteredPlaces.slice(startIndex, endIndex + 1);
-
-                // Actualizar el contenido de los lugares y la paginación
-                $('#placesContainer').html(places);
-                generatePagination(totalPages, page);
-            }
-            });
-        }
-
-        function generatePagination(totalPages, currentPage) {
-            var paginationHTML = '';
-
-            if (totalPages > 1) {
-            paginationHTML += '<li class="page-item previous-page' + (currentPage === 1 ? ' disabled' : '') + '"><a class="page-link" href="#"><i class="fa-sharp fa-solid fa-arrow-left"></i></a></li>';
-
-            for (var i = 1; i <= totalPages; i++) {
-                paginationHTML += '<li class="page-item' + (i === currentPage ? ' current-page active' : '') + '"><a class="page-link" href="#">' + i + '</a></li>';
-            }
-
-            paginationHTML += '<li class="page-item next-page' + (currentPage === totalPages ? ' disabled' : '') + '"><a class="page-link" href="#"><i class="fa-sharp fa-solid fa-arrow-right"></i></a></li>';
-            }
-
-            $('#paginationContainer').html(paginationHTML);
-        }
-
-        $('#paginationContainer').on('click', '.page-item', function(e) {
-            e.preventDefault();
-            var page = $(this).text();
-            currentPage = parseInt(page);
-            getFilteredPlaces(currentPage);
-        });
-
-        $('select').on('change', function() {
-            currentPage = 1;
-            getFilteredPlaces(currentPage);
-        });
-
-        getFilteredPlaces(currentPage);
-        });
-
-    </script>-->
-
+    <footer class="footer">
+        <div class="waves">
+            <div class="wave" id="wave1"></div>
+            <div class="wave" id="wave2"></div>
+            <div class="wave" id="wave3"></div>
+            <div class="wave" id="wave4"></div>
+        </div>
+        <ul class="social-icon">
+            <li class="social-icon__item"><a class="social-icon__link" href="#"><i class="fa-brands fa-instagram"></i></a></li>
+            <li class="social-icon__item"><a class="social-icon__link" href="#"><i class="fa-regular fa-envelope"></i></a></li>
+        </ul>
+        <ul class="menu">
+            <li class="menu__item"><a class="menu__link" href="#">Inicio</a></li>
+            <li class="menu__item"><a class="menu__link" href="#">Acerca de</a></li>
+            <li class="menu__item"><a class="menu__link" href="#">FAQ</a></li>
+            <li class="menu__item"><a class="menu__link" href="#">Contáctanos</a></li>
+        </ul>
+    </footer>
 
 
     <script>

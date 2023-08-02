@@ -144,7 +144,7 @@
         <div class="map__img">
             <img src="img/map.png" usemap="#imagemap" class="mapimg">
             <map name="imagemap">
-                <area target="" class="department ana" alt="Santa Anaa" title="Santa Ana" href="department.php" coords="519,63,536,49,568,33,596,42,625,14,640,31,665,47,692,69,700,88,716,106,730,111,734,130,722,166,685,182,686,213,683,229,647,243,616,270,614,297,595,334,600,352,628,355,617,389,621,412,591,429,573,452,577,472,577,500,572,523,559,542,492,507,464,514,439,498,416,477,395,452,367,451,381,412,388,382,370,361,358,334,356,309,374,278,413,242,437,228,478,221,508,205,522,205,536,188,520,161,513,150,508,122,492,112,480,115,480,101,496,92,501,82,483,71,487,59,503,52" shape="poly">
+                <area target="" class="department ana" alt="Santa Ana" title="Santa Ana" href="department.php" coords="519,63,536,49,568,33,596,42,625,14,640,31,665,47,692,69,700,88,716,106,730,111,734,130,722,166,685,182,686,213,683,229,647,243,616,270,614,297,595,334,600,352,628,355,617,389,621,412,591,429,573,452,577,472,577,500,572,523,559,542,492,507,464,514,439,498,416,477,395,452,367,451,381,412,388,382,370,361,358,334,356,309,374,278,413,242,437,228,478,221,508,205,522,205,536,188,520,161,513,150,508,122,492,112,480,115,480,101,496,92,501,82,483,71,487,59,503,52" shape="poly">
                 <area target="" class="department ahu" alt="Ahuachapán" title="Ahuachapán" href="department.php" coords="351,345,362,363,381,375,374,402,367,420,360,451,310,462,307,473,323,487,314,506,303,536,309,566,293,578,282,623,261,630,222,600,208,603,181,628,162,626,56,586,72,575,72,561,56,543,58,517,81,490,86,476,120,465,129,427,146,418,169,407,204,382,215,368,227,349,249,352,266,338,282,331,303,344,332,354" shape="poly">
                 <area target="" class="department sonso" alt="Sonsonate" title="Sonsonate" href="department.php" coords="392,459,367,461,319,467,330,481,330,495,317,523,319,569,317,581,305,588,294,625,261,641,219,613,185,638,275,694,296,747,344,751,386,744,437,756,485,708,492,671,512,661,510,638,538,599,565,574,575,567,489,516,473,530,459,532,411,484,399,468" shape="poly">
                 <area target="" class="department chala" alt="Chalatenango" title="Chalatenango" href="department.php" coords="681,45,718,59,741,68,760,65,769,79,817,95,831,95,863,59,873,77,870,100,882,112,907,118,919,146,914,162,955,195,967,213,976,224,1008,218,1013,229,1045,239,1068,296,1106,294,1115,303,1147,296,1151,310,1144,324,1151,338,1184,352,1184,367,1158,374,1135,374,1112,395,1080,397,1069,407,1050,402,1032,418,999,412,981,418,946,416,933,409,921,360,909,345,889,335,836,322,805,331,787,324,769,335,752,328,730,331,709,326,695,317,653,328,640,342,603,340,612,310,626,307,621,278,649,254,681,248,695,231,695,211,695,188,720,183,730,179,741,144,745,119,739,105,713,91" shape="poly">
@@ -161,7 +161,24 @@
             </map>
         </div>
     </div>
-    
+    <footer class="footer">
+        <div class="waves">
+            <div class="wave" id="wave1"></div>
+            <div class="wave" id="wave2"></div>
+            <div class="wave" id="wave3"></div>
+            <div class="wave" id="wave4"></div>
+        </div>
+        <ul class="social-icon">
+            <li class="social-icon__item"><a class="social-icon__link" href="#"><i class="fa-brands fa-instagram"></i></a></li>
+            <li class="social-icon__item"><a class="social-icon__link" href="#"><i class="fa-regular fa-envelope"></i></a></li>
+        </ul>
+        <ul class="menu">
+            <li class="menu__item"><a class="menu__link" href="#">Inicio</a></li>
+            <li class="menu__item"><a class="menu__link" href="#">Acerca de</a></li>
+            <li class="menu__item"><a class="menu__link" href="#">FAQ</a></li>
+            <li class="menu__item"><a class="menu__link" href="#">Contáctanos</a></li>
+        </ul>
+    </footer>
     
     <script>
         $(document).ready(function(e) {
@@ -203,6 +220,10 @@
 
         document.querySelector('.hideNotis').addEventListener('click', function(e){
             document.querySelector('.option__info__container').classList.toggle('hide');
+        });
+
+        document.querySelector('area').addEventListener('click', function(e){
+            location.href = 'department.php';
         });
     </script>
 
