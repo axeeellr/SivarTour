@@ -412,4 +412,55 @@ if (isset($_GET['place'])) {
 }
 
 
+
+
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['rating'])) {
+        // Obtener el lugar actual desde el parámetro de URL
+        $placeId = $_GET['place'];
+
+        // Verificar si el usuario ya ha calificado el lugar
+        $userId = $_SESSION['user_id'];
+        $sqlCheckRating = "SELECT * FROM user_ratings WHERE user_id = $userId AND place_id = $placeId";
+        $resultCheckRating = mysqli_query($connection, $sqlCheckRating);
+
+        if (mysqli_num_rows($resultCheckRating) > 0) {
+            // El usuario ya ha calificado el lugar, mostrar mensaje de error
+            $notice = "Ya has calificado este lugar anteriormente.";
+        } else {
+            // El usuario no ha calificado el lugar, permitir que envíe su calificación
+            $ratingValue = $_POST['rating']; // Valor de la calificación enviada desde el formulario
+
+            // Incrementar el contador de calificaciones en 1
+            $sqlGetRating = "SELECT rating_count FROM places WHERE id = $placeId";
+            $resultGetRating = mysqli_query($connection, $sqlGetRating);
+            $dataPlace = mysqli_fetch_array($resultGetRating);
+            $ratingCount = $dataPlace['rating_count'] + 1;
+
+            // Calcular el nuevo valor del campo "rating" con el promedio
+            $newRating = ceil($ratingCount / 3); // Redondear hacia arriba
+
+            // Limitar el rating máximo a 5
+            $newRating = min($newRating, 5);
+
+            // Actualizar la calificación en la base de datos
+            $sqlUpdateRating = "UPDATE places SET rating_count = $ratingCount, rating = $newRating WHERE id = $placeId";
+            $resultUpdate = mysqli_query($connection, $sqlUpdateRating);
+
+            // Almacenar la calificación del usuario en la nueva tabla user_ratings
+            $sqlInsertRating = "INSERT INTO user_ratings (user_id, place_id, rating) VALUES ($userId, $placeId, $ratingValue)";
+            mysqli_query($connection, $sqlInsertRating);
+
+            if ($resultUpdate) {
+                // La calificación se actualizó correctamente en la base de datos
+                $notice = "La calificación se actualizó correctamente. Calificación promedio: $newRating/5";
+            } else {
+                // Hubo un error al actualizar la calificación
+                // Mostrar un mensaje de error
+                $notice = "Hubo un error al actualizar la calificación.";
+            }
+        }
+    }
+}
 ?>

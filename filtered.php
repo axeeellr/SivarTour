@@ -295,120 +295,144 @@
 
             // Función para cargar y mostrar los lugares en la página actual
             function loadPlaces() {
-            const start = (currentPage - 1) * itemsPerPage;
-            const end = start + itemsPerPage;
-            const placesToShow = filteredData.slice(start, end);
+                const start = (currentPage - 1) * itemsPerPage;
+                const end = start + itemsPerPage;
+                const placesToShow = filteredData.slice(start, end);
 
-            const placesContainer = $('#placesContainer');
-            placesContainer.empty();
+                const placesContainer = $('#placesContainer');
+                placesContainer.empty();
 
-            placesToShow.forEach((place) => {
-                const card = `
-                <a href="place.php?place=${place.id}" class="card">
-                    <div class="card__img">
-                    <img src="${place.img1}">
-                    </div>
-                    <div class="card__info">
-                    <h2>${place.name}</h2>
-                    <div class="card__info__stars">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                    </div>
-                    </div>
-                </a>
-                `;
-                placesContainer.append(card);
-            });
+                placesToShow.forEach((place) => {
+                    const ratingHTML = generateRatingStars(place.rating);
+                    const card = `
+                    <a href="place.php?place=${place.id}" class="card">
+                        <div class="card__img">
+                            <img src="${place.img1}">
+                        </div>
+                        <div class="card__info">
+                            <h2>${place.name}</h2>
+                            <div class="card__info__stars">
+                                ${ratingHTML}
+                            </div>
+                        </div>
+                    </a>
+                    `;
+                    placesContainer.append(card);
+                });
+            }
+
+            // Función para generar el HTML de las estrellas de calificación según la calificación del lugar
+            function generateRatingStars(rating) {
+                const maxRating = 5; // Máximo número de estrellas
+                const fullStar = '<i class="fa-solid fa-star"></i>';
+                const emptyStar = '<i class="fa-regular fa-star"></i>';
+
+                const fullStars = Math.floor(rating); // Número de estrellas llenas
+                const hasHalfStar = rating % 1 !== 0; // Si hay un número decimal, agregar media estrella
+
+                let ratingHTML = '';
+
+                for (let i = 0; i < fullStars; i++) {
+                    ratingHTML += fullStar;
+                }
+
+                if (hasHalfStar) {
+                    ratingHTML += '<i class="fa-solid fa-star-half"></i>';
+                }
+
+                const emptyStars = maxRating - Math.ceil(rating);
+                for (let i = 0; i < emptyStars; i++) {
+                    ratingHTML += emptyStar;
+                }
+
+                return ratingHTML;
             }
 
             // Función para cargar y mostrar la paginación
             function loadPagination() {
-            const paginationContainer = $('#paginationContainer');
-            paginationContainer.empty();
+                const paginationContainer = $('#paginationContainer');
+                paginationContainer.empty();
 
-            // Número de páginas según la cantidad de lugares filtrados
-            const totalPages = Math.ceil(filteredData.length / itemsPerPage);
+                // Número de páginas según la cantidad de lugares filtrados
+                const totalPages = Math.ceil(filteredData.length / itemsPerPage);
 
-            // Crear la estructura de la paginación
-            let paginationHTML = `
-                <li class="page-item previous-page"><a class="page-link" href="#">&lt;</a></li>
-            `;
+                // Crear la estructura de la paginación
+                let paginationHTML = `
+                    <li class="page-item previous-page"><a class="page-link" href="#">&lt;</a></li>
+                `;
 
-            for (let i = 1; i <= totalPages; i++) {
-                paginationHTML += `<li class="page-item current-page"><a class="page-link" href="#">${i}</a></li>`;
-            }
+                for (let i = 1; i <= totalPages; i++) {
+                    paginationHTML += `<li class="page-item current-page"><a class="page-link" href="#">${i}</a></li>`;
+                }
 
-            paginationHTML += `
-                <li class="page-item next-page"><a class="page-link" href="#">&gt;</a></li>
-            `;
+                paginationHTML += `
+                    <li class="page-item next-page"><a class="page-link" href="#">&gt;</a></li>
+                `;
 
-            paginationContainer.html(paginationHTML);
+                paginationContainer.html(paginationHTML);
 
-            // Agregar clases "active" y "disable" a los botones de paginación según la página actual
-            $('.page-item').removeClass('active');
-            $('.current-page:eq(' + (currentPage - 1) + ')').addClass('active');
+                // Agregar clases "active" y "disable" a los botones de paginación según la página actual
+                $('.page-item').removeClass('active');
+                $('.current-page:eq(' + (currentPage - 1) + ')').addClass('active');
 
-            if (currentPage === 1) {
-                $('.previous-page').addClass('disable');
-            }
+                if (currentPage === 1) {
+                    $('.previous-page').addClass('disable');
+                }
 
-            if (currentPage === totalPages) {
-                $('.next-page').addClass('disable');
-            }
+                if (currentPage === totalPages) {
+                    $('.next-page').addClass('disable');
+                }
             }
 
             // Función para obtener los lugares filtrados mediante AJAX
             function getFilteredPlaces() {
-            const department = $('#department').val();
-            const type = $('#type').val();
-            const publicOption = $('#public').val();
+                const department = $('#department').val();
+                const type = $('#type').val();
+                const publicOption = $('#public').val();
 
-            $.ajax({
-                method: 'POST',
-                url: 'filters.php', // Archivo PHP que realizará la consulta a la base de datos
-                data: { department, type, public: publicOption },
-                dataType: 'json',
-                success: function (response) {
-                filteredData = response;
-                currentPage = 1;
-                loadPagination();
-                loadPlaces();
-                },
-                error: function (error) {
-                console.error('Error al obtener los lugares filtrados:', error);
-                },
-            });
+                $.ajax({
+                    method: 'POST',
+                    url: 'filters.php', // Archivo PHP que realizará la consulta a la base de datos
+                    data: { department, type, public: publicOption },
+                    dataType: 'json',
+                    success: function (response) {
+                    filteredData = response;
+                    currentPage = 1;
+                    loadPagination();
+                    loadPlaces();
+                    },
+                    error: function (error) {
+                    console.error('Error al obtener los lugares filtrados:', error);
+                    },
+                });
             }
 
             // Evento para cambiar de página
             $(document).on('click', '.current-page', function (e) {
-            e.preventDefault();
-            currentPage = parseInt($(this).text());
-            loadPagination();
-            loadPlaces();
+                e.preventDefault();
+                currentPage = parseInt($(this).text());
+                loadPagination();
+                loadPlaces();
             });
 
             // Eventos para cambiar a la página anterior o siguiente
             $(document).on('click', '.previous-page', function (e) {
-            e.preventDefault();
-            if (currentPage > 1) {
-                currentPage--;
-                loadPagination();
-                loadPlaces();
-            }
+                e.preventDefault();
+                if (currentPage > 1) {
+                    currentPage--;
+                    loadPagination();
+                    loadPlaces();
+                }
             });
 
             $(document).on('click', '.next-page', function (e) {
-            e.preventDefault();
-            const totalPages = Math.ceil(filteredData.length / itemsPerPage);
-            if (currentPage < totalPages) {
-                currentPage++;
-                loadPagination();
-                loadPlaces();
-            }
+                e.preventDefault();
+                const totalPages = Math.ceil(filteredData.length / itemsPerPage);
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    loadPagination();
+                    loadPlaces();
+                }
             });
 
             // Eventos para actualizar los lugares filtrados al cambiar alguna opción del filtro

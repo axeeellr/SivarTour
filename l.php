@@ -2,22 +2,14 @@
 include 'php/connection.php';
 include 'php/controlador.php';
 
+
     if (!isset($_SESSION['user_token'])) {
         header('Location: filtered.php');
     }
 
     $sql = "SELECT * FROM places WHERE id = '{$_GET['place']}'";
     $run = mysqli_query($connection, $sql);
-    $dataPlace = mysqli_fetch_array($run);
-
-    $sql2 = "SELECT * FROM user_ratings WHERE user_id = '{$_SESSION['user_id']}' AND place_id = '{$_GET['place']}'";
-    $run2 = mysqli_query($connection, $sql2);
-
-    if (mysqli_num_rows($run2) > 0) {
-        $ratingValue = 1;
-    }else if(mysqli_num_rows($run2) == 0){
-        $ratingValue = 0;
-    }
+    $dataPlace = mysqli_fetch_array($run)
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -47,7 +39,7 @@ include 'php/controlador.php';
                     <h3>Notificaciones</h3>
                     <i class="fa-solid fa-chevron-down hideNotis"></i>
                 </div>
-                <div class="option__info__container">
+                <div class="option_info_container">
                     <div class="option__info">
                         <i class="fa-solid fa-xmark close"></i>
                         <h4>Publicación rechazada</h4>
@@ -80,28 +72,59 @@ include 'php/controlador.php';
         </div>
     </header>
     <div class="place__hero">
-        <div class="place__hero__text">
-            <h1><?php echo $dataPlace['name'] ?></h1>
-            <p><?php echo $dataPlace['description'] ?></p>
-            <form method="post" class="hero__text__button">
-                <?php
-                    $filledStar = $ratingValue == 1 ? 'fa-solid' : 'fa-regular';
-                    echo '<i class="fa-star ' . $filledStar . ' rating" data-rating="1"></i>';
-                ?>
-                <i class="fa-regular fa-rectangle-list collection"></i>
-            </form>
-        </div>
-        <div class="place__hero__img">
+    <div class="place_hero_text">
+    <h1><?php echo $dataPlace['name'] ?></h1>
+    <p><?php echo $dataPlace['description'] ?></p>
+    <!-- Agregar el formulario para enviar la calificación -->
+    <form method="post" class="review__comment">
+    <!-- Renderizar las estrellas -->
+    <?php
+    $ratingValue = $dataPlace['rating']; // Obtener el valor actual de la calificación
+    for ($i = 1; $i <= 5; $i++) {
+        $filledStar = $i <= $ratingValue ? 'fa-solid' : 'fa-regular';
+        echo '<i class="fa-star ' . $filledStar . ' rating" data-rating="' . $i . '"></i>';
+    }
+    ?>
+</form>
+
+</div>
+
+<script>
+    // Obtener la estrella
+    const star = document.querySelector('.rating');
+
+    // Asignar un evento de clic a la estrella
+    star.addEventListener('click', function() {
+        // Obtener el valor de la calificación de la estrella seleccionada
+        const ratingValue = this.getAttribute('data-rating');
+
+        // Enviar el valor de la calificación al backend mediante el formulario
+        const form = document.createElement('form');
+        form.method = 'post';
+        form.action = window.location.href; // La página actual
+
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = 'rating';
+        input.value = ratingValue;
+
+        form.appendChild(input);
+        document.body.appendChild(form);
+
+        form.submit(); // Enviar el formulario para actualizar la calificación
+    });
+</script>
+        <div class="place_hero_img">
             <?php echo '<img class="hero__img" src="'.$dataPlace["img1"].'">'?>
             <?php echo '<img class="hero__img" src="'.$dataPlace["img2"].'">'?>
             <?php echo '<img class="hero__img one" src="'.$dataPlace["img3"].'">'?>
         </div>
     </div>
     <div class="place__body">
-        <div class="place__body__left">
-            <div class="body__left__map" id="map">
+        <div class="place_body_left">
+            <div class="body_left_map" id="map">
             </div>
-            <div class="body__left__review">
+            <div class="body_left_review">
                 <form method="post" class="review__comment">
                     <input type="text" name="comment" id="" placeholder="Escribe tu comentario">
                     <input type="submit" value="" name="newComment">
@@ -149,7 +172,7 @@ include 'php/controlador.php';
                     </ul>
                 </nav>
             </div>
-            <div class="body__left__route">
+            <div class="body_left_route">
                 <a href="routes.html"><div class="route">
                     <i class="fa-solid fa-route"></i>
                     <h2>Agregar a la ruta</h2>
@@ -157,7 +180,7 @@ include 'php/controlador.php';
             </div>
         </div>
         <div class="line"></div>
-        <div class="place__body__right">
+        <div class="place_body_right">
             <div class="body__restaurant">
                 <div class="circle"></div>
                 <img src="https://media-cdn.tripadvisor.com/media/photo-s/16/1f/8c/70/dale-dale-cafe.jpg" alt="">
@@ -212,31 +235,6 @@ include 'php/controlador.php';
         }
     ?>
 
-    <script>
-        // Obtener la estrella
-        const star = document.querySelector('.rating');
-
-        // Asignar un evento de clic a la estrella
-        star.addEventListener('click', function() {
-            // Obtener el valor de la calificación de la estrella seleccionada
-            const ratingValue = this.getAttribute('data-rating');
-
-            // Enviar el valor de la calificación al backend mediante el formulario
-            const form = document.createElement('form');
-            form.method = 'post';
-            form.action = window.location.href; // La página actual
-
-            const input = document.createElement('input');
-            input.type = 'hidden';
-            input.name = 'rating';
-            input.value = ratingValue;
-
-            form.appendChild(input);
-            document.body.appendChild(form);
-
-            form.submit(); // Enviar el formulario para actualizar la calificación
-        });
-    </script>
 
     <script>
         document.querySelector('.collection').addEventListener('click', function(){
@@ -284,7 +282,7 @@ include 'php/controlador.php';
         });
 
         document.querySelector('.hideNotis').addEventListener('click', function(e){
-            document.querySelector('.option__info__container').classList.toggle('hide');
+            document.querySelector('.option_info_container').classList.toggle('hide');
         });
     </script>
 
