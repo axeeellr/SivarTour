@@ -266,6 +266,7 @@ input:checked + label:after {
 .left__info h1{
     font-size: calc(4.5px + 4.5vw);
     color: var(--red);
+    text-transform: uppercase;
 }
 
 .container__left button{

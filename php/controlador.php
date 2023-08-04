@@ -422,7 +422,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // Verificar si el usuario ya ha calificado el lugar
         $userId = $_SESSION['user_id'];
-        $sqlCheckRating = "SELECT * FROM user_ratings WHERE user_id = $userId AND place_id = $placeId";
+        $sqlCheckRating = "SELECT * FROM user_ratings WHERE user_id = '$userId' AND place_id = '$placeId'";
         $resultCheckRating = mysqli_query($connection, $sqlCheckRating);
 
         if (mysqli_num_rows($resultCheckRating) > 0) {
@@ -449,7 +449,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $resultUpdate = mysqli_query($connection, $sqlUpdateRating);
 
             // Almacenar la calificación del usuario en la nueva tabla user_ratings
-            $sqlInsertRating = "INSERT INTO user_ratings (user_id, place_id, rating) VALUES ($userId, $placeId, $ratingValue)";
+            $sqlInsertRating = "INSERT INTO user_ratings (user_id, place_id, rating) VALUES ('$userId', '$placeId', '$ratingValue')";
             mysqli_query($connection, $sqlInsertRating);
 
             if ($resultUpdate) {

@@ -18,6 +18,12 @@ include 'php/controlador.php';
     }else if(mysqli_num_rows($run2) == 0){
         $ratingValue = 0;
     }
+
+    if (isset($_SESSION['isLogin'])) {
+        $sql = "SELECT * FROM users WHERE token = '{$_SESSION['user_token']}'";
+        $run = mysqli_query($connection, $sql);
+        $dataUser = mysqli_fetch_array($run);
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -173,6 +179,11 @@ include 'php/controlador.php';
                 <img src="https://diarioelsalvador.com/wp-content/uploads/2020/11/f4.png" alt="">
                 <h2>Pipiris Nais</h2>
             </div>
+            <?php
+                if ($dataUser['verified'] == 1) {
+                    echo '<i class="fa-solid fa-utensils restaurants"></i>';
+                }
+            ?>
         </div>
     </div>
     <div class="popup__container">
@@ -199,6 +210,31 @@ include 'php/controlador.php';
             <i class="fa-solid fa-plus new"></i>
         </div>
     </div>
+    <div class="newplace__container">
+        <form method="post" id="newPlaceForm" class="newplace" enctype="multipart/form-data">
+            <i class="fa-solid fa-xmark close__newplace"></i>
+            <div class="newplace__img">
+                <input type="file" name="image" id="upload-button" required accept="image/*" />
+                <label for="upload-button">
+                    <i class="fa-solid fa-upload"></i>&nbsp; Fotografía
+                </label>
+                <p>Recuerda que el total de fotos es 1</p>
+                <div id="error"></div>
+                <div id="image-display"></div>
+            </div>
+            <div class="newplace__info">
+                <div class="info__title">
+                    <h1>Publica un restaurante!</h1>
+                    <p>Sube una foto y escribe el nombre de algún restaurante en <?php echo $dataPlace['name'];?>.</p>
+                </div>
+                <div class="input__field">
+                    <input type="text" name="name" required spellcheck="false"> 
+                    <label>Nombre</label>
+                </div>
+                <input type="submit" value="Enviar" name="newPlace">
+            </div>
+        </form>
+    </div>
     <?php
         if($notice != ""){
             ?>
@@ -211,6 +247,18 @@ include 'php/controlador.php';
             <?php
         }
     ?>
+
+    <script>
+        document.querySelector('.restaurants').addEventListener('click', function(){
+            document.querySelector('.newplace__container').classList.remove('close');
+            document.querySelector('.newplace__container').classList.add('see');
+        })
+
+        document.querySelector('.close__newplace').addEventListener('click', function(){
+            document.querySelector('.newplace__container').classList.remove('see');
+            document.querySelector('.newplace__container').classList.add('close');
+        })
+    </script>
 
     <script>
         // Obtener la estrella
@@ -332,4 +380,5 @@ include 'php/controlador.php';
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDi-1W4L7N7-cIt4IClUTcZcJXTlHsdUGU&callback=initMap" async defer></script>
 </body>
 <script src="js/reviews.js"></script>
+<script src="js/newRestaurant.js"></script>
 </html>

@@ -1,3 +1,33 @@
+<?php
+    include 'php/connection.php';
+
+    if (isset($_SESSION['isLogin'])) {
+        ?>
+            <style type="text/css">
+                .header__nav{
+                    display: none;
+                }
+            </style>
+        <?php
+    }else {
+        ?>
+            <style type="text/css">
+                .option:nth-child(2), .option:nth-child(3){
+                    display: none;
+                }
+            </style>
+        <?php
+    }
+
+    $sql = "SELECT * FROM places WHERE department = '{$_GET['place']}'";
+    $run = mysqli_query($connection, $sql);
+
+    if (isset($_SESSION['isLogin'])) {
+        $sql = "SELECT * FROM users WHERE token = '{$_SESSION['user_token']}'";
+        $run = mysqli_query($connection, $sql);
+        $dataUser = mysqli_fetch_array($run);
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +39,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300&display=swap" rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" charset="utf-8"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>Document</title>
 </head>
@@ -63,88 +95,52 @@
     <div class="container">
         <div class="container__left">
             <div class="left__info">
-                <h1>SAN MIGUEL</h1>
+                <h1><?php echo $_GET['place'] ?></h1>
                 <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis, voluptatum! Laborum veniam eum nostrum sit harum fugit distinctio corrupti aut?</p>
             </div>
             <button>EXPLORAR</button>
         </div>
         <div class="container__right">
             <div class="right__cards">
-                <div class="card__container">
-                    <div class="card__title">
-                        <h2>Teatro Francisco Gavidia</h2>
-                        <div class="card__title__stars">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
+                <?php
+                    while ($dataPlace = mysqli_fetch_array($run)){
+                        ?>
+                        <div class="card__container">
+                            <div class="card__title">
+                                <h2><?php echo $dataPlace['name'] ?></h2>
+                                <div class="card__title__stars">
+                                    <?php
+                                    // Validar que el rating esté entre 1 y 5
+                                        $rating = max(1, min(5, $dataPlace['rating']));
+
+                                        // Definir la cantidad de iconos sólidos y regulares
+                                        $iconosSolidos = $dataPlace['rating'];
+                                        $iconosRegulares = 5 - $rating;
+
+                                        // Imprimir los iconos sólidos
+                                        for ($i = 0; $i < $iconosSolidos; $i++) {
+                                            echo '<i class="fa-solid fa-star"></i>';
+                                        }
+
+                                        if ($iconosSolidos == 0) {
+                                            $iconosRegulares = 5;
+                                        }
+
+                                        // Imprimir los iconos regulares
+                                        for ($i = 0; $i < $iconosRegulares; $i++) {
+                                            echo '<i class="fa-regular fa-star"></i>';
+                                        }
+
+                                    ?>  
+                                </div>
+                            </div>
+                            <div class="card__img">
+                                <?php echo '<img src="'.$dataPlace["img1"].'">' ?>
+                            </div>
                         </div>
-                    </div>
-                    <div class="card__img">
-                        <img src="https://www.cultura.gob.sv/wp-content/uploads/2022/02/IMG-20220202-WA0186.jpg" alt="">
-                    </div>
-                </div>
-                <div class="card__container">
-                    <div class="card__title">
-                        <h2>Metrocentro San Miguel</h2>
-                        <div class="card__title__stars">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                        </div>
-                    </div>
-                    <div class="card__img">
-                        <img src="https://lh5.googleusercontent.com/p/AF1QipP3sIkcXkQC6shSQbzXISHaU9rc80c-oRNEZIZa=w500-h500-k-no" alt="">
-                    </div>
-                </div>
-                <div class="card__container">
-                    <div class="card__title">
-                        <h2>Catedral Nuestra Señora de La Paz</h2>
-                        <div class="card__title__stars">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                        </div>
-                    </div>
-                    <div class="card__img">
-                        <img src="https://media-cdn.tripadvisor.com/media/photo-s/10/07/01/2c/fb-img-1501086382958.jpg" alt="">
-                    </div>
-                </div>
-                <div class="card__container">
-                    <div class="card__title">
-                        <h2>Cuevas de Moncagua</h2>
-                        <div class="card__title__stars">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                        </div>
-                    </div>
-                    <div class="card__img">
-                        <img src="https://cdn-pro.elsalvador.com/wp-content/uploads/2022/02/CUEVAS-MONCAGUA.jpg" alt="">
-                    </div>
-                </div>
-                <div class="card__container">
-                    <div class="card__title">
-                        <h2>Laguna de Olomega</h2>
-                        <div class="card__title__stars">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                        </div>
-                    </div>
-                    <div class="card__img">
-                        <img src="https://www.elsalvadormipais.com/wp-content/uploads/2018/11/laguna-de-olomega.jpg" alt="">
-                    </div>
-                </div>
+                        <?php
+                    }
+                ?>
             </div>
             <div class="right__arrows">
                 <i class="fa-solid fa-circle-chevron-left prevArrow"></i>
@@ -160,6 +156,14 @@
 
         document.querySelector('.hideNotis').addEventListener('click', function(e){
             document.querySelector('.option__info__container').classList.toggle('hide');
+        });
+
+        document.querySelector('.header__logo').addEventListener('click', function(){
+            location.href = 'index.php';
+        })
+
+        document.querySelector('.profile').addEventListener('click', function(e){
+            location.href = 'profile.php';
         });
     </script>
     <script>
