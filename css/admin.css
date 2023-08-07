@@ -547,6 +547,74 @@ body{
     font-weight: bold;
 }
 
+.place__body__right{
+    padding: 5% 0;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 50px;
+}
+
+.body__restaurant{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: calc(1px + 1vw);
+    margin: 0 10%;
+    position: relative;
+}
+
+.body__restaurant img{
+    height: calc(14px + 14vw);
+    width: calc(12px + 12vw);
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0px 0px 50px 0px rgba(0,0,0,0.75);
+}
+
+.body__restaurant h2{
+    font-size: calc(1.7px + 1.7vw);
+    margin: 0;
+    color: var(--white);
+    text-shadow: 0px 0px 30px rgba(0,0,0,0.7);
+}
+
+.restaurant__place{
+    margin-left: 30px;
+}
+
+.restaurant__place h1{
+    color: var(--red);
+    font-size: calc(2.5px + 2.5vw);
+}
+
+.circle{
+    position: absolute;
+    height: calc(4px + 4vw);
+    width: calc(4px + 4vw);
+    border-radius: 50%;
+    top: 0;
+    border: dotted var(--white) 5px;
+}
+
+.restaurant__info{
+    position: relative;
+}
+
+.deleteRes{
+    position: absolute;
+    bottom: 50px;
+    right: 0;
+    margin: 10px;
+    background-color: var(--red);
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+}
+
 .showFlex{
     display: flex;
 }

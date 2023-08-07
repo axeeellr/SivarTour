@@ -142,7 +142,54 @@
                 </div>
             </div>
             <div class="restaurants">
-
+                <div class="place__body__right">
+                    <div class="body__restaurant">
+                        <form class="restaurant__info">
+                            <div class="circle"></div>
+                            <img src="https://media-cdn.tripadvisor.com/media/photo-s/16/1f/8c/70/dale-dale-cafe.jpg" alt="">
+                            <h2>Rock & Roe´s</h2>
+                            <button type="submit" class="deleteRes"><i class="fa-solid fa-trash"></i></button>
+                        </form>
+                        <form class="restaurant__info">
+                            <div class="circle"></div>
+                            <img src="https://media-cdn.tripadvisor.com/media/photo-s/16/1f/8c/70/dale-dale-cafe.jpg" alt="">
+                            <h2>Rock & Roe´s</h2>
+                            <button type="submit" class="deleteRes"><i class="fa-solid fa-trash"></i></button>
+                        </form>
+                        <form class="restaurant__info">
+                            <div class="circle"></div>
+                            <img src="https://media-cdn.tripadvisor.com/media/photo-s/16/1f/8c/70/dale-dale-cafe.jpg" alt="">
+                            <h2>Rock & Roe´s</h2>
+                            <button type="submit" class="deleteRes"><i class="fa-solid fa-trash"></i></button>
+                        </form>
+                        <div class="restaurant__place">
+                            <h1>El Tunco</h1>
+                        </div>
+                    </div>
+                    <div class="body__restaurant">
+                        <form class="restaurant__info">
+                            <div class="circle"></div>
+                            <img src="https://media-cdn.tripadvisor.com/media/photo-s/16/1f/8c/70/dale-dale-cafe.jpg" alt="">
+                            <h2>Rock & Roe´s</h2>
+                            <button type="submit" class="deleteRes"><i class="fa-solid fa-trash"></i></button>
+                        </form>
+                        <form class="restaurant__info">
+                            <div class="circle"></div>
+                            <img src="https://media-cdn.tripadvisor.com/media/photo-s/16/1f/8c/70/dale-dale-cafe.jpg" alt="">
+                            <h2>Rock & Roe´s</h2>
+                            <button type="submit" class="deleteRes"><i class="fa-solid fa-trash"></i></button>
+                        </form>
+                        <form class="restaurant__info">
+                            <div class="circle"></div>
+                            <img src="https://media-cdn.tripadvisor.com/media/photo-s/16/1f/8c/70/dale-dale-cafe.jpg" alt="">
+                            <h2>Rock & Roe´s</h2>
+                            <button type="submit" class="deleteRes"><i class="fa-solid fa-trash"></i></button>
+                        </form>
+                        <div class="restaurant__place">
+                            <h1>El Tunco</h1>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="comments">
 
