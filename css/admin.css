@@ -162,7 +162,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    width: calc(4.5px + 4.5vw);
+    width: calc(6px + 6vw);
     gap: calc(0.7px + 0.7vw);
     color: var(--red);
 }
@@ -351,6 +351,19 @@ body{
 }
 
 .newplace{
+    height: 93vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: calc(1.5px + 1.5vw);
+    gap: 2%;
+    border-radius: 0.4em;
+    position: relative;
+    z-index: 99;
+    display: none;
+}
+
+.newplace__restaurant{
     height: 93vh;
     display: flex;
     flex-direction: column;
@@ -556,6 +569,10 @@ body{
     gap: 50px;
 }
 
+.restaurants{
+    display: none;
+}
+
 .body__restaurant{
     display: flex;
     justify-content: center;
@@ -613,6 +630,41 @@ body{
     padding: 5px;
     border-radius: 5px;
     border: none;
+}
+
+.users__notifications{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    height: 100vh;
+    display: none;
+}
+
+.users__notifications h1{
+    color: var(--red);
+}
+
+.users__notifications textarea{
+    background-color: transparent;
+    border: 2px solid var(--white);
+    resize: none;
+    width: 40%;
+    height: 150px;
+    outline: none;
+    color: var(--white);
+    padding: 20px;
+    border-radius: 10px;
+    font-family: 'Prompt', sans-serif;
+}
+
+.users__notifications input{
+    background-color: var(--red);
+    border: 1px solid var(--red);
+    border-radius: 10px;
+    color: var(--white);
+    padding: 8px 15px;
+    font-family: 'Prompt', sans-serif;
 }
 
 .showFlex{

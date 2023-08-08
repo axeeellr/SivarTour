@@ -46,11 +46,8 @@
                 <i class="fa-solid fa-chevron-down"></i>
             </div>
             <div class="menu__item showUsers">
-                <div class="item">
-                    <h1>Enviar notificaciones</h1>
-                </div>
                 <div class="item gestion">
-                    <h1>Gestionar usuarios</h1>
+                    <h1>Desbloquear usuarios</h1>
                 </div>
             </div>
         </div>
@@ -191,6 +188,29 @@
                     </div>
                 </div>
             </div>
+            <form method="post" class="newplace__restaurant" id="newPlaceForm" enctype="multipart/form-data">
+                <i class="fa-solid fa-xmark close__newplace"></i>
+                <div class="newplace__img">
+                    <input type="file" name="image" id="upload-button" required accept="image/*" />
+                    <label for="upload-button">
+                        <i class="fa-solid fa-upload"></i>&nbsp; Fotografía
+                    </label>
+                    <p>Recuerda que el total de fotos es 1</p>
+                    <div id="error"></div>
+                    <div id="image-display"></div>
+                </div>
+                <div class="newplace__info">
+                    <div class="input__field">
+                        <input type="text" name="name" required spellcheck="false"> 
+                        <label>Nombre del restaurante</label>
+                    </div>
+                    <div class="input__field">
+                        <input type="text" name="nameDepartment" required spellcheck="false"> 
+                        <label>Nombre del departmento</label>
+                    </div>
+                    <input type="submit" value="Enviar" name="newPlace">
+                </div>
+            </form>
             <div class="comments">
 
             </div>
@@ -207,8 +227,8 @@
                     <h2>Idioma</h2>
                     <h2>Verificado</h2>
                     <form>
-                        <i class="fa-solid fa-ban"></i>
                         <i class="fa-solid fa-user-slash"></i>
+                        <i class="fa-solid fa-inbox"></i>
                     </form>
                 </div>
                 <?php
@@ -228,9 +248,9 @@
                                 <h2><?php echo $usersData['address']; ?></h2>
                                 <h2><?php echo $usersData['language']; ?></h2>
                                 <h2><?php echo $usersData['verified'];?></h2>
-                                <form>
-                                    <i class="fa-solid fa-ban"></i>
+                                <form>     
                                     <i class="fa-solid fa-user-slash"></i>
+                                    <i class="fa-solid fa-inbox" onclick="sendMessage()"></i>
                                 </form>
                             </div>
                         <?php
@@ -259,6 +279,11 @@
                 }
                 ?>
             </div>
+            <form method="post" class="users__notifications">
+                <h1>Axel Ramírez</h1>
+                <textarea name="" id="" cols="30" rows="10" placeholder="Tu mensaje"></textarea>
+                <input type="submit" value="Aceptar">
+            </form>
         </div>
     </div>
 
@@ -269,6 +294,9 @@
             document.querySelector('.users').classList.remove('showFlex');
             document.querySelector('.users__gestion').classList.remove('showFlex');
             document.querySelector('.places__add').classList.remove('showFlex');
+            document.querySelector('.restaurants').classList.remove('show');
+            document.querySelector('.users__notifications').classList.remove('showFlex');
+            document.querySelector('.newplace__restaurant').classList.remove('showFlex');
         });
 
         document.querySelector('.showPlaces').addEventListener('click', function(){
@@ -276,10 +304,20 @@
             document.querySelector('.users').classList.remove('showFlex');
             document.querySelector('.users__gestion').classList.remove('showFlex');
             document.querySelector('.places').classList.remove('show');
+            document.querySelector('.restaurants').classList.remove('show');
+            document.querySelector('.newplace__restaurant').classList.remove('showFlex');
+            document.querySelector('.users__notifications').classList.remove('showFlex');
         });
 
         document.querySelector('.restaurantsOption').addEventListener('click', function(){
             document.querySelector('.showRestaurants').classList.toggle('show');
+            document.querySelector('.restaurants').classList.add('show');
+            document.querySelector('.users').classList.remove('showFlex');
+            document.querySelector('.users__gestion').classList.remove('showFlex');
+            document.querySelector('.places').classList.remove('show');
+            document.querySelector('.places__add').classList.remove('showFlex');
+            document.querySelector('.newplace__restaurant').classList.remove('showFlex');
+            document.querySelector('.users__notifications').classList.remove('showFlex');
         });
 
         document.querySelector('.usersOption').addEventListener('click', function(){
@@ -288,6 +326,9 @@
             document.querySelector('.users__gestion').classList.remove('showFlex');
             document.querySelector('.places').classList.remove('show');
             document.querySelector('.places__add').classList.remove('showFlex');
+            document.querySelector('.restaurants').classList.remove('show');
+            document.querySelector('.newplace__restaurant').classList.remove('showFlex');
+            document.querySelector('.users__notifications').classList.remove('showFlex');
         });
 
         document.querySelector('.gestion').addEventListener('click', function(){
@@ -295,7 +336,28 @@
             document.querySelector('.users__gestion').classList.toggle('showFlex');
             document.querySelector('.places').classList.remove('show');
             document.querySelector('.places__add').classList.remove('showFlex');
+            document.querySelector('.restaurants').classList.remove('show');
+            document.querySelector('.newplace__restaurant').classList.remove('showFlex');
+            document.querySelector('.users__notifications').classList.remove('showFlex');
         });
+
+        document.querySelector('.showRestaurants').addEventListener('click', function(){
+            document.querySelector('.users').classList.remove('showFlex');
+            document.querySelector('.newplace__restaurant').classList.toggle('showFlex');
+            document.querySelector('.places').classList.remove('show');
+            document.querySelector('.places__add').classList.remove('showFlex');
+            document.querySelector('.restaurants').classList.remove('show');
+            document.querySelector('.users__notifications').classList.remove('showFlex');
+        });
+
+        function sendMessage() {
+            document.querySelector('.users__notifications').classList.add('showFlex');
+            document.querySelector('.users__gestion').classList.remove('showFlex');
+            document.querySelector('.users').classList.remove('showFlex');
+            document.querySelector('.places').classList.remove('show');
+            document.querySelector('.places__add').classList.remove('showFlex');
+            document.querySelector('.newplace__restaurant').classList.remove('showFlex');
+        }
     </script>
 
     <script>
