@@ -212,7 +212,48 @@
                 </div>
             </form>
             <div class="comments">
+                <h1 class="title__comments">El Tunco</h1>
+                <div class="slider">
+                    <?php
+                        $query = "SELECT * FROM comments INNER JOIN users ON comments.id_user = users.id WHERE comments.id_place = '{$_GET['place']}'";
+                        $resultado = mysqli_query($connection, $query);
 
+                        $x = 0;
+
+                        while ($data = mysqli_fetch_assoc($resultado)) {
+                        $claseActiva = ($x === 0) ? 'active' : '';
+                        ?>
+                        <div class="slider__container <?php echo $claseActiva?>">
+                            <div class="slider__user">
+                                <img src="https://cdn-icons-png.flaticon.com/512/1946/1946429.png" alt="">
+                                <h2><?php echo $data['name']; ?></h2>
+                                <div class="user__info">
+                                    <h3>Maestro viajero</h3>
+                                    <div class="info__points">
+                                        <i class="fa-solid fa-heart"></i>
+                                        <p>4.96</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slider__text">
+                                <p><?php echo $data['comment']; ?></p>
+                            </div>
+                        </div>
+                    <?php
+                    $x++;
+                    }
+                    ?>
+                </div>
+                <nav class="slider-nav">
+                    <ul>
+                        <li class="arrow">
+                            <button class="previous"><span><i class="fa-sharp fa-solid fa-arrow-left"></i></span></button>
+                        </li>
+                        <li class="arrow">
+                            <button class="next"><span><i class="fa-sharp fa-solid fa-arrow-right"></i></span></button>
+                        </li>
+                    </ul>
+                </nav>
             </div>
             <div class="users">
                 <div class="users__head">
@@ -297,6 +338,7 @@
             document.querySelector('.restaurants').classList.remove('show');
             document.querySelector('.users__notifications').classList.remove('showFlex');
             document.querySelector('.newplace__restaurant').classList.remove('showFlex');
+            document.querySelector('.comments').classList.remove('showFlex');
         });
 
         document.querySelector('.showPlaces').addEventListener('click', function(){
@@ -307,6 +349,7 @@
             document.querySelector('.restaurants').classList.remove('show');
             document.querySelector('.newplace__restaurant').classList.remove('showFlex');
             document.querySelector('.users__notifications').classList.remove('showFlex');
+            document.querySelector('.comments').classList.remove('showFlex');
         });
 
         document.querySelector('.restaurantsOption').addEventListener('click', function(){
@@ -318,6 +361,7 @@
             document.querySelector('.places__add').classList.remove('showFlex');
             document.querySelector('.newplace__restaurant').classList.remove('showFlex');
             document.querySelector('.users__notifications').classList.remove('showFlex');
+            document.querySelector('.comments').classList.remove('showFlex');
         });
 
         document.querySelector('.usersOption').addEventListener('click', function(){
@@ -329,6 +373,7 @@
             document.querySelector('.restaurants').classList.remove('show');
             document.querySelector('.newplace__restaurant').classList.remove('showFlex');
             document.querySelector('.users__notifications').classList.remove('showFlex');
+            document.querySelector('.comments').classList.remove('showFlex');
         });
 
         document.querySelector('.gestion').addEventListener('click', function(){
@@ -339,6 +384,7 @@
             document.querySelector('.restaurants').classList.remove('show');
             document.querySelector('.newplace__restaurant').classList.remove('showFlex');
             document.querySelector('.users__notifications').classList.remove('showFlex');
+            document.querySelector('.comments').classList.remove('showFlex');
         });
 
         document.querySelector('.showRestaurants').addEventListener('click', function(){
@@ -348,6 +394,7 @@
             document.querySelector('.places__add').classList.remove('showFlex');
             document.querySelector('.restaurants').classList.remove('show');
             document.querySelector('.users__notifications').classList.remove('showFlex');
+            document.querySelector('.comments').classList.remove('showFlex');
         });
 
         function sendMessage() {
@@ -357,9 +404,23 @@
             document.querySelector('.places').classList.remove('show');
             document.querySelector('.places__add').classList.remove('showFlex');
             document.querySelector('.newplace__restaurant').classList.remove('showFlex');
+            document.querySelector('.restaurants').classList.remove('show');
+            document.querySelector('.comments').classList.remove('showFlex');
+        }
+
+        function viewComments() {
+            document.querySelector('.comments').classList.add('showFlex');
+            document.querySelector('.users__gestion').classList.remove('showFlex');
+            document.querySelector('.users').classList.remove('showFlex');
+            document.querySelector('.places').classList.remove('show');
+            document.querySelector('.places__add').classList.remove('showFlex');
+            document.querySelector('.newplace__restaurant').classList.remove('showFlex');
+            document.querySelector('.users__notifications').classList.remove('showFlex');
+            document.querySelector('.restaurants').classList.remove('show');
         }
     </script>
 
+    <!-- seleccionar lugar con api de google -->
     <script>
         $(document).ready(function() {
             // Obtener el campo de entrada
@@ -396,6 +457,7 @@
         });
     </script>
 
+    <!--  -->
     <script>
         function archivo(evt) {
             var files = evt.target.files; // FileList object
@@ -423,6 +485,7 @@
         document.getElementById('files').addEventListener('change', archivo, false);
     </script>
 
+    <!-- imprimir lugares -->
     <script>
         $(document).ready(function () {
             const itemsPerPage = 6; // Número de lugares por página
@@ -442,7 +505,7 @@
                     const ratingHTML = generateRatingStars(place.rating);
                     const card = `
                     <form method="post" class="card">
-                        <div class="card__img">
+                        <div class="card__img" onclick="viewComments()">
                             <img src="${place.img1}">
                         </div>
                         <div class="card__info">
@@ -569,6 +632,10 @@
         });
     </script>
 
+    <!-- previsualizar imagen al añadir lugares  -->
     <script src="../js/newPlace.js"></script>
+
+    <!-- mover los comentarios  -->
+    <script src="../js/reviews.js"></script>
 </body>
 </html>
