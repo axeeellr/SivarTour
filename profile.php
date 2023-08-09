@@ -189,6 +189,10 @@ if ($data['verified'] == 1) {
             location.href = 'index.php';
         })
 
+        document.querySelector('.saved__collection').addEventListener('click', function(){
+            location.href = 'collections.php';
+        })
+
         document.querySelector('.logout').addEventListener('click', function(e){
             e.preventDefault();
             location.href = 'php/logout.php';

@@ -414,7 +414,7 @@ if (isset($_GET['place'])) {
 
 
 
-
+/****** R A T I N G ******/
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['rating'])) {
         // Obtener el lugar actual desde el parámetro de URL
@@ -427,7 +427,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if (mysqli_num_rows($resultCheckRating) > 0) {
             // El usuario ya ha calificado el lugar, mostrar mensaje de error
-            $notice = "Ya has calificado este lugar anteriormente.";
+            $notice = "Ya has calificado este lugar";
         } else {
             // El usuario no ha calificado el lugar, permitir que envíe su calificación
             $ratingValue = $_POST['rating']; // Valor de la calificación enviada desde el formulario
@@ -454,11 +454,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             if ($resultUpdate) {
                 // La calificación se actualizó correctamente en la base de datos
-                $notice = "La calificación se actualizó correctamente. Calificación promedio: $newRating/5";
+                //$notice = "La calificación se actualizó correctamente. Calificación promedio: $newRating/5";
+                $notice = "Gracias por calificar este lugar";
             } else {
                 // Hubo un error al actualizar la calificación
                 // Mostrar un mensaje de error
-                $notice = "Hubo un error al actualizar la calificación.";
+                $notice = "Hubo un error al actualizar la calificación";
             }
         }
     }

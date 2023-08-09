@@ -1,5 +1,6 @@
 <?php
     include 'php/connection.php';
+    include 'php/controlador.php';
 
     if (isset($_SESSION['isLogin'])) {
         ?>
@@ -19,13 +20,13 @@
         <?php
     }
 
-    $sql = "SELECT * FROM places WHERE department = '{$_GET['place']}'";
+    $sql = "SELECT * FROM places WHERE department = '{$_GET['places']}'";
     $run = mysqli_query($connection, $sql);
 
     if (isset($_SESSION['isLogin'])) {
         $sql = "SELECT * FROM users WHERE token = '{$_SESSION['user_token']}'";
-        $run = mysqli_query($connection, $sql);
-        $dataUser = mysqli_fetch_array($run);
+        $runUser = mysqli_query($connection, $sql);
+        $dataUser = mysqli_fetch_array($runUser);
     }
 ?>
 <!DOCTYPE html>
@@ -95,7 +96,7 @@
     <div class="container">
         <div class="container__left">
             <div class="left__info">
-                <h1><?php echo $_GET['place'] ?></h1>
+                <h1><?php echo $_GET['places'] ?></h1>
                 <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis, voluptatum! Laborum veniam eum nostrum sit harum fugit distinctio corrupti aut?</p>
             </div>
             <button>EXPLORAR</button>

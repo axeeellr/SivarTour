@@ -1,6 +1,6 @@
 <?php 
-include 'php/connection.php';
-include 'php/controlador.php';
+    include 'php/connection.php';
+    include 'php/controlador.php';
 
     if (!isset($_SESSION['user_token'])) {
         header('Location: filtered.php');

@@ -50,11 +50,11 @@ if (isset($_SESSION['user_token'])) {
                     <h2 class="title">Iniciar Sesión</h2>
                     <div class="input-field">
                         <i class="fas fa-envelope"></i>
-                        <input type="email" name="email" placeholder="Correo" />
+                        <input type="email" name="email" placeholder="Correo" required/>
                     </div>
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
-                        <input type="password" name="password" placeholder="Contraseña" />
+                        <input type="password" name="password" placeholder="Contraseña" required/>
                     </div>
                     <input type="submit" value="Entrar" name="login" class="btn solid" />
                     <p class="social-text">También puedes usar</p>
@@ -73,15 +73,15 @@ if (isset($_SESSION['user_token'])) {
                     <h2 class="title">Registrarse</h2>
                     <div class="input-field">
                         <i class="fas fa-user"></i>
-                        <input type="text" name="name" placeholder="Nombre" />
+                        <input type="text" name="name" placeholder="Nombre" required />
                     </div>
                     <div class="input-field">
                         <i class="fas fa-envelope"></i>
-                        <input type="email" name="email" placeholder="Correo" />
+                        <input type="email" name="email" placeholder="Correo" required />
                     </div>
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
-                        <input type="password" name="password" placeholder="Contraseña" />
+                        <input type="password" name="password" placeholder="Contraseña" required />
                     </div>
                     <input type="submit" class="btn" name="register" value="Entrar" />
                     <p class="social-text">También puedes usar</p>
