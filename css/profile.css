@@ -9,6 +9,7 @@
 *{
     margin: 0;
     padding: 0;
+    outline: none;
 }
 
 a{
@@ -83,6 +84,15 @@ body{
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+.newCollection{
+    color: var(--background);
+    background-color: white;
+    font-size: calc(2.5px + 2.5vw);
+    border-radius: 7px;
+    border: 3px solid var(--white);
+    padding: calc(0.5px + 0.5vw);
 }
 
 .left__lately, .left__saved{
@@ -221,6 +231,16 @@ body{
     border-radius: 7px;
     font-size: calc(1px + 1vw);
     width: calc(12px + 12vw);
+}
+
+.input-field:nth-child(n+5):nth-child(-n+7) input{
+    border: 2px solid var(--background);
+    background-color: transparent;
+    font-family: 'Prompt', sans-serif;
+    padding: calc(0.5px + 0.5vw) calc(0.5px + 0.5vw);
+    border-radius: 7px;
+    font-size: calc(1px + 1vw);
+    width: calc(7px + 7vw);
 }
 
 .input-field label {
@@ -398,6 +418,146 @@ input:focus~label {
     cursor: pointer;
 }
 
+.popup__container__collection{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgb(0, 0, 0, 0.5);
+    z-index: 99;
+    justify-content: center;
+    align-items: center;
+}
+
+.visible{
+    display: flex;
+}
+
+.popup__collection{
+    position: absolute;
+    min-height: 30%;
+    width: 35%;
+    background: radial-gradient(at center center, rgb(152, 186, 223), rgb(206, 206, 141), rgb(152, 186, 223));
+    background-size: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: calc(1.1px + 1.1vw);
+    border-radius: 7px;
+    box-shadow: 0px 0px 50px 0px rgba(0,0,0,0.75);
+    padding: calc(1.5px + 1.5vw) 0;
+}
+
+.popup__collection h2{
+    color: var(--red);
+    font-size: calc(1.6px + 1.6vw);
+    width: 80%;
+    text-align: center;
+    margin-bottom: calc(1px + 1vw);
+}
+
+.collections__container{
+    display: flex;
+    flex-direction: column;
+    gap: calc(1.1px + 1.1vw);
+}
+
+.collections{
+    padding: calc(0.7px + 0.7vw) calc(2.7px + 2.7vw);
+    min-width: calc(15px + 15vw);
+    border: none;
+    background-color: var(--background);
+    color: var(--white);
+    border-radius: 7px;
+    font-size: calc(1.2px + 1.2vw);
+    box-shadow: 0px 0px 25px 0px rgba(0,0,0,0.40);
+}
+
+.invisiblew{
+    display: none;
+}
+
+.new{
+    border: 2px solid var(--background);
+    border-radius: 50%;
+    padding: calc(0.5px + 0.5vw) calc(0.6px + 0.6vw);
+}
+
+.closePop{
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: calc(1px + 1vw);
+    font-size: calc(1.5px + 1.5vw);
+}
+
+.popup__field__collection {
+    position: relative;
+    align-items: center;
+    gap: calc(1px + 1vw);
+    displasy: none;
+}
+
+.visiblew{
+    display: flex;
+}
+
+.popup__field__collection input[type="text"] {
+    border: 2px solid var(--background);
+    background-color: transparent;
+    font-family: 'Prompt', sans-serif;
+    padding: calc(0.5px + 0.5vw) calc(0.5px + 0.5vw);
+    border-radius: 7px;
+    font-size: calc(1px + 1vw);
+}
+
+.label{
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    color: var(--background);
+    font-size: calc(1px + 1vw);
+    pointer-events: none;
+    transition: 0.3s;
+}
+
+.popup__field__collection i{
+    position: absolute;
+    right: 10px;
+}
+
+.popup__field__collection input[type="text"]:focus {
+    border: 2px solid var(--background);
+}
+
+.popup__field__collection input[type="text"]:focus~i{
+    color: var(--background);
+}
+
+.popup__field__collection input[type="text"]:focus~.label {
+    top: -10px;
+    left: 0;
+    font-size: calc(1px + 1vw);
+    padding: 0 2px;
+    color: var(--background);
+}
+
+.popup__field__collection input[type="submit"]{
+    padding: calc(0.5px + 0.5vw) calc(0.9px + 0.9vw);
+    border-radius: 15px;
+    border: none;
+    background-color: var(--background);
+    color: var(--white);
+    font-size: calc(1px + 1vw);
+    font-family: 'Prompt', sans-serif;
+    margin: 0;
+    cursor: pointer;
+    transition: 0.2s;
+}
 
 
 

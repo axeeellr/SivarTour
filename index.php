@@ -78,9 +78,9 @@
                 <div class="option__title">
                     <i class="fa-regular fa-bell"></i>
                     <h3>Notificaciones</h3>
-                    <i class="fa-solid fa-chevron-down hideNotis"></i>
+                    <i class="hideNotis fa-solid fa-chevron-down"></i>
                 </div>
-                <div class="option__info__container">
+                <div class="option__info__container hide">
                     <div class="option__info">
                         <i class="fa-solid fa-xmark close"></i>
                         <h4>Publicación rechazada</h4>
@@ -220,6 +220,8 @@
 
         document.querySelector('.hideNotis').addEventListener('click', function(e){
             document.querySelector('.option__info__container').classList.toggle('hide');
+            document.querySelector('.hideNotis').classList.toggle('fa-chevron-down');
+            document.querySelector('.hideNotis').classList.toggle('fa-chevron-right');
         });
     </script>
 

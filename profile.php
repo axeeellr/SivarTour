@@ -127,6 +127,7 @@ if ($data['verified'] == 1) {
                         <?php
                     }
                     ?>
+                    <i class="fa-solid fa-plus newCollection"></i>
                 </div>
             </div>
         </div>
@@ -141,11 +142,6 @@ if ($data['verified'] == 1) {
                 </form>
             </div>
             <form method="post" class="right__edit">
-                <div class="input-field">
-                    <input type="text" name="username" spellcheck="false" onfocus="this.placeholder = 'Nombre de usuario'" onblur="this.placeholder = ''"> 
-                    <label><?php echo empty($data['username']) ? "Nombre de usuario" : $data['username'];?></label>
-                    <i class="fa-solid fa-pen"></i>
-                </div>
                 <div class="input-field">
                     <input type="number" min="10" max="99" name="age" spellcheck="false" onfocus="this.placeholder = 'Edad'" onblur="this.placeholder = ''"> 
                     <label><?php echo empty($data['age']) ? "Edad" : $data['age'];?></label>
@@ -162,13 +158,23 @@ if ($data['verified'] == 1) {
                     <i class="fa-solid fa-pen"></i>
                 </div>
                 <div class="input-field">
-                    <input type="text" name="address" spellcheck="false" onfocus="this.placeholder = 'Dirección'" onblur="this.placeholder = ''"> 
-                    <label><?php echo empty($data['address']) ? "Dirección" : $data['address'];?></label>
+                    <input type="text" name="language" spellcheck="false"onfocus="this.placeholder = 'Idioma'" onblur="this.placeholder = ''"> 
+                    <label><?php echo empty($data['language']) ? "Idioma" : $data['language'];?></label>
                     <i class="fa-solid fa-pen"></i>
                 </div>
                 <div class="input-field">
-                    <input type="text" name="language" spellcheck="false"onfocus="this.placeholder = 'Idioma'" onblur="this.placeholder = ''"> 
-                    <label><?php echo empty($data['language']) ? "Idioma" : $data['language'];?></label>
+                    <input type="text" name="instagram" spellcheck="false"onfocus="this.placeholder = 'Instagram'" onblur="this.placeholder = ''"> 
+                    <label><?php echo empty($data['instagram']) ? "Instagram" : $data['instagram'];?></label>
+                    <i class="fa-solid fa-pen"></i>
+                </div>
+                <div class="input-field">
+                    <input type="text" name="facebook" spellcheck="false"onfocus="this.placeholder = 'Facebook'" onblur="this.placeholder = ''"> 
+                    <label><?php echo empty($data['facebook']) ? "Facebook" : $data['facebook'];?></label>
+                    <i class="fa-solid fa-pen"></i>
+                </div>
+                <div class="input-field">
+                    <input type="text" name="Twitter" spellcheck="false"onfocus="this.placeholder = 'Twitter'" onblur="this.placeholder = ''"> 
+                    <label><?php echo empty($data['twitter']) ? "Twitter" : $data['twitter'];?></label>
                     <i class="fa-solid fa-pen"></i>
                 </div>
                 <input type="submit" name="userData" value="Guardar">
@@ -183,9 +189,34 @@ if ($data['verified'] == 1) {
             <input type="submit" name="veriCode" value="Aceptar">
         </form>
     </div>
-
+    <div class="popup__container__collection">
+        <div class="popup__collection">
+            <i class="fa-solid fa-xmark closePop"></i>
+            <form method="post" class="popup__field__collection">
+                <input type="text" name="name" spellcheck="false"> 
+                <label class="label">Nombre de la colección</label>
+                <input type="submit" name="newCollection" value="Añadir">
+            </form>
+        </div>
+    </div>
 
     <script>
+
+        document.querySelector('.newCollection').addEventListener('click', function(){
+            document.querySelector('.popup__container__collection').classList.add('visible');
+            document.querySelector('.popup__field__collections').classList.add('visiblew');
+            document.querySelectorAll('.collections').forEach(function(elemento) {
+                elemento.classList.add('invisiblew');
+            });
+        })
+
+        document.querySelector('.closePop').addEventListener('click', function(){
+            document.querySelector('.popup__container__collection').classList.remove('visible');
+        });
+
+        /*document.querySelector('.new').addEventListener('click', function(){
+            document.querySelector('.new').classList.add('invisiblew');
+        });*/
 
         document.querySelector('.header__logo').addEventListener('click', function(){
             location.href = 'index.php';

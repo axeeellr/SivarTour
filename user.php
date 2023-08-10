@@ -64,7 +64,7 @@ $row = mysqli_fetch_assoc($run);
                     <h3>Notificaciones</h3>
                     <i class="fa-solid fa-chevron-down hideNotis"></i>
                 </div>
-                <div class="option__info__container">
+                <div class="option__info__container hide">
                     <div class="option__info">
                         <i class="fa-solid fa-xmark close"></i>
                         <h4>Publicación rechazada</h4>
