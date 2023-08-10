@@ -95,7 +95,52 @@ $row = mysqli_fetch_assoc($run);
             <p>Colección pública</p>
         </div>
         <div class="collections__body">
-            <div class="collection">
+            <?php 
+                $getPlaces = "SELECT * FROM collections_places INNER JOIN places ON collections_places.id_place = places.id WHERE id_collection = '{$_SESSION['collectionId']}' ";
+                $runPlaces = mysqli_query($connection, $getPlaces);
+
+                while($dataPlaces = mysqli_fetch_assoc($runPlaces)){
+                    ?>
+                        <div class="collection">
+                            <div class="collection__place">
+                                <?php echo '<img src="'.$dataPlaces["img1"].'">' ?>
+                                <div class="collection__info">
+                                    <h2><?php echo $dataPlaces['name']; ?></h2>
+                                    <div class="info__stars">
+                                        <?php
+                                        // Validar que el rating esté entre 1 y 5
+                                            $rating = max(1, min(5, $dataPlaces['rating']));
+
+                                            // Definir la cantidad de iconos sólidos y regulares
+                                            $iconosSolidos = $dataPlaces['rating'];
+                                            $iconosRegulares = 5 - $rating;
+
+                                            // Imprimir los iconos sólidos
+                                            for ($i = 0; $i < $iconosSolidos; $i++) {
+                                                echo '<i class="fa-solid fa-star"></i>';
+                                            }
+
+                                            if ($iconosSolidos == 0) {
+                                                $iconosRegulares = 5;
+                                            }
+
+                                            // Imprimir los iconos regulares
+                                            for ($i = 0; $i < $iconosRegulares; $i++) {
+                                                echo '<i class="fa-regular fa-star"></i>';
+                                            }
+
+                                        ?> 
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="collection__add">
+                                <i class="fa-solid fa-square-plus"></i>
+                            </div>
+                        </div>
+                    <?php
+                }
+            ?>
+            <!--<div class="collection">
                 <div class="collection__place">
                     <img src="https://surfcityelsalvador.sv/wp-content/uploads/2021/01/ZUNZAL-1-scaled.jpg" alt="">
                     <div class="collection__info">
@@ -148,7 +193,7 @@ $row = mysqli_fetch_assoc($run);
                 <div class="collection__add">
                     <i class="fa-solid fa-square-plus"></i>
                 </div>
-            </div>
+            </div>-->
         </div>
     </div>
     <footer class="footer">
