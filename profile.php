@@ -67,7 +67,7 @@ if ($data['verified'] == 1) {
     <script src="https://kit.fontawesome.com/61fb4717c0.js" crossorigin="anonymous"></script>
     <title>Document</title>
 </head>
-<style><?php include 'css/profile.css' ?></style>
+<style><?php include 'css/profile.css'; ?></style>
 <body>
     
     <header class="header">
@@ -114,18 +114,19 @@ if ($data['verified'] == 1) {
                     <h1>Mis colecciones</h1>
                 </div>
                 <div class="saved__content">
-                <?php
-                $sql = "SELECT * FROM collections WHERE id_user = {$data['id']}";
-                $run = mysqli_query($connection, $sql);
-
-                while ($dataCollec = mysqli_fetch_assoc($run)){
-                    ?>
-                        <div class="saved__collection">
-                            <h2><?php echo $dataCollec['name'] ?></h2>
-                        </div>
                     <?php
-                }
-                ?>
+                    $sql = "SELECT * FROM collections WHERE id_user = {$data['id']}";
+                    $run = mysqli_query($connection, $sql);
+
+                    while ($dataCollec = mysqli_fetch_assoc($run)){
+                        ?>
+                            <form method="post" class="saved__collection">
+                                <input type="hidden" name="collectionId" value="<?php echo $dataCollec['id'] ?>">
+                                <button type="submit" name="collectionPage"><?php echo $dataCollec['name'] ?></button>
+                            </form>
+                        <?php
+                    }
+                    ?>
                 </div>
             </div>
         </div>
@@ -136,7 +137,7 @@ if ($data['verified'] == 1) {
                 <h3><?php echo $data['email'] ?></h3>
                 <form method="post" class="info__buttons">
                     <button type="submit" name="activeEmail" id="validar">Validar correo</button>
-                    <button class="logout">Cerrar Sesión</button>
+                    <button type="submit" class="logout">Cerrar Sesión</button>
                 </form>
             </div>
             <form method="post" class="right__edit">
@@ -176,7 +177,7 @@ if ($data['verified'] == 1) {
     </div>
     <div class="right__code">
         <h1>Ingresa el código de verificación</h1>
-        <p>Se ha enviado un código de verificación a <?php echo $data['email'] ?></p>
+        <p>Se ha enviado un código de verificación a <?php echo $data['email']; ?></p>
         <form method="post" class="form__code">
             <input type="text" name="code" id="">
             <input type="submit" name="veriCode" value="Aceptar">
@@ -185,27 +186,14 @@ if ($data['verified'] == 1) {
 
 
     <script>
+
         document.querySelector('.header__logo').addEventListener('click', function(){
             location.href = 'index.php';
-        })
-
-        document.querySelector('.saved__collection').addEventListener('click', function(){
-            location.href = 'collections.php';
-        })
+        });
 
         document.querySelector('.logout').addEventListener('click', function(e){
             e.preventDefault();
             location.href = 'php/logout.php';
-        })
-
-        document.querySelector('#validar').addEventListener('click', function(){
-            document.querySelector('.right__code').classList.add('see');
-        })
-
-        document.querySelector('.close').addEventListener('click', function(e){
-            e.preventDefault();
-            document.querySelector('.popup__container').classList.add('invisiblee');
-            window.history.replaceState(null,null,window.location.href);
         });
 
     </script>

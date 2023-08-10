@@ -1,12 +1,39 @@
 <?php
-    include 'php/connection.php';
-    include 'php/controlador.php';
 
-    if (isset($_SESSION['isLogin'])) {
-        $sql = "SELECT * FROM users WHERE token = '{$_SESSION['user_token']}'";
-        $run = mysqli_query($connection, $sql);
-        $dataUser = mysqli_fetch_array($run);
-    }
+include 'php/connection.php';
+include 'php/controlador.php';
+
+if (isset($_SESSION['host'])) {
+    unset($_SESSION['host']);
+    header('Location: ' . $_SESSION['url']);
+}
+
+if (!isset($_SESSION['user_token'])) {
+    header('Location: login.php');
+}
+
+if (isset($_SESSION['isLogin'])) {
+    ?>
+        <style type="text/css">
+            .header__nav{
+                display: none;
+            }
+        </style>
+    <?php
+}else {
+    ?>
+        <style type="text/css">
+            .option:nth-child(2), .option:nth-child(3){
+                display: none;
+            }
+        </style>
+    <?php
+}
+
+$sql = "SELECT * FROM collections WHERE id = '{$_SESSION['collectionId']}'";
+$run = mysqli_query($connection, $sql);
+$row = mysqli_fetch_assoc($run);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -64,7 +91,7 @@
     </header>
     <div class="collections__container">
         <div class="collections__header">
-            <h1>Playitas</h1>
+            <h1><?php echo $row['name']; ?></h1>
             <p>Colección pública</p>
         </div>
         <div class="collections__body">
@@ -149,10 +176,10 @@
             <h2>Agrega El Tunco a tus colecciones</h2>
             <form method="post" class="collections__container__pop">
             <?php
-                $sql = "SELECT * FROM collections WHERE id_user = '{$_SESSION['user_id']}'";
-                $run = mysqli_query($connection, $sql);
+                $sqll = "SELECT * FROM collections WHERE id_user = '{$_SESSION['user_id']}'";
+                $runn = mysqli_query($connection, $sqll);
 
-                while ($dataCollec = mysqli_fetch_assoc($run)) {
+                while ($dataCollec = mysqli_fetch_assoc($runn)) {
                     ?>
                         <button type="submit" name="collection" class="collections" value="<?php echo $dataCollec['id']; ?>"><?php echo $dataCollec['name']; ?></button>
                     <?php

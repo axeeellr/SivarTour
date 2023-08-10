@@ -19,6 +19,10 @@
         $ratingValue = 0;
     }
 
+    if (!isset($_SESSION['user_id'])) {
+        echo "no";
+    }
+
     if (isset($_SESSION['isLogin'])) {
         $sql = "SELECT * FROM users WHERE token = '{$_SESSION['user_token']}'";
         $run = mysqli_query($connection, $sql);
@@ -43,7 +47,6 @@
 </head>
 <style><?php include 'css/place.css'?></style>
 <body>
-    
     <header class="header">
         <div class="header__logo"><img src="img/logo.png"></div>
         <div class="options__menu">
@@ -124,9 +127,10 @@
                         $claseActiva = ($x === 0) ? 'active' : '';
                         ?>
                         <div class="slider__container <?php echo $claseActiva?>">
-                            <div class="slider__user">
-                                <img src="https://cdn-icons-png.flaticon.com/512/1946/1946429.png" alt="">
-                                <h2><?php echo $data['name']; ?></h2>
+                            <form method="post" class="slider__user">
+                                <div class="slider__user__img"><?php echo substr($data['name'], 0, 1); ?></div>
+                                <input type="hidden" name="idUserComment" value="<?php echo $data['id']; ?>">
+                                <button type="submit" name="userComment" class="userProfile"><?php echo $data['name']; ?></button>
                                 <div class="user__info">
                                     <h3>Maestro viajero</h3>
                                     <div class="info__points">
@@ -134,7 +138,7 @@
                                         <p>4.96</p>
                                     </div>
                                 </div>
-                            </div>
+                            </form>
                             <div class="slider__text">
                                 <p><?php echo $data['comment']; ?></p>
                             </div>

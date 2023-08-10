@@ -148,8 +148,9 @@ if(isset($_POST['register'])) {
     } else {
         $resultado = mysqli_query($connection, $consulta_sql);
 
-        $data = mysqli_fetch_assoc($validarCorreo);
-        $id = $data['id'];
+        $sqll = mysqli_query($connection, "SELECT * FROM users WHERE email = '$correo'");
+        $datita = mysqli_fetch_assoc($sqll);
+        $id = $datita['id'];
         
         if($resultado){
             $_SESSION['isLogin'] = 'si';
@@ -170,10 +171,9 @@ if (isset($_POST['newComment'])) {
     $_SESSION['hostt'] = $_SERVER["HTTP_HOST"];
     $_SESSION['urll'] = $_SERVER["REQUEST_URI"];
     $comment = $_POST['comment'];
-    $id = $_SESSION['user_id'];
     $id_place = $_GET['place'];
 
-    $query = "INSERT INTO comments (id_user, id_place, comment) VALUES ('$id', '$id_place', '$comment')";
+    $query = "INSERT INTO comments (id_user, id_place, comment) VALUES ('{$_SESSION['user_id']}', '$id_place', '$comment')";
 
     if (mysqli_query($connection, $query)) {
         header('Location: ' . $_SESSION['urll'], true, 303);
@@ -463,5 +463,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
         }
     }
+}
+
+
+
+
+/****** V E R   P E R F I L ******/
+if (isset($_POST['userComment'])) {
+    $_SESSION['idUserComment'] = $_POST['idUserComment'];
+    header('Location: user.php');
+}
+
+
+
+
+/****** V E R   C O L E C C I O N E S ******/
+if (isset($_POST['collectionPage'])) {
+    $_SESSION['collectionId'] = $_POST['collectionId'];
+    header('Location: collections.php');
 }
 ?>

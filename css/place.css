@@ -481,14 +481,28 @@ input:checked + label:after {
     display: block;
 }
 
-.slider__user img{
+.slider__user__img{
     height: calc(2.5px + 2.5vw);
-    filter: invert(59%) sepia(48%) saturate(755%) hue-rotate(318deg) brightness(91%) contrast(104%);
+    width: calc(2.5px + 2.5vw);
+    border-radius: 5px;
+    background: radial-gradient(at center center, rgb(152, 186, 223), rgb(206, 206, 141), rgb(152, 186, 223));
+    background-size: 80vh;
+    color: var(--red);
+    font-size: calc(2.3px + 2.3vw);
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
 }
 
-.slider__user h2{
+.slider__user button{
     font-size: calc(1.5px + 1.5vw);
     color: var(--red);
+    font-weight: bold;
+    font-family: 'Prompt', sans-serif;
+    background: transparent;
+    border: none;
 }
 
 .user__info{

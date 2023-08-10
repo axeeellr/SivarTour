@@ -126,14 +126,17 @@ body{
     background-color: var(--white);
 }
 
-.saved__collection:hover > h2{
+.saved__collection:hover > button{
     color: var(--background);
 }
 
-.lately__content h2, .saved__collection h2{
+.lately__content h2, .saved__collection button{
     font-size: calc(1.6px + 1.6vw);
     color: var(--white);
     font-weight: lighter;
+    background: transparent;
+    border: none;
+    font-family: 'Prompt', sans-serif;
 }
 
 .profile__right{
