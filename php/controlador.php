@@ -356,6 +356,23 @@ if (isset($_POST['newCollection'])) {
 
 
 
+/****** N U E V A   C O L E C C I O N (PROFILE) ******/
+if (isset($_POST['newCollectionP'])) {
+    $id_user = $_SESSION['user_id'];
+    $name = $_POST['name'];
+
+    $sql = "INSERT INTO collections (id_user, name) VALUES ('$id_user', '$name')";
+    $run = mysqli_query($connection, $sql);
+
+    if ($run) {
+        $notice = "Creado y agregado exitosamente a la colección";
+        //header('Location: ' . $_SESSION['urll'], true, 303);
+    }
+}
+
+
+
+
 /****** A G R E G A R   A   C O L E C C I O N ******/
 if (isset($_POST['collection'])) {
     $_SESSION['hostt'] = $_SERVER["HTTP_HOST"];
@@ -398,18 +415,22 @@ if (isset($_GET['place'])) {
         $lugaresVisitados = array();
     }
 
-    // Agregar el nuevo ID del lugar al final del array de lugares visitados
-    $lugaresVisitados[] = $idLugar;
+    // Verificar si el ID del lugar ya existe en el array de lugares visitados
+    if (!in_array($idLugar, $lugaresVisitados)) {
+        // Agregar el nuevo ID del lugar al final del array de lugares visitados
+        $lugaresVisitados[] = $idLugar;
 
-    // Asegurarse de que solo haya 5 elementos en el array de lugares visitados
-    $lugaresVisitados = array_slice($lugaresVisitados, -5);
+        // Asegurarse de que solo haya 5 elementos en el array de lugares visitados
+        $lugaresVisitados = array_slice($lugaresVisitados, -5);
 
-    // Convertir el array de lugares visitados en una cadena
-    $lugaresVisitadosStr = implode(',', $lugaresVisitados);
+        // Convertir el array de lugares visitados en una cadena
+        $lugaresVisitadosStr = implode(',', $lugaresVisitados);
 
-    // Guardar la cadena en una cookie con una duración de 30 días (puedes ajustar la duración según tus necesidades)
-    setcookie($cookieName, $lugaresVisitadosStr, time() + (30 * 24 * 60 * 60));
+        // Guardar la cadena en una cookie con una duración de 30 días (puedes ajustar la duración según tus necesidades)
+        setcookie($cookieName, $lugaresVisitadosStr, time() + (30 * 24 * 60 * 60));
+    }
 }
+
 
 
 

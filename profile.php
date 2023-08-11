@@ -195,7 +195,7 @@ if ($data['verified'] == 1) {
             <form method="post" class="popup__field__collection">
                 <input type="text" name="name" spellcheck="false"> 
                 <label class="label">Nombre de la colección</label>
-                <input type="submit" name="newCollection" value="Añadir">
+                <input type="submit" name="newCollectionP" value="Añadir">
             </form>
         </div>
     </div>

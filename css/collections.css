@@ -281,7 +281,7 @@ input:checked + label:after {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    width: 40%;
+    width: 45%;
     padding: calc(1px + 1vw);
 }
 
@@ -300,7 +300,6 @@ input:checked + label:after {
     display: flex;
     align-items: center;
     gap: calc(1px + 1vw);
-    width: 85%;
     flex-wrap: wrap;
 }
 
@@ -330,6 +329,7 @@ input:checked + label:after {
 .collection__add i{
     font-size: calc(3px + 3vw);
     color: var(--white);
+    display: none;
 }
 
 .popup__container{

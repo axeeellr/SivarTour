@@ -16,6 +16,11 @@ a{
     text-decoration: none;
 }
 
+i:hover{
+    transform: none;
+    box-shadow: none;
+}
+
 body{
     margin: 0;
     box-sizing: border-box;
@@ -92,7 +97,14 @@ body{
     font-size: calc(2.5px + 2.5vw);
     border-radius: 7px;
     border: 3px solid var(--white);
+    cursor: pointer;
     padding: calc(0.5px + 0.5vw);
+}
+
+.newCollection:hover{
+    background-color: var(--red);
+    border: 3px solid var(--red);
+    color: var(--white);
 }
 
 .left__lately, .left__saved{

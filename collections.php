@@ -133,67 +133,10 @@ $row = mysqli_fetch_assoc($run);
                                     </div>
                                 </div>
                             </div>
-                            <div class="collection__add">
-                                <i class="fa-solid fa-square-plus"></i>
-                            </div>
                         </div>
                     <?php
                 }
             ?>
-            <!--<div class="collection">
-                <div class="collection__place">
-                    <img src="https://surfcityelsalvador.sv/wp-content/uploads/2021/01/ZUNZAL-1-scaled.jpg" alt="">
-                    <div class="collection__info">
-                        <h2>Playa El Sunzal</h2>
-                        <div class="info__stars">
-                            <i class="fa-regular fa-star"></i>
-                            <i class="fa-regular fa-star"></i>
-                            <i class="fa-regular fa-star"></i>
-                            <i class="fa-regular fa-star"></i>
-                            <i class="fa-regular fa-star"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="collection__add">
-                    <i class="fa-solid fa-square-plus"></i>
-                </div>
-            </div>
-            <div class="collection">
-                <div class="collection__place">
-                    <img src="https://surfcityelsalvador.sv/wp-content/uploads/2021/01/ZUNZAL-1-scaled.jpg" alt="">
-                    <div class="collection__info">
-                        <h2>Playa El Sunzal</h2>
-                        <div class="info__stars">
-                            <i class="fa-regular fa-star"></i>
-                            <i class="fa-regular fa-star"></i>
-                            <i class="fa-regular fa-star"></i>
-                            <i class="fa-regular fa-star"></i>
-                            <i class="fa-regular fa-star"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="collection__add">
-                    <i class="fa-solid fa-square-plus"></i>
-                </div>
-            </div>
-            <div class="collection">
-                <div class="collection__place">
-                    <img src="https://surfcityelsalvador.sv/wp-content/uploads/2021/01/ZUNZAL-1-scaled.jpg" alt="">
-                    <div class="collection__info">
-                        <h2>Playa El Sunzal</h2>
-                        <div class="info__stars">
-                            <i class="fa-regular fa-star"></i>
-                            <i class="fa-regular fa-star"></i>
-                            <i class="fa-regular fa-star"></i>
-                            <i class="fa-regular fa-star"></i>
-                            <i class="fa-regular fa-star"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="collection__add">
-                    <i class="fa-solid fa-square-plus"></i>
-                </div>
-            </div>-->
         </div>
     </div>
     <footer class="footer">
