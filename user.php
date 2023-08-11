@@ -102,9 +102,9 @@ $row = mysqli_fetch_assoc($run);
             <h1><?php echo $row['name']; ?></h1>
             <p><?php echo $row['email']; ?></p>
             <div class="head__socials">
-                <i class="fa-brands fa-instagram"></i>
-                <i class="fa-brands fa-twitter"></i>
-                <i class="fa-brands fa-facebook"></i>
+                <a href="<?php echo isset($row['instagram']) ? 'https://www.instagram.com/' . $row['instagram'] : ''; ?>"><i class="fa-brands fa-instagram"></i></a>
+                <a href="<?php echo isset($row['twitter']) ? 'https://www.twitter.com/' . $row['twitter'] : ''; ?>"><i class="fa-brands fa-twitter"></i></a>
+                <a href="<?php echo isset($row['whatsapp']) ? 'https://wa.me/' . $row['whatsapp'] : ''; ?>"><i class="fa-brands fa-whatsapp"></i></a>
             </div>
         </div>
         <div class="user__collections">
@@ -112,11 +112,16 @@ $row = mysqli_fetch_assoc($run);
                 $sqll = "SELECT * FROM collections WHERE id_user = {$row['id']}";
                 $runn = mysqli_query($connection, $sqll);
 
+                if (mysqli_num_rows($runn) == 0) {
+                    echo "<h3 class='noData'>No hay colecciones por mostrar :(</h3>";
+                }
+
                 while ($dataCollec = mysqli_fetch_assoc($runn)){
                     ?>
-                        <div class="collection">
-                            <h2><?php echo $dataCollec['name'] ?></h2>
-                        </div>
+                        <form method="post" class="collection">
+                            <input type="hidden" name="collectionId" value="<?php echo $dataCollec['id'] ?>">
+                            <button type="submit" name="collectionPage"><?php echo $dataCollec['name'] ?></button>
+                        </form>
                     <?php
                 }
             ?>

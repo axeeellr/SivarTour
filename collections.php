@@ -99,6 +99,10 @@ $row = mysqli_fetch_assoc($run);
                 $getPlaces = "SELECT * FROM collections_places INNER JOIN places ON collections_places.id_place = places.id WHERE id_collection = '{$_SESSION['collectionId']}' ";
                 $runPlaces = mysqli_query($connection, $getPlaces);
 
+                if (mysqli_num_rows($runPlaces) == 0) {
+                    echo "<h3 class='noData'>No hay lugares por mostrar :(</h3>";
+                }
+
                 while($dataPlaces = mysqli_fetch_assoc($runPlaces)){
                     ?>
                         <div class="collection">

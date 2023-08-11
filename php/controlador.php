@@ -348,7 +348,7 @@ if (isset($_POST['newCollection'])) {
         $sqlll = "INSERT INTO collections_places (id_user, id_collection, id_place) VALUES ('{$_SESSION['user_id']}', '{$row['id']}', '{$_GET['place']}')";
         $runnn = mysqli_query($connection, $sqlll);
 
-        $notice = "Creado y agregado exitosamente a la colección";
+        $notice = "Creado y agregado a la colección!";
         //header('Location: ' . $_SESSION['urll'], true, 303);
     }
 }
@@ -365,7 +365,7 @@ if (isset($_POST['newCollectionP'])) {
     $run = mysqli_query($connection, $sql);
 
     if ($run) {
-        $notice = "Creado y agregado exitosamente a la colección";
+        $notice = "Colección creada exitosamente!";
         //header('Location: ' . $_SESSION['urll'], true, 303);
     }
 }
@@ -386,7 +386,7 @@ if (isset($_POST['collection'])) {
     $run = mysqli_query($connection, $sql);
 
     if ($run) {
-        $notice = "Agregado exitosamente a la colección";
+        $notice = "Agregado exitosamente a la colección!";
         //header('Location: ' . $_SESSION['urll'], true, 303);
     }
 }
@@ -448,7 +448,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if (mysqli_num_rows($resultCheckRating) > 0) {
             // El usuario ya ha calificado el lugar, mostrar mensaje de error
-            $notice = "Ya has calificado este lugar";
+            $notice = "Ya has calificado este lugar!";
         } else {
             // El usuario no ha calificado el lugar, permitir que envíe su calificación
             $ratingValue = $_POST['rating']; // Valor de la calificación enviada desde el formulario
@@ -476,11 +476,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if ($resultUpdate) {
                 // La calificación se actualizó correctamente en la base de datos
                 //$notice = "La calificación se actualizó correctamente. Calificación promedio: $newRating/5";
-                $notice = "Gracias por calificar este lugar";
+                $notice = "Gracias por calificar este lugar!";
             } else {
                 // Hubo un error al actualizar la calificación
                 // Mostrar un mensaje de error
-                $notice = "Hubo un error al actualizar la calificación";
+                $notice = "Hubo un error al actualizar la calificación!";
             }
         }
     }
@@ -491,8 +491,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 /****** V E R   P E R F I L ******/
 if (isset($_POST['userComment'])) {
-    $_SESSION['idUserComment'] = $_POST['idUserComment'];
-    header('Location: user.php');
+    if ($_POST['idUserComment'] == $_SESSION['user_id']) {
+        header('Location: profile.php');
+    } else {
+        $_SESSION['idUserComment'] = $_POST['idUserComment'];
+        header('Location: user.php');
+    }
 }
 
 

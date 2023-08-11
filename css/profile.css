@@ -93,18 +93,18 @@ body{
 
 .newCollection{
     color: var(--background);
-    background-color: white;
+    background-color: var(--blue);
     font-size: calc(2.5px + 2.5vw);
     border-radius: 7px;
-    border: 3px solid var(--white);
+    border: 3px solid var(--blue);
     cursor: pointer;
     padding: calc(0.5px + 0.5vw);
 }
 
 .newCollection:hover{
-    background-color: var(--red);
-    border: 3px solid var(--red);
-    color: var(--white);
+    background-color: var(--white);
+    border: 3px solid var(--white);
+    color: var(--background);
 }
 
 .left__lately, .left__saved{
@@ -252,7 +252,7 @@ body{
     padding: calc(0.5px + 0.5vw) calc(0.5px + 0.5vw);
     border-radius: 7px;
     font-size: calc(1px + 1vw);
-    width: calc(7px + 7vw);
+    width: calc(7.2px + 7.2vw);
 }
 
 .input-field label {
@@ -662,5 +662,10 @@ input:focus~label {
         box-shadow: 30px 0 0 var(--green);
         margin-top: 0;
     }
+}
+
+.noData{
+    color: #0a1117;
+    font-size: calc(1.4px + 1.4vw);
 }
 

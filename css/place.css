@@ -305,22 +305,54 @@ input:checked + label:after {
     width: calc(16px + 16vw);
     object-fit: cover;
     border-radius: 5px;
-    transition: .4s ease-in-out;
+    transitsion: .7s ease-in-out;
     box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.60);
 }
 
-.one{
+.hero__img {
+    animation-duration: 8.5s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+}
+
+.hero__img:nth-child(2n+1) {
+    animation-name: floatTogether;
+}
+
+.hero__img:nth-child(2) {
+    animation-name: floatOpposite;
+}
+
+@keyframes floatTogether {
+    0%, 100% {
+        transform: translateY(40px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes floatOpposite {
+    0%, 100% {
+        transform: translateY(-20px);
+    }
+    50% {
+        transform: translateY(40px);
+    }
+}
+
+/*.one{
     height: calc(27px + 27vw);
     order: -1;
 }
 
 .hero__img:hover{
-    height: calc(27px + 27vw);
+    height: calc(25px + 25vw);
 }
-
+/*
 .hero__img:hover ~ .one{
     height: calc(22px + 22vw);
-}
+}*/
 
 /* BODY */
 
@@ -892,7 +924,7 @@ input:checked + label:after {
     }
 }
 
-.notice__container{
+/*.notice__container{
     position: fixed;
     bottom: 0;
     top: 0;
@@ -923,7 +955,34 @@ input:checked + label:after {
     top: 0;
     right: 0;
     margin: calc(1px + 1vw);
+}*/
+
+.notice {
+    position: fixed;
+    top: -100%; /* Inicialmente fuera de la pantalla */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: calc(1px + 1vw) 0;
+    background-color: var(--white);
+    min-height: calc(3.5px + 3.5vw);
+    font-size: calc(1.1px + 1.1vw);
+    z-index: 99;
+    border-radius: 10px;
+    padding: calc(1px + 1vw);
+    box-shadow: 0px 0px 35px 0px rgba(0, 0, 0, 0.6);
+    color: var(--background);
+    transition: top 0.7s ease; /* Transición suave de 0.5 segundos */
 }
+
+.notice.active {
+    top: 0; /* Mostrar la notificación centrada verticalmente */
+}
+
 
 .invisiblee{
     display: none;

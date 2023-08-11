@@ -294,6 +294,11 @@ input:checked + label:after {
 .head__socials i{
     color: var(--blue);
     font-size: calc(2px + 2vw);
+    cursor: pointer;
+}
+
+.head__socials i:hover{
+    color: var(--red);
 }
 
 .user__collections{
@@ -315,12 +320,20 @@ input:checked + label:after {
     background-color: var(--white);
 }
 
-.collection:hover > h2{
+.collection:hover > button{
     color: var(--background);
 }
 
-.collection h2{
+.collection button{
     font-size: calc(1.6px + 1.6vw);
     color: var(--white);
     font-weight: lighter;
+    background: transparent;
+    border: none;
+    font-family: 'Prompt', sans-serif;
+}
+
+.noData{
+    color: var(--background);
+    font-size: calc(1.3px + 1.3vw);
 }

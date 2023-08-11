@@ -240,17 +240,33 @@
         </form>
     </div>
     <?php
-        if($notice != ""){
+        if ($notice != "") {
             ?>
-                <div class="notice__container">
-                    <div class="notice">
-                        <i class="fa-solid fa-xmark closeee"></i>
-                        <p><?php echo $notice; ?></p>
-                    </div>
-                </div>
+            <div class="notice" id="notification">
+                <p><?php echo $notice; ?></p>
+            </div>
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    const notice = document.getElementById('notification');
+                    
+                    // Mostrar la notificación después de un retraso
+                    setTimeout(function () {
+                        notice.classList.add('active');
+                    }, 10);
+
+                    // Ocultar la notificación después de 3 segundos
+                    setTimeout(function () {
+                        notice.classList.remove('active');
+                        window.history.replaceState(null,null,window.location.href);
+                    }, 3000);
+                });
+            </script>
             <?php
         }
     ?>
+    
+
+
 
     <script>
         document.querySelector('.restaurants').addEventListener('click', function(){

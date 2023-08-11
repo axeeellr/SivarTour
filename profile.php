@@ -106,6 +106,9 @@ if ($data['verified'] == 1) {
                                 <?php
                             }
                         }
+                        if (empty($lugaresVisitadosIDs)) {
+                            echo "<h3 class='noData'>Aún no hay lugares por mostrar :c</h3>";
+                        }
                     ?>
                 </div>
             </div>
@@ -117,17 +120,23 @@ if ($data['verified'] == 1) {
                     <?php
                     $sql = "SELECT * FROM collections WHERE id_user = {$data['id']}";
                     $run = mysqli_query($connection, $sql);
-
+                    
                     while ($dataCollec = mysqli_fetch_assoc($run)){
                         ?>
                             <form method="post" class="saved__collection">
                                 <input type="hidden" name="collectionId" value="<?php echo $dataCollec['id'] ?>">
                                 <button type="submit" name="collectionPage"><?php echo $dataCollec['name'] ?></button>
                             </form>
-                        <?php
+                            <?php
                     }
                     ?>
                     <i class="fa-solid fa-plus newCollection"></i>
+                    
+                    <?php
+                    if (mysqli_num_rows($run) == 0) {
+                        echo "<h3 class='noData'>No hay colecciones por mostrar :c</h3>";
+                    }
+                    ?>
                 </div>
             </div>
         </div>
@@ -168,13 +177,13 @@ if ($data['verified'] == 1) {
                     <i class="fa-solid fa-pen"></i>
                 </div>
                 <div class="input-field">
-                    <input type="text" name="facebook" spellcheck="false"onfocus="this.placeholder = 'Facebook'" onblur="this.placeholder = ''"> 
-                    <label><?php echo empty($data['facebook']) ? "Facebook" : $data['facebook'];?></label>
+                    <input type="text" name="Twitter" spellcheck="false"onfocus="this.placeholder = 'Twitter'" onblur="this.placeholder = ''"> 
+                    <label><?php echo empty($data['twitter']) ? "Twitter" : $data['twitter'];?></label>
                     <i class="fa-solid fa-pen"></i>
                 </div>
                 <div class="input-field">
-                    <input type="text" name="Twitter" spellcheck="false"onfocus="this.placeholder = 'Twitter'" onblur="this.placeholder = ''"> 
-                    <label><?php echo empty($data['twitter']) ? "Twitter" : $data['twitter'];?></label>
+                    <input type="text" name="whatsapp" spellcheck="false"onfocus="this.placeholder = 'Whatsapp'" onblur="this.placeholder = ''"> 
+                    <label><?php echo empty($data['whatsapp']) ? "Whatsapp" : $data['whatsapp'];?></label>
                     <i class="fa-solid fa-pen"></i>
                 </div>
                 <input type="submit" name="userData" value="Guardar">
@@ -201,22 +210,17 @@ if ($data['verified'] == 1) {
     </div>
 
     <script>
-
         document.querySelector('.newCollection').addEventListener('click', function(){
             document.querySelector('.popup__container__collection').classList.add('visible');
             document.querySelector('.popup__field__collections').classList.add('visiblew');
             document.querySelectorAll('.collections').forEach(function(elemento) {
                 elemento.classList.add('invisiblew');
             });
-        })
+        });
 
         document.querySelector('.closePop').addEventListener('click', function(){
             document.querySelector('.popup__container__collection').classList.remove('visible');
         });
-
-        /*document.querySelector('.new').addEventListener('click', function(){
-            document.querySelector('.new').classList.add('invisiblew');
-        });*/
 
         document.querySelector('.header__logo').addEventListener('click', function(){
             location.href = 'index.php';
@@ -227,6 +231,22 @@ if ($data['verified'] == 1) {
             location.href = 'php/logout.php';
         });
 
+        document.querySelector('#validar').addEventListener('click', function(){
+            document.querySelector('.right__code').classList.add('see');
+        });
+
+        document.querySelector('.close').addEventListener('click', function(e){
+            e.preventDefault();
+            document.querySelector('.popup__container').classList.add('invisiblee');
+            window.history.replaceState(null,null,window.location.href);
+        });
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+        const loaderContainer = document.querySelector(".loader__container");
+        loaderContainer.style.display = "none"; // Ocultar el loader después de que la página se haya cargado completamente
+        });
     </script>
 
     <script>
@@ -258,13 +278,6 @@ if ($data['verified'] == 1) {
             });
         });
 
-    </script>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-        const loaderContainer = document.querySelector(".loader__container");
-        loaderContainer.style.display = "none"; // Ocultar el loader después de que la página se haya cargado completamente
-        });
     </script>
 </body>
 </html>

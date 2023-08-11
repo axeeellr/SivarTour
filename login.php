@@ -33,18 +33,31 @@ if (isset($_SESSION['user_token'])) {
     </div>
     <div class="container">
         <div class="forms-container">
-            <?php
-                if($error != ""){
-                    ?>
-                        <div class="error__container">
-                            <div class="error">
-                                <i class="fa-solid fa-xmark close"></i>
-                                <p><?php echo $error; ?></p>
-                            </div>
-                        </div>
-                    <?php
-                }
-            ?>
+        <?php
+            if ($error != "") {
+                ?>
+                <div class="notice" id="notification">
+                    <p><?php echo $error; ?></p>
+                </div>
+                <script>
+                    document.addEventListener('DOMContentLoaded', function () {
+                        const notice = document.getElementById('notification');
+                        
+                        // Mostrar la notificación después de un retraso
+                        setTimeout(function () {
+                            notice.classList.add('active');
+                        }, 10);
+
+                        // Ocultar la notificación después de 3 segundos
+                        setTimeout(function () {
+                            notice.classList.remove('active');
+                            window.history.replaceState(null,null,window.location.href);
+                        }, 3000);
+                    });
+                </script>
+                <?php
+            }
+        ?>
             <div class="signin-signup">
                 <form method="post" class="sign-in-form">
                     <h2 class="title">Iniciar Sesión</h2>
