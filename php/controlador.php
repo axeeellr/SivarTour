@@ -212,19 +212,15 @@ if (isset($_POST['veriCode'])) {
 
 /****** A C T U A L I Z A R   P E R F I L ******/
 if (isset($_POST['userData'])) {
-    $username = $_POST['username'];
     $age = $_POST['age'];
     $sex = $_POST['sex'];
     $number = $_POST['number'];
-    $address = $_POST['address'];
-    $language = $_POST['language'];
+    $instagram = $_POST['instagram'];
+    $whatsapp = $_POST['whatsapp'];
+    $twitter = $_POST['twitter'];
 
     $sql = "UPDATE users SET";
     $updates = array();
-
-    if (!empty($username)) {
-        $updates[] = "username = '$username'";
-    }
 
     if (!empty($age)) {
         $updates[] = "age = '$age'";
@@ -238,12 +234,16 @@ if (isset($_POST['userData'])) {
         $updates[] = "number = '$number'";
     }
 
-    if (!empty($address)) {
-        $updates[] = "address = '$address'";
+    if (!empty($instagram)) {
+        $updates[] = "instagram = '$instagram'";
     }
 
-    if (!empty($language)) {
-        $updates[] = "language = '$language'";
+    if (!empty($whatsapp)) {
+        $updates[] = "whatsapp = '$whatsapp'";
+    }
+
+    if (!empty($twitter)) {
+        $updates[] = "twitter = '$twitter'";
     }
 
     if (!empty($updates)) {
@@ -323,6 +323,70 @@ if (isset($_POST['newPlace'])) {
 
     } else {
         echo "Debe seleccionar exactamente 3 imágenes.<br>";
+    }
+}
+
+
+
+
+/****** P U B L I C A R   R E S T A U R A N T E ******/
+if (isset($_POST['newRestaurant'])) {
+    $_SESSION['hostt'] = $_SERVER["HTTP_HOST"];
+    $_SESSION['urll'] = $_SERVER["REQUEST_URI"];
+    // Obtener los datos del formulario
+    $name = $_POST['name'];
+    $idPlace = $_POST['placeId'];
+    $placeName = $_POST['placeName'];
+
+    // Validar que se haya seleccionado exactamente 1 imagen
+    if (isset($_FILES['image']['name']) && !empty($_FILES['image']['name'])) {
+        // Configuración del cliente de S3
+        $s3Client = new S3Client([
+            'version' => 'latest',
+            'region' => 'us-east-2', // Reemplaza con tu región deseada
+            'credentials' => [
+                'key' => $accessKey,
+                'secret' => $secretKey,
+            ],
+        ]);
+
+        // Nombre del bucket en S3
+        $bucketName = 'sivartour';
+
+        // Carpeta en S3 con el nombre del lugar
+        $s3FolderName = $placeName . '/';
+
+        // Datos de la imagen
+        $file = $_FILES['image']['name'];
+        $tempFilePath = $_FILES['image']['tmp_name'];
+        $s3FileName = $s3FolderName . $file;
+
+        // Obtener el tipo de archivo MIME para la extensión de la imagen
+        $contentType = mime_content_type($tempFilePath);
+
+        try {
+            // Subida del archivo a S3 con el encabezado "Content-Type" adecuado
+            $result = $s3Client->putObject([
+                'Bucket' => $bucketName,
+                'Key' => $s3FileName,
+                'SourceFile' => $tempFilePath,
+                'ContentType' => $contentType,
+            ]);
+
+            // Obtener el enlace público del objeto subido a S3
+            $imageLink = $s3Client->getObjectUrl($bucketName, $s3FileName);
+
+            echo "Imagen $file subida exitosamente a S3.<br>";
+            header('Location: ' . $_SESSION['urll'], true, 303);
+
+            $sql = "INSERT INTO restaurants (id_place, name, img) VALUES ('$idPlace','$name','$imageLink')";
+            $run = mysqli_query($connection, $sql);
+        } catch (S3Exception $e) {
+            echo "Error al subir la imagen $file a S3: " . $e->getMessage() . "<br>";
+        }
+
+    } else {
+        echo "Debe seleccionar una imagen.<br>";
     }
 }
 

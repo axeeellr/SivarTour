@@ -1217,3 +1217,15 @@ input:checked + label:after {
     color: var(--background);
     font-weight: bold;
 }
+
+.noData{
+    color: #79a2cd;
+    font-size: calc(1.4px + 1.4vw);
+    text-align: center;
+}
+
+.noDataC{
+    color: var(--background);
+    font-size: calc(1.3px + 1.3vw);
+    text-align: center;
+}

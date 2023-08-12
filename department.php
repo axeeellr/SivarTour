@@ -99,14 +99,14 @@
                 <h1><?php echo $_GET['places'] ?></h1>
                 <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis, voluptatum! Laborum veniam eum nostrum sit harum fugit distinctio corrupti aut?</p>
             </div>
-            <button>EXPLORAR</button>
+            <button id="explorarButton">EXPLORAR</button>
         </div>
         <div class="container__right">
             <div class="right__cards">
                 <?php
                     while ($dataPlace = mysqli_fetch_array($run)){
                         ?>
-                        <div class="card__container">
+                        <a href="place.php?place=<?php echo $dataPlace['id']; ?>" class="card__container">
                             <div class="card__title">
                                 <h2><?php echo $dataPlace['name'] ?></h2>
                                 <div class="card__title__stars">
@@ -138,7 +138,7 @@
                             <div class="card__img">
                                 <?php echo '<img src="'.$dataPlace["img1"].'">' ?>
                             </div>
-                        </div>
+                        </a>
                         <?php
                     }
                 ?>
@@ -149,6 +149,16 @@
             </div>
         </div>
     </div>
+
+    <script>
+        document.getElementById("explorarButton").addEventListener("click", function() {
+            var selectedDepartment = document.querySelector('#department option[value="<?php echo $_GET['places'] ?>"]');
+            if (selectedDepartment) {
+                selectedDepartment.selected = true;
+            }
+            window.location.href = "filtered.php?selected_department=<?php echo $_GET['places'] ?>";
+        });
+    </script>
     <script>
         document.querySelector('.showMenu').addEventListener('click', function(e){
             document.querySelector('.options__menu').classList.toggle('show');

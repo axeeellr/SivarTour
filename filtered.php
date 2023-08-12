@@ -288,6 +288,21 @@
 
 
     <script>
+        window.addEventListener("DOMContentLoaded", function() {
+            var urlParams = new URLSearchParams(window.location.search);
+            var selectedDepartment = urlParams.get('selected_department');
+            
+            if (selectedDepartment) {
+                var departmentSelect = document.querySelector('#department');
+                var selectedOption = departmentSelect.querySelector('option[value="' + selectedDepartment + '"]');
+                
+                if (selectedOption) {
+                    selectedOption.selected = true;
+                }
+            }
+        });
+    </script>
+    <script>
         $(document).ready(function () {
             const itemsPerPage = 6; // Número de lugares por página
             let currentPage = 1;

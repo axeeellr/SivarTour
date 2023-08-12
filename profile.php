@@ -177,7 +177,7 @@ if ($data['verified'] == 1) {
                     <i class="fa-solid fa-pen"></i>
                 </div>
                 <div class="input-field">
-                    <input type="text" name="Twitter" spellcheck="false"onfocus="this.placeholder = 'Twitter'" onblur="this.placeholder = ''"> 
+                    <input type="text" name="twitter" spellcheck="false"onfocus="this.placeholder = 'Twitter'" onblur="this.placeholder = ''"> 
                     <label><?php echo empty($data['twitter']) ? "Twitter" : $data['twitter'];?></label>
                     <i class="fa-solid fa-pen"></i>
                 </div>

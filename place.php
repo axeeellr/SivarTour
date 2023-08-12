@@ -124,40 +124,50 @@
                         $x = 0;
 
                         while ($data = mysqli_fetch_assoc($resultado)) {
-                        $claseActiva = ($x === 0) ? 'active' : '';
-                        ?>
-                        <div class="slider__container <?php echo $claseActiva?>">
-                            <form method="post" class="slider__user">
-                                <div class="slider__user__img"><?php echo substr($data['name'], 0, 1); ?></div>
-                                <input type="hidden" name="idUserComment" value="<?php echo $data['id']; ?>">
-                                <button type="submit" name="userComment" class="userProfile"><?php echo $data['name']; ?></button>
-                                <div class="user__info">
-                                    <h3>Maestro viajero</h3>
-                                    <div class="info__points">
-                                        <i class="fa-solid fa-heart"></i>
-                                        <p>4.96</p>
+                            $claseActiva = ($x === 0) ? 'active' : '';
+                            ?>
+                            <div class="slider__container <?php echo $claseActiva?>">
+                                <form method="post" class="slider__user">
+                                    <div class="slider__user__img"><?php echo substr($data['name'], 0, 1); ?></div>
+                                    <input type="hidden" name="idUserComment" value="<?php echo $data['id']; ?>">
+                                    <button type="submit" name="userComment" class="userProfile"><?php echo $data['name']; ?></button>
+                                    <div class="user__info">
+                                        <h3>Maestro viajero</h3>
+                                        <div class="info__points">
+                                            <i class="fa-solid fa-heart"></i>
+                                            <p>4.96</p>
+                                        </div>
                                     </div>
+                                </form>
+                                <div class="slider__text">
+                                    <p><?php echo $data['comment']; ?></p>
                                 </div>
-                            </form>
-                            <div class="slider__text">
-                                <p><?php echo $data['comment']; ?></p>
                             </div>
-                        </div>
-                    <?php
-                    $x++;
-                    }
+                            <?php
+                            $x++;
+                        }
+
+                        if (mysqli_num_rows($resultado) == 0) {
+                            echo "<h3 class='noDataC'>No hay comentarios por mostrar :c</h3>";
+                        }
                     ?>
                 </div>
-                <nav class="slider-nav">
-                    <ul>
-                        <li class="arrow">
-                            <button class="previous"><span><i class="fa-sharp fa-solid fa-arrow-left"></i></span></button>
-                        </li>
-                        <li class="arrow">
-                            <button class="next"><span><i class="fa-sharp fa-solid fa-arrow-right"></i></span></button>
-                        </li>
-                    </ul>
-                </nav>
+                <?php
+                    if (mysqli_num_rows($resultado) != 0) {
+                        ?>
+                        <nav class="slider-nav">
+                            <ul>
+                                <li class="arrow">
+                                    <button class="previous"><span><i class="fa-sharp fa-solid fa-arrow-left"></i></span></button>
+                                </li>
+                                <li class="arrow">
+                                    <button class="next"><span><i class="fa-sharp fa-solid fa-arrow-right"></i></span></button>
+                                </li>
+                            </ul>
+                        </nav>
+                        <?php
+                    }
+                ?>
             </div>
             <div class="body__left__route">
                 <a href="routes.html"><div class="route">
@@ -168,21 +178,25 @@
         </div>
         <div class="line"></div>
         <div class="place__body__right">
-            <div class="body__restaurant">
-                <div class="circle"></div>
-                <img src="https://media-cdn.tripadvisor.com/media/photo-s/16/1f/8c/70/dale-dale-cafe.jpg" alt="">
-                <h2>Rock & Roe´s</h2>
-            </div>
-            <div class="body__restaurant">
-                <div class="circle"></div>
-                <img src="https://images.trvl-media.com/lodging/24000000/23080000/23072000/23071905/4fa808ce.jpg?impolicy=resizecrop&rw=500&ra=fit" alt="">
-                <h2>Casa 1800</h2>
-            </div>
-            <div class="body__restaurant">
-                <div class="circle"></div>
-                <img src="https://diarioelsalvador.com/wp-content/uploads/2020/11/f4.png" alt="">
-                <h2>Pipiris Nais</h2>
-            </div>
+            <?php
+                $sqll = "SELECT * FROM restaurants WHERE id_place = {$_GET['place']}";
+                $runn = mysqli_query($connection, $sqll);
+
+                while ($row = mysqli_fetch_array($runn)){
+                    ?>
+                        <div class="body__restaurant">
+                            <div class="circle"></div>
+                            <?php echo '<img src="'.$row['img'].'">'?>
+                            <h2><?php echo $row['name'] ?></h2>
+                        </div>
+                    <?php
+                }
+
+                if (mysqli_num_rows($runn) == 0) {
+                    echo "<h3 class='noData'>No hay restaurantes por mostrar :c</h3>";
+                }
+            ?>
+            
             <?php
                 if ($dataUser['verified'] == 1) {
                     echo '<i class="fa-solid fa-utensils restaurants"></i>';
@@ -196,7 +210,7 @@
             <h2>Agrega <?php echo $dataPlace['name']; ?> a tus colecciones</h2>
             <form method="post" class="collections__container">
             <?php
-                $sql = "SELECT * FROM collections WHERE id_user = '{$_SESSION['user_id']}'";
+                $sql = "SELECT collections.id, collections.name, collections.id_user, collections_places.id_place, collections_places.id_collection FROM collections INNER JOIN collections_places ON collections.id = collections_places.id_collection WHERE collections_places.id_place != {$_GET['place']} AND collections.id_user = '{$_SESSION['user_id']}'";
                 $run = mysqli_query($connection, $sql);
 
                 while ($dataCollec = mysqli_fetch_assoc($run)) {
@@ -235,7 +249,9 @@
                     <input type="text" name="name" required spellcheck="false"> 
                     <label>Nombre</label>
                 </div>
-                <input type="submit" value="Enviar" name="newPlace">
+                <input type="hidden" name="placeId" value="<?php echo $dataPlace['id'];?>">
+                <input type="hidden" name="placeName" value="<?php echo $dataPlace['name'];?>">
+                <input type="submit" value="Enviar" name="newRestaurant">
             </div>
         </form>
     </div>
