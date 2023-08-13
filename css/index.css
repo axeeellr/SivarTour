@@ -564,7 +564,7 @@ input:checked + label:after {
     }
 }
 
-.area{
+.areaC{
     backgsround: #4e54c8;  
     backgrosund: -webkit-linear-gradient(to left, #8f94fb, #4e54c8);  
     width: 100%;
@@ -588,7 +588,7 @@ input:checked + label:after {
     width: 20px;
     height: 20px;
     background: rgb(237, 115, 92, 0.7);
-    animation: animate 25s linear infinite;
+    animation: animateC 25s linear infinite;
     bottom: -150px;
     z-index: -1;
     filter: blur(40px);
@@ -679,7 +679,7 @@ hr{
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgb(237, 115, 92), rgba(0, 0, 0, 0));
 }
 
-@keyframes animate {
+@keyframes animateC {
 
     0%{
         transform: translateY(0) rotate(0deg);

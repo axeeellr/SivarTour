@@ -48,7 +48,7 @@
 </head>
 <style><?php include 'css/index.css' ?></style>
 <body>
-    <div class="area" >
+    <div class="areaC" >
         <ul class="circles">
             <li></li>
             <li></li>
@@ -112,7 +112,6 @@
     </header>
 
     <div class="hero">
-
         <div class="hero__container">
             <img src="img/explora.png" alt="" class="hero__text">
             <svg id="visual" viewBox="0 0 960 540"  xmlns="http://www.w3.org/2000/svg"

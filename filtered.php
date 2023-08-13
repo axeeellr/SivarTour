@@ -55,44 +55,58 @@
 </head>
 <style><?php include 'css/filtered.css'?></style>
 <body>
+    <div class="areaC" >
+        <ul class="circles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div >
     <div class="loader__container">
         <div class="loader"></div>
     </div>
     <header class="header">
-        <div class="header__logo"><img src="img/logo.png"></div>
+        <div class="header__logo"><img src="img/Logo SivarTour BN web.png"></div>
         <nav class="header__nav">
             <form method="post" class="header__ul">
-                <input type="submit" name="goLogin" class="header__li" value="Registrarse">
-                <input type="submit" name="goLogin" class="header__li" value="Iniciar Sesión">
+                <input type="submit" name="goLogin" class="header__li" data-section="Filtered" data-value="Registro" value="Registrarse" >
+                <input type="submit" name="goLogin" class="header__li" data-section="Filtered" data-value="Inicio Sesion" value="Iniciar Sesión">
             </form>
         </nav>
         <div class="options__menu">
             <div class="option notifications">
                 <div class="option__title">
                     <i class="fa-regular fa-bell"></i>
-                    <h3>Notificaciones</h3>
+                    <h3 data-section="Filtered" data-value="Notificaciones">Notificaciones</h3>
                     <i class="fa-solid fa-chevron-down hideNotis"></i>
                 </div>
-                <div class="option__info__container hide">
+                <div class="option__info__container">
                     <div class="option__info">
                         <i class="fa-solid fa-xmark close"></i>
-                        <h4>Publicación rechazada</h4>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi maiores ipsum dolorum.</p>
+                        <h4 data-section="Filtered" data-value="Noti Rechazada">Publicación rechazada</h4>
+                        <p  data-section="Filtered" data-value="Mesg rechazo">¡Lo sentimos! ¡Tu publicación ha sido rechazada!</p>
                     </div>
                     <div class="option__info">
                         <i class="fa-solid fa-xmark close"></i>
-                        <h4>Publicación aceptada</h4>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi maiores ipsum dolorum.</p>
+                        <h4 data-section="Filtered" data-value="Noti Aceptada">Publicación aceptada</h4>
+                        <p data-section="Filtered" data-value="Mesg acepto">¡Enhorabuena! ¡Tu publicación ha sido aceptada!</p>
                     </div>
                 </div>
             </div>
             <div class="option profile">
                 <i class="fa-regular fa-circle-user"></i>
-                <h3>Mi perfil</h3>
+                <h3 data-section="Filtered" data-value="perfil">Mi perfil</h3>
             </div>
             <div class="option favorites">
                 <i class="fa-regular fa-star"></i>
-                <h3>Mis favoritos</h3>
+                <h3 data-section="Filtered" data-value="favs">Mis favoritos</h3>
             </div>
             <div class="option translate">
                 <input type="checkbox" id="cambiar">
@@ -100,8 +114,6 @@
             </div>
         </div>
         <div class="header__options">
-            <!--<a href="profile.php" class="profile"><i class="fa-regular fa-circle-user"></i></a>-->
-            <!--<i class="fa-solid fa-globe"></i>-->
             <i class="fa-solid fa-bars-staggered showMenu"></i>
         </div>
     </header>
@@ -126,10 +138,11 @@
         <img src="img/explora.png" alt="" class="hero__text">
         <i class="fa-solid fa-chevron-down"><a href="#filters"></a></i>
     </div>
+    <hr>
 
     <div class="filters" id="filters">
         <select name="" id="department">
-            <option value="">Departamento</option>
+            <option data-section="Filtered" data-value="Departamento" value="">Departamento</option>
             <option value="Ahuachapán">Ahuachapán</option>
             <option value="Cabañas">Cabañas</option>
             <option value="Chalatenango">Chalatenango</option>
@@ -146,24 +159,24 @@
             <option value="Usulután">Usulután</option>
         </select>
         <select name="" id="type">
-            <option value="">Tipo</option>
-            <option value="Playa">Playa</option>
-            <option value="Campo">Campo</option>
-            <option value="Cabañas">Cabañas</option>
-            <option value="Parque">Parque</option>
-            <option value="Bosque">Bosque</option>
-            <option value="Lago">Lago</option>
-            <option value="Sitio Arqueológico">Sitio Arqueológico</option>
-            <option value="Volcán">Volcán</option>
-            <option value="Centro Comercial">Centro Comercial</option>
-            <option value="Montaña">Montaña</option>
-            <option value="Otro">Otro</option>
+            <option data-section="Filtered" data-value="Tipo "value="">Tipo</option>
+            <option data-section="Filtered" data-value="Playa" value="Playa">Playa</option>
+            <option data-section="Filtered" data-value="Campo" value="Campo">Campo</option>
+            <option data-section="Filtered" data-value="Cabañas" value="Cabañas">Cabañas</option>
+            <option data-section="Filtered" data-value="Parques" value="Parque">Parque</option>
+            <option data-section="Filtered" data-value="Bosque" value="Bosque">Bosque</option>
+            <option data-section="Filtered" data-value="Lago" value="Lago">Lago</option>
+            <option data-section="Filtered" data-value="Sitio" value="Sitio Arqueológico">Sitio Arqueológico</option>
+            <option data-section="Filtered" data-value="Volcán" value="Volcán">Volcán</option>
+            <option data-section="Filtered" data-value="Centro" value="Centro Comercial">Centro Comercial</option>
+            <option data-section="Filtered" data-value="Montaña" value="Montaña">Montaña</option>
+            <option data-section="Filtered" data-value="Otro" value="Otro">Otro</option>
         </select>
         <select name="" id="public">
-            <option value="">Público</option>
-            <option value="Todo público">Todo público</option>
-            <option value="Solo mayores de 18">Solo mayores de 18</option>
-            <option value="Especial para niños">Especial para niños</option>
+            <option data-section="Filtered" data-value="Público" value="">Público</option>
+            <option data-section="Filtered" data-value="Todo" value="Todo público">Todo público</option>
+            <option data-section="Filtered" data-value="Solo" value="Solo mayores de 18">Solo mayores de 18</option>
+            <option data-section="Filtered" data-value="Especial"value="Especial para niños">Especial para niños</option>
         </select>
     </div>
     <div class="container">
@@ -186,8 +199,8 @@
     <div class="popup__container">
         <div class="popup">
             <i class="fa-solid fa-xmark"></i>
-            <h2>Espera</h2>
-            <p>Tienes que estar registrado para poder ver este lugar</p>
+            <h2 data-section="Filtered">Espera</h2>
+            <p data-section="Filtered">Tienes que estar registrado para poder ver este lugar</p>
         </div>
     </div>
     <div class="newplace__container">
@@ -196,74 +209,74 @@
             <div class="newplace__img">
                 <input type="file" name="images[]" id="upload-button" required multiple accept="image/*" />
                 <label for="upload-button">
-                    <i class="fa-solid fa-upload"></i>&nbsp; Escoge las fotos
+                    <i class="fa-solid fa-upload" data-section="Filtered"></i>&nbsp; Escoge las fotos
                 </label>
-                <p>Recuerda que el total de fotografías es 3</p>
+                <p data-section="Filtered">Recuerda que el total de fotografías es 3</p>
                 <div id="error"></div>
                 <div id="image-display"></div>
             </div>
             <div class="newplace__info">
-                <div class="info__title">
-                    <h1>Tú también puedes publicar lugares!</h1>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eaque molestias id culpa amet impedit? Vero consequatur ipsum earum iure odio?</p>
+            <div class="info__title">
+                    <h1 data-section="Filtered">Tú también puedes publicar lugares!</h1>
+                    <p data-section="Filtered">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eaque molestias id culpa amet impedit? Vero consequatur ipsum earum iure odio?</p>
                 </div>
                 <div class="input__field">
-                    <input type="text" name="name" required spellcheck="false"> 
-                    <label>Nombre</label>
+                    <input type="text" name="name" required spellcheck="false">
+                    <label data-section="Filtered">Nombre</label>
                 </div>
                 <div class="input__field">
-                    <input type="text" name="description" required spellcheck="false"> 
-                    <label>Descripción</label>
+                    <input type="text" name="description" required spellcheck="false">
+                    <label data-section="Filtered">Descripción</label>
                 </div>
                 <div class="input__field">
                     <input type="text" id="search-place" name="direction" placeholder="" required spellcheck="false">
                     <input type="hidden" name="location" id="location">
-                    <label>Ubicación</label>
+                    <label data-section="Filtered">Ubicación</label>
                 </div>
                 <div class="input__field">
-                <select name="department">
-                    <option value="">Departamento</option>
-                    <option value="Ahuachapán">Ahuachapán</option>
-                    <option value="Cabañas">Cabañas</option>
-                    <option value="Chalatenango">Chalatenango</option>
-                    <option value="Cuscatlán">Cuscatlán</option>
-                    <option value="La Libertad">La Libertad</option>
-                    <option value="La Paz">La Paz</option>
-                    <option value="La Unión">La Unión</option>
-                    <option value="Morazán">Morazán</option>
-                    <option value="San Miguel">San Miguel</option>
-                    <option value="San Salvador">San Salvador</option>
-                    <option value="San Vicente">San Vicente</option>
-                    <option value="Santa Ana">Santa Ana</option>
-                    <option value="Sonsonate">Sonsonate</option>
-                    <option value="Usulután">Usulután</option>
-                </select>
+                    <select name="department">
+                        <option value="">Departamento</option>
+                        <option value="Ahuachapán">Ahuachapán</option>
+                        <option value="Cabañas">Cabañas</option>
+                        <option value="Chalatenango">Chalatenango</option>
+                        <option value="Cuscatlán">Cuscatlán</option>
+                        <option value="La Libertad">La Libertad</option>
+                        <option value="La Paz">La Paz</option>
+                        <option value="La Unión">La Unión</option>
+                        <option value="Morazán">Morazán</option>
+                        <option value="San Miguel">San Miguel</option>
+                        <option value="San Salvador">San Salvador</option>
+                        <option value="San Vicente">San Vicente</option>
+                        <option value="Santa Ana">Santa Ana</option>
+                        <option value="Sonsonate">Sonsonate</option>
+                        <option value="Usulután">Usulután</option>
+                    </select>
                 </div>
                 <div class="input__field">
                     <select name="type" id="">
-                        <option value="" selected disabled>Tipo</option>
-                        <option value="Playa">Playa</option>
-                        <option value="Campo">Campo</option>
-                        <option value="Cabañas">Cabañas</option>
-                        <option value="Parque">Parque</option>
-                        <option value="Bosque">Bosque</option>
-                        <option value="Lago">Lago</option>
-                        <option value="Sitio Arqueológico">Sitio Arqueológico</option>
-                        <option value="Volcán">Volcán</option>
-                        <option value="Centro Comercial">Centro Comercial</option>
-                        <option value="Montaña">Montaña</option>
-                        <option value="Otro">Otro</option>
+                        <option data-section="Filtered" value="" selected disabled>Tipo</option>
+                        <option data-section="Filtered" value="Playa">Playa</option>
+                        <option data-section="Filtered" value="Campo">Campo</option>
+                        <option data-section="Filtered" value="Cabañas">Cabañas</option>
+                        <option data-section="Filtered" value="Parque">Parque</option>
+                        <option data-section="Filtered"value="Bosque">Bosque</option>
+                        <option data-section="Filtered" value="Lago">Lago</option>
+                        <option data-section="Filtered" value="Sitio Arqueológico">Sitio Arqueológico</option>
+                        <option data-section="Filtered" value="Volcán">Volcán</option>
+                        <option data-section="Filtered" value="Centro Comercial">Centro Comercial</option>
+                        <option data-section="Filtered" value="Montaña">Montaña</option>
+                        <option data-section="Filtered" value="Otro">Otro</option>
                     </select>
                 </div>
                 <div class="input__field">
                     <select name="public" id="">
-                        <option value="" selected disabled>Público</option>
-                        <option value="Todo público">Todo público</option>
-                        <option value="Solo mayores de 18">Solo mayores de 18</option>
-                        <option value="Especial para niños">Especial para niños</option>
+                        <option data-section="Filtered" value="" selected disabled>Público</option>
+                        <option data-section="Filtered" value="Todo público">Todo público</option>
+                        <option data-section="Filtered" value="Solo mayores de 18">Solo mayores de 18</option>
+                        <option data-section="Filtered" value="Especial para niños">Especial para niños</option>
                     </select>
                 </div>
-                <input type="submit" value="Enviar" name="newPlace">
+                <input type="submit" data-section="Filtered" value="Enviar" name="newPlace">
             </div>
         </form>
     </div>
@@ -279,12 +292,80 @@
             <li class="social-icon__item"><a class="social-icon__link" href="#"><i class="fa-regular fa-envelope"></i></a></li>
         </ul>
         <ul class="menu">
-            <li class="menu__item"><a class="menu__link" href="#">Inicio</a></li>
-            <li class="menu__item"><a class="menu__link" href="#">Acerca de</a></li>
-            <li class="menu__item"><a class="menu__link" href="#">FAQ</a></li>
-            <li class="menu__item"><a class="menu__link" href="#">Contáctanos</a></li>
+            <li class="menu__item"><a class="menu__link" href="#" data-section="Filtered">Inicio</a></li>
+            <li class="menu__item"><a class="menu__link" href="#" data-section="Filtered">Acerca de</a></li>
+            <li class="menu__item"><a class="menu__link" href="#" data-section="Filtered">FAQ</a></li>
+            <li class="menu__item"><a class="menu__link" href="#" data-section="Filtered">Contáctanos</a></li>
         </ul>
     </footer>
+
+
+    <script>
+        var checkbox = document.getElementById('cambiar');
+        var select = document.getElementById('department');
+
+        checkbox.addEventListener('change', async function (){
+            var checked = checkbox.checked;
+            if(checked){
+                const requestJson = await fetch(`languages/filteredIngles.json`);
+                const textosCambioIdioma = document.querySelectorAll("[data-section]");
+                const textos = await requestJson.json();
+                for (let i = 0; i < select.options.length; i++) {
+                        const option = select.options[i];
+                            const valor = option.value;
+                            if (textos[valor]) {
+                    option.innerHTML = textos[valor];
+                    }
+                }
+                    
+                //For para hacer el cambio de valores
+                for (const textosCambioIdiomaVariable of textosCambioIdioma) {
+                    const secciones = textosCambioIdiomaVariable.dataset.section;
+                    const valor = textosCambioIdiomaVariable.dataset.value;
+                    // 
+                    //Condicion para cambiar los valores
+                    if (textos[secciones] && textos[secciones][valor]) {
+                        if (textosCambioIdiomaVariable.value) {
+                            textosCambioIdiomaVariable.value = textos[secciones][valor];
+                        }
+                        textosCambioIdiomaVariable.innerHTML = textos[secciones][valor];
+                    }
+                }
+                //Target para el cambio de elementos por los del json
+                elements.addEventListener("click", function (e) {
+                    cambioIdioma(e.target.parentElement.dataset.language);
+                    language = e.target.parentElement.dataset.language;
+                });
+            }else{
+                const requestJson = await fetch(`languages/filteredEspañol.json`);
+                const textosCambioIdioma = document.querySelectorAll("[data-section]");
+                const textos = await requestJson.json();
+                for (let i = 0; i < select.options.length; i++) {
+                        const option = select.options[i];
+                            const valor = option.value; if (textos[valor]) {
+                    option.innerHTML = textos[valor];
+                    }
+                    }
+
+                for (const textosCambioIdiomaVariable of textosCambioIdioma) {
+                    const secciones = textosCambioIdiomaVariable.dataset.section;
+                    const valor = textosCambioIdiomaVariable.dataset.value;
+                
+                    if (textos[secciones] && textos[secciones][valor]) {
+                        if (textosCambioIdiomaVariable.value) {
+                            textosCambioIdiomaVariable.value = textos[secciones][valor];
+                        }
+                        textosCambioIdiomaVariable.innerHTML = textos[secciones][valor];
+                    }
+                }
+
+                elements.addEventListener("click", function (e) {
+                    cambioIdioma(e.target.parentElement.dataset.language);
+                    language = e.target.parentElement.dataset.language;
+                });
+            }
+        });
+    </script>
 
 
     <script>
