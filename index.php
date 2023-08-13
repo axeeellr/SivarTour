@@ -66,40 +66,40 @@
         <div class="loader"></div>
     </div>
     <header class="header">
-        <div class="header__logo"><img src="img/logo.png"></div>
+        <div class="header__logo"><img src="img/Logo SivarTour BN web.png"></div>
         <nav class="header__nav">
             <form method="post" class="header__ul">
-                <input type="submit" name="goLogin" class="header__li" value="Registrarse">
-                <input type="submit" name="goLogin" class="header__li" value="Iniciar Sesión">
+                <input type="submit" name="goLogin" class="header__li" data-section="Index" data-value="Registro" value="Registrarse" >
+                <input type="submit" name="goLogin" class="header__li" data-section="Index" data-value="Inicio Sesion" value="Iniciar Sesión">
             </form>
         </nav>
         <div class="options__menu">
             <div class="option notifications">
                 <div class="option__title">
                     <i class="fa-regular fa-bell"></i>
-                    <h3>Notificaciones</h3>
-                    <i class="hideNotis fa-solid fa-chevron-down"></i>
+                    <h3 data-section="Index" data-value="Notificaciones">Notificaciones</h3>
+                    <i class="fa-solid fa-chevron-down hideNotis"></i>
                 </div>
-                <div class="option__info__container hide">
+                <div class="option__info__container">
                     <div class="option__info">
                         <i class="fa-solid fa-xmark close"></i>
-                        <h4>Publicación rechazada</h4>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi maiores ipsum dolorum.</p>
+                        <h4 data-section="Index" data-value="Noti Rechazada">Publicación rechazada</h4>
+                        <p  data-section="Index" data-value="Mesg rechazo">¡Lo sentimos! ¡Tu publicación ha sido rechazada!</p>
                     </div>
                     <div class="option__info">
                         <i class="fa-solid fa-xmark close"></i>
-                        <h4>Publicación aceptada</h4>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi maiores ipsum dolorum.</p>
+                        <h4 data-section="Index" data-value="Noti Aceptada">Publicación aceptada</h4>
+                        <p data-section="Index" data-value="Mesg acepto">¡Enhorabuena! ¡Tu publicación ha sido aceptada!</p>
                     </div>
                 </div>
             </div>
             <div class="option profile">
                 <i class="fa-regular fa-circle-user"></i>
-                <h3>Mi perfil</h3>
+                <h3 data-section="Index" data-value="perfil">Mi perfil</h3>
             </div>
             <div class="option favorites">
                 <i class="fa-regular fa-star"></i>
-                <h3>Mis favoritos</h3>
+                <h3 data-section="Index" data-value="favs">Mis favoritos</h3>
             </div>
             <div class="option translate">
                 <input type="checkbox" id="cambiar">
@@ -107,8 +107,6 @@
             </div>
         </div>
         <div class="header__options">
-            <!--<a href="profile.php" class="profile"><i class="fa-regular fa-circle-user"></i></a>-->
-            <!--<i class="fa-solid fa-globe"></i>-->
             <i class="fa-solid fa-bars-staggered showMenu"></i>
         </div>
     </header>
@@ -133,13 +131,13 @@
                 </g>
             </svg>
         </div>
-        <button class="hero__button">COMENZAR &nbsp;<i class="fa-sharp fa-solid fa-arrow-right"></i></button>
+        <button class="hero__button"><span data-section="Index" data-value="vamos">COMENZAR</span> &nbsp;<i class="fa-sharp fa-solid fa-arrow-right"></i></button>
     </div>
     <hr>
     <div class="map">
         <div class="map__info">
-            <h1>EXPLORA YA!</h1>
-            <p>Encontrar lugares turísticos nunca había sido tan fácil, ahora puedes seleccionar un departamento y encontrar los lugares turísticos que se encuentran en el. Pruébalo!</p>
+            <h1 data-section="Index" data-value="explora">¡EXPLORA YA!</h1>
+            <p data-section="Index" data-value="text">¡Explora los rincones del pulgarcito mas facil! Ahora puedes seleccionar un departamento y encontrar los sitios turísticos aun mas facil ¡Pruebalo!</p>
         </div>
         <div class="map__img">
             <img src="img/map.png" usemap="#imagemap" class="mapimg">
@@ -173,10 +171,10 @@
             <li class="social-icon__item"><a class="social-icon__link" href="#"><i class="fa-regular fa-envelope"></i></a></li>
         </ul>
         <ul class="menu">
-            <li class="menu__item"><a class="menu__link" href="#">Inicio</a></li>
-            <li class="menu__item"><a class="menu__link" href="#">Acerca de</a></li>
-            <li class="menu__item"><a class="menu__link" href="#">FAQ</a></li>
-            <li class="menu__item"><a class="menu__link" href="#">Contáctanos</a></li>
+            <li class="menu__item"><a class="menu__link" href="#" data-section="Index" data-value="inicio">Inicio</a></li>
+            <li class="menu__item"><a class="menu__link" href="#" data-section="Index" data-value="sobre nosotros">Sobre nosotros</a></li>
+            <li class="menu__item"><a class="menu__link" href="#" data-section="Index" data-value="faq">FAQ</a></li>
+            <li class="menu__item"><a class="menu__link" href="#" data-section="Index" data-value="contacto">Contáctanos</a></li>
         </ul>
     </footer>
     
@@ -194,6 +192,62 @@
             strokeWidth: 1.5,
             fadeTime: 500,
         });
+    </script>
+
+    <script>
+        var checkbox = document.getElementById('cambiar');
+        var select =document.getElementById('department');
+
+        checkbox.addEventListener('change', async function (){
+            var checked = checkbox.checked;
+            if(checked){
+                const requestJson = await fetch(`languages/indexIngles.json`);
+                const textosCambioIdioma = document.querySelectorAll("[data-section]");
+                const textos = await requestJson.json();
+        
+                //For para hacer el cambio de valores
+                for (const textosCambioIdiomaVariable of textosCambioIdioma) {
+                    const secciones = textosCambioIdiomaVariable.dataset.section;
+                    const valor = textosCambioIdiomaVariable.dataset.value;
+                    // 
+                    //Condicion para cambiar los valores
+                    if (textos[secciones] && textos[secciones][valor]) {
+                        if (textosCambioIdiomaVariable.value) {
+                            textosCambioIdiomaVariable.value = textos[secciones][valor];
+                        }
+                        textosCambioIdiomaVariable.innerHTML = textos[secciones][valor];
+                    }
+                }
+                //Target para el cambio de elementos por los del json
+                elements.addEventListener("click", function (e) {
+                    cambioIdioma(e.target.parentElement.dataset.language);
+                    language = e.target.parentElement.dataset.language;
+                });
+
+            } else {
+                const requestJson = await fetch(`languages/indexEspañol.json`);
+                const textosCambioIdioma = document.querySelectorAll("[data-section]");
+                const textos = await requestJson.json();
+            
+
+                for (const textosCambioIdiomaVariable of textosCambioIdioma) {
+                    const secciones = textosCambioIdiomaVariable.dataset.section;
+                    const valor = textosCambioIdiomaVariable.dataset.value;
+                
+                    if (textos[secciones] && textos[secciones][valor]) {
+                        if (textosCambioIdiomaVariable.value) {
+                            textosCambioIdiomaVariable.value = textos[secciones][valor];
+                        }
+                        textosCambioIdiomaVariable.innerHTML = textos[secciones][valor];
+                    }
+                }
+
+                elements.addEventListener("click", function (e) {
+                    cambioIdioma(e.target.parentElement.dataset.language);
+                    language = e.target.parentElement.dataset.language;
+                });
+            }
+        });     
     </script>
 
     <script>

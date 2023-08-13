@@ -1,0 +1,21 @@
+{
+    "Index":{
+        "Registro": "Sign In",
+        "Inicio Sesion": "Log In",
+        "Notificaciones": "Notifications",
+        "Noti Rechazada": "Rejected post",
+        "Mesg rechazo": "We're sorry! Your post has been disapproved!",
+        "Noti Aceptada": "Accepted post",
+        "Mesg acepto": "Congratulations! Your post has been accepted!",
+        "perfil": "My profile",
+        "favs": "My favourites",
+        "vamos":"LET´S GO",
+        "explora":"EXPLORE NOW!",
+        "text": "Explore the corners of the little thumb easier! Now you can select a department and find tourist sites even easier. Try it!",
+        "inicio": "Home",
+        "sobre nosotros": "About us",
+        "faq": "FAQ",
+        "contacto": "Contact us"
+
+    }
+}

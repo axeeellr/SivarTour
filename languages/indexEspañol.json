@@ -1,0 +1,20 @@
+{
+    "Index":{
+        "Registro": "Registrarse",
+        "Inicio Sesion": "Iniciar Sesión",
+        "Notificaciones": "Notificaciones",
+        "Noti Rechazada": "Publicación rechazada",
+        "Mesg rechazo": "¡Lo sentimos! ¡Tu publicación ha sido rechazada!",
+        "Noti Aceptada": "Publicación aceptada",
+        "Mesg acepto": "¡Enhorabuena! ¡Tu publicación ha sido aceptada!",
+        "perfil": "Mi perfil",
+        "favs": "Mis favoritos",
+        "vamos":"COMENZAR",
+        "explora":"¡EXPLORA YA!",
+        "text": "¡Explora los rincones del pulgarcito mas facil! Ahora puedes seleccionar un departamento y encontrar los sitios turísticos aun mas facil ¡Pruebalo!",
+        "inicio": "Inicio",
+        "sobre nosotros": "Sobre nosotros",
+        "faq": "FAQ",
+        "contacto": "Contáctanos"
+    }
+}
