@@ -1,0 +1,13 @@
+{
+    "department":{
+        "Registro": "Registrarse",
+        "Inicio Sesion": "Iniciar Sesión",
+        "Notificaciones": "Notificaciones",
+        "Noti Rechazada": "Publicación rechazada",
+        "Mesg rechazo": "¡Lo sentimos! ¡Tu publicación ha sido rechazada!",
+        "Noti Aceptada": "Publicación aceptada",
+        "Mesg acepto": "¡Enhorabuena! ¡Tu publicación ha sido aceptada!",
+        "perfil": "Mi perfil",
+        "favs": "Mis favoritos"
+    }
+}

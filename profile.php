@@ -69,10 +69,46 @@ if ($data['verified'] == 1) {
 </head>
 <style><?php include 'css/profile.css'; ?></style>
 <body>
-    
     <header class="header">
-        <img src="img/logo.png" alt="" class="header__logo">
-        <i class="fa-regular fa-circle-question"></i>
+        <div class="header__logo"><img src="img/Logo SivarTour BN web.png"></div>
+        <nav class="header__nav">
+        </nav>
+        <div class="options__menu">
+            <div class="option notifications">
+                <div class="option__title">
+                    <i class="fa-regular fa-bell"></i>
+                    <h3 data-section="Profile" data-value="Notificaciones">Notificaciones</h3>
+                    <i class="fa-solid fa-chevron-down hideNotis"></i>
+                </div>
+                <div class="option__info__container">
+                    <div class="option__info">
+                        <i class="fa-solid fa-xmark close"></i>
+                        <h4 data-section="Profile" data-value="Noti Rechazada">Publicación rechazada</h4>
+                        <p  data-section="Profile" data-value="Mesg rechazo">¡Lo sentimos! ¡Tu publicación ha sido rechazada!</p>
+                    </div>
+                    <div class="option__info">
+                        <i class="fa-solid fa-xmark close"></i>
+                        <h4 data-section="Profile" data-value="Noti Aceptada">Publicación aceptada</h4>
+                        <p data-section="Profile" data-value="Mesg acepto">¡Enhorabuena! ¡Tu publicación ha sido aceptada!</p>
+                    </div>
+                </div>
+            </div>
+            <div class="option profile">
+                <i class="fa-regular fa-circle-user"></i>
+                <h3 data-section="Profile" data-value="perfil">Mi perfil</h3>
+            </div>
+            <div class="option favorites">
+                <i class="fa-regular fa-star"></i>
+                <h3 data-section="Profile" data-value="favs">Mis favoritos</h3>
+            </div>
+            <div class="option translate">
+                <input type="checkbox" id="cambiar">
+                <label for="cambiar">aquí se cambia el idioma</label>
+            </div>
+        </div>
+        <div class="header__options">
+            <i class="fa-solid fa-bars-staggered showMenu"></i>
+        </div>
     </header>
     <?php
         if($mensaje != ""){
@@ -209,6 +245,62 @@ if ($data['verified'] == 1) {
         </div>
     </div>
 
+
+    <script>
+        var checkbox = document.getElementById('cambiar');
+        var select = document.getElementById('department');
+
+        checkbox.addEventListener('change', async function (){
+            var checked = checkbox.checked;
+            if(checked){
+                const requestJson = await fetch(`languages/perfilIngles.json`);
+                const textosCambioIdioma = document.querySelectorAll("[data-section]");
+                const textos = await requestJson.json();
+        
+                //For para hacer el cambio de valores
+                for (const textosCambioIdiomaVariable of textosCambioIdioma) {
+                    const secciones = textosCambioIdiomaVariable.dataset.section;
+                    const valor = textosCambioIdiomaVariable.dataset.value;
+                    // 
+                    //Condicion para cambiar los valores
+                    if (textos[secciones] && textos[secciones][valor]) {
+                        if (textosCambioIdiomaVariable.value) {
+                            textosCambioIdiomaVariable.value = textos[secciones][valor];
+                        }
+                        textosCambioIdiomaVariable.innerHTML = textos[secciones][valor];
+                    }
+                }
+                //Target para el cambio de elementos por los del json
+                elements.addEventListener("click", function (e) {
+                    cambioIdioma(e.target.parentElement.dataset.language);
+                    language = e.target.parentElement.dataset.language;
+                });
+            }else{
+                const requestJson = await fetch(`languages/perfilEspañol.json`);
+                const textosCambioIdioma = document.querySelectorAll("[data-section]");
+                const textos = await requestJson.json();
+            
+
+                for (const textosCambioIdiomaVariable of textosCambioIdioma) {
+                    const secciones = textosCambioIdiomaVariable.dataset.section;
+                    const valor = textosCambioIdiomaVariable.dataset.value;
+                
+                    if (textos[secciones] && textos[secciones][valor]) {
+                        if (textosCambioIdiomaVariable.value) {
+                            textosCambioIdiomaVariable.value = textos[secciones][valor];
+                        }
+                        textosCambioIdiomaVariable.innerHTML = textos[secciones][valor];
+                    }
+                }
+
+                elements.addEventListener("click", function (e) {
+                    cambioIdioma(e.target.parentElement.dataset.language);
+                    language = e.target.parentElement.dataset.language;
+                });
+            }
+        });
+    </script>
+
     <script>
         document.querySelector('.newCollection').addEventListener('click', function(){
             document.querySelector('.popup__container__collection').classList.add('visible');
@@ -224,6 +316,21 @@ if ($data['verified'] == 1) {
 
         document.querySelector('.header__logo').addEventListener('click', function(){
             location.href = 'index.php';
+        })
+
+        document.querySelector('.profile').addEventListener('click', function(e){
+            location.href = 'profile.php';
+        });
+
+        document.querySelector('.showMenu').addEventListener('click', function(e){
+            document.querySelector('.options__menu').classList.toggle('show');
+            document.querySelector('.showMenu').classList.toggle('black');
+        });
+
+        document.querySelector('.hideNotis').addEventListener('click', function(e){
+            document.querySelector('.option__info__container').classList.toggle('hide');
+            document.querySelector('.hideNotis').classList.toggle('fa-chevron-down');
+            document.querySelector('.hideNotis').classList.toggle('fa-chevron-right');
         });
 
         document.querySelector('.logout').addEventListener('click', function(e){
