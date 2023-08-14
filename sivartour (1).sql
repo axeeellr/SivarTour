@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-08-2023 a las 06:05:01
+-- Tiempo de generación: 14-08-2023 a las 04:27:08
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -39,7 +39,8 @@ CREATE TABLE `collections` (
 
 INSERT INTO `collections` (`id`, `id_user`, `name`) VALUES
 (1, 1, 'Bosques'),
-(2, 32, 'donde llevaré a mi mujer');
+(2, 32, 'donde llevaré a mi mujer'),
+(3, 1, 'Playas de La Libertad');
 
 -- --------------------------------------------------------
 
@@ -60,7 +61,8 @@ CREATE TABLE `collections_places` (
 
 INSERT INTO `collections_places` (`id`, `id_user`, `id_collection`, `id_place`) VALUES
 (1, 1, 1, 3),
-(2, 32, 2, 31);
+(2, 32, 2, 31),
+(3, 1, 3, 2);
 
 -- --------------------------------------------------------
 
@@ -80,7 +82,9 @@ CREATE TABLE `comments` (
 --
 
 INSERT INTO `comments` (`id`, `id_user`, `id_place`, `comment`) VALUES
-(1, 1, 4, 'Extraño ir de excursión ahí ');
+(1, 1, 4, 'Extraño ir de excursión ahí '),
+(2, 1, 1, 'Que lago tan bonito'),
+(3, 1, 2, 'Muchas piedras hay');
 
 -- --------------------------------------------------------
 
@@ -142,7 +146,7 @@ INSERT INTO `places` (`id`, `name`, `description`, `direction`, `location`, `img
 (31, 'Plaza Mundo Soyapango', 'Centro comercial ideal para hacer tus compras, comer algo o comprar lo que necesites', 'Plaza Mundo, Bulevar del Ejercito Nacional, Soyapango, El Salvador', 'Blvr. del Ejercito Nacional, Soyapango CP 1116, El Salvador', 'https://s3.us-east-2.amazonaws.com/sivartour/Plaza%20Mundo%20Soyapango/FMcvA4MWQAkQ7E-%20%281%29.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Plaza%20Mundo%20Soyapango/img.jpeg', 'https://s3.us-east-2.amazonaws.com/sivartour/Plaza%20Mundo%20Soyapango/Plaza-mundo.jpg', 'San Salvador', 'Centro Comercial', 'Todo público', 0, 0),
 (32, 'Furesa', 'Zoológico con diversidad de flora y fauna, para aprender un poco acerca de la vida silvestre y la na', 'Furesa, Carretera a Jayaque, Minas, El Salvador', 'MHQ2+784, Carr. a Jayaque, Minas, El Salvador', 'https://s3.us-east-2.amazonaws.com/sivartour/Furesa/papo_blanci.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Furesa/Oso-Furesa-Jayaque-La-Libertad.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Furesa/4353738_orig.jpg', 'La Libertad', 'Parque', 'Todo público', 0, 0),
 (33, 'Catedral Nuestra Señora de La Paz', 'Catedral con impresionante arquitectura e historia, una atracción de San Miguel', 'Catedral Basílica Nuestra Señora de la Paz, San Miguel, El Salvador', 'FRMG+53P, San Miguel, El Salvador', 'https://s3.us-east-2.amazonaws.com/sivartour/Catedral%20Nuestra%20Se%C3%B1ora%20de%20La%20Paz/fb-img-1501086382958.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Catedral%20Nuestra%20Se%C3%B1ora%20de%20La%20Paz/307327976_5891560677554786_8828361716992265134_n.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Catedral%20Nuestra%20Se%C3%B1ora%20de%20La%20Paz/altar-mayor-de-la-catedral.jpg', 'San Miguel', 'Otro', 'Todo público', 0, 0),
-(34, 'Termales de Santa Teresa', 'Atracción Turística para disfrutar en familia y darse un buen chapuzón', 'Termales de Santa Teresa, Ahuachapán, El Salvador', 'Ahuachapán, El Salvador', 'https://s3.us-east-2.amazonaws.com/sivartour/Termales%20de%20Santa%20Teresa/wellness-salvador-termales-santa-teresa_0001_Foto-3.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Termales%20de%20Santa%20Teresa/another-view-of-the-yellow.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Termales%20de%20Santa%20Teresa/guest-with-caolin-facial.jpg', 'Ahuachapán', 'Otro', 'Todo público', 0, 0),
+(34, 'Termales de Santa Teresa', 'Atracción Turística para disfrutar en familia y darse un buen chapuzón', 'Termales de Santa Teresa, Ahuachapán, El Salvador', 'Ahuachapán, El Salvador', 'https://s3.us-east-2.amazonaws.com/sivartour/Termales%20de%20Santa%20Teresa/wellness-salvador-termales-santa-teresa_0001_Foto-3.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Termales%20de%20Santa%20Teresa/another-view-of-the-yellow.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Termales%20de%20Santa%20Teresa/guest-with-caolin-facial.jpg', 'Ahuachapán', 'Otro', 'Todo público', 1, 1),
 (35, 'La Casa de La Hacienda', 'Parque con diversidad en flora, fauna y muchas cosas más para pasar un momento entretenido.', 'La Casa de La Hacienda, Ilobasco, El Salvador', 'Ilobasco, El Salvador', 'https://s3.us-east-2.amazonaws.com/sivartour/La%20Casa%20de%20La%20Hacienda/78392216_3628139840531188_5734916057634701312_n.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/La%20Casa%20de%20La%20Hacienda/5775968727_2a5a7dd974_b.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/La%20Casa%20de%20La%20Hacienda/fsup20032019erhacienda209.jpg_1102185208.jpg', 'Cabañas', 'Parque', 'Todo público', 0, 0),
 (36, 'Parque Acuático Amapulapa', 'Piscinas y muchos lugares para relajarse, bañarse y olvidarse del estrés de la ciudad.', 'Parque Acuático Amapulapa, San Vicente, El Salvador', 'J6HF+CM9, San Vicente, El Salvador', 'https://s3.us-east-2.amazonaws.com/sivartour/Parque%20Acu%C3%A1tico%20Amapulapa/Amapulapa03-min-scaled.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Parque%20Acu%C3%A1tico%20Amapulapa/Amapulapa01-min-768x512.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Parque%20Acu%C3%A1tico%20Amapulapa/Amapulapa2.jpg', 'San Vicente', 'Otro', 'Todo público', 0, 0),
 (37, 'Catedral de Sonsonate', 'Catedral con arquitectura memorable, reliquia religiosa y una historia hermosa.', 'Catedral de Sonsonate, Calle Obispo Marroquin, Sonsonate, El Salvador', 'Avenida Morazan &, C. Obispo Marroquin, Sonsonate, El Salvador', 'https://s3.us-east-2.amazonaws.com/sivartour/Catedral%20de%20Sonsonate/FstlA-7WAAAoLq_%20%281%29.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Catedral%20de%20Sonsonate/16327545967_75d34bd098_z.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Catedral%20de%20Sonsonate/catedral-de-sonsonate.jpg', 'Sonsonate', 'Otro', 'Todo público', 0, 0),
@@ -160,6 +164,48 @@ CREATE TABLE `restaurants` (
   `name` varchar(100) NOT NULL,
   `img` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `restaurants`
+--
+
+INSERT INTO `restaurants` (`id`, `id_place`, `name`, `img`) VALUES
+(1, 1, 'La Pampa', 'https://s3.us-east-2.amazonaws.com/sivartour/Lago%20de%20Coatepeque/una-vista-privilegiada.jpg'),
+(2, 1, 'La Octava Maravilla', 'https://s3.us-east-2.amazonaws.com/sivartour/Lago%20de%20Coatepeque/photo1jpg.jpg'),
+(3, 1, 'El Gran Mirador', 'https://s3.us-east-2.amazonaws.com/sivartour/Lago%20de%20Coatepeque/caption.jpg'),
+(4, 2, 'Beto´s', 'https://s3.us-east-2.amazonaws.com/sivartour/Playa%20El%20Tunco/terrace.jpg'),
+(5, 2, 'Coyote', 'https://s3.us-east-2.amazonaws.com/sivartour/Playa%20El%20Tunco/nuestro-restaurante.jpg'),
+(6, 2, 'Pelícanos Restaurante', 'https://s3.us-east-2.amazonaws.com/sivartour/Playa%20El%20Tunco/puesta-del-sol-2.jpg'),
+(7, 3, 'Quinta Montecristo', 'https://s3.us-east-2.amazonaws.com/sivartour/Parque%20Nacional%20Montecristo/2022-08-21.jpg'),
+(8, 3, 'Panes Mayra', 'https://s3.us-east-2.amazonaws.com/sivartour/Parque%20Nacional%20Montecristo/20220507_163413.jpg'),
+(9, 3, 'Café Montecristo', 'https://s3.us-east-2.amazonaws.com/sivartour/Parque%20Nacional%20Montecristo/2018-03-31.jpg'),
+(10, 4, 'El Portal', 'https://s3.us-east-2.amazonaws.com/sivartour/Tazumal/you-must-go.jpg'),
+(11, 4, 'Fraga Specialty Coffee', 'https://s3.us-east-2.amazonaws.com/sivartour/Tazumal/el-mejor-cafe-del-occidente.jpg'),
+(12, 4, 'Town House', 'https://s3.us-east-2.amazonaws.com/sivartour/Tazumal/el-sheriff.jpg'),
+(13, 5, 'Plaza Volcán', 'https://s3.us-east-2.amazonaws.com/sivartour/El%20Boquer%C3%B3n/restaurant-views.jpg'),
+(14, 5, 'Hunan Restaurant', 'https://s3.us-east-2.amazonaws.com/sivartour/El%20Boquer%C3%B3n/hunan-restaurant.jpg'),
+(15, 5, 'El Rinconcito Delicioso de el Boqueron', 'https://s3.us-east-2.amazonaws.com/sivartour/El%20Boquer%C3%B3n/2021-09-24.jpg'),
+(16, 6, 'Hacienda Real El Salvador', 'https://s3.us-east-2.amazonaws.com/sivartour/Parque%20Nacional%20Walter%20Thilo%20Deininger/hacienda-real-outdoor.jpg'),
+(17, 6, 'La Pampa Argentina', 'https://s3.us-east-2.amazonaws.com/sivartour/Parque%20Nacional%20Walter%20Thilo%20Deininger/la-pampa-argentina.jpg'),
+(18, 6, 'Perse Eat Different', 'https://s3.us-east-2.amazonaws.com/sivartour/Parque%20Nacional%20Walter%20Thilo%20Deininger/excellent-choice-of-beef.jpg'),
+(19, 7, 'Villa Café', 'https://s3.us-east-2.amazonaws.com/sivartour/La%20Palma/ambiente-sensasional.jpg'),
+(20, 7, 'La Cafeta', 'https://s3.us-east-2.amazonaws.com/sivartour/La%20Palma/interior-de-nuestro-negocio.jpg'),
+(21, 7, 'La Placita Restaurant', 'https://s3.us-east-2.amazonaws.com/sivartour/La%20Palma/nuestra-terraza.jpg'),
+(22, 8, 'Casa Rauda', 'https://s3.us-east-2.amazonaws.com/sivartour/Laguna%20de%20Alegria/20221002_162006.jpg'),
+(23, 8, 'La Fonda de Alegría', 'https://s3.us-east-2.amazonaws.com/sivartour/Laguna%20de%20Alegria/2023-01-06.jpg'),
+(24, 8, 'Finca San Rafael', 'https://s3.us-east-2.amazonaws.com/sivartour/Laguna%20de%20Alegria/20180515_140208.jpg'),
+(25, 9, 'La Marquesa', 'https://s3.us-east-2.amazonaws.com/sivartour/Jard%C3%ADn%20Bot%C3%A1nico%20La%20Laguna%20/2023-01-29.jpg'),
+(26, 9, 'Restaurante Choice', 'https://s3.us-east-2.amazonaws.com/sivartour/Jard%C3%ADn%20Bot%C3%A1nico%20La%20Laguna%20/2017-08-26.jpg'),
+(27, 9, 'Carnivore', 'https://s3.us-east-2.amazonaws.com/sivartour/Jard%C3%ADn%20Bot%C3%A1nico%20La%20Laguna%20/2022-06-26.jpg'),
+(28, 10, 'Restaurante Sarita', 'https://s3.us-east-2.amazonaws.com/sivartour/Museo%20de%20la%20Revoluci%C3%B3n/2023-04-13.png'),
+(29, 10, 'La Cocina de la Abuela', 'https://s3.us-east-2.amazonaws.com/sivartour/Museo%20de%20la%20Revoluci%C3%B3n/2017-04-11.jpg'),
+(30, 10, 'Cocina Lenca', 'https://s3.us-east-2.amazonaws.com/sivartour/Museo%20de%20la%20Revoluci%C3%B3n/2019-02-18.jpg'),
+(31, 11, 'Artisant', 'https://s3.us-east-2.amazonaws.com/sivartour/Catedral%20de%20Santa%20Ana/2022-06-24.jpg'),
+(32, 11, 'Simmer Down', 'https://s3.us-east-2.amazonaws.com/sivartour/Catedral%20de%20Santa%20Ana/20230422_115807.jpg'),
+(33, 12, 'Hostal y Restaurante Las Lomas', 'https://s3.us-east-2.amazonaws.com/sivartour/Parque%20Nacional%20Cerro%20Verde/2022-04-01.jpg'),
+(34, 11, 'Keka´s Place 1950', 'https://s3.us-east-2.amazonaws.com/sivartour/Catedral%20de%20Santa%20Ana/WhatsApp%20Image%202020-09-07%20at%209.14.28%20AM.jpeg'),
+(35, 12, 'Los Volcanes Bistro Café', 'https://s3.us-east-2.amazonaws.com/sivartour/Parque%20Nacional%20Cerro%20Verde/IMG_20220424_105032.jpg'),
+(36, 12, '400´s Cerros Restaurante', 'https://s3.us-east-2.amazonaws.com/sivartour/Parque%20Nacional%20Cerro%20Verde/2022-04-12.jpg');
 
 -- --------------------------------------------------------
 
@@ -190,7 +236,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `img`, `token`, `age`, `sex`, `number`, `address`, `instagram`, `whatsapp`, `twitter`, `code`, `verified`) VALUES
-(1, 'Axel Ramirez', 'axelramireezz@gmail.com', '', 'https://lh3.googleusercontent.com/a/AAcHTtdwud2oM0DUII2C1rQ4AKXbGFTtOOml7orFN75cJ1c6=s96-c', '107045247008393752346', 0, '', 0, '', '', '', '', 39282, 1),
+(1, 'Axel Ramirez', 'axelramireezz@gmail.com', '', 'https://lh3.googleusercontent.com/a/AAcHTtdwud2oM0DUII2C1rQ4AKXbGFTtOOml7orFN75cJ1c6=s96-c', '107045247008393752346', 0, '', 0, '', 'axell.mwyyy', '79188652', 'axellmwyyy', 39282, 1),
 (7, 'Miguel', 'miguelchapiza@gmail.com', '123456', '', '200847516297541235460', 0, '', 0, '', '', '', '', 0, 0),
 (16, 'pedro', 'pedro@gmail.com', '123456', '', '935344646815697831581', 0, '', 0, '', '', '', '', 0, 0),
 (17, 'Erick', 'erick@gmail.com', '12345', '', '513047413789549182903', 0, '', 0, '', '', '', '', 0, 0),
@@ -199,10 +245,11 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `img`, `token`, `age`, `
 (22, 'chepe pablo', 'chepepablo@gmail.com', '123456', '', '079580131204947342256', 0, '', 0, '', '', '', '', 85776, 1),
 (23, 'assdas', 'sydney.augsburg@gmail.com', '12345', '', '156325971053408932178', 20, '', 0, '', '', '', '', 41720, 1),
 (31, 'misho', 'mish@gmail.com', '123456', '', '530546128693905722497', 0, '', 0, '', '', '', '', 0, 0),
-(32, 'rels b', 'rels@gmail.com', '123456', '', '685106377067039424512', 0, '', 0, '', '', '', '', 94896, 0),
 (33, 'Amilcar', 'amilcar@gmail.com', '123456', '', '753060311270499618245', 25, '', 0, '', '', '', '', 43946, 1),
 (34, 'Axel Enrique Aguilar Ramírez', 'estudiante20120161@cdb.edu.sv', '', 'https://lh3.googleusercontent.com/a/AAcHTtdqMNc7bWhNG5VV3mVAqFmjjnYCXtq19ouakXSfloOCAA=s96-c', '115753393956445900696', 0, '', 0, '', '', '', '', 0, 0),
-(35, 'ter stegen', 'ter@gmail.com', '123456', '', '224750210866096847513', 0, '', 0, '', '', '', '', 0, 0);
+(35, 'ter stegen', 'ter@gmail.com', '123456', '', '224750210866096847513', 0, '', 0, '', '', '', '', 0, 0),
+(36, 'chente', 'chente@gmail.com', '123456', '', '779886934621758161550', 0, '', 0, '', '', '', '', 87676, 0),
+(37, 'Lokitho', 'loko@gmail.com', '123456', '', '263961443767350291505', 0, '', 0, '', '', '', '', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -234,7 +281,8 @@ INSERT INTO `user_ratings` (`id`, `user_id`, `place_id`, `rating`) VALUES
 (19, 33, 38, 1),
 (20, 0, 6, 1),
 (21, 0, 19, 1),
-(22, 1, 22, 1);
+(22, 1, 22, 1),
+(23, 37, 34, 1);
 
 --
 -- Índices para tablas volcadas
@@ -281,7 +329,8 @@ ALTER TABLE `users`
 --
 ALTER TABLE `user_ratings`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `unique_rating` (`user_id`,`place_id`);
+  ADD UNIQUE KEY `unique_rating` (`user_id`,`place_id`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -291,19 +340,19 @@ ALTER TABLE `user_ratings`
 -- AUTO_INCREMENT de la tabla `collections`
 --
 ALTER TABLE `collections`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `collections_places`
 --
 ALTER TABLE `collections_places`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `places`
@@ -315,19 +364,19 @@ ALTER TABLE `places`
 -- AUTO_INCREMENT de la tabla `restaurants`
 --
 ALTER TABLE `restaurants`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT de la tabla `user_ratings`
 --
 ALTER TABLE `user_ratings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
