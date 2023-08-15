@@ -430,7 +430,7 @@ if (isset($_POST['newCollectionP'])) {
 
     if ($run) {
         $notice = "Colección creada exitosamente!";
-        //header('Location: ' . $_SESSION['urll'], true, 303);
+        header('Location: profile.php', true, 303);
     }
 }
 
@@ -570,5 +570,13 @@ if (isset($_POST['userComment'])) {
 if (isset($_POST['collectionPage'])) {
     $_SESSION['collectionId'] = $_POST['collectionId'];
     header('Location: collections.php');
+}
+
+
+
+
+/****** V E R   F A V O R I T O S ******/
+if (isset($_POST['favoritePage'])) {
+    header('Location: collections.php?favorites');
 }
 ?>

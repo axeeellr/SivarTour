@@ -153,6 +153,9 @@ if ($data['verified'] == 1) {
                     <h1>Mis colecciones</h1>
                 </div>
                 <div class="saved__content">
+                    <form method="post" class="saved__collection">
+                        <button type="submit" name="favoritePage">Favoritos</button>
+                    </form>
                     <?php
                     $sql = "SELECT * FROM collections WHERE id_user = {$data['id']}";
                     $run = mysqli_query($connection, $sql);

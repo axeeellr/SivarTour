@@ -30,9 +30,11 @@ if (isset($_SESSION['isLogin'])) {
     <?php
 }
 
-$sql = "SELECT * FROM collections WHERE id = '{$_SESSION['collectionId']}'";
-$run = mysqli_query($connection, $sql);
-$row = mysqli_fetch_assoc($run);
+if (isset($_SESSION['collectionId'])) {
+    $sql = "SELECT * FROM collections WHERE id = '{$_SESSION['collectionId']}'";
+    $run = mysqli_query($connection, $sql);
+    $row = mysqli_fetch_assoc($run);
+}
 
 ?>
 <!DOCTYPE html>
@@ -91,55 +93,103 @@ $row = mysqli_fetch_assoc($run);
     </header>
     <div class="collections__container">
         <div class="collections__header">
-            <h1><?php echo $row['name']; ?></h1>
+            <h1><?php echo isset($_GET['favorites']) ? "Mis Favoritos" : $row['name']; ?></h1>
             <p>Colección pública</p>
         </div>
         <div class="collections__body">
             <?php 
-                $getPlaces = "SELECT * FROM collections_places INNER JOIN places ON collections_places.id_place = places.id WHERE id_collection = '{$_SESSION['collectionId']}' ";
-                $runPlaces = mysqli_query($connection, $getPlaces);
+                if (isset($_GET['favorites'])) {
+                    $getFavorites = "SELECT * FROM user_ratings INNER JOIN places ON user_ratings.place_id = places.id WHERE user_ratings.user_id = {$_SESSION['user_id']}";
+                    $runFavorites = mysqli_query($connection, $getFavorites);
 
-                if (mysqli_num_rows($runPlaces) == 0) {
-                    echo "<h3 class='noData'>No hay lugares por mostrar :(</h3>";
-                }
+                    if (mysqli_num_rows($runFavorites) == 0) {
+                        echo "<h3 class='noData'>No hay lugares por mostrar :(</h3>";
+                    }
 
-                while($dataPlaces = mysqli_fetch_assoc($runPlaces)){
-                    ?>
-                        <div class="collection">
-                            <div class="collection__place">
-                                <?php echo '<img src="'.$dataPlaces["img1"].'">' ?>
-                                <div class="collection__info">
-                                    <h2><?php echo $dataPlaces['name']; ?></h2>
-                                    <div class="info__stars">
-                                        <?php
-                                        // Validar que el rating esté entre 1 y 5
-                                            $rating = max(1, min(5, $dataPlaces['rating']));
-
-                                            // Definir la cantidad de iconos sólidos y regulares
-                                            $iconosSolidos = $dataPlaces['rating'];
-                                            $iconosRegulares = 5 - $rating;
-
-                                            // Imprimir los iconos sólidos
-                                            for ($i = 0; $i < $iconosSolidos; $i++) {
-                                                echo '<i class="fa-solid fa-star"></i>';
-                                            }
-
-                                            if ($iconosSolidos == 0) {
-                                                $iconosRegulares = 5;
-                                            }
-
-                                            // Imprimir los iconos regulares
-                                            for ($i = 0; $i < $iconosRegulares; $i++) {
-                                                echo '<i class="fa-regular fa-star"></i>';
-                                            }
-
-                                        ?> 
+                    while($dataFavorites = mysqli_fetch_assoc($runFavorites)){
+                        ?>
+                            <div class="collection">
+                                <div class="collection__place">
+                                    <?php echo '<img src="'.$dataFavorites["img1"].'">' ?>
+                                    <div class="collection__info">
+                                        <h2><?php echo $dataFavorites['name']; ?></h2>
+                                        <div class="info__stars">
+                                            <?php
+                                            // Validar que el rating esté entre 1 y 5
+                                                $rating = max(1, min(5, $dataFavorites['rating']));
+    
+                                                // Definir la cantidad de iconos sólidos y regulares
+                                                $iconosSolidos = $dataFavorites['rating'];
+                                                $iconosRegulares = 5 - $rating;
+    
+                                                // Imprimir los iconos sólidos
+                                                for ($i = 0; $i < $iconosSolidos; $i++) {
+                                                    echo '<i class="fa-solid fa-star"></i>';
+                                                }
+    
+                                                if ($iconosSolidos == 0) {
+                                                    $iconosRegulares = 5;
+                                                }
+    
+                                                // Imprimir los iconos regulares
+                                                for ($i = 0; $i < $iconosRegulares; $i++) {
+                                                    echo '<i class="fa-regular fa-star"></i>';
+                                                }
+    
+                                            ?> 
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    <?php
+                        <?php
+                    }
+                }else {
+                    $getPlaces = "SELECT * FROM collections_places INNER JOIN places ON collections_places.id_place = places.id WHERE id_collection = '{$_SESSION['collectionId']}' ";
+                    $runPlaces = mysqli_query($connection, $getPlaces);
+    
+                    if (mysqli_num_rows($runPlaces) == 0) {
+                        echo "<h3 class='noData'>No hay lugares por mostrar :(</h3>";
+                    }
+    
+                    while($dataPlaces = mysqli_fetch_assoc($runPlaces)){
+                        ?>
+                            <div class="collection">
+                                <div class="collection__place">
+                                    <?php echo '<img src="'.$dataPlaces["img1"].'">' ?>
+                                    <div class="collection__info">
+                                        <h2><?php echo $dataPlaces['name']; ?></h2>
+                                        <div class="info__stars">
+                                            <?php
+                                            // Validar que el rating esté entre 1 y 5
+                                                $rating = max(1, min(5, $dataPlaces['rating']));
+    
+                                                // Definir la cantidad de iconos sólidos y regulares
+                                                $iconosSolidos = $dataPlaces['rating'];
+                                                $iconosRegulares = 5 - $rating;
+    
+                                                // Imprimir los iconos sólidos
+                                                for ($i = 0; $i < $iconosSolidos; $i++) {
+                                                    echo '<i class="fa-solid fa-star"></i>';
+                                                }
+    
+                                                if ($iconosSolidos == 0) {
+                                                    $iconosRegulares = 5;
+                                                }
+    
+                                                // Imprimir los iconos regulares
+                                                for ($i = 0; $i < $iconosRegulares; $i++) {
+                                                    echo '<i class="fa-regular fa-star"></i>';
+                                                }
+    
+                                            ?> 
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php
+                    }
                 }
+
             ?>
         </div>
     </div>
