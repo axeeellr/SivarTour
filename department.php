@@ -61,7 +61,7 @@
                     <h3 data-section="department" data-value="Notificaciones">Notificaciones</h3>
                     <i class="fa-solid fa-chevron-down hideNotis"></i>
                 </div>
-                <div class="option__info__container">
+                <div class="option__info__container hide">
                     <div class="option__info">
                         <i class="fa-solid fa-xmark close"></i>
                         <h4 data-section="department" data-value="Noti Rechazada">Publicación rechazada</h4>
@@ -221,6 +221,8 @@
 
         document.querySelector('.hideNotis').addEventListener('click', function(e){
             document.querySelector('.option__info__container').classList.toggle('hide');
+            document.querySelector('.hideNotis').classList.toggle('fa-chevron-down');
+            document.querySelector('.hideNotis').classList.toggle('fa-chevron-right');
         });
 
         document.querySelector('.header__logo').addEventListener('click', function(){
@@ -229,6 +231,10 @@
 
         document.querySelector('.profile').addEventListener('click', function(e){
             location.href = 'profile.php';
+        });
+
+        document.querySelector('.favorites').addEventListener('click', function(e){
+            location.href = 'collections.php?favorites';
         });
     </script>
     <script>

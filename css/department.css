@@ -48,6 +48,7 @@ body{
 
 .header__logo img{
     height: calc(6px + 6vw);
+    filter: brightness(0) saturate(100%) invert(95%) sepia(8%) saturate(192%) hue-rotate(68deg) brightness(104%) contrast(91%);
 }
 
 .header__options{

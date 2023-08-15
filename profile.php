@@ -80,7 +80,7 @@ if ($data['verified'] == 1) {
                     <h3 data-section="Profile" data-value="Notificaciones">Notificaciones</h3>
                     <i class="fa-solid fa-chevron-down hideNotis"></i>
                 </div>
-                <div class="option__info__container">
+                <div class="option__info__container hide">
                     <div class="option__info">
                         <i class="fa-solid fa-xmark close"></i>
                         <h4 data-section="Profile" data-value="Noti Rechazada">Publicación rechazada</h4>
@@ -111,15 +111,27 @@ if ($data['verified'] == 1) {
         </div>
     </header>
     <?php
-        if($mensaje != ""){
+        if ($notice != "") {
             ?>
-                <div class="popup__container">
-                    <div class="popup">
-                        <h2><?php echo $mensaje; ?></h2>
-                        <p><?php echo $submensaje; ?></p>
-                        <button class="close">Aceptar</button>
-                    </div>
-                </div>
+            <div class="notice" id="notification">
+                <p><?php echo $notice; ?></p>
+            </div>
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    const notice = document.getElementById('notification');
+                    
+                    // Mostrar la notificación después de un retraso
+                    setTimeout(function () {
+                        notice.classList.add('active');
+                    }, 10);
+
+                    // Ocultar la notificación después de 3 segundos
+                    setTimeout(function () {
+                        notice.classList.remove('active');
+                        window.history.replaceState(null,null,window.location.href);
+                    }, 3000);
+                });
+            </script>
             <?php
         }
     ?>
@@ -170,12 +182,6 @@ if ($data['verified'] == 1) {
                     }
                     ?>
                     <i class="fa-solid fa-plus newCollection"></i>
-                    
-                    <?php
-                    if (mysqli_num_rows($run) == 0) {
-                        echo "<h3 class='noData'>No hay colecciones por mostrar :c</h3>";
-                    }
-                    ?>
                 </div>
             </div>
         </div>
@@ -325,6 +331,10 @@ if ($data['verified'] == 1) {
             location.href = 'profile.php';
         });
 
+        document.querySelector('.favorites').addEventListener('click', function(e){
+            location.href = 'collections.php?favorites';
+        });
+
         document.querySelector('.showMenu').addEventListener('click', function(e){
             document.querySelector('.options__menu').classList.toggle('show');
             document.querySelector('.showMenu').classList.toggle('black');
@@ -345,7 +355,7 @@ if ($data['verified'] == 1) {
             document.querySelector('.right__code').classList.add('see');
         });
 
-        document.querySelector('.close').addEventListener('click', function(e){
+        document.querySelector('.closeP').addEventListener('click', function(e){
             e.preventDefault();
             document.querySelector('.popup__container').classList.add('invisiblee');
             window.history.replaceState(null,null,window.location.href);

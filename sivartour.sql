@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-08-2023 a las 04:27:08
+-- Tiempo de generación: 15-08-2023 a las 05:28:06
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -40,7 +40,11 @@ CREATE TABLE `collections` (
 INSERT INTO `collections` (`id`, `id_user`, `name`) VALUES
 (1, 1, 'Bosques'),
 (2, 32, 'donde llevaré a mi mujer'),
-(3, 1, 'Playas de La Libertad');
+(3, 1, 'Playas de La Libertad'),
+(4, 1, 'Malls'),
+(5, 1, 'Sanmi'),
+(6, 1, 'La Libertad'),
+(7, 38, 'Playas');
 
 -- --------------------------------------------------------
 
@@ -128,7 +132,7 @@ INSERT INTO `places` (`id`, `name`, `description`, `direction`, `location`, `img
 (13, 'Tamanique', 'Pueblo pintoresco con hermosas vistas al océano y actividades como el parapente.', 'Tamanique, El Salvador', 'Tamanique, El Salvador', 'https://s3.us-east-2.amazonaws.com/sivartour/Tamanique/CASCADA.jpeg', 'https://s3.us-east-2.amazonaws.com/sivartour/Tamanique/cascadas-tamanique.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Tamanique/cascadas-de-tamanique-la-libertad-1133x850.jpg', 'La Libertad', 'Otro', 'Todo público', 0, 0),
 (14, 'Parque Nacional El Pital', 'Área natural protegida que incluye el punto más alto de El Salvador y ofrece senderos para caminatas', 'El Pital, El Salvador', 'El Pital, El Salvador', 'https://s3.us-east-2.amazonaws.com/sivartour/Parque%20Nacional%20El%20Pital/el-pital.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Parque%20Nacional%20El%20Pital/cerro-el-pital-1.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Parque%20Nacional%20El%20Pital/deac76d2050000f90e0ef95db95e81fao.jpg', 'Chalatenango', 'Montaña', 'Todo público', 0, 0),
 (15, 'Playa El Sunzal', 'Playa famosa por sus olas, ideal para el surf y con hermosos atardeceres.', 'Playa El Sunzal, El Salvador', 'Playa El Sunzal, El Salvador', 'https://s3.us-east-2.amazonaws.com/sivartour/Playa%20El%20Sunzal/ZUNZAL-1-scaled.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Playa%20El%20Sunzal/photo3jpg.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Playa%20El%20Sunzal/Conchal%E0%B8%81o-Alejandro-Martinez-scaled.jpg', 'La Libertad', 'Playa', 'Todo público', 0, 0),
-(16, 'Suchitoto', 'Encantador pueblo colonial con calles empedradas, iglesias y vista al lago Suchitlán', 'Suchitoto, El Salvador', 'Suchitoto, El Salvador', 'https://s3.us-east-2.amazonaws.com/sivartour/Suchitoto/f0.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Suchitoto/Suchitoto-4-1.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Suchitoto/cropped-Casa-de-la-Abuela-Suchitoto-.jpg', 'Cuscatlán', 'Otro', 'Todo público', 0, 0),
+(16, 'Suchitoto', 'Encantador pueblo colonial con calles empedradas, iglesias y vista al lago Suchitlán', 'Suchitoto, El Salvador', 'Suchitoto, El Salvador', 'https://s3.us-east-2.amazonaws.com/sivartour/Suchitoto/f0.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Suchitoto/Suchitoto-4-1.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Suchitoto/cropped-Casa-de-la-Abuela-Suchitoto-.jpg', 'Cuscatlán', 'Otro', 'Todo público', 1, 1),
 (17, 'Playa Costa del Sol', 'Playa popular y animada con resorts, restaurantes y actividades acuáticas.', 'Playa Costa del Sol, El Salvador', 'Playa Costa del Sol, El Salvador', 'https://s3.us-east-2.amazonaws.com/sivartour/Playa%20Costa%20del%20Sol/Costa-del-Sol.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Playa%20Costa%20del%20Sol/photo0jpg.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Playa%20Costa%20del%20Sol/las-hojas-resort-club.jpg', 'La Paz', 'Playa', 'Todo público', 0, 0),
 (18, 'Palacio Nacional', 'Imponente estructura de estilo neoclásico que alberga las oficinas del gobierno y es sede del Poder', 'Palacio Nacional de El Salvador, 4a Calle Poniente, San Salvador, El Salvador', 'Palacio Nacional de El Salvador, 4a Calle Poniente, San Salvador, El Salvador', 'https://s3.us-east-2.amazonaws.com/sivartour/Palacio%20Nacional/palacio-nacional-01.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Palacio%20Nacional/Centro-Historico-de-San-Salvador-18.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Palacio%20Nacional/Palacio_Nacional_de_El_Salvador_Centro_Historico.jpg', 'San Salvador', 'Otro', 'Todo público', 0, 0),
 (19, 'Ataco', 'Pueblo pintoresco en la Ruta de las Flores, conocido por sus murales coloridos, cafés y artesanías', 'Concepción de Ataco, El Salvador', 'Concepción de Ataco, El Salvador', 'https://s3.us-east-2.amazonaws.com/sivartour/Ataco/82006317_3146154935399564_3578059773087580160_n.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Ataco/Murales-representativos-Ataco-672x372.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Ataco/ataco-3.jpg', 'Ahuachapán', 'Otro', 'Todo público', 1, 1),
@@ -136,7 +140,7 @@ INSERT INTO `places` (`id`, `name`, `description`, `direction`, `location`, `img
 (21, 'Lago de Ilopango ', 'Conocido por su belleza escénica y su importancia histórica y natural.', 'Lago de Ilopango, El Salvador', 'Lago de Ilopango, El Salvador', 'https://s3.us-east-2.amazonaws.com/sivartour/Lago%20de%20Ilopango%20/GUANACOS-APULO-LAGO-DE-ILOPANGO-1024x768.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Lago%20de%20Ilopango%20/20210130_135810-1.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Lago%20de%20Ilopango%20/LAGO-DE-ILOPANGO-Lagos-de-El-Salvador.jpg', 'San Salvador', 'Lago', 'Todo público', 1, 1),
 (22, 'La Puerta del Diablo ', 'Mirador natural que ofrece vistas panorámicas espectaculares de los alrededores', 'Puerta del Diablo, Panchimalco, El Salvador', 'JRF5+F4Q, Panchimalco, El Salvador', 'https://s3.us-east-2.amazonaws.com/sivartour/La%20Puerta%20del%20Diablo%20/220395280_10159384381557618_5922345747777805271_n.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/La%20Puerta%20del%20Diablo%20/GUANACOS-LA-PUERTA-DEL-DIABLO-1024x512.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/La%20Puerta%20del%20Diablo%20/La-Puerta-del-Diablo.jpg', 'San Salvador', 'Montaña', 'Todo público', 1, 1),
 (23, 'Parque Nacional El Imposible ', 'Reserva natural con exuberante vegetación, cascadas y senderos para practicar senderismo.', 'Parque Nacional El Imposible, Caserío El Coco, El Salvador', 'Caserío El Coco, El Salvador', 'https://s3.us-east-2.amazonaws.com/sivartour/Parque%20Nacional%20El%20Imposible%20/10012021-El-Imposible-APPEX-5.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Parque%20Nacional%20El%20Imposible%20/Mirador_Reserva_Natural_El_Imposible%20%281%29.jpeg', 'https://s3.us-east-2.amazonaws.com/sivartour/Parque%20Nacional%20El%20Imposible%20/maxresdefault%20%285%29.jpg', 'Ahuachapán', 'Montaña', 'Todo público', 0, 0),
-(24, 'Parque El Principito', 'Parque para disfrutar en familia y aprender más sobre esta hermosa historia.', 'Parque El Principito, Bulevar Merliot, Santa Tecla, El Salvador', 'Blvr. Merliot, Santa Tecla, El Salvador', 'https://s3.us-east-2.amazonaws.com/sivartour/Parque%20El%20Principito/5a5f46d54b10e9535ed0ca6214e3875a.png', 'https://s3.us-east-2.amazonaws.com/sivartour/Parque%20El%20Principito/FiSE0zdWIBIaXOm.jpeg', 'https://s3.us-east-2.amazonaws.com/sivartour/Parque%20El%20Principito/DNA2Tl8XcAIK718.jpg', 'La Libertad', 'Parque', 'Todo público', 0, 0),
+(24, 'Parque El Principito', 'Parque para disfrutar en familia y aprender más sobre esta hermosa historia.', 'Parque El Principito, Bulevar Merliot, Santa Tecla, El Salvador', 'Blvr. Merliot, Santa Tecla, El Salvador', 'https://s3.us-east-2.amazonaws.com/sivartour/Parque%20El%20Principito/5a5f46d54b10e9535ed0ca6214e3875a.png', 'https://s3.us-east-2.amazonaws.com/sivartour/Parque%20El%20Principito/FiSE0zdWIBIaXOm.jpeg', 'https://s3.us-east-2.amazonaws.com/sivartour/Parque%20El%20Principito/DNA2Tl8XcAIK718.jpg', 'La Libertad', 'Parque', 'Todo público', 1, 1),
 (25, 'Multiplaza', 'Centro Comercial con gran cantidad de tiendas para cualquier necesidad personal.', 'Multiplaza, San Salvador, El Salvador', 'Carr. Panamericana, El Salvador', 'https://s3.us-east-2.amazonaws.com/sivartour/Multiplaza/mobile_Fachada_2.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Multiplaza/dsc09596.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Multiplaza/201709041312120.multiplaza2.jpg', 'La Libertad', 'Centro Comercial', 'Todo público', 0, 0),
 (26, 'Paseo El Carmen', 'Calles coloridas, llamativas y con buen ambiente nocturno para disfrutar en familia o con los amigos', 'Paseo El Carmen, 6 Avenida Norte, Santa Tecla, El Salvador', '6 Avenida Norte 4-4 C, Santa Tecla, El Salvador', 'https://s3.us-east-2.amazonaws.com/sivartour/Paseo%20El%20Carmen/E-OFCFyXIAEHdEm.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Paseo%20El%20Carmen/paseo-el-carmen.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Paseo%20El%20Carmen/4994600_orig.png', 'La Libertad', 'Otro', 'Todo público', 0, 0),
 (27, 'Playa San Diego', 'Linda playa con arena en buen estado, buenas vistas y ambiente agradable', 'Playa San Diego, El Salvador', 'Playa San Diego, El Salvador', 'https://s3.us-east-2.amazonaws.com/sivartour/Playa%20San%20Diego/La_Playa_de_El_Salvador.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Playa%20San%20Diego/Puestas-de-Sol-en-Playa-San-Diego.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Playa%20San%20Diego/San-Diego-en-La-Libertad.jpg', 'La Libertad', 'Playa', 'Todo público', 0, 0),
@@ -145,7 +149,7 @@ INSERT INTO `places` (`id`, `name`, `description`, `direction`, `location`, `img
 (30, 'Playa San Blas', 'Playa tranquila, ideal para relajarse de la ciudad y mantener un ambiente de calma con unas increíbl', 'Playa San Blas, El Salvador', 'Playa San Blas, El Salvador', 'https://s3.us-east-2.amazonaws.com/sivartour/Playa%20San%20Blas/46835415902_a12aca4155_b.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Playa%20San%20Blas/san-juan-playa-el-escambron.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Playa%20San%20Blas/IMG-20201224-WA0013-1024x528.jpg', 'La Libertad', 'Playa', 'Todo público', 0, 0),
 (31, 'Plaza Mundo Soyapango', 'Centro comercial ideal para hacer tus compras, comer algo o comprar lo que necesites', 'Plaza Mundo, Bulevar del Ejercito Nacional, Soyapango, El Salvador', 'Blvr. del Ejercito Nacional, Soyapango CP 1116, El Salvador', 'https://s3.us-east-2.amazonaws.com/sivartour/Plaza%20Mundo%20Soyapango/FMcvA4MWQAkQ7E-%20%281%29.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Plaza%20Mundo%20Soyapango/img.jpeg', 'https://s3.us-east-2.amazonaws.com/sivartour/Plaza%20Mundo%20Soyapango/Plaza-mundo.jpg', 'San Salvador', 'Centro Comercial', 'Todo público', 0, 0),
 (32, 'Furesa', 'Zoológico con diversidad de flora y fauna, para aprender un poco acerca de la vida silvestre y la na', 'Furesa, Carretera a Jayaque, Minas, El Salvador', 'MHQ2+784, Carr. a Jayaque, Minas, El Salvador', 'https://s3.us-east-2.amazonaws.com/sivartour/Furesa/papo_blanci.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Furesa/Oso-Furesa-Jayaque-La-Libertad.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Furesa/4353738_orig.jpg', 'La Libertad', 'Parque', 'Todo público', 0, 0),
-(33, 'Catedral Nuestra Señora de La Paz', 'Catedral con impresionante arquitectura e historia, una atracción de San Miguel', 'Catedral Basílica Nuestra Señora de la Paz, San Miguel, El Salvador', 'FRMG+53P, San Miguel, El Salvador', 'https://s3.us-east-2.amazonaws.com/sivartour/Catedral%20Nuestra%20Se%C3%B1ora%20de%20La%20Paz/fb-img-1501086382958.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Catedral%20Nuestra%20Se%C3%B1ora%20de%20La%20Paz/307327976_5891560677554786_8828361716992265134_n.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Catedral%20Nuestra%20Se%C3%B1ora%20de%20La%20Paz/altar-mayor-de-la-catedral.jpg', 'San Miguel', 'Otro', 'Todo público', 0, 0),
+(33, 'Catedral Nuestra Señora de La Paz', 'Catedral con impresionante arquitectura e historia, una atracción de San Miguel', 'Catedral Basílica Nuestra Señora de la Paz, San Miguel, El Salvador', 'FRMG+53P, San Miguel, El Salvador', 'https://s3.us-east-2.amazonaws.com/sivartour/Catedral%20Nuestra%20Se%C3%B1ora%20de%20La%20Paz/fb-img-1501086382958.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Catedral%20Nuestra%20Se%C3%B1ora%20de%20La%20Paz/307327976_5891560677554786_8828361716992265134_n.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Catedral%20Nuestra%20Se%C3%B1ora%20de%20La%20Paz/altar-mayor-de-la-catedral.jpg', 'San Miguel', 'Otro', 'Todo público', 1, 1),
 (34, 'Termales de Santa Teresa', 'Atracción Turística para disfrutar en familia y darse un buen chapuzón', 'Termales de Santa Teresa, Ahuachapán, El Salvador', 'Ahuachapán, El Salvador', 'https://s3.us-east-2.amazonaws.com/sivartour/Termales%20de%20Santa%20Teresa/wellness-salvador-termales-santa-teresa_0001_Foto-3.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Termales%20de%20Santa%20Teresa/another-view-of-the-yellow.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Termales%20de%20Santa%20Teresa/guest-with-caolin-facial.jpg', 'Ahuachapán', 'Otro', 'Todo público', 1, 1),
 (35, 'La Casa de La Hacienda', 'Parque con diversidad en flora, fauna y muchas cosas más para pasar un momento entretenido.', 'La Casa de La Hacienda, Ilobasco, El Salvador', 'Ilobasco, El Salvador', 'https://s3.us-east-2.amazonaws.com/sivartour/La%20Casa%20de%20La%20Hacienda/78392216_3628139840531188_5734916057634701312_n.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/La%20Casa%20de%20La%20Hacienda/5775968727_2a5a7dd974_b.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/La%20Casa%20de%20La%20Hacienda/fsup20032019erhacienda209.jpg_1102185208.jpg', 'Cabañas', 'Parque', 'Todo público', 0, 0),
 (36, 'Parque Acuático Amapulapa', 'Piscinas y muchos lugares para relajarse, bañarse y olvidarse del estrés de la ciudad.', 'Parque Acuático Amapulapa, San Vicente, El Salvador', 'J6HF+CM9, San Vicente, El Salvador', 'https://s3.us-east-2.amazonaws.com/sivartour/Parque%20Acu%C3%A1tico%20Amapulapa/Amapulapa03-min-scaled.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Parque%20Acu%C3%A1tico%20Amapulapa/Amapulapa01-min-768x512.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Parque%20Acu%C3%A1tico%20Amapulapa/Amapulapa2.jpg', 'San Vicente', 'Otro', 'Todo público', 0, 0),
@@ -205,7 +209,42 @@ INSERT INTO `restaurants` (`id`, `id_place`, `name`, `img`) VALUES
 (33, 12, 'Hostal y Restaurante Las Lomas', 'https://s3.us-east-2.amazonaws.com/sivartour/Parque%20Nacional%20Cerro%20Verde/2022-04-01.jpg'),
 (34, 11, 'Keka´s Place 1950', 'https://s3.us-east-2.amazonaws.com/sivartour/Catedral%20de%20Santa%20Ana/WhatsApp%20Image%202020-09-07%20at%209.14.28%20AM.jpeg'),
 (35, 12, 'Los Volcanes Bistro Café', 'https://s3.us-east-2.amazonaws.com/sivartour/Parque%20Nacional%20Cerro%20Verde/IMG_20220424_105032.jpg'),
-(36, 12, '400´s Cerros Restaurante', 'https://s3.us-east-2.amazonaws.com/sivartour/Parque%20Nacional%20Cerro%20Verde/2022-04-12.jpg');
+(36, 12, '400´s Cerros Restaurante', 'https://s3.us-east-2.amazonaws.com/sivartour/Parque%20Nacional%20Cerro%20Verde/2022-04-12.jpg'),
+(37, 13, 'Los Tres Farolitos', 'https://s3.us-east-2.amazonaws.com/sivartour/Tamanique/IMG_20210613_101906.jpg'),
+(38, 13, 'Pelícanos Restaurante', 'https://s3.us-east-2.amazonaws.com/sivartour/Tamanique/2021-11-11.jpg'),
+(39, 13, 'Restaurante Lo Nuestro', 'https://s3.us-east-2.amazonaws.com/sivartour/Tamanique/2023-07-25.jpg'),
+(40, 14, 'Entre Nubes', 'https://s3.us-east-2.amazonaws.com/sivartour/Parque%20Nacional%20El%20Pital/Captura%20de%20pantalla%202023-08-14%20170828.png'),
+(41, 14, 'La Pampa', 'https://s3.us-east-2.amazonaws.com/sivartour/Parque%20Nacional%20El%20Pital/52124710333_99ee74f421_b.jpg'),
+(42, 14, 'El Jardín de Celeste', 'https://s3.us-east-2.amazonaws.com/sivartour/Parque%20Nacional%20El%20Pital/IMG_4636.jpg'),
+(43, 15, 'Kayu Restaurant & Bar', 'https://s3.us-east-2.amazonaws.com/sivartour/Playa%20El%20Sunzal/2020-10-28.jpg'),
+(44, 15, 'Café Sunzal', 'https://s3.us-east-2.amazonaws.com/sivartour/Playa%20El%20Sunzal/2022-12-25.jpg'),
+(45, 15, 'Rancho Gladimar', 'https://s3.us-east-2.amazonaws.com/sivartour/Playa%20El%20Sunzal/2023-05-27.jpg'),
+(46, 16, 'Casa 1800', 'https://s3.us-east-2.amazonaws.com/sivartour/Suchitoto/2022-10-15.jpg'),
+(47, 16, 'Donde Charlie', 'https://s3.us-east-2.amazonaws.com/sivartour/Suchitoto/2023-02-17.jpg'),
+(48, 16, 'Suchimex', 'https://s3.us-east-2.amazonaws.com/sivartour/Suchitoto/IMG_20221027_122631.jpg'),
+(49, 17, 'Restaurante Acajutla', 'https://s3.us-east-2.amazonaws.com/sivartour/Playa%20Costa%20del%20Sol/2021-09-10.jpg'),
+(50, 17, 'Restaurante Yesenia', 'https://s3.us-east-2.amazonaws.com/sivartour/Playa%20Costa%20del%20Sol/unnamed%20%281%29.jpg'),
+(51, 17, 'La Hola Beto´s', 'https://s3.us-east-2.amazonaws.com/sivartour/Playa%20Costa%20del%20Sol/IMG_20171209_133146.jpg'),
+(52, 18, 'Pipiris Nais', 'https://s3.us-east-2.amazonaws.com/sivartour/Palacio%20Nacional/2021-06-20.jpg'),
+(53, 18, 'Le Café', 'https://s3.us-east-2.amazonaws.com/sivartour/Palacio%20Nacional/2018-09-28.jpg'),
+(54, 18, 'Catedral Café', 'https://s3.us-east-2.amazonaws.com/sivartour/Palacio%20Nacional/2019-05-14.jpg'),
+(55, 19, 'El Brasero', 'https://s3.us-east-2.amazonaws.com/sivartour/Ataco/2023-07-04.jpg'),
+(56, 19, 'Portland Grill and Bar', 'https://s3.us-east-2.amazonaws.com/sivartour/Ataco/Ataco%20Portland-10.jpg'),
+(57, 19, 'Restaurante Sibaritas', 'https://s3.us-east-2.amazonaws.com/sivartour/Ataco/IMG_20210102_115124.jpg'),
+(58, 20, 'Tacos Hermanos', 'https://s3.us-east-2.amazonaws.com/sivartour/La%20Gran%20V%C3%ADa/2oLusAvShGAvupZVGs1pq384AC1uKqMpy6mdA8k2.png'),
+(59, 20, 'Olive Garden', 'https://s3.us-east-2.amazonaws.com/sivartour/La%20Gran%20V%C3%ADa/GbMLyIcdG9yLFASt5Ljd74CJCdeUcnQnFaa3zXlS.jpeg'),
+(60, 20, 'BENNIGAN´S', 'https://s3.us-east-2.amazonaws.com/sivartour/La%20Gran%20V%C3%ADa/gAk31lvPuYO3Wedll7qwLFl92MLNBOyq1h08AcMq.jpeg'),
+(61, 21, 'Las Tres Piedras', 'https://s3.us-east-2.amazonaws.com/sivartour/Lago%20de%20Ilopango%20/30012021-_DSC1629.jpg'),
+(62, 21, 'Kiosko San Francisco', 'https://s3.us-east-2.amazonaws.com/sivartour/Lago%20de%20Ilopango%20/2023-07-12.jpg'),
+(63, 21, 'Coffee Lake', 'https://s3.us-east-2.amazonaws.com/sivartour/Lago%20de%20Ilopango%20/2023-01-15.jpg'),
+(64, 22, 'Mil Cumbres', 'https://s3.us-east-2.amazonaws.com/sivartour/La%20Puerta%20del%20Diablo%20/2023-02-24.jpg'),
+(65, 22, 'Quinta Los Gabos', 'https://s3.us-east-2.amazonaws.com/sivartour/La%20Puerta%20del%20Diablo%20/FB_IMG_1676259258259.jpg'),
+(66, 22, 'Restaurante La Puerta del Sol', 'https://s3.us-east-2.amazonaws.com/sivartour/La%20Puerta%20del%20Diablo%20/2019-11-25.jpg'),
+(67, 23, 'El Guaquito', 'https://s3.us-east-2.amazonaws.com/sivartour/Parque%20Nacional%20El%20Imposible%20/2022-04-09.jpg'),
+(68, 23, 'Mixta´s', 'https://s3.us-east-2.amazonaws.com/sivartour/Parque%20Nacional%20El%20Imposible%20/2023-02-21.jpg'),
+(69, 24, 'Don Lomito', 'https://s3.us-east-2.amazonaws.com/sivartour/Parque%20El%20Principito/2022-03-13.jpg'),
+(70, 24, 'La Espetada', 'https://s3.us-east-2.amazonaws.com/sivartour/Parque%20El%20Principito/2023-05-31.jpg'),
+(71, 24, 'Restaurante y Panadería San Martín', 'https://s3.us-east-2.amazonaws.com/sivartour/Parque%20El%20Principito/2022-07-28.jpg');
 
 -- --------------------------------------------------------
 
@@ -236,7 +275,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `img`, `token`, `age`, `sex`, `number`, `address`, `instagram`, `whatsapp`, `twitter`, `code`, `verified`) VALUES
-(1, 'Axel Ramirez', 'axelramireezz@gmail.com', '', 'https://lh3.googleusercontent.com/a/AAcHTtdwud2oM0DUII2C1rQ4AKXbGFTtOOml7orFN75cJ1c6=s96-c', '107045247008393752346', 0, '', 0, '', 'axell.mwyyy', '79188652', 'axellmwyyy', 39282, 1),
+(1, 'Axel Ramirez', 'axelramireezz@gmail.com', '', 'https://lh3.googleusercontent.com/a/AAcHTtdwud2oM0DUII2C1rQ4AKXbGFTtOOml7orFN75cJ1c6=s96-c', '107045247008393752346', 0, '', 0, '', 'axeellr', '79188652', 'axellmwyy', 39282, 1),
 (7, 'Miguel', 'miguelchapiza@gmail.com', '123456', '', '200847516297541235460', 0, '', 0, '', '', '', '', 0, 0),
 (16, 'pedro', 'pedro@gmail.com', '123456', '', '935344646815697831581', 0, '', 0, '', '', '', '', 0, 0),
 (17, 'Erick', 'erick@gmail.com', '12345', '', '513047413789549182903', 0, '', 0, '', '', '', '', 0, 0),
@@ -249,7 +288,8 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `img`, `token`, `age`, `
 (34, 'Axel Enrique Aguilar Ramírez', 'estudiante20120161@cdb.edu.sv', '', 'https://lh3.googleusercontent.com/a/AAcHTtdqMNc7bWhNG5VV3mVAqFmjjnYCXtq19ouakXSfloOCAA=s96-c', '115753393956445900696', 0, '', 0, '', '', '', '', 0, 0),
 (35, 'ter stegen', 'ter@gmail.com', '123456', '', '224750210866096847513', 0, '', 0, '', '', '', '', 0, 0),
 (36, 'chente', 'chente@gmail.com', '123456', '', '779886934621758161550', 0, '', 0, '', '', '', '', 87676, 0),
-(37, 'Lokitho', 'loko@gmail.com', '123456', '', '263961443767350291505', 0, '', 0, '', '', '', '', 0, 0);
+(37, 'Lokitho', 'loko@gmail.com', '123456', '', '263961443767350291505', 0, '', 0, '', '', '', '', 0, 0),
+(38, 'anderson', 'anderson@gmail.com', '123456', '', '708424671013460283595', 10, 'Masculino', 22225555, '', '', '', '', 53862, 0);
 
 -- --------------------------------------------------------
 
@@ -282,7 +322,10 @@ INSERT INTO `user_ratings` (`id`, `user_id`, `place_id`, `rating`) VALUES
 (20, 0, 6, 1),
 (21, 0, 19, 1),
 (22, 1, 22, 1),
-(23, 37, 34, 1);
+(23, 37, 34, 1),
+(24, 1, 24, 1),
+(25, 1, 16, 1),
+(26, 38, 33, 1);
 
 --
 -- Índices para tablas volcadas
@@ -340,7 +383,7 @@ ALTER TABLE `user_ratings`
 -- AUTO_INCREMENT de la tabla `collections`
 --
 ALTER TABLE `collections`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `collections_places`
@@ -364,19 +407,19 @@ ALTER TABLE `places`
 -- AUTO_INCREMENT de la tabla `restaurants`
 --
 ALTER TABLE `restaurants`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT de la tabla `user_ratings`
 --
 ALTER TABLE `user_ratings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

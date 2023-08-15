@@ -50,7 +50,7 @@ $row = mysqli_fetch_assoc($run);
 <style><?php include 'css/user.css'; ?></style>
 <body>
     <header class="header">
-        <div class="header__logo"><img src="img/logo.png"></div>
+        <div class="header__logo"><img src="img/Logo SivarTour BN web.png"></div>
         <nav class="header__nav">
             <form method="post" class="header__ul">
                 <input type="submit" name="goLogin" class="header__li" value="Registrarse">
@@ -137,6 +137,10 @@ $row = mysqli_fetch_assoc($run);
             location.href = 'profile.php';
         });
 
+        document.querySelector('.favorites').addEventListener('click', function(e){
+            location.href = 'collections.php?favorites';
+        });
+
         document.querySelector('.showMenu').addEventListener('click', function(e){
             document.querySelector('.options__menu').classList.toggle('show');
             document.querySelector('.showMenu').classList.toggle('black');
@@ -144,6 +148,8 @@ $row = mysqli_fetch_assoc($run);
 
         document.querySelector('.hideNotis').addEventListener('click', function(e){
             document.querySelector('.option__info__container').classList.toggle('hide');
+            document.querySelector('.hideNotis').classList.toggle('fa-chevron-down');
+            document.querySelector('.hideNotis').classList.toggle('fa-chevron-right');
         });
     </script>
 </body>

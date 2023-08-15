@@ -196,13 +196,11 @@ if (isset($_POST['veriCode'])) {
         $codedb = $row['code']; // Código almacenado en la base de datos
     
         if ($code == $codedb) {
-            $mensaje = "Tu cuenta ha sido activada";
-            $submensaje = "Ya puedes usar todas las funcionalidades de nuestro sitio web";
+            $notice = "Cuenta activada!. Ya puedes usar todas las funciones de SivarTour.";
             $sqll = "UPDATE users SET verified = 1 WHERE token = '{$_SESSION['user_token']}'";
             $runn = mysqli_query($connection, $sqll);
         } else {
-            $mensaje = "Código incorrecto";
-            $submensaje = "Ocurrió un error, intenta nuevamente";
+            $notice = "El código es incorrecto.";
         }
     }
 }
@@ -250,7 +248,8 @@ if (isset($_POST['userData'])) {
         $sql .= " " . implode(", ", $updates);
         $sql .= " WHERE token = '{$_SESSION['user_token']}'";
         $run = mysqli_query($connection, $sql);
-        header('Location: profile.php', true, 303);
+        $notice = "Datos actualizados correctamente!";
+        //header('Location: profile.php', true, 303);
     }
 
 }
@@ -430,7 +429,7 @@ if (isset($_POST['newCollectionP'])) {
 
     if ($run) {
         $notice = "Colección creada exitosamente!";
-        header('Location: profile.php', true, 303);
+        //header('Location: profile.php', true, 303);
     }
 }
 

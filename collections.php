@@ -51,7 +51,7 @@ if (isset($_SESSION['collectionId'])) {
 <style><?php include 'css/collections.css'; ?></style>
 <body>
     <header class="header">
-        <div class="header__logo"><img src="img/logo.png"></div>
+        <div class="header__logo"><img src="img/Logo SivarTour BN web.png"></div>
         <div class="options__menu">
             <div class="option notifications">
                 <div class="option__title">
@@ -246,6 +246,10 @@ if (isset($_SESSION['collectionId'])) {
 
         document.querySelector('.profile').addEventListener('click', function(e){
             location.href = 'profile.php';
+        });
+
+        document.querySelector('.favorites').addEventListener('click', function(e){
+            location.href = 'collections.php?favorites';
         });
 
         document.querySelector('.showMenu').addEventListener('click', function(e){

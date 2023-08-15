@@ -355,6 +355,7 @@ input:checked + label:after {
     display: flex;
     justify-content: center;
     align-items: center;
+    text-transform: uppercase;
 }
 
 .right__info h1{
@@ -830,6 +831,32 @@ input:focus~label {
         box-shadow: 30px 0 0 var(--green);
         margin-top: 0;
     }
+}
+
+.notice {
+    position: fixed;
+    top: -100%; /* Inicialmente fuera de la pantalla */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: calc(1px + 1vw) 0;
+    background-color: var(--white);
+    min-height: calc(3.5px + 3.5vw);
+    font-size: calc(1.1px + 1.1vw);
+    z-index: 99;
+    border-radius: 10px;
+    padding: calc(1px + 1vw);
+    box-shadow: 0px 0px 35px 0px rgba(0, 0, 0, 0.6);
+    color: var(--background);
+    transition: top 0.8s ease; /* Transición suave de 0.5 segundos */
+}
+
+.notice.active {
+    top: 0; /* Mostrar la notificación centrada verticalmente */
 }
 
 .noData{
