@@ -93,6 +93,8 @@
             <h1><?php echo $dataPlace['name'] ?></h1>
             <p><?php echo $dataPlace['description'] ?></p>
             <form method="post" class="hero__text__button">
+                <i class="fa-solid fa-magnifying-glass" onclick="googleFind()"></i>
+                <i class="fa-brands fa-waze" onclick="abrirWaze()"></i>
                 <?php
                     $filledStar = $ratingValue == 1 ? 'fa-solid' : 'fa-regular';
                     echo '<i class="fa-star ' . $filledStar . ' rating" data-rating="1"></i>';
@@ -414,6 +416,49 @@
         }
         });
     }
+    </script>
+
+    <script>
+        function abrirWaze() {
+            var nombreLugar = '<?= $dataPlace['direction'] ?>' // Cambia esto al nombre del lugar que deseas
+            var apiKey = "AIzaSyDi-1W4L7N7-cIt4IClUTcZcJXTlHsdUGU"; // Cambia esto a tu clave de API de Google Maps
+            
+            // Obtiene la ubicación actual del usuario
+            navigator.geolocation.getCurrentPosition(function(position) {
+                var latitudActual = position.coords.latitude;
+                var longitudActual = position.coords.longitude;
+
+                // Realiza una solicitud a la API de Geocodificación para obtener las coordenadas del lugar
+                fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${nombreLugar}&key=${apiKey}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.results.length > 0) {
+                            var location = data.results[0].geometry.location;
+                            var latitudDestino = location.lat;
+                            var longitudDestino = location.lng;
+                            
+                            // Construye la URL de Waze con las coordenadas de origen y destino
+                            var url = `https://waze.com/ul?ll=${latitudDestino},${longitudDestino}&navigate=yes&fromlat=${latitudActual}&fromlon=${longitudActual}&from=ll.${latitudActual}%2C${longitudActual}`;
+                            
+                            // Abre la URL en una nueva ventana o pestaña
+                            window.open(url, '_blank');
+                        } else {
+                            console.log("No se encontraron coordenadas para el lugar especificado.");
+                        }
+                    })
+                    .catch(error => console.error("Error al obtener las coordenadas:", error));
+            });
+        }
+    </script>
+
+    <script>
+        function googleFind(){
+            const palabra = '<?= $dataPlace['name'] ?>'
+            if (palabra) {
+                const url = `https://www.google.com/search?q=${encodeURIComponent(palabra)}`;
+                window.open(url, "_blank");
+            }
+        }
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDi-1W4L7N7-cIt4IClUTcZcJXTlHsdUGU&callback=initMap" async defer></script>
 </body>
