@@ -20,7 +20,7 @@
     }
 
     if (!isset($_SESSION['user_id'])) {
-        echo "no";
+        header('Location: login.php');
     }
 
     if (isset($_SESSION['isLogin'])) {
@@ -467,5 +467,5 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDi-1W4L7N7-cIt4IClUTcZcJXTlHsdUGU&callback=initMap" async defer></script>
 </body>
 <script src="js/reviews.js"></script>
-<script src="js/newRestaurant.js"></script>
+<script src="js/newRestaurantPlace.js"></script>
 </html>

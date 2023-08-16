@@ -2,8 +2,25 @@
 // filter_places.php
 include '../php/connection.php';
 
+$department = $_POST['department'] ?? '';
+$type = $_POST['type'] ?? '';
+$public = $_POST['public'] ?? '';
+$date = $_POST['date'] ?? '';
+
 // Prepara la consulta SQL con los filtros seleccionados
-$sql = "SELECT * FROM places";
+$sql = "SELECT * FROM places WHERE 1=1";
+if (!empty($department)) {
+  $sql .= " AND department = '$department'";
+}
+if (!empty($type)) {
+  $sql .= " AND type = '$type'";
+}
+if (!empty($public)) {
+  $sql .= " AND public = '$public'";
+}
+if (!empty($date)) {
+  $sql .= " ORDER BY id DESC;";
+}
 
 // Ejecuta la consulta
 $run = mysqli_query($connection, $sql);

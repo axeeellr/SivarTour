@@ -1,4 +1,10 @@
 <?php include '../php/connection.php'; ?>
+<?php require_once 'controlador.php' ?>
+<?php
+    if (!isset($_SESSION['admin'])) {
+        header('Location: ../login.php', true, 303);
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -50,9 +56,56 @@
                     <h1>Desbloquear usuarios</h1>
                 </div>
             </div>
+            <div class="left__option logout">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <h1>Salir</h1>
+            </div>
         </div>
         <div class="admin__right">
             <div class="places">
+                <div class="filters" id="filters">
+                    <select name="" id="date">
+                        <option data-section="Filtered" data-value="Fecha" value="">Fecha</option>
+                        <option data-section="Filtered" data-value="Ultimos" value="last">Últimos publicados</option>
+                    </select>
+                    <select name="" id="department">
+                        <option data-section="Filtered" data-value="Departamento" value="">Departamento</option>
+                        <option value="Ahuachapán">Ahuachapán</option>
+                        <option value="Cabañas">Cabañas</option>
+                        <option value="Chalatenango">Chalatenango</option>
+                        <option value="Cuscatlán">Cuscatlán</option>
+                        <option value="La Libertad">La Libertad</option>
+                        <option value="La Paz">La Paz</option>
+                        <option value="La Unión">La Unión</option>
+                        <option value="Morazán">Morazán</option>
+                        <option value="San Miguel">San Miguel</option>
+                        <option value="San Salvador">San Salvador</option>
+                        <option value="San Vicente">San Vicente</option>
+                        <option value="Santa Ana">Santa Ana</option>
+                        <option value="Sonsonate">Sonsonate</option>
+                        <option value="Usulután">Usulután</option>
+                    </select>
+                    <select name="" id="type">
+                        <option data-section="Filtered" data-value="Tipo "value="">Tipo</option>
+                        <option data-section="Filtered" data-value="Playa" value="Playa">Playa</option>
+                        <option data-section="Filtered" data-value="Campo" value="Campo">Campo</option>
+                        <option data-section="Filtered" data-value="Cabañas" value="Cabañas">Cabañas</option>
+                        <option data-section="Filtered" data-value="Parques" value="Parque">Parque</option>
+                        <option data-section="Filtered" data-value="Bosque" value="Bosque">Bosque</option>
+                        <option data-section="Filtered" data-value="Lago" value="Lago">Lago</option>
+                        <option data-section="Filtered" data-value="Sitio" value="Sitio Arqueológico">Sitio Arqueológico</option>
+                        <option data-section="Filtered" data-value="Volcán" value="Volcán">Volcán</option>
+                        <option data-section="Filtered" data-value="Centro" value="Centro Comercial">Centro Comercial</option>
+                        <option data-section="Filtered" data-value="Montaña" value="Montaña">Montaña</option>
+                        <option data-section="Filtered" data-value="Otro" value="Otro">Otro</option>
+                    </select>
+                    <select name="" id="public">
+                        <option data-section="Filtered" data-value="Público" value="">Público</option>
+                        <option data-section="Filtered" data-value="Todo" value="Todo público">Todo público</option>
+                        <option data-section="Filtered" data-value="Solo" value="Solo mayores de 18">Solo mayores de 18</option>
+                        <option data-section="Filtered" data-value="Especial"value="Especial para niños">Especial para niños</option>
+                    </select>
+                </div>
                 <div class="container">
                     <div id="placesContainer" class="cards">
                     </div>
@@ -68,8 +121,8 @@
                     <li class="page-item next-page"><a class="page-link" href=""><i class="fa-sharp fa-solid fa-arrow-right"></i></a></li>
                 </div>            
             </div>
-            <div class="places__add newplace">
-                <div class="newplace__img">
+            <form method="post" class="places__add newplace" enctype="multipart/form-data">
+                <div class="newplace__img pp">
                     <input type="file" name="images[]" id="upload-button" required multiple accept="image/*" />
                     <label for="upload-button">
                         <i class="fa-solid fa-upload"></i>&nbsp; Escoge las fotos
@@ -137,78 +190,91 @@
                     </div>
                     <input type="submit" value="Enviar" name="newPlace">
                 </div>
-            </div>
+            </form>
             <div class="restaurants">
                 <div class="place__body__right">
-                    <div class="body__restaurant">
-                        <form class="restaurant__info">
+                <?php 
+                    $sqlR = "SELECT restaurants.*, places.name AS place_name FROM restaurants INNER JOIN places ON restaurants.id_place = places.id ORDER BY places.id ASC, restaurants.id_place ASC";
+                    $runR = mysqli_query($connection, $sqlR);
+                    $currentPlace = null;  // Variable para llevar un registro del lugar actual
+                    $restaurantCount = 0; // Contador para el número de restaurantes en cada grupo
+
+                    while ($rowR = mysqli_fetch_array($runR)) {
+                        if ($currentPlace !== $rowR['place_name']) {
+                            // Cerramos el body__restaurant anterior si es necesario
+                            if ($currentPlace !== null) {
+                                // Imprimimos el restaurant__place al final de cada body__restaurant
+                                if ($restaurantCount > 0) {
+                                    echo '<div class="restaurant__place">';
+                                    echo '<h1>' . $currentPlace . '</h1>';
+                                    echo '</div>';
+                                }
+                                echo '</div>';
+                                $restaurantCount = 0; // Reiniciamos el contador
+                            }
+                            $currentPlace = $rowR['place_name'];
+                            echo '<div class="body__restaurant">';
+                        }
+                        ?>
+                        <form method="post" class="restaurant__info">
                             <div class="circle"></div>
-                            <img src="https://media-cdn.tripadvisor.com/media/photo-s/16/1f/8c/70/dale-dale-cafe.jpg" alt="">
-                            <h2>Rock & Roe´s</h2>
-                            <button type="submit" class="deleteRes"><i class="fa-solid fa-trash"></i></button>
+                            <?php echo '<img class="hero__img" src="'.$rowR["img"].'">'?>
+                            <h2><?php echo $rowR['name']; ?></h2>
+                            <button type="submit" value="<?php echo $rowR['id'] ?>" name="deleteRestaurant" class="deleteRes"><i class="fa-solid fa-trash"></i></button>
                         </form>
-                        <form class="restaurant__info">
-                            <div class="circle"></div>
-                            <img src="https://media-cdn.tripadvisor.com/media/photo-s/16/1f/8c/70/dale-dale-cafe.jpg" alt="">
-                            <h2>Rock & Roe´s</h2>
-                            <button type="submit" class="deleteRes"><i class="fa-solid fa-trash"></i></button>
-                        </form>
-                        <form class="restaurant__info">
-                            <div class="circle"></div>
-                            <img src="https://media-cdn.tripadvisor.com/media/photo-s/16/1f/8c/70/dale-dale-cafe.jpg" alt="">
-                            <h2>Rock & Roe´s</h2>
-                            <button type="submit" class="deleteRes"><i class="fa-solid fa-trash"></i></button>
-                        </form>
-                        <div class="restaurant__place">
-                            <h1>El Tunco</h1>
-                        </div>
-                    </div>
-                    <div class="body__restaurant">
-                        <form class="restaurant__info">
-                            <div class="circle"></div>
-                            <img src="https://media-cdn.tripadvisor.com/media/photo-s/16/1f/8c/70/dale-dale-cafe.jpg" alt="">
-                            <h2>Rock & Roe´s</h2>
-                            <button type="submit" class="deleteRes"><i class="fa-solid fa-trash"></i></button>
-                        </form>
-                        <form class="restaurant__info">
-                            <div class="circle"></div>
-                            <img src="https://media-cdn.tripadvisor.com/media/photo-s/16/1f/8c/70/dale-dale-cafe.jpg" alt="">
-                            <h2>Rock & Roe´s</h2>
-                            <button type="submit" class="deleteRes"><i class="fa-solid fa-trash"></i></button>
-                        </form>
-                        <form class="restaurant__info">
-                            <div class="circle"></div>
-                            <img src="https://media-cdn.tripadvisor.com/media/photo-s/16/1f/8c/70/dale-dale-cafe.jpg" alt="">
-                            <h2>Rock & Roe´s</h2>
-                            <button type="submit" class="deleteRes"><i class="fa-solid fa-trash"></i></button>
-                        </form>
-                        <div class="restaurant__place">
-                            <h1>El Tunco</h1>
-                        </div>
-                    </div>
+                        <?php
+                        $restaurantCount++;
+
+                        // Imprimimos el restaurant__place al final de cada body__restaurant
+                        if ($restaurantCount === 3) {
+                            echo '<div class="restaurant__place">';
+                            echo '<h1>' . $currentPlace . '</h1>';
+                            echo '</div>';
+                            $restaurantCount = 0; // Reiniciamos el contador
+                        }
+                    }
+                    // Cerramos el último body__restaurant si es necesario
+                    if ($currentPlace !== null) {
+                        if ($restaurantCount > 0) {
+                            echo '<div class="restaurant__place">';
+                            echo '<h1>' . $currentPlace . '</h1>';
+                            echo '</div>';
+                        }
+                        echo '</div>';
+                    }
+                ?>
                 </div>
             </div>
             <form method="post" class="newplace__restaurant" id="newPlaceForm" enctype="multipart/form-data">
-                <i class="fa-solid fa-xmark close__newplace"></i>
-                <div class="newplace__img">
-                    <input type="file" name="image" id="upload-button" required accept="image/*" />
-                    <label for="upload-button">
+                <div class="newplace__img rr">
+                    <input type="file" name="image" id="upload-buttonR" required accept="image/*" />
+                    <label for="upload-buttonR">
                         <i class="fa-solid fa-upload"></i>&nbsp; Fotografía
                     </label>
                     <p>Recuerda que el total de fotos es 1</p>
-                    <div id="error"></div>
-                    <div id="image-display"></div>
+                    <div id="errorR"></div>
+                    <div id="image-displayR"></div>
                 </div>
                 <div class="newplace__info">
                     <div class="input__field">
                         <input type="text" name="name" required spellcheck="false"> 
                         <label>Nombre del restaurante</label>
                     </div>
+                    <?php
+                        $sqlPlaces = "SELECT places.id, places.name, COUNT(restaurants.id) AS restaurant_count FROM places LEFT JOIN restaurants ON places.id = restaurants.id_place GROUP BY places.id, places.name HAVING restaurant_count < 3";
+                        $runPlaces = mysqli_query($connection, $sqlPlaces);
+                    ?>
                     <div class="input__field">
-                        <input type="text" name="nameDepartment" required spellcheck="false"> 
-                        <label>Nombre del departmento</label>
+                        <select name="place">
+                            <option value="" selected>Seleccionar lugar</option>
+                            <?php
+                            while ($rowPlace = mysqli_fetch_assoc($runPlaces)) {
+                                echo '<option value="' . $rowPlace['id'] . '">' . $rowPlace['name'] . '</option>';
+                            }
+                            ?>
+                        </select>
                     </div>
-                    <input type="submit" value="Enviar" name="newPlace">
+                    <input type="submit" value="Enviar" name="newRestaurant">
                 </div>
             </form>
             <div class="comments">
@@ -260,17 +326,13 @@
                     <h2>ID</h2>
                     <h2>Nombre</h2>
                     <h2>Correo</h2>
-                    <h2>Nombre de usuario</h2>
                     <h2>Edad</h2>
                     <h2>Sexo</h2>
                     <h2>Número telefónico</h2>
-                    <h2>Dirección</h2>
-                    <h2>Idioma</h2>
                     <h2>Verificado</h2>
-                    <form>
-                        <i class="fa-solid fa-user-slash"></i>
-                        <i class="fa-solid fa-inbox"></i>
-                    </form>
+                    <i class="fa-solid fa-user-slash"></i>
+                    <i class="fa-solid fa-ban"></i>
+                    <i class="fa-solid fa-inbox"></i>
                 </div>
                 <?php
                     $users = "SELECT * FROM users";
@@ -278,22 +340,19 @@
 
                     while ($usersData = mysqli_fetch_assoc($runUsers)) {
                         ?>
-                            <div class="users__body">
+                            <form method="post" class="users__body">
                                 <h2><?php echo $usersData['id']; ?></h2>
                                 <h2><?php echo $usersData['name']; ?></h2>
                                 <h2><?php echo $usersData['email']; ?></h2>
-                                <h2><?php echo $usersData['username']; ?></h2>
                                 <h2><?php echo $usersData['age']; ?></h2>
                                 <h2><?php echo $usersData['sex']; ?></h2>
                                 <h2><?php echo $usersData['number']; ?></h2>
-                                <h2><?php echo $usersData['address']; ?></h2>
-                                <h2><?php echo $usersData['language']; ?></h2>
-                                <h2><?php echo $usersData['verified'];?></h2>
-                                <form>     
-                                    <i class="fa-solid fa-user-slash"></i>
-                                    <i class="fa-solid fa-inbox" onclick="sendMessage()"></i>
-                                </form>
-                            </div>
+                                <h2><?php echo $usersData['verified'];?></h2>   
+                                <button type="submit" name="blockUser"><i class="fa-solid fa-user-slash"></i></button>
+                                <input type="hidden" value="<?php echo $usersData['id'] ?>" name="idBlock">
+                                <button type="submit" name="deleteUser"><i class="fa-solid fa-ban"></i></button>
+                                <button type="submit" nmame=""><i class="fa-solid fa-inbox" onclick="sendMessage()"></i></button>
+                            </form>
                         <?php
                     }
                 ?>
@@ -303,19 +362,17 @@
                     <h1>Usuarios baneados</h1>
                 </div>
                 <?php 
-                $users = "SELECT * FROM users";
+                $users = "SELECT * FROM users WHERE banned = 1";
                 $runUsers = mysqli_query($connection, $users);
                 while ($usersData = mysqli_fetch_assoc($runUsers)) {
                 ?>
-                <div class="gestion__body">
+                <form method="post" class="gestion__body">
                     <h2><?php echo $usersData['id']; ?></h2>
                     <h2><?php echo $usersData['name']; ?></h2>
                     <h2><?php echo $usersData['email']; ?></h2>
-                    <h2><?php echo $usersData['username']; ?></h2>
-                    <form>
-                        <i class="fa-solid fa-user-minus"></i>
-                    </form>
-                </div>
+                    <input type="hidden" name="idUnblock" value="<?php echo $usersData['id'] ?>">
+                    <button type="submit" name="unblockUser"><i class="fa-solid fa-user-minus"></i></button>
+                </form>
                 <?php
                 }
                 ?>
@@ -418,6 +475,10 @@
             document.querySelector('.users__notifications').classList.remove('showFlex');
             document.querySelector('.restaurants').classList.remove('show');
         }
+
+        document.querySelector('.logout').addEventListener('click', function(){
+            window.location.href = 'logout.php';
+        });
     </script>
 
     <!-- seleccionar lugar con api de google -->
@@ -511,7 +572,7 @@
                         <div class="card__info">
                             <h2>${place.name}</h2>
                         </div>
-                        <button type="submit" value="${place.id}" class="delete"><i class="fa-solid fa-trash"></i></button>
+                        <button type="submit" value="${place.id}" name="deletePlace" class="delete"><i class="fa-solid fa-trash"></i></button>
                     </form>
                     `;
                     placesContainer.append(card);
@@ -583,9 +644,15 @@
 
             // Función para obtener los lugares filtrados mediante AJAX
             function getFilteredPlaces() {
+                const department = $('#department').val();
+                const type = $('#type').val();
+                const publicOption = $('#public').val();
+                const date = $('#date').val();
+
                 $.ajax({
                     method: 'POST',
                     url: 'filters.php', // Archivo PHP que realizará la consulta a la base de datos
+                    data: { department, type, public: publicOption, date },
                     dataType: 'json',
                     success: function (response) {
                     filteredData = response;
@@ -627,13 +694,20 @@
                 }
             });
 
+            // Eventos para actualizar los lugares filtrados al cambiar alguna opción del filtro
+            $('#department, #type, #public, #date').on('change', function () {
+            getFilteredPlaces();
+            });
+
             // Cargar los lugares iniciales al cargar la página
             getFilteredPlaces();
         });
     </script>
 
+<script src="../js/newRestaurant.js"></script>
     <!-- previsualizar imagen al añadir lugares  -->
     <script src="../js/newPlace.js"></script>
+
 
     <!-- mover los comentarios  -->
     <script src="../js/reviews.js"></script>

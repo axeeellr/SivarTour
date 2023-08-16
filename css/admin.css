@@ -151,7 +151,7 @@ body{
     gap: calc(1px + 1vw);
 }
 
-.users__head h2, .users__body h2{
+.users__head h2, .users__body h2, .users__head button, .users__body button, .users__head i{
     font-size: calc(0.8px + 0.8vw);
     width: calc(5px + 5vw);
     overflow: hidden;
@@ -165,6 +165,14 @@ body{
     width: calc(6px + 6vw);
     gap: calc(0.7px + 0.7vw);
     color: var(--red);
+}
+
+.users__body button, .users__head i{
+    background-color: transparent;
+    color: var(--red);
+    border: none;
+    font-size: calc(1px + 1vw);
+    width: calc(3px + 3vw);
 }
 
 .users__gestion{
@@ -193,11 +201,18 @@ body{
     gap: calc(1px + 1vw);
 }
 
-.gestion__body h2{
+.gestion__body h2, .gestion__body button{
     font-size: calc(0.8px + 0.8vw);
     width: calc(5.5px + 5.5vw);
     overflow: hidden;
+    background-color: transparent;
+    border: none;
     text-align: center;
+}
+
+.gestion__body i{
+    font-size: calc(1px + 1vw);
+    color: var(--red);
 }
 
 .gestion__body form{
@@ -211,6 +226,60 @@ body{
 
 .places{
     display: none;
+}
+
+.filters{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: calc(3.5px + 3.5vw);
+    margin: 5% 0;
+}
+
+.filters select{
+    background-color: transparent;
+    border: none;
+    font-size: calc(1.2px + 1.2vw);
+    color: var(--blue);
+    width: 15%;
+    border: 3px solid var(--blue);
+    padding: 10px 12px;
+    border-radius: 10px;
+    outline: none;
+}
+
+.filters option{
+    margin: auto 0;
+    background-color: var(--background);
+    border: none;
+    outline: none;
+}
+
+.filters select:nth-child(4){
+    order: 5;
+}
+
+.filters select:nth-child(3){
+    order: 4;
+}
+
+.filters input{
+    height: calc(4.3px + 4.3vw);
+    width: calc(4.3px + 4.3vw);
+    background-image: url(img/magnifiying.png);
+    background-repeat: no-repeat;
+    background-size: 3.5vw;
+    background-color: transparent;
+    background-position: center;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+}
+
+.filters a{
+    text-decoration: none;
+    color: var(--red);
+    font-size: calc(2.8px + 2.8vw);
 }
 
 .container{
@@ -442,6 +511,30 @@ body{
     margin: calc(1px + 1vw) auto;
 }
 
+#image-displayR {
+    position: relative;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: calc(1px + 1vw);
+    margin: calc(1px + 1vw) auto;
+}
+
+#image-displayR figure {
+    width: 45%;
+}
+
+#image-displayR img {
+    width: 100%;
+}
+
+#image-displayR figcaption {
+    font-size: 0.8em;
+    text-align: center;
+    color: #5a5861;
+}
+
 #image-display figure {
     width: 45%;
 }
@@ -578,7 +671,7 @@ body{
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    gap: calc(1px + 1vw);
+    gap: calc(2px + 2vw);
     margin: 0 10%;
     position: relative;
 }
@@ -596,11 +689,13 @@ body{
     font-size: calc(1.7px + 1.7vw);
     margin: 0;
     color: var(--white);
+    max-width: 350px;
     text-shadow: 0px 0px 30px rgba(0,0,0,0.7);
 }
 
 .restaurant__place{
     margin-left: 30px;
+    min-width: 250px;
 }
 
 .restaurant__place h1{
@@ -619,6 +714,10 @@ body{
 
 .restaurant__info{
     position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .deleteRes{

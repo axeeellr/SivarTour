@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-08-2023 a las 05:28:06
+-- Tiempo de generación: 16-08-2023 a las 05:06:44
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -154,7 +154,7 @@ INSERT INTO `places` (`id`, `name`, `description`, `direction`, `location`, `img
 (35, 'La Casa de La Hacienda', 'Parque con diversidad en flora, fauna y muchas cosas más para pasar un momento entretenido.', 'La Casa de La Hacienda, Ilobasco, El Salvador', 'Ilobasco, El Salvador', 'https://s3.us-east-2.amazonaws.com/sivartour/La%20Casa%20de%20La%20Hacienda/78392216_3628139840531188_5734916057634701312_n.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/La%20Casa%20de%20La%20Hacienda/5775968727_2a5a7dd974_b.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/La%20Casa%20de%20La%20Hacienda/fsup20032019erhacienda209.jpg_1102185208.jpg', 'Cabañas', 'Parque', 'Todo público', 0, 0),
 (36, 'Parque Acuático Amapulapa', 'Piscinas y muchos lugares para relajarse, bañarse y olvidarse del estrés de la ciudad.', 'Parque Acuático Amapulapa, San Vicente, El Salvador', 'J6HF+CM9, San Vicente, El Salvador', 'https://s3.us-east-2.amazonaws.com/sivartour/Parque%20Acu%C3%A1tico%20Amapulapa/Amapulapa03-min-scaled.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Parque%20Acu%C3%A1tico%20Amapulapa/Amapulapa01-min-768x512.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Parque%20Acu%C3%A1tico%20Amapulapa/Amapulapa2.jpg', 'San Vicente', 'Otro', 'Todo público', 0, 0),
 (37, 'Catedral de Sonsonate', 'Catedral con arquitectura memorable, reliquia religiosa y una historia hermosa.', 'Catedral de Sonsonate, Calle Obispo Marroquin, Sonsonate, El Salvador', 'Avenida Morazan &, C. Obispo Marroquin, Sonsonate, El Salvador', 'https://s3.us-east-2.amazonaws.com/sivartour/Catedral%20de%20Sonsonate/FstlA-7WAAAoLq_%20%281%29.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Catedral%20de%20Sonsonate/16327545967_75d34bd098_z.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Catedral%20de%20Sonsonate/catedral-de-sonsonate.jpg', 'Sonsonate', 'Otro', 'Todo público', 0, 0),
-(38, 'Apaneca', 'Un bonito lugar para visitar', 'Apaneca, El Salvador', 'Apaneca, El Salvador', 'https://s3.us-east-2.amazonaws.com/sivartour/Apaneca/apaneca-el-salvador.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Apaneca/apaneca.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Apaneca/Laguna-Verde-Apaneca6E9A4388.jpg', 'Chalatenango', 'Otro', 'Todo público', 1, 1);
+(41, 'Laguna de Apastepeque', 'Linda y curiosa laguna, poco conocida pero con una vista hermosa que ofrecer', 'Laguna de Apastepeque, El Salvador', 'Laguna de Apastepeque, El Salvador', 'https://s3.us-east-2.amazonaws.com/sivartour/Laguna%20de%20Apastepeque/Apastepeque3.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Laguna%20de%20Apastepeque/DestinationApastepeque.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Laguna%20de%20Apastepeque/fdpt02112019mvlaguna01.jpg_279327997.jpg', 'San Vicente', 'Lago', 'Todo público', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -244,7 +244,8 @@ INSERT INTO `restaurants` (`id`, `id_place`, `name`, `img`) VALUES
 (68, 23, 'Mixta´s', 'https://s3.us-east-2.amazonaws.com/sivartour/Parque%20Nacional%20El%20Imposible%20/2023-02-21.jpg'),
 (69, 24, 'Don Lomito', 'https://s3.us-east-2.amazonaws.com/sivartour/Parque%20El%20Principito/2022-03-13.jpg'),
 (70, 24, 'La Espetada', 'https://s3.us-east-2.amazonaws.com/sivartour/Parque%20El%20Principito/2023-05-31.jpg'),
-(71, 24, 'Restaurante y Panadería San Martín', 'https://s3.us-east-2.amazonaws.com/sivartour/Parque%20El%20Principito/2022-07-28.jpg');
+(75, 24, 'Restaurante y Panadería San Martín', 'https://s3.us-east-2.amazonaws.com/sivartour/Parque%20El%20Principito/2022-07-28.jpg'),
+(76, 41, 'El Faro Clareño', 'https://s3.us-east-2.amazonaws.com/sivartour/Laguna%20de%20Apastepeque/19.jpg');
 
 -- --------------------------------------------------------
 
@@ -267,29 +268,30 @@ CREATE TABLE `users` (
   `whatsapp` varchar(50) NOT NULL,
   `twitter` varchar(50) NOT NULL,
   `code` int(5) NOT NULL,
-  `verified` int(11) NOT NULL DEFAULT 0
+  `verified` int(11) NOT NULL DEFAULT 0,
+  `banned` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `password`, `img`, `token`, `age`, `sex`, `number`, `address`, `instagram`, `whatsapp`, `twitter`, `code`, `verified`) VALUES
-(1, 'Axel Ramirez', 'axelramireezz@gmail.com', '', 'https://lh3.googleusercontent.com/a/AAcHTtdwud2oM0DUII2C1rQ4AKXbGFTtOOml7orFN75cJ1c6=s96-c', '107045247008393752346', 0, '', 0, '', 'axeellr', '79188652', 'axellmwyy', 39282, 1),
-(7, 'Miguel', 'miguelchapiza@gmail.com', '123456', '', '200847516297541235460', 0, '', 0, '', '', '', '', 0, 0),
-(16, 'pedro', 'pedro@gmail.com', '123456', '', '935344646815697831581', 0, '', 0, '', '', '', '', 0, 0),
-(17, 'Erick', 'erick@gmail.com', '12345', '', '513047413789549182903', 0, '', 0, '', '', '', '', 0, 0),
-(19, 'Zion', 'zion@gmail.com', '123456', '', '641149978582221463075', 17, 'Masculino', 0, 'Soyapango', '', '', '', 10716, 0),
-(21, 'axel2', 'axelby36@gmail.com', '123456', '', '982491014817580337460', 0, '', 0, '', '', '', '', 67195, 1),
-(22, 'chepe pablo', 'chepepablo@gmail.com', '123456', '', '079580131204947342256', 0, '', 0, '', '', '', '', 85776, 1),
-(23, 'assdas', 'sydney.augsburg@gmail.com', '12345', '', '156325971053408932178', 20, '', 0, '', '', '', '', 41720, 1),
-(31, 'misho', 'mish@gmail.com', '123456', '', '530546128693905722497', 0, '', 0, '', '', '', '', 0, 0),
-(33, 'Amilcar', 'amilcar@gmail.com', '123456', '', '753060311270499618245', 25, '', 0, '', '', '', '', 43946, 1),
-(34, 'Axel Enrique Aguilar Ramírez', 'estudiante20120161@cdb.edu.sv', '', 'https://lh3.googleusercontent.com/a/AAcHTtdqMNc7bWhNG5VV3mVAqFmjjnYCXtq19ouakXSfloOCAA=s96-c', '115753393956445900696', 0, '', 0, '', '', '', '', 0, 0),
-(35, 'ter stegen', 'ter@gmail.com', '123456', '', '224750210866096847513', 0, '', 0, '', '', '', '', 0, 0),
-(36, 'chente', 'chente@gmail.com', '123456', '', '779886934621758161550', 0, '', 0, '', '', '', '', 87676, 0),
-(37, 'Lokitho', 'loko@gmail.com', '123456', '', '263961443767350291505', 0, '', 0, '', '', '', '', 0, 0),
-(38, 'anderson', 'anderson@gmail.com', '123456', '', '708424671013460283595', 10, 'Masculino', 22225555, '', '', '', '', 53862, 0);
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `img`, `token`, `age`, `sex`, `number`, `address`, `instagram`, `whatsapp`, `twitter`, `code`, `verified`, `banned`) VALUES
+(1, 'Axel Ramirez', 'axelramireezz@gmail.com', '', 'https://lh3.googleusercontent.com/a/AAcHTtdwud2oM0DUII2C1rQ4AKXbGFTtOOml7orFN75cJ1c6=s96-c', '107045247008393752346', 0, '', 0, '', 'axeellr', '79188652', 'axellmwyy', 39282, 1, 0),
+(7, 'Miguel', 'miguelchapiza@gmail.com', '123456', '', '200847516297541235460', 0, '', 0, '', '', '', '', 0, 0, 0),
+(16, 'pedro', 'pedro@gmail.com', '123456', '', '935344646815697831581', 0, '', 0, '', '', '', '', 0, 0, 0),
+(17, 'Erick', 'erick@gmail.com', '12345', '', '513047413789549182903', 0, '', 0, '', '', '', '', 0, 0, 0),
+(19, 'Zion', 'zion@gmail.com', '123456', '', '641149978582221463075', 17, 'Masculino', 0, 'Soyapango', '', '', '', 10716, 0, 0),
+(21, 'axel2', 'axelby36@gmail.com', '123456', '', '982491014817580337460', 0, '', 0, '', '', '', '', 67195, 1, 0),
+(22, 'chepe pablo', 'chepepablo@gmail.com', '123456', '', '079580131204947342256', 0, '', 0, '', '', '', '', 85776, 1, 0),
+(23, 'assdas', 'sydney.augsburg@gmail.com', '12345', '', '156325971053408932178', 20, '', 0, '', '', '', '', 41720, 1, 0),
+(31, 'misho', 'mish@gmail.com', '123456', '', '530546128693905722497', 0, '', 0, '', '', '', '', 0, 0, 0),
+(33, 'Amilcar', 'amilcar@gmail.com', '123456', '', '753060311270499618245', 25, '', 0, '', '', '', '', 43946, 1, 0),
+(34, 'Axel Enrique Aguilar Ramírez', 'estudiante20120161@cdb.edu.sv', '', 'https://lh3.googleusercontent.com/a/AAcHTtdqMNc7bWhNG5VV3mVAqFmjjnYCXtq19ouakXSfloOCAA=s96-c', '115753393956445900696', 0, '', 0, '', '', '', '', 0, 0, 0),
+(35, 'ter stegen', 'ter@gmail.com', '123456', '', '224750210866096847513', 0, '', 0, '', '', '', '', 0, 0, 0),
+(36, 'chente', 'chente@gmail.com', '123456', '', '779886934621758161550', 0, '', 0, '', '', '', '', 87676, 0, 0),
+(37, 'Lokitho', 'loko@gmail.com', '123456', '', '263961443767350291505', 0, '', 0, '', '', '', '', 0, 0, 0),
+(40, 'anderson', 'anderson@gmail.com', '123456', '', '537340507406681192613', 0, '', 0, '', '', '', '', 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -401,19 +403,19 @@ ALTER TABLE `comments`
 -- AUTO_INCREMENT de la tabla `places`
 --
 ALTER TABLE `places`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT de la tabla `restaurants`
 --
 ALTER TABLE `restaurants`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT de la tabla `user_ratings`

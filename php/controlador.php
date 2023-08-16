@@ -58,6 +58,16 @@ if (isset($_GET['code'])) {
         'token' => $google_account_info['id']
     ];
 
+    //validar si está baneado
+    $sqlll = "SELECT * FROM users WHERE email = '{$userInfo['email']}' AND banned = 1";
+    $runnn = mysqli_query($connection, $sqlll);
+
+    if (mysqli_num_rows($runnn)) {
+        $error = "Usuario baneado.";
+        header('Location: login.php', true, 303);
+        die();
+    }
+
     //validar si ya está registrado
     $sql = "SELECT * FROM users WHERE email = '{$userInfo['email']}'";
     $run = mysqli_query($connection, $sql);
@@ -96,6 +106,12 @@ if(isset($_POST['login'])) {
     $correo = $_POST['email']; 
     $contraseña = $_POST['password'];
 
+    if ($correo === 'admin777@gmail.com' && $contraseña === 'tetongas') {
+        $_SESSION['admin'] = true;
+        header('Location: admin/index.php');
+        die();
+    }
+
     $consulta_sql = mysqli_query($connection, "SELECT * FROM users WHERE email = '$correo' AND password = '$contraseña'");
 
     $nums = mysqli_num_rows($consulta_sql);
@@ -124,6 +140,11 @@ if(isset($_POST['register'])) {
     $correo = $_POST['email']; 
     $contraseña = $_POST['password'];
     $token = substr(str_shuffle(str_repeat('0123456789', 3)), 0, 21);
+
+    if ($correo === 'admin777@gmail.com' && $contraseña === 'tetongas') {
+        header('Location: login.php');
+        die();
+    }
 
     //preparo mi consulta sql para el ingreso de los valores en la base de datos
     $consulta_sql =  "INSERT INTO users (name, email, password, token) VALUES('$nombre', '$correo', '$contraseña', '$token')";
