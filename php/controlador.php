@@ -108,7 +108,7 @@ if(isset($_POST['login'])) {
 
     if ($correo === 'admin777@gmail.com' && $contraseña === 'tetongas') {
         $_SESSION['admin'] = true;
-        header('Location: admin/index.php');
+        header('Location: admin/index.php', true, 303);
         die();
     }
 
