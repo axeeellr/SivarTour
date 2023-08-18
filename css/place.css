@@ -676,6 +676,7 @@ input:checked + label:after {
     padding: calc(1px + 1vw);
     color: var(--background);
     border-radius: 10px;
+    box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.40);
 }
 
 .route:hover{
@@ -1217,6 +1218,61 @@ input:checked + label:after {
     background-color: var(--red);
     color: var(--background);
     font-weight: bold;
+}
+
+.footer {
+    position: relative;
+    background: var(--blue);
+    min-height: 70px;
+    padding: 15px 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.60);
+}
+
+.social-icon,
+.menu {
+    position: relative;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.social-icon__item,
+.menu__item {
+    list-style: none;
+}
+
+.social-icon__link {
+    font-size: 1.8rem;
+    color: var(--background);
+    display: inline-block;
+    transition: 0.5s;
+}
+
+.social-icon__link:hover {
+    transform: translateY(-10px);
+    color: var(--red);
+}
+
+.menu__link {
+    font-size: 1.1rem;
+    color: var(--background);
+    display: inline-block;
+    transition: 0.5s;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.menu__link:hover {
+    opacity: 1;
+    color: var(--red);
 }
 
 .noData{

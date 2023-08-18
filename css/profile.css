@@ -27,7 +27,7 @@ body{
     font-family: 'Prompt', sans-serif;
     background: radial-gradient(at center center, rgb(14, 24, 33), rgb(41, 65, 85));
     background-position: 100vh;
-    overflow: hidden;
+    overfslow: hidden;
 }
 
 /*  HEADER */
@@ -859,8 +859,78 @@ input:focus~label {
     top: 0; /* Mostrar la notificación centrada verticalmente */
 }
 
+.footer {
+    position: relative;
+    background: var(--blue);
+    min-height: 70px;
+    padding: 15px 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: calc(5px + 5vw);
+    box-shadow: 0px 0px 35px 0px rgba(0, 0, 0, 0.45);
+}
+
+.social-icon,
+.menu {
+    position: relative;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.social-icon__item,
+.menu__item {
+    list-style: none;
+}
+
+.social-icon__link {
+    font-size: 1.8rem;
+    color: var(--background);
+    display: inline-block;
+    transition: 0.5s;
+}
+
+.social-icon__link:hover {
+    transform: translateY(-10px);
+    color: var(--red);
+}
+
+.menu__link {
+    font-size: 1.1rem;
+    color: var(--background);
+    display: inline-block;
+    transition: 0.5s;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.menu__link:hover {
+    opacity: 1;
+    color: var(--red);
+}
+
 .noData{
     color: #0a1117;
     font-size: calc(1.4px + 1.4vw);
 }
 
+::-webkit-scrollbar {
+    background-color: var(--blue);
+    width: 100%;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--background);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+}
+  
