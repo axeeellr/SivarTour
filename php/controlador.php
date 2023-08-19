@@ -338,7 +338,7 @@ if (isset($_POST['newPlace'])) {
             }
         }
 
-        $sql = "INSERT INTO places (name, description, direction, location, img1, img2, img3, department, type, public) VALUES ('$name','$description', '$direction', '$location', '$imageLinks[0]', '$imageLinks[1]', '$imageLinks[2]', '$department','$type','$public')";
+        $sql = "INSERT INTO places (id_user, name, description, direction, location, img1, img2, img3, department, type, public, status) VALUES ('{$_SESSION['user_id']}', '$name','$description', '$direction', '$location', '$imageLinks[0]', '$imageLinks[1]', '$imageLinks[2]', '$department','$type','$public', 0)";
         $run = mysqli_query($connection, $sql);
 
     } else {
@@ -598,5 +598,15 @@ if (isset($_POST['collectionPage'])) {
 /****** V E R   F A V O R I T O S ******/
 if (isset($_POST['favoritePage'])) {
     header('Location: collections.php?favorites');
+}
+
+
+
+
+/****** C E R R A R   N O T I F I C A C I O N E S ******/
+if (isset($_POST['closeNoti'])) {
+    $sql = "DELETE FROM notifications WHERE id = {$_POST['closeNoti']}";
+    $run = mysqli_query($connection, $sql);
+    //header('Location: filtered.php', true, 303);
 }
 ?>

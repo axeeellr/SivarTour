@@ -34,7 +34,7 @@ body{
 .header {
     width: 100%;
     height: 15vh;
-    position: relative;
+    positions: absolute;
     color: white;
     display: flex;
     justify-content: space-between;
@@ -86,6 +86,7 @@ body{
     z-index: 99;
     box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.60);
     padding-top: 15vh;
+    overflow-y: scroll;
 }
 
 .option{
@@ -158,6 +159,11 @@ body{
     font-size: calc(0.9px + 0.9vw);
 }
 
+.option__info button{
+    background: transparent;
+    border: none;
+}
+
 .option__info i{
     position: absolute;
     right: 0;
@@ -165,6 +171,11 @@ body{
     font-size: calc(1.1px + 1.1vw);
     margin: calc(0.5px + 0.5vw);
     color: var(--red);
+}
+
+.options__menu::-webkit-scrollbar {
+    background-color: var(--blue);
+    width: 100%;
 }
 
 .show{
@@ -920,17 +931,4 @@ input:focus~label {
     font-size: calc(1.4px + 1.4vw);
 }
 
-::-webkit-scrollbar {
-    background-color: var(--blue);
-    width: 100%;
-}
-
-::-webkit-scrollbar-thumb {
-    background-color: var(--background);
-    border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background-color: #555;
-}
   

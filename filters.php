@@ -7,7 +7,7 @@ $type = $_POST['type'] ?? '';
 $public = $_POST['public'] ?? '';
 
 // Prepara la consulta SQL con los filtros seleccionados
-$sql = "SELECT * FROM places WHERE 1=1";
+$sql = "SELECT * FROM places WHERE status = 1";
 if (!empty($department)) {
   $sql .= " AND department = '$department'";
 }

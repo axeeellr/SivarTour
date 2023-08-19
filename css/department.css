@@ -32,8 +32,7 @@ body{
 .header {
     width: 100%;
     height: 15vh;
-    position: absolute;
-    top: 0;
+    positsion: absolute;
     color: white;
     display: flex;
     justify-content: space-between;
@@ -68,6 +67,7 @@ body{
 
 .black{
     color: var(--background);
+    position: fixed;
 }
 
 .options__menu{
@@ -81,9 +81,10 @@ body{
     display: none;
     flex-direction: column;
     gasp: calc(0.5px + 0.5vw);
-    box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.75);
-    padding-top: 15vh;
     z-index: 99;
+    box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.60);
+    padding-top: 15vh;
+    overflow-y: scroll;
 }
 
 .option{
@@ -156,6 +157,11 @@ body{
     font-size: calc(0.9px + 0.9vw);
 }
 
+.option__info button{
+    background: transparent;
+    border: none;
+}
+
 .option__info i{
     position: absolute;
     right: 0;
@@ -163,6 +169,11 @@ body{
     font-size: calc(1.1px + 1.1vw);
     margin: calc(0.5px + 0.5vw);
     color: var(--red);
+}
+
+.options__menu::-webkit-scrollbar {
+    background-color: var(--blue);
+    width: 100%;
 }
 
 .show{
@@ -176,7 +187,7 @@ input[type=checkbox]{
     position: absolute;
 }
   
-label {
+.option label {
     cursor: default;
     text-indent: -9999px;
     width: 100px;
@@ -189,7 +200,7 @@ label {
     box-shadow: 0px 0px 25px 0px rgba(0,0,0,0.45);
 }
   
-label:after {
+.option label:after {
     content: '';
     position: absolute;
     top: 5px;
@@ -247,7 +258,7 @@ input:checked + label:after {
     align-items: center;
     width: 100%;
     height: 85vh;
-    margin-top: 15vh;
+    margins-top: 15vh;
 }
 
 .container__left{

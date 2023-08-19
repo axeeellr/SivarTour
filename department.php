@@ -48,39 +48,59 @@
 <body>
     <header class="header">
         <div class="header__logo"><img src="img/Logo SivarTour BN web.png"></div>
-        <nav class="header__nav">
-            <form method="post" class="header__ul">
-                <input type="submit" name="goLogin" class="header__li" data-section="department" data-value="Registro" value="Registrarse" >
-                <input type="submit" name="goLogin" class="header__li" data-section="department" data-value="Inicio Sesion" value="Iniciar Sesión">
-            </form>
-        </nav>
         <div class="options__menu">
             <div class="option notifications">
                 <div class="option__title">
                     <i class="fa-regular fa-bell"></i>
-                    <h3 data-section="department" data-value="Notificaciones">Notificaciones</h3>
+                    <h3 data-section="Filtered" data-value="Notificaciones">Notificaciones</h3>
                     <i class="fa-solid fa-chevron-down hideNotis"></i>
                 </div>
                 <div class="option__info__container hide">
-                    <div class="option__info">
-                        <i class="fa-solid fa-xmark close"></i>
-                        <h4 data-section="department" data-value="Noti Rechazada">Publicación rechazada</h4>
-                        <p  data-section="department" data-value="Mesg rechazo">¡Lo sentimos! ¡Tu publicación ha sido rechazada!</p>
-                    </div>
-                    <div class="option__info">
-                        <i class="fa-solid fa-xmark close"></i>
-                        <h4 data-section="department" data-value="Noti Aceptada">Publicación aceptada</h4>
-                        <p data-section="department" data-value="Mesg acepto">¡Enhorabuena! ¡Tu publicación ha sido aceptada!</p>
-                    </div>
+                    <?php
+                        $noti = "SELECT * FROM notifications WHERE id_user = {$_SESSION['user_id']} LIMIT 5";
+                        $runNoti = mysqli_query($connection, $noti);
+
+                        while ($rowNoti = mysqli_fetch_array($runNoti)) {
+                            switch ($rowNoti['type']) {
+                                case 1:
+                                    ?>
+                                    <form method="post" class="option__info">
+                                        <button type="submit" name="closeNoti" value="<?php echo $rowNoti['id'] ?>"><i class="fa-solid fa-xmark closeN"></i></button>
+                                        <h4 data-section="Filtered" data-value="Noti Aceptada">Publicación aceptada</h4>
+                                        <p data-section="Filtered" data-value="Mesg acepto">¡Enhorabuena! ¡Tu publicación ha sido aceptada!</p>
+                                    </form>
+                                    <?php
+                                break;
+                                case 2:
+                                    ?>
+                                    <form method="post" class="option__info">
+                                        <button type="submit" name="closeNoti" value="<?php echo $rowNoti['id'] ?>"><i class="fa-solid fa-xmark closeN"></i></button>
+                                        <h4 data-section="Filtered" data-value="Noti Rechazada">Publicación rechazada</h4>
+                                        <p  data-section="Filtered" data-value="Mesg rechazo">¡Lo sentimos! ¡Tu publicación ha sido rechazada!</p>
+                                    </form>
+                                    <?php
+                                break;
+                                case 3:
+                                    ?>
+                                    <form method="post" class="option__info">
+                                        <button type="submit" name="closeNoti" value="<?php echo $rowNoti['id'] ?>"><i class="fa-solid fa-xmark closeN"></i></button>
+                                        <h4 data-section="Filtered" data-value="Noti Eliminada">Publicación eliminada</h4>
+                                        <p data-section="Filtered" data-value="Mesg acepto">¡Vaya! ¡Tu publicación ha sido eliminada!</p>
+                                    </form>
+                                    <?php
+                                break;
+                            }
+                        }
+                    ?>
                 </div>
             </div>
             <div class="option profile">
                 <i class="fa-regular fa-circle-user"></i>
-                <h3 data-section="department" data-value="perfil">Mi perfil</h3>
+                <h3 data-section="Filtered" data-value="perfil">Mi perfil</h3>
             </div>
             <div class="option favorites">
                 <i class="fa-regular fa-star"></i>
-                <h3 data-section="department" data-value="favs">Mis favoritos</h3>
+                <h3 data-section="Filtered" data-value="favs">Mis favoritos</h3>
             </div>
             <div class="option translate">
                 <input type="checkbox" id="cambiar">

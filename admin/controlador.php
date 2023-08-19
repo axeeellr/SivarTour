@@ -15,6 +15,10 @@ $secretKey = 'CCljqn7+8JpCPFDldy4rYCeDmZohtJMS9tW59Yhe';
 if (isset($_POST['deletePlace'])) {
     $sql = "DELETE FROM places WHERE id = '{$_POST['deletePlace']}'";
     $run = mysqli_query($connection, $sql);
+
+    $sql2 = "INSERT INTO notifications (id_user, type) VALUES ({$_POST['idUserPlace']}, 3)";
+    $run2 = mysqli_query($connection, $sql2);
+    
     header ('Location: index.php', true, 303);
 }
 
@@ -81,7 +85,7 @@ if (isset($_POST['newPlace'])) {
             }
         }
 
-        $sql = "INSERT INTO places (name, description, direction, location, img1, img2, img3, department, type, public) VALUES ('$name','$description', '$direction', '$location', '$imageLinks[0]', '$imageLinks[1]', '$imageLinks[2]', '$department','$type','$public')";
+        $sql = "INSERT INTO places (id_user, name, description, direction, location, img1, img2, img3, department, type, public, status) VALUES (0, '$name','$description', '$direction', '$location', '$imageLinks[0]', '$imageLinks[1]', '$imageLinks[2]', '$department','$type','$public', 1)";
         $run = mysqli_query($connection, $sql);
 
     } else {
@@ -191,6 +195,34 @@ if (isset($_POST['unblockUser'])) {
 if (isset($_POST['deleteUser'])) {
     $sql = "DELETE FROM users WHERE id = {$_POST['idBlock']}";
     $run = mysqli_query($connection, $sql);
+
+    header('Location: index.php', true, 303);
+}
+
+
+
+
+/* A C E P T A R   S O L I C I T U D */
+if (isset($_POST['acceptRequest'])) {
+    $sql = "UPDATE places SET status = 1 WHERE id = {$_POST['acceptRequest']}";
+    $run = mysqli_query($connection, $sql);
+
+    $sql2 = "INSERT INTO notifications (id_user, type) VALUES ({$_POST['idUserRequests']}, 1)";
+    $run2 = mysqli_query($connection, $sql2);
+
+    header('Location: index.php', true, 303);
+}
+
+
+
+
+/* E L I M I N A R   S O L I C I T U D */
+if (isset($_POST['deleteRequest'])) {
+    $sql = "DELETE FROM places WHERE id = {$_POST['deleteRequest']}";
+    $run = mysqli_query($connection, $sql);
+
+    $sql2 = "INSERT INTO notifications (id_user, type) VALUES ({$_POST['idUserRequests']}, 2)";
+    $run2 = mysqli_query($connection, $sql2);
 
     header('Location: index.php', true, 303);
 }

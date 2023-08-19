@@ -29,51 +29,6 @@
 </head>
 <style><?php include 'css/contactus.css' ?></style>
 <body>
-<header class="header">
-        <div class="header__logo"><img src="img/Logo SivarTour BN web.png"></div>
-        <nav class="header__nav">
-            <form method="post" class="header__ul">
-                <input type="submit" name="goLogin" class="header__li" data-section="Index" data-value="Registro" value="Registrarse" >
-                <input type="submit" name="goLogin" class="header__li" data-section="Index" data-value="Inicio Sesion" value="Iniciar Sesión">
-            </form>
-        </nav>
-        <div class="options__menu">
-            <div class="option notifications">
-                <div class="option__title">
-                    <i class="fa-regular fa-bell"></i>
-                    <h3 data-section="Index" data-value="Notificaciones">Notificaciones</h3>
-                    <i class="fa-solid fa-chevron-down hideNotis"></i>
-                </div>
-                <div class="option__info__container hide">
-                    <div class="option__info">
-                        <i class="fa-solid fa-xmark close"></i>
-                        <h4 data-section="Index" data-value="Noti Rechazada">Publicación rechazada</h4>
-                        <p  data-section="Index" data-value="Mesg rechazo">¡Lo sentimos! ¡Tu publicación ha sido rechazada!</p>
-                    </div>
-                    <div class="option__info">
-                        <i class="fa-solid fa-xmark close"></i>
-                        <h4 data-section="Index" data-value="Noti Aceptada">Publicación aceptada</h4>
-                        <p data-section="Index" data-value="Mesg acepto">¡Enhorabuena! ¡Tu publicación ha sido aceptada!</p>
-                    </div>
-                </div>
-            </div>
-            <div class="option profile">
-                <i class="fa-regular fa-circle-user"></i>
-                <h3 data-section="Index" data-value="perfil">Mi perfil</h3>
-            </div>
-            <div class="option favorites">
-                <i class="fa-regular fa-star"></i>
-                <h3 data-section="Index" data-value="favs">Mis favoritos</h3>
-            </div>
-            <div class="option translate">
-                <input type="checkbox" id="cambiar">
-                <label for="cambiar">aquí se cambia el idioma</label>
-            </div>
-        </div>
-        <div class="header__options">
-            <i class="fa-solid fa-bars-staggered showMenu"></i>
-        </div>
-    </header>
     <div class="background">
         <div class="container">
             <div class="screen">

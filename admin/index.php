@@ -26,6 +26,11 @@
 <body>
     <div class="admin__container">
         <div class="admin__left">
+            <div class="left__option requestsOption">
+                <i class="fa-solid fa-square-plus"></i>
+                <h1>Solicitudes</h1>
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
             <div class="left__option placesOption">
                 <i class="fa-solid fa-location-dot"></i>
                 <h1>Lugares</h1>
@@ -62,6 +67,30 @@
             </div>
         </div>
         <div class="admin__right">
+            <div class="requests">
+                <?php
+                    $sqlRequests = "SELECT * FROM places WHERE status = 0";
+                    $runRequests = mysqli_query($connection, $sqlRequests);
+
+                    while ($rowRequests = mysqli_fetch_array($runRequests)) {
+                        ?>
+                            <form method="post" class="card">
+                                <div class="card__img">
+                                    <?php echo '<img class="hero__img" src="'.$rowRequests["img1"].'">'?>
+                                </div>
+                                <div class="card__info">
+                                    <h2><?php echo $rowRequests["name"] ?></h2>
+                                    <h3><?php echo $rowRequests['direction'] ?></h3>
+                                    <p><?php echo $rowRequests['description'] ?></p>
+                                </div>
+                                <input type="hidden" name="idUserRequests" value="<?php echo $rowRequests['id_user'] ?>">
+                                <button type="submit" value="<?php echo $rowRequests['id'] ?>" name="deleteRequest" class="deleteRequest"><i class="fa-solid fa-trash"></i></button>
+                                <button type="submit" value="<?php echo $rowRequests['id'] ?>" name="acceptRequest" class="acceptRequest"><i class="fa-solid fa-square-check"></i></button>
+                            </form>
+                        <?php
+                    }
+                ?>
+            </div>
             <div class="places">
                 <div class="filters" id="filters">
                     <select name="" id="date">
@@ -396,6 +425,7 @@
             document.querySelector('.users__notifications').classList.remove('showFlex');
             document.querySelector('.newplace__restaurant').classList.remove('showFlex');
             document.querySelector('.comments').classList.remove('showFlex');
+            document.querySelector('.requests').classList.remove('showFlex');
         });
 
         document.querySelector('.showPlaces').addEventListener('click', function(){
@@ -407,6 +437,7 @@
             document.querySelector('.newplace__restaurant').classList.remove('showFlex');
             document.querySelector('.users__notifications').classList.remove('showFlex');
             document.querySelector('.comments').classList.remove('showFlex');
+            document.querySelector('.requests').classList.remove('showFlex');
         });
 
         document.querySelector('.restaurantsOption').addEventListener('click', function(){
@@ -419,6 +450,7 @@
             document.querySelector('.newplace__restaurant').classList.remove('showFlex');
             document.querySelector('.users__notifications').classList.remove('showFlex');
             document.querySelector('.comments').classList.remove('showFlex');
+            document.querySelector('.requests').classList.remove('showFlex');
         });
 
         document.querySelector('.usersOption').addEventListener('click', function(){
@@ -431,6 +463,7 @@
             document.querySelector('.newplace__restaurant').classList.remove('showFlex');
             document.querySelector('.users__notifications').classList.remove('showFlex');
             document.querySelector('.comments').classList.remove('showFlex');
+            document.querySelector('.requests').classList.remove('showFlex');
         });
 
         document.querySelector('.gestion').addEventListener('click', function(){
@@ -442,6 +475,7 @@
             document.querySelector('.newplace__restaurant').classList.remove('showFlex');
             document.querySelector('.users__notifications').classList.remove('showFlex');
             document.querySelector('.comments').classList.remove('showFlex');
+            document.querySelector('.requests').classList.remove('showFlex');
         });
 
         document.querySelector('.showRestaurants').addEventListener('click', function(){
@@ -452,6 +486,19 @@
             document.querySelector('.restaurants').classList.remove('show');
             document.querySelector('.users__notifications').classList.remove('showFlex');
             document.querySelector('.comments').classList.remove('showFlex');
+            document.querySelector('.requests').classList.remove('showFlex');
+        });
+
+        document.querySelector('.requestsOption').addEventListener('click', function(){
+            document.querySelector('.requests').classList.add('showFlex');
+            document.querySelector('.users').classList.remove('showFlex');
+            document.querySelector('.users__gestion').classList.remove('showFlex');
+            document.querySelector('.places__add').classList.remove('showFlex');
+            document.querySelector('.restaurants').classList.remove('show');
+            document.querySelector('.users__notifications').classList.remove('showFlex');
+            document.querySelector('.newplace__restaurant').classList.remove('showFlex');
+            document.querySelector('.comments').classList.remove('showFlex');
+            document.querySelector('.places').classList.remove('show');
         });
 
         function sendMessage() {
@@ -463,6 +510,7 @@
             document.querySelector('.newplace__restaurant').classList.remove('showFlex');
             document.querySelector('.restaurants').classList.remove('show');
             document.querySelector('.comments').classList.remove('showFlex');
+            document.querySelector('.requests').classList.remove('showFlex');
         }
 
         function viewComments() {
@@ -474,6 +522,7 @@
             document.querySelector('.newplace__restaurant').classList.remove('showFlex');
             document.querySelector('.users__notifications').classList.remove('showFlex');
             document.querySelector('.restaurants').classList.remove('show');
+            document.querySelector('.requests').classList.remove('showFlex');
         }
 
         document.querySelector('.logout').addEventListener('click', function(){
@@ -572,6 +621,7 @@
                         <div class="card__info">
                             <h2>${place.name}</h2>
                         </div>
+                        <input type="hidden" name="idUserPlace" value="${place.id_user}">
                         <button type="submit" value="${place.id}" name="deletePlace" class="delete"><i class="fa-solid fa-trash"></i></button>
                     </form>
                     `;

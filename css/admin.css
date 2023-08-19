@@ -344,7 +344,7 @@ body{
     font-size: calc(1.1px + 1.1vw);
 }
 
-.delete{
+.delete, .deleteRequest{
     position: absolute;
     top: 0;
     right: 0;
@@ -355,7 +355,18 @@ body{
     border: none;
 }
 
-.delete i{
+.acceptRequest{
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 10px 50px 10px 10px;
+    background-color: var(--white);
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+}
+
+.delete i, .deleteRequest i, .acceptRequest i{
     font-size: calc(1.5px + 1.5vw);
     color: var(--red);
 }
@@ -953,7 +964,20 @@ body{
     cursor: pointer;
 }
 
+.requests{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    flex-wrap: wrap;
+    display: none;
+}
+
 .showFlex{
+    display: flex;
+}
+
+.showw{
     display: flex;
 }
 

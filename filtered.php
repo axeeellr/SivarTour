@@ -88,16 +88,44 @@
                     <i class="fa-solid fa-chevron-down hideNotis"></i>
                 </div>
                 <div class="option__info__container hide">
-                    <div class="option__info">
-                        <i class="fa-solid fa-xmark close"></i>
-                        <h4 data-section="Filtered" data-value="Noti Rechazada">Publicación rechazada</h4>
-                        <p  data-section="Filtered" data-value="Mesg rechazo">¡Lo sentimos! ¡Tu publicación ha sido rechazada!</p>
-                    </div>
-                    <div class="option__info">
-                        <i class="fa-solid fa-xmark close"></i>
-                        <h4 data-section="Filtered" data-value="Noti Aceptada">Publicación aceptada</h4>
-                        <p data-section="Filtered" data-value="Mesg acepto">¡Enhorabuena! ¡Tu publicación ha sido aceptada!</p>
-                    </div>
+                    <?php
+                        if (isset($_SESSION['user_id'])) {
+                            $noti = "SELECT * FROM notifications WHERE id_user = {$_SESSION['user_id']} LIMIT 5";
+                            $runNoti = mysqli_query($connection, $noti);
+    
+                            while ($rowNoti = mysqli_fetch_array($runNoti)) {
+                                switch ($rowNoti['type']) {
+                                    case 1:
+                                        ?>
+                                        <form method="post" class="option__info">
+                                            <button type="submit" name="closeNoti" value="<?php echo $rowNoti['id'] ?>"><i class="fa-solid fa-xmark closeN"></i></button>
+                                            <h4 data-section="Filtered" data-value="Noti Aceptada">Publicación aceptada</h4>
+                                            <p data-section="Filtered" data-value="Mesg acepto">¡Enhorabuena! ¡Tu publicación ha sido aceptada!</p>
+                                        </form>
+                                        <?php
+                                    break;
+                                    case 2:
+                                        ?>
+                                        <form method="post" class="option__info">
+                                            <button type="submit" name="closeNoti" value="<?php echo $rowNoti['id'] ?>"><i class="fa-solid fa-xmark closeN"></i></button>
+                                            <h4 data-section="Filtered" data-value="Noti Rechazada">Publicación rechazada</h4>
+                                            <p  data-section="Filtered" data-value="Mesg rechazo">¡Lo sentimos! ¡Tu publicación ha sido rechazada!</p>
+                                        </form>
+                                        <?php
+                                    break;
+                                    case 3:
+                                        ?>
+                                        <form method="post" class="option__info">
+                                            <button type="submit" name="closeNoti" value="<?php echo $rowNoti['id'] ?>"><i class="fa-solid fa-xmark closeN"></i></button>
+                                            <h4 data-section="Filtered" data-value="Noti Eliminada">Publicación eliminada</h4>
+                                            <p data-section="Filtered" data-value="Mesg acepto">¡Vaya! ¡Tu publicación ha sido eliminada!</p>
+                                        </form>
+                                        <?php
+                                    break;
+                                }
+                            }
+                        }
+                    ?>
                 </div>
             </div>
             <div class="option profile">
