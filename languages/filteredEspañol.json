@@ -9,9 +9,22 @@
         "Mesg acepto": "¡Enhorabuena! ¡Tu publicación ha sido aceptada!",
         "perfil": "Mi perfil",
         "favs": "Mis favoritos",
-        "Departamento":"Departamento",
+        "Departamento":"Departmento",
         "Tipo": "Tipo",
-        "Playa": "Playa",
-        "Campo": "Campo"
+        "Playa":"Playa",
+        "Campo":"Campo",
+        "Cabañas": "Cabañas",
+        "Parque": "Parque",
+        "Bosque" : "Bosque",
+        "Lago" : "Lago",
+        "Sitio" : "Sitio Arqueológico",
+        "Volcán" : "Volcán",
+        "Centro" : "Centro Comercial",
+        "Montaña" : "Montaña",
+        "Otro" : "Otro",
+        "Público" : "Público",
+        "Todo" : "Solo mayores de 18",
+        "Solo" : "Adults only",
+        "Especial" : "Especial para niños" 
     }
 }

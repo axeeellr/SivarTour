@@ -299,6 +299,7 @@ input:checked + label:after {
     cursor: pointer;
     z-index: 99;
     box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.40);
+    transition: .3s;
 }
 
 .hero__button:hover{

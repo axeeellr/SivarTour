@@ -8,10 +8,23 @@
         "Noti Aceptada": "Accepted post",
         "Mesg acepto": "Congratulations! Your post has been accepted!",
         "perfil": "My profile",
-        "favs": "My favourites",
+        "favs": "My favorites",
         "Departamento":"Department",
         "Tipo": "Type",
         "Playa":"Beach",
-        "Campo":"Camp"
+        "Campo":"Camp",
+        "Cabañas": "Cabin",
+        "Parques": "Park",
+        "Bosque" : "Forest",
+        "Lago" : "Lake",
+        "Sitio" : "Archeological Site",
+        "Volcán" : "Volcano",
+        "Centro" : "Mall",
+        "Montaña" : "Mountain",
+        "Otro" : "Other", 
+        "Público" : "Public",
+        "Todo" : "All",
+        "Solo" : "Adults only",
+        "Especial" : "Special for kids"
     }
 }

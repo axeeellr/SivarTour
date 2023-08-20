@@ -118,7 +118,7 @@
                                         <form method="post" class="option__info">
                                             <button type="submit" name="closeNoti" value="<?php echo $rowNoti['id'] ?>"><i class="fa-solid fa-xmark closeN"></i></button>
                                             <h4 data-section="Filtered" data-value="Noti Eliminada">Publicación eliminada</h4>
-                                            <p data-section="Filtered" data-value="Mesg acepto">¡Vaya! ¡Tu publicación ha sido eliminada!</p>
+                                            <p data-section="Filtered" data-value="Mesg eliminado">¡Vaya! ¡Tu publicación ha sido eliminada!</p>
                                         </form>
                                         <?php
                                     break;
@@ -187,7 +187,7 @@
             <option value="Usulután">Usulután</option>
         </select>
         <select name="" id="type">
-            <option data-section="Filtered" data-value="Tipo "value="">Tipo</option>
+            <option data-section="Filtered" data-value="Tipo" value="">Tipo</option>
             <option data-section="Filtered" data-value="Playa" value="Playa">Playa</option>
             <option data-section="Filtered" data-value="Campo" value="Campo">Campo</option>
             <option data-section="Filtered" data-value="Cabañas" value="Cabañas">Cabañas</option>
