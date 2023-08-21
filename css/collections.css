@@ -508,7 +508,7 @@ input:checked + label:after {
 
 /* FOOTER */
 
-.footer {
+.footer{
     position: relative;
     background: var(--blue);
     min-height: 70px;
@@ -521,7 +521,7 @@ input:checked + label:after {
 }
 
 .social-icon,
-.menu {
+.menu{
     position: relative;
     display: flex;
     width: 100%;
@@ -533,7 +533,7 @@ input:checked + label:after {
 }
 
 .social-icon__item,
-.menu__item {
+.menu__item{
     list-style: none;
 }
 
