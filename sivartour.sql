@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-08-2023 a las 01:10:46
+-- Tiempo de generación: 21-08-2023 a las 05:56:04
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -115,7 +115,6 @@ CREATE TABLE `notifications` (
 --
 
 INSERT INTO `notifications` (`id`, `id_user`, `type`) VALUES
-(5, 1, 2),
 (6, 1, 3),
 (7, 1, 1),
 (8, 1, 2);
@@ -176,9 +175,9 @@ INSERT INTO `places` (`id`, `id_user`, `name`, `description`, `direction`, `loca
 (25, 1, 'Multiplaza', 'Centro Comercial con gran cantidad de tiendas para cualquier necesidad personal.', 'Multiplaza, San Salvador, El Salvador', 'Carr. Panamericana, El Salvador', 'https://s3.us-east-2.amazonaws.com/sivartour/Multiplaza/mobile_Fachada_2.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Multiplaza/dsc09596.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Multiplaza/201709041312120.multiplaza2.jpg', 'La Libertad', 'Centro Comercial', 'Todo público', 0, 0, 1),
 (26, 1, 'Paseo El Carmen', 'Calles coloridas, llamativas y con buen ambiente nocturno para disfrutar en familia o con los amigos', 'Paseo El Carmen, 6 Avenida Norte, Santa Tecla, El Salvador', '6 Avenida Norte 4-4 C, Santa Tecla, El Salvador', 'https://s3.us-east-2.amazonaws.com/sivartour/Paseo%20El%20Carmen/E-OFCFyXIAEHdEm.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Paseo%20El%20Carmen/paseo-el-carmen.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Paseo%20El%20Carmen/4994600_orig.png', 'La Libertad', 'Otro', 'Todo público', 0, 0, 1),
 (27, 1, 'Playa San Diego', 'Linda playa con arena en buen estado, buenas vistas y ambiente agradable', 'Playa San Diego, El Salvador', 'Playa San Diego, El Salvador', 'https://s3.us-east-2.amazonaws.com/sivartour/Playa%20San%20Diego/La_Playa_de_El_Salvador.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Playa%20San%20Diego/Puestas-de-Sol-en-Playa-San-Diego.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Playa%20San%20Diego/San-Diego-en-La-Libertad.jpg', 'La Libertad', 'Playa', 'Todo público', 0, 0, 1),
-(28, 1, 'Mirador Planes de Renderos', 'Hermosas vistas hacia todo San Salvador desde las alturas, aparte de su excelente y riquísima gastro', 'Mirador de Los Planes de Renderos, Los Planes de Renderos, El Salvador', 'JRV8+P8R, Los Planes de Renderos, El Salvador', 'https://s3.us-east-2.amazonaws.com/sivartour/Mirador%20Planes%20de%20Renderos/48184757287_d9c38eff3a_b.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Mirador%20Planes%20de%20Renderos/54_big.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Mirador%20Planes%20de%20Renderos/6311530.jpg', 'San Salvador', 'Otro', 'Todo público', 0, 0, 1),
+(28, 1, 'Mirador Planes de Renderos', 'Hermosas vistas hacia todo San Salvador desde las alturas, aparte de su excelente y riquísima gastro', 'Mirador de Los Planes de Renderos, Los Planes de Renderos, El Salvador', 'JRV8+P8R, Los Planes de Renderos, El Salvador', 'https://s3.us-east-2.amazonaws.com/sivartour/Mirador%20Planes%20de%20Renderos/48184757287_d9c38eff3a_b.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Mirador%20Planes%20de%20Renderos/54_big.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Mirador%20Planes%20de%20Renderos/6311530.jpg', 'San Salvador', 'Otro', 'Todo público', 1, 1, 1),
 (29, 1, 'Metrocentro San Salvador', 'Centro comercial con variedad de tiendas y restaurantes para cumplir con tus antojos y necesidades.', 'Metrocentro San Salvador, Calle Los Sisimiles, San Salvador, El Salvador', 'C. Los Sisimiles, San Salvador, El Salvador', 'https://s3.us-east-2.amazonaws.com/sivartour/Metrocentro%20San%20Salvador/Metrocentro-San-Salvador.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Metrocentro%20San%20Salvador/4835832922_116b11fe6e_b.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Metrocentro%20San%20Salvador/4835795357_45d203204e_b.jpg', 'San Salvador', 'Centro Comercial', 'Todo público', 0, 0, 1),
-(30, 1, 'Playa San Blas', 'Playa tranquila, ideal para relajarse de la ciudad y mantener un ambiente de calma con unas increíbl', 'Playa San Blas, El Salvador', 'Playa San Blas, El Salvador', 'https://s3.us-east-2.amazonaws.com/sivartour/Playa%20San%20Blas/46835415902_a12aca4155_b.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Playa%20San%20Blas/san-juan-playa-el-escambron.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Playa%20San%20Blas/IMG-20201224-WA0013-1024x528.jpg', 'La Libertad', 'Playa', 'Todo público', 0, 0, 1),
+(30, 1, 'Playa San Blas', 'Playa tranquila, ideal para relajarse de la ciudad y mantener un ambiente de calma con unas increíbl', 'Playa San Blas, El Salvador', 'Playa San Blas, El Salvador', 'https://s3.us-east-2.amazonaws.com/sivartour/Playa%20San%20Blas/46835415902_a12aca4155_b.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Playa%20San%20Blas/san-juan-playa-el-escambron.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Playa%20San%20Blas/IMG-20201224-WA0013-1024x528.jpg', 'La Libertad', 'Playa', 'Todo público', 1, 1, 1),
 (31, 1, 'Plaza Mundo Soyapango', 'Centro comercial ideal para hacer tus compras, comer algo o comprar lo que necesites', 'Plaza Mundo, Bulevar del Ejercito Nacional, Soyapango, El Salvador', 'Blvr. del Ejercito Nacional, Soyapango CP 1116, El Salvador', 'https://s3.us-east-2.amazonaws.com/sivartour/Plaza%20Mundo%20Soyapango/FMcvA4MWQAkQ7E-%20%281%29.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Plaza%20Mundo%20Soyapango/img.jpeg', 'https://s3.us-east-2.amazonaws.com/sivartour/Plaza%20Mundo%20Soyapango/Plaza-mundo.jpg', 'San Salvador', 'Centro Comercial', 'Todo público', 0, 0, 1),
 (32, 1, 'Furesa', 'Zoológico con diversidad de flora y fauna, para aprender un poco acerca de la vida silvestre y la na', 'Furesa, Carretera a Jayaque, Minas, El Salvador', 'MHQ2+784, Carr. a Jayaque, Minas, El Salvador', 'https://s3.us-east-2.amazonaws.com/sivartour/Furesa/papo_blanci.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Furesa/Oso-Furesa-Jayaque-La-Libertad.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Furesa/4353738_orig.jpg', 'La Libertad', 'Parque', 'Todo público', 0, 0, 1),
 (33, 1, 'Catedral Nuestra Señora de La Paz', 'Catedral con impresionante arquitectura e historia, una atracción de San Miguel', 'Catedral Basílica Nuestra Señora de la Paz, San Miguel, El Salvador', 'FRMG+53P, San Miguel, El Salvador', 'https://s3.us-east-2.amazonaws.com/sivartour/Catedral%20Nuestra%20Se%C3%B1ora%20de%20La%20Paz/fb-img-1501086382958.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Catedral%20Nuestra%20Se%C3%B1ora%20de%20La%20Paz/307327976_5891560677554786_8828361716992265134_n.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Catedral%20Nuestra%20Se%C3%B1ora%20de%20La%20Paz/altar-mayor-de-la-catedral.jpg', 'San Miguel', 'Otro', 'Todo público', 1, 1, 1),
@@ -310,7 +309,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `img`, `token`, `age`, `sex`, `number`, `address`, `instagram`, `whatsapp`, `twitter`, `code`, `verified`, `banned`) VALUES
 (1, 'Axel Ramirez', 'axelramireezz@gmail.com', '', 'https://lh3.googleusercontent.com/a/AAcHTtdwud2oM0DUII2C1rQ4AKXbGFTtOOml7orFN75cJ1c6=s96-c', '107045247008393752346', 0, '', 0, '', 'axeellr', '79188652', 'axellmwyy', 39282, 1, 0),
-(41, 'pedro', 'pedro@gmail.com', '123456', '', '929608642180784375367', 0, '', 0, '', '', '', '', 0, 0, 0);
+(41, 'pedro', 'pedro@gmail.com', '123456', '', '929608642180784375367', 0, '', 0, '', '', '', '', 0, 0, 0),
+(42, 'pablo', 'pablo@gmail.com', '123456', '', '820018716679425695344', 0, '', 0, '', '', '', '', 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -349,7 +349,9 @@ INSERT INTO `user_ratings` (`id`, `user_id`, `place_id`, `rating`) VALUES
 (26, 38, 33, 1),
 (27, 1, 15, 1),
 (28, 1, 11, 1),
-(29, 1, 17, 1);
+(29, 1, 17, 1),
+(30, 1, 30, 1),
+(31, 1, 28, 1);
 
 --
 -- Índices para tablas volcadas
@@ -449,13 +451,13 @@ ALTER TABLE `restaurants`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT de la tabla `user_ratings`
 --
 ALTER TABLE `user_ratings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

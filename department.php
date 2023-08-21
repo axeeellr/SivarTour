@@ -102,6 +102,11 @@
                 <i class="fa-regular fa-star"></i>
                 <h3 data-section="Filtered" data-value="favs">Mis favoritos</h3>
             </div>
+            <form method="post" class="option link">
+                <i class="fa-solid fa-route"></i>
+                <a id="link" href="#" target="_blank">Mi ruta</a>
+                <button type="submit" name="deleteRoute"><i class="fa-regular fa-trash-can" id="delete"></i></button>
+            </form>
             <div class="option translate">
                 <input type="checkbox" id="cambiar">
                 <label for="cambiar">aquí se cambia el idioma</label>
@@ -179,6 +184,29 @@
             <li class="menu__item"><a class="menu__link" href="#" data-section="Index" data-value="contacto">Contáctanos</a></li>
         </ul>
     </footer>
+
+    <!-- eliminar ruta -->
+    <script>
+        const del = document.getElementById('delete');
+        del.addEventListener('click', function() {
+            localStorage.setItem("lugares" , "[]")
+            console.log(localStorage.getItem("lugares"))
+        });
+    </script>
+
+
+    <!-- ruta -->
+    <script defer>
+        const lugares = JSON.parse(localStorage.getItem("lugares") ?? "[]");
+        const lugaresDatos = [...new Set(lugares)]
+        const link = document.getElementById("link")
+
+        const lugaresLinks = [...new Set(lugaresDatos)].join("/");
+
+        console.log(lugaresLinks)
+
+        link.href = "https://www.google.com/maps/dir/" + lugaresLinks
+    </script>
 
 
     <script>

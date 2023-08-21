@@ -609,4 +609,20 @@ if (isset($_POST['closeNoti'])) {
     $run = mysqli_query($connection, $sql);
     //header('Location: filtered.php', true, 303);
 }
+
+
+
+
+/* A G R E G A R   L U G A R   A   R U T A */
+if (isset($_POST['route'])) {
+    $notice = "Se agregó correctamente a la ruta!";
+}
+
+
+
+
+/* E L I M I N A R   L U G A R   D E   R U T A */
+if (isset($_POST['deleteRoute'])) {
+    $notice = "Se ha eliminado la ruta!";
+}
 ?>

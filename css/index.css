@@ -95,7 +95,7 @@ body{
     cursor: default;
 }
 
-.option:hover > i, .option:hover > h3, .option__title:hover > i, .option__title:hover > h3{
+.option:hover > i, .option:hover > h3, .option:hover > a, .option button:hover > i, .option:hover > button i, .option__title:hover > i, .option__title:hover > h3{
     color: var(--red);
 }
 
@@ -104,9 +104,10 @@ body{
     color: var(--background);
 }
 
-.option h3{
+.option h3, .option a{
     color: var(--background);
     font-size: calc(1.5px + 1.5vw);
+    font-weight: bold;
 }
 
 .notifications{
@@ -122,11 +123,28 @@ body{
     display: flex;
     align-items: center;
     gap: calc(0.7px + 0.7vw);
+    position: relative;
+    width: 100%;
 }
 
 .option__title i:nth-child(3){
-    margin-left: 15%;
-    cursor: pointer;
+    position: absolute;
+    right: 0;
+}
+
+.link{
+    position: relative;
+}
+
+.link a{
+    cursor: default;
+}
+
+.link button:nth-child(3){
+    position: absolute;
+    right: 0;
+    background-color: transparent;
+    border: none;
 }
 
 .option__info__container{
@@ -160,14 +178,15 @@ body{
 .option__info button{
     background: transparent;
     border: none;
-}
-
-.option__info i{
     position: absolute;
     right: 0;
     top: 0;
-    font-size: calc(1.1px + 1.1vw);
     margin: calc(0.5px + 0.5vw);
+    outline: none;
+}
+
+.option__info button i{
+    font-size: calc(1.1px + 1.1vw);
     color: var(--red);
 }
 
