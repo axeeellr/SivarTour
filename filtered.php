@@ -136,6 +136,17 @@
                 <i class="fa-regular fa-star"></i>
                 <h3 data-section="Filtered" data-value="favs">Mis favoritos</h3>
             </div>
+            <div class="option link">
+                <i class="fa-solid fa-trash" id="delete"></i>
+                <a id="link" href="#" target="_blank">Link Generado</a>
+                <script>
+                    const del = document.getElementById('delete');
+                    del.addEventListener('click', function() {
+                        localStorage.setItem("lugares" , "[]")
+                        console.log(localStorage.getItem("lugares"))
+                    });
+                </script>
+            </div>
             <div class="option translate">
                 <input type="checkbox" id="cambiar">
                 <label for="cambiar">aquí se cambia el idioma</label>
