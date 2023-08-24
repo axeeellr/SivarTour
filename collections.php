@@ -23,7 +23,7 @@ if (isset($_SESSION['isLogin'])) {
 }else {
     ?>
         <style type="text/css">
-            .option:nth-child(2), .option:nth-child(3){
+            .option:nth-child(2), .option:nth-child(3), .option:nth-child(4){
                 display: none;
             }
         </style>

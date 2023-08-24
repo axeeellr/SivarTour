@@ -102,7 +102,6 @@ if (isset($_GET['code'])) {
 
 /****** L O G I N ******/
 if(isset($_POST['login'])) {
-
     $correo = $_POST['email']; 
     $contraseña = $_POST['password'];
 
@@ -112,7 +111,11 @@ if(isset($_POST['login'])) {
         die();
     }
 
-    $consulta_sql = mysqli_query($connection, "SELECT * FROM users WHERE email = '$correo' AND password = '$contraseña'");
+    $stmt = mysqli_prepare($connection, "SELECT * FROM users WHERE email = ? AND password = ?");
+    mysqli_stmt_bind_param($stmt, "ss", $correo, $contraseña);
+    mysqli_stmt_execute($stmt);
+
+    $consulta_sql = mysqli_stmt_get_result($stmt);
 
     $nums = mysqli_num_rows($consulta_sql);
     $data = mysqli_fetch_assoc($consulta_sql);
@@ -124,10 +127,11 @@ if(isset($_POST['login'])) {
         $_SESSION['user_token'] = $token;
         $_SESSION['user_id'] = $id;
         header('Location: ' . $_SESSION['url']);
-    }else if ($nums == 0){
+    } else {
         $error = "Los datos no coinciden";
     }
 
+    mysqli_stmt_close($stmt);
 }
 
 
@@ -135,54 +139,55 @@ if(isset($_POST['login'])) {
 
 /****** R E G I S T R O ******/
 if(isset($_POST['register'])) {
-
     $nombre = $_POST['name']; 
     $correo = $_POST['email']; 
     $contraseña = $_POST['password'];
-    $token = substr(str_shuffle(str_repeat('0123456789', 3)), 0, 21);
+    $token = bin2hex(random_bytes(10)); // Generar un token seguro
 
     if ($correo === 'admin777@gmail.com' && $contraseña === 'tetongas') {
         header('Location: login.php');
         die();
     }
 
-    //preparo mi consulta sql para el ingreso de los valores en la base de datos
-    $consulta_sql =  "INSERT INTO users (name, email, password, token) VALUES('$nombre', '$correo', '$contraseña', '$token')";
-
-    //verifico que correo no se repita en la base de datos
-    $validar = "SELECT * FROM users WHERE email = '$correo'";
-    $validarCorreo = mysqli_query($connection, $validar);
-    
-    //validacion de correo existente
-    if(mysqli_num_rows($validarCorreo) == 1){
-        $error = "Correo electrónico ya registrado";
-
-    } elseif (!preg_match('/^[a-zA-Z0-9]+$/', $contraseña)) {
+    // Verificar contraseña segura
+    if (!preg_match('/^[a-zA-Z0-9]+$/', $contraseña)) {
         $error = "Solo se permiten letras y números";
-
     } elseif (strlen($contraseña) > 15) {
         $error = "El máximo de caracteres es 15";
-
     } elseif (strlen($contraseña) < 5){
         $error = "El mínimo de caracteres es 5";
-
     } else {
-        $resultado = mysqli_query($connection, $consulta_sql);
+        // Preparar consulta SQL con sentencia preparada
+        $consulta_sql = "INSERT INTO users (name, email, password, token) VALUES (?, ?, ?, ?)";
+        $stmt = mysqli_prepare($connection, $consulta_sql);
+        mysqli_stmt_bind_param($stmt, "ssss", $nombre, $correo, $contraseña, $token);
 
-        $sqll = mysqli_query($connection, "SELECT * FROM users WHERE email = '$correo'");
-        $datita = mysqli_fetch_assoc($sqll);
-        $id = $datita['id'];
-        
-        if($resultado){
-            $_SESSION['isLogin'] = 'si';
-            $_SESSION['user_token'] = $token;
-            $_SESSION['user_id'] = $id;
-            header('Location: ' . $_SESSION['url']);
-        }else{
-            $error = "Ha ocurrido un error";
+        // Verificar si el correo ya está registrado
+        $validar = "SELECT * FROM users WHERE email = ?";
+        $validar_stmt = mysqli_prepare($connection, $validar);
+        mysqli_stmt_bind_param($validar_stmt, "s", $correo);
+        mysqli_stmt_execute($validar_stmt);
+        $validarCorreo = mysqli_stmt_get_result($validar_stmt);
+
+        if(mysqli_num_rows($validarCorreo) == 1){
+            $error = "Correo electrónico ya registrado";
+        } else {
+            // Ejecutar consulta preparada para inserción
+            if(mysqli_stmt_execute($stmt)){
+                $id = mysqli_insert_id($connection);
+                $_SESSION['isLogin'] = 'si';
+                $_SESSION['user_token'] = $token;
+                $_SESSION['user_id'] = $id;
+                header('Location: ' . $_SESSION['url']);
+            } else {
+                $error = "Ha ocurrido un error";
+            }
         }
+        mysqli_stmt_close($stmt);
+        mysqli_stmt_close($validar_stmt);
     }
 }
+
 
 
 

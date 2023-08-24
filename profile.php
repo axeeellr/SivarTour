@@ -351,6 +351,7 @@ if ($data['verified'] == 1) {
         });
     </script>
 
+
     <!-- eliminar ruta -->
     <script>
         const del = document.getElementById('delete');
@@ -412,6 +413,8 @@ if ($data['verified'] == 1) {
 
         document.querySelector('.logout').addEventListener('click', function(e){
             e.preventDefault();
+            localStorage.setItem("lugares" , "[]")
+            console.log(localStorage.getItem("lugares"))
             location.href = 'php/logout.php';
         });
 

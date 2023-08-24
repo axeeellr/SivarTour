@@ -13,7 +13,7 @@
     }else {
         ?>
             <style type="text/css">
-                .option:nth-child(2), .option:nth-child(3){
+                .option:nth-child(2), .option:nth-child(3), .option:nth-child(4){
                     display: none;
                 }
             </style>
@@ -57,6 +57,7 @@
                 </div>
                 <div class="option__info__container hide">
                     <?php
+                    if (isset($_SESSION['user_id'])){
                         $noti = "SELECT * FROM notifications WHERE id_user = {$_SESSION['user_id']} LIMIT 5";
                         $runNoti = mysqli_query($connection, $noti);
 
@@ -91,6 +92,7 @@
                                 break;
                             }
                         }
+                    }
                     ?>
                 </div>
             </div>
