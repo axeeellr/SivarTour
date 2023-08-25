@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-08-2023 a las 05:56:04
+-- Tiempo de generación: 25-08-2023 a las 05:02:57
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -30,22 +30,19 @@ SET time_zone = "+00:00";
 CREATE TABLE `collections` (
   `id` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
-  `name` varchar(100) NOT NULL
+  `name` varchar(100) NOT NULL,
+  `type` int(11) NOT NULL,
+  `url` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `collections`
 --
 
-INSERT INTO `collections` (`id`, `id_user`, `name`) VALUES
-(1, 1, 'Bosques'),
-(2, 32, 'donde llevaré a mi mujer'),
-(3, 1, 'Playas de La Libertad'),
-(4, 1, 'Malls'),
-(5, 1, 'Sanmi'),
-(6, 1, 'La Libertad'),
-(7, 38, 'Playas'),
-(8, 1, 'Catedrales');
+INSERT INTO `collections` (`id`, `id_user`, `name`, `type`, `url`) VALUES
+(2, 32, 'donde llevaré a mi mujer', 1, ''),
+(7, 38, 'Playas', 2, ''),
+(9, 1, 'Parquessss', 2, 'http://localhost/sivartour/join_collection.php?collection=76402bf7a5');
 
 -- --------------------------------------------------------
 
@@ -70,7 +67,27 @@ INSERT INTO `collections_places` (`id`, `id_user`, `id_collection`, `id_place`) 
 (3, 1, 3, 2),
 (4, 1, 3, 15),
 (5, 1, 8, 11),
-(6, 1, 3, 17);
+(6, 1, 3, 17),
+(7, 1, 9, 32);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `collections_share`
+--
+
+CREATE TABLE `collections_share` (
+  `id` int(11) NOT NULL,
+  `id_collection` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `collections_share`
+--
+
+INSERT INTO `collections_share` (`id`, `id_collection`, `id_user`) VALUES
+(1, 9, 1);
 
 -- --------------------------------------------------------
 
@@ -96,7 +113,9 @@ INSERT INTO `comments` (`id`, `id_user`, `id_place`, `comment`) VALUES
 (4, 1, 15, 'Bonita playa para hacer surf'),
 (5, 1, 11, 'Que catedral mas bonita'),
 (6, 1, 17, 'Me gusta esa playa'),
-(7, 41, 20, 'bonito centro comercial');
+(7, 41, 20, 'bonito centro comercial'),
+(8, 1, 30, 'linda playa'),
+(9, 1, 37, 'me gustaaa');
 
 -- --------------------------------------------------------
 
@@ -310,7 +329,10 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `img`, `token`, `age`, `sex`, `number`, `address`, `instagram`, `whatsapp`, `twitter`, `code`, `verified`, `banned`) VALUES
 (1, 'Axel Ramirez', 'axelramireezz@gmail.com', '', 'https://lh3.googleusercontent.com/a/AAcHTtdwud2oM0DUII2C1rQ4AKXbGFTtOOml7orFN75cJ1c6=s96-c', '107045247008393752346', 0, '', 0, '', 'axeellr', '79188652', 'axellmwyy', 39282, 1, 0),
 (41, 'pedro', 'pedro@gmail.com', '123456', '', '929608642180784375367', 0, '', 0, '', '', '', '', 0, 0, 0),
-(42, 'pablo', 'pablo@gmail.com', '123456', '', '820018716679425695344', 0, '', 0, '', '', '', '', 0, 0, 0);
+(42, 'pablo', 'pablo@gmail.com', '123456', '', '820018716679425695344', 0, '', 0, '', '', '', '', 0, 0, 0),
+(43, 'el ferxxo mor', 'ferxxo@gmail.com', '123456', '', '340314320154769686082', 0, '', 0, '', '', '', '', 0, 0, 0),
+(44, 'sael', 'sael@gmail.com', '123456', '', '959c49b50bbd05ae326d', 0, '', 0, '', '', '', '', 0, 0, 0),
+(45, 'mionca al bloquee', 'mionca@gmail.com', '1234567', '', '28d6ef260e2d30837026', 0, '', 0, '', '', '', '', 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -370,6 +392,12 @@ ALTER TABLE `collections_places`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `collections_share`
+--
+ALTER TABLE `collections_share`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `comments`
 --
 ALTER TABLE `comments`
@@ -415,19 +443,25 @@ ALTER TABLE `user_ratings`
 -- AUTO_INCREMENT de la tabla `collections`
 --
 ALTER TABLE `collections`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `collections_places`
 --
 ALTER TABLE `collections_places`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT de la tabla `collections_share`
+--
+ALTER TABLE `collections_share`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `notifications`
@@ -451,7 +485,7 @@ ALTER TABLE `restaurants`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT de la tabla `user_ratings`

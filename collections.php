@@ -122,8 +122,8 @@ if (isset($_SESSION['collectionId'])) {
     </header>
     <div class="collections__container">
         <div class="collections__header">
-            <h1><?php echo isset($_GET['favorites']) ? "Mis Favoritos" : $row['name']; ?></h1>
-            <p>Colección pública</p>
+            <h1><?php echo isset($_GET['favorites']) ? "Mis Favoritos" : $row['name']; ?>&nbsp;<?php echo ($row['type'] == 1 || isset($_GET['favorites'])) ? '' : '<i class="fa-solid fa-link url" onclick="copyToClipboard(\''.$row['url'].'\')"></i>'; ?></h1>
+            <p><?php echo ($row['type'] == 1 || isset($_GET['favorites'])) ? "Colección privada" : "Colección pública"; ?></p>
         </div>
         <div class="collections__body">
             <?php 
@@ -259,6 +259,34 @@ if (isset($_SESSION['collectionId'])) {
             <i class="fa-solid fa-plus new"></i>
         </div>
     </div>
+    <div class="notice" id="notification">
+        <p>Enlace copiado al portapapeles!</p>
+    </div>
+
+    <script>
+        function copyToClipboard(text) {
+            var tempInput = document.createElement("input");
+            document.body.appendChild(tempInput);
+            tempInput.value = text;
+            tempInput.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempInput);
+            console.log("Texto copiado al portapapeles: " + text);
+
+            const notice = document.getElementById('notification');
+            
+            // Mostrar la notificación después de un retraso
+            setTimeout(function () {
+                notice.classList.add('active');
+            }, 10);
+
+            // Ocultar la notificación después de 3 segundos
+            setTimeout(function () {
+                notice.classList.remove('active');
+                window.history.replaceState(null,null,window.location.href);
+            }, 3000);
+        }
+    </script>
 
     <!-- eliminar ruta -->
     <script>

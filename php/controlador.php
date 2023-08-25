@@ -425,17 +425,29 @@ if (isset($_POST['newCollection'])) {
     
     $id_user = $_SESSION['user_id'];
     $name = $_POST['name'];
+    $type = $_POST['type'];
 
-    $sql = "INSERT INTO collections (id_user, name) VALUES ('$id_user', '$name')";
+    if ($type == 2) {
+        $uniqueId = substr(md5(uniqid(rand(), true)), 0, 10);
+        $url = 'http://localhost/sivartour/join_collection.php?collection=' . $uniqueId;
+    } else {
+        $url = '';
+    }
+
+    $sql = "INSERT INTO collections (id_user, name, type, url) VALUES ('$id_user', '$name', '$type', '$url')";
     $run = mysqli_query($connection, $sql);
 
+    
     if ($run) {
-        $sqll = "SELECT * FROM collections WHERE id_user = '{$_SESSION['user_id']}' ORDER BY id DESC LIMIT 1";
-        $runn = mysqli_query($connection, $sqll);
+        $sqlll = "SELECT * FROM collections WHERE id_user = '{$_SESSION['user_id']}' ORDER BY id DESC LIMIT 1";
+        $runn = mysqli_query($connection, $sqlll);
         $row = mysqli_fetch_assoc($runn);
 
-        $sqlll = "INSERT INTO collections_places (id_user, id_collection, id_place) VALUES ('{$_SESSION['user_id']}', '{$row['id']}', '{$_GET['place']}')";
-        $runnn = mysqli_query($connection, $sqlll);
+        $sqll = "INSERT INTO collections_share (id_collection, id_user) VALUES ('{$row['id']}', '{$_SESSION['user_id']}')";
+        $runnn = mysqli_query($connection, $sqll);
+
+        $sqllll = "INSERT INTO collections_places (id_user, id_collection, id_place) VALUES ('{$_SESSION['user_id']}', '{$row['id']}', '{$_GET['place']}')";
+        $runnnn = mysqli_query($connection, $sqllll);
 
         $notice = "Creado y agregado a la colección!";
         //header('Location: ' . $_SESSION['urll'], true, 303);
@@ -630,4 +642,22 @@ if (isset($_POST['route'])) {
 if (isset($_POST['deleteRoute'])) {
     $notice = "Se ha eliminado la ruta!";
 }
+
+
+
+
+/*  */
+if (isset($_POST['acceptJoin'])) {
+    
+}
+
+
+
+
+/*  */
+if (isset($_POST['deniedJoin'])) {
+    
+}
+
+
 ?>

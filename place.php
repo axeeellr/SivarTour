@@ -265,9 +265,25 @@
             ?>
             </form>
             <form method="post" class="popup__field">
-                <input type="text" name="name" spellcheck="false"> 
-                <label class="label">Nombre de la colección</label>
-                <input type="submit" name="newCollection" value="Añadir">
+                <div class="popu">
+                    <div class="popupName">
+                        <input type="text" name="name" spellcheck="false"> 
+                        <label class="label">Nombre de la colección</label>
+                    </div>
+                    <div class="popupType">
+                        <div class="type">
+                            <input type="radio" class="checkType" name="type" id="private" value="1">
+                            <label for="private">Privada</label>
+                        </div>
+                        <div class="type">
+                            <input type="radio" class="checkType" name="type" id="public" value="2">
+                            <label for="public">Pública</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="field__btn">
+                    <input type="submit" name="newCollection" value="Añadir">
+                </div>
             </form>
             <i class="fa-solid fa-plus new"></i>
         </div>

@@ -1,0 +1,104 @@
+:root{
+    --background: #0E1821;
+    --blue: #98badf;
+    --red: #ed735c;
+    --green: #cece8d;
+    --white: #f0f4ef;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+a{
+    text-decoration: none;
+}
+
+i:hover{
+    transform: none;
+    box-shadow: none;
+}
+
+body{
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Prompt', sans-serif;
+    background: radial-gradient(at center center, rgb(14, 24, 33), rgb(41, 65, 85));
+    background-position: 100vh;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container{
+    height: 40vh;
+    width: 40%;
+    background: radial-gradient(at center center, rgb(152, 186, 223), rgb(206, 206, 141), rgb(152, 186, 223));
+    background-size: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.60);
+    gap: calc(1px + 1vw);
+}
+
+.container p{
+    color: var(--background);
+    font-size: calc(1.5px + 1.5vw);
+    width: 55%;
+    text-align: center;
+}
+
+.container__btn input[type="submit"]{
+    background-color: var(--background);
+    color: var(--white);
+    border: none;
+    padding: calc(0.7px + 0.7vw) calc(1.5px + 1.5vw);
+    border-radius: 10px;
+    box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.40);
+    font-size: calc(1px + 1vw);
+    cursor: pointer;
+}
+
+.container__btn input[type="submit"]:hover{
+    background-color: #080d12;
+}
+
+.container__btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: calc(1px + 1vw);
+}
+
+.container__btn input[type="submit"]:nth-child(1){
+    background-color: var(--green);
+    color: var(--background);
+}
+
+.container__btn input[type="submit"]:nth-child(2){
+    background-color: var(--red);
+    color: var(--background);
+}
+
+.container__btn input[type="submit"]:nth-child(1):hover{
+    background-color: #a3a356;
+}
+
+.container__btn input[type="submit"]:nth-child(2):hover{
+    background-color: #d65d44;
+}
+
+.container span:nth-child(1){
+    font-weight: bold;
+}
+
+.container span:nth-child(2){
+    font-weight: bold;
+    color: var(--red);
+}
