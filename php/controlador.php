@@ -429,7 +429,7 @@ if (isset($_POST['newCollection'])) {
 
     if ($type == 2) {
         $uniqueId = substr(md5(uniqid(rand(), true)), 0, 10);
-        $url = 'http://localhost/sivartour/join_collection.php?collection=' . $uniqueId;
+        $url = 'http://localhost/sivartour/join_collection.php?collection=' . $uniqueId . '&p=' . $id_user;
     } else {
         $url = '';
     }
@@ -646,9 +646,17 @@ if (isset($_POST['deleteRoute'])) {
 
 
 
-/*  */
+/* U N I R S E   A   L A   C O L E C C I O N */
 if (isset($_POST['acceptJoin'])) {
-    
+    $idCollection = $_POST['idCollection'];
+    $idUser = $_POST['idUser'];
+    $name = $_POST['name'];
+
+    $sql = "INSERT INTO collections_share (id_collection, id_user) VALUES ('$idCollection', '$idUser')";
+    $run = mysqli_query($connection, $sql);
+
+    $_SESSION['collectionId'] = $idCollection;
+    header('Location: collections.php');
 }
 
 

@@ -201,13 +201,27 @@ if ($data['verified'] == 1) {
                     $sql = "SELECT * FROM collections WHERE id_user = {$data['id']}";
                     $run = mysqli_query($connection, $sql);
                     
+                    $sqlll = "SELECT collections_share.id_collection, collections_share.id_user, collections.id, collections.name, collections.id_user FROM collections_share INNER JOIN collections ON collections_share.id_collection = collections.id WHERE collections_share.id_user != {$data['id']}";
+                    $runnn = mysqli_query($connection, $sqlll);
+
                     while ($dataCollec = mysqli_fetch_assoc($run)){
                         ?>
                             <form method="post" class="saved__collection">
                                 <input type="hidden" name="collectionId" value="<?php echo $dataCollec['id'] ?>">
                                 <button type="submit" name="collectionPage"><?php echo $dataCollec['name'] ?></button>
                             </form>
+                        <?php
+                    }
+
+                    if (mysqli_num_rows($runnn)) {
+                        while ($dataCollecShare = mysqli_fetch_assoc($runnn)){
+                            ?>
+                                <form method="post" class="saved__collection">
+                                    <input type="hidden" name="collectionId" value="<?php echo $dataCollecShare['id'] ?>">
+                                    <button type="submit" name="collectionPage"><?php echo $dataCollecShare['name'] ?></button>
+                                </form>
                             <?php
+                        }
                     }
                     ?>
                     <i class="fa-solid fa-plus newCollection"></i>

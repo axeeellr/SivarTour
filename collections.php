@@ -124,6 +124,35 @@ if (isset($_SESSION['collectionId'])) {
         <div class="collections__header">
             <h1><?php echo isset($_GET['favorites']) ? "Mis Favoritos" : $row['name']; ?>&nbsp;<?php echo ($row['type'] == 1 || isset($_GET['favorites'])) ? '' : '<i class="fa-solid fa-link url" onclick="copyToClipboard(\''.$row['url'].'\')"></i>'; ?></h1>
             <p><?php echo ($row['type'] == 1 || isset($_GET['favorites'])) ? "Colección privada" : "Colección pública"; ?></p>
+            <div class="collections__header__users">
+
+            <?php 
+                $sqlCollections = "SELECT * FROM collections_share INNER JOIN users ON collections_share.id_user = users.id WHERE collections_share.id_collection = {$_SESSION['collectionId']} ORDER BY rand()";
+                $runCollections = mysqli_query($connection, $sqlCollections);
+
+                $totalResults = mysqli_num_rows($runCollections); // Obtener el total de resultados
+                $displayedResults = 0; // Contador de resultados mostrados
+
+                while ($dataCollectionsUsers = mysqli_fetch_array($runCollections)) {
+                    $letter = substr($dataCollectionsUsers['name'], 0, 1);
+                    echo ($dataCollectionsUsers['img'] == "") ? '<div class="userLetter" style="z-index: '.($displayedResults + 1).'; margin-left: calc(-1.2px - 1.2vw);">'.$letter.'</div>' : '<div class="user" style="z-index: '.($displayedResults + 1).'; margin-left: calc(-1.2px - 1.2vw);"><img src="'.$dataCollectionsUsers['img'].'" alt=""></div>';
+
+                    $displayedResults++;
+                    
+                    if ($displayedResults == 4 && $totalResults > 4) {
+                        $remainingResults = $totalResults - 4;
+                        echo '<div class="userMore">+' . $remainingResults . '</div>';
+                        break;
+                    }
+                }
+            ?>
+
+
+                <!--<div class="user" style="z-index: 1"><img src="https://www.azureussl.com/wp-content/uploads/2022/01/conejo-cabeza-comiendo.jpg" alt=""></div>
+                <div class="userLetter" style="z-index: 2; margin-left: calc(-1.2px - 1.2vw);">A</div>
+                <div class="userLetter" style="z-index: 3; margin-left: calc(-1.2px - 1.2vw);">L</div>
+                <div class="user" style="z-index: 4; margin-left: calc(-1.2px - 1.2vw);"><img src="https://cdn-pro.elsalvador.com/wp-content/uploads/2021/12/SOYACITY-2.jpg" alt=""></div>-->
+            </div>
         </div>
         <div class="collections__body">
             <?php 
