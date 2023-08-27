@@ -1352,3 +1352,8 @@ body{
     font-size: calc(1.3px + 1.3vw);
     text-align: center;
 }
+
+.noDataN{
+    color: gray;
+    font-size: calc(1.2px + 1.2vw);
+}

@@ -64,6 +64,10 @@ if (isset($_SESSION['collectionId'])) {
                         $noti = "SELECT * FROM notifications WHERE id_user = {$_SESSION['user_id']} LIMIT 5";
                         $runNoti = mysqli_query($connection, $noti);
 
+                        if (mysqli_num_rows($runNoti) == 0) {
+                            echo "<h4 class='noDataN'>No tienes notificaciones :c</h4>";
+                        }
+
                         while ($rowNoti = mysqli_fetch_array($runNoti)) {
                             switch ($rowNoti['type']) {
                                 case 1:
@@ -127,7 +131,7 @@ if (isset($_SESSION['collectionId'])) {
             <div class="collections__header__users">
 
             <?php 
-                $sqlCollections = "SELECT * FROM collections_share INNER JOIN users ON collections_share.id_user = users.id WHERE collections_share.id_collection = {$_SESSION['collectionId']} ORDER BY rand()";
+                $sqlCollections = "SELECT * FROM collections_share INNER JOIN users ON collections_share.id_user = users.id WHERE collections_share.id_collection = {$_SESSION['collectionId']}";
                 $runCollections = mysqli_query($connection, $sqlCollections);
 
                 $totalResults = mysqli_num_rows($runCollections); // Obtener el total de resultados
@@ -211,7 +215,7 @@ if (isset($_SESSION['collectionId'])) {
     
                     while($dataPlaces = mysqli_fetch_assoc($runPlaces)){
                         ?>
-                            <div class="collection">
+                            <a href="place.php?place=<?php echo $dataPlaces['id']; ?>"><div class="collection">
                                 <div class="collection__place">
                                     <?php echo '<img src="'.$dataPlaces["img1"].'">' ?>
                                     <div class="collection__info">
@@ -243,7 +247,7 @@ if (isset($_SESSION['collectionId'])) {
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div></a>
                         <?php
                     }
                 }
@@ -264,30 +268,28 @@ if (isset($_SESSION['collectionId'])) {
         </ul>
     </footer>
 
-    <div class="popup__container">
+    <div class="container__popup">
         <div class="popup">
             <i class="fa-solid fa-xmark closePop"></i>
-            <h2>Agrega El Tunco a tus colecciones</h2>
-            <form method="post" class="collections__container__pop">
             <?php
-                $sqll = "SELECT * FROM collections WHERE id_user = '{$_SESSION['user_id']}'";
-                $runn = mysqli_query($connection, $sqll);
+                $sqlCollectionss = "SELECT * FROM collections_share INNER JOIN users ON collections_share.id_user = users.id WHERE collections_share.id_collection = {$_SESSION['collectionId']}";
+                $runCollectionss = mysqli_query($connection, $sqlCollectionss);
 
-                while ($dataCollec = mysqli_fetch_assoc($runn)) {
+                while ($dataCollectionsUserss = mysqli_fetch_assoc($runCollectionss)) {
                     ?>
-                        <button type="submit" name="collection" class="collections" value="<?php echo $dataCollec['id']; ?>"><?php echo $dataCollec['name']; ?></button>
+                        <div class="popup__user">
+                            <?php
+                                $letterr = substr($dataCollectionsUserss['name'], 0, 1);
+                                echo ($dataCollectionsUserss['img'] == "") ? '<div class="popup__user__img"><h1>'.$letterr.'</h1></div>' : '<div class="popup__user__img"><img src="'.$dataCollectionsUserss['img'].'" alt=""></div>';
+                                echo '<h1 class="popup__user__name">'.$dataCollectionsUserss["name"].'</h1>';
+                            ?>
+                        </div>
                     <?php
                 }
             ?>
-            </form>
-            <form method="post" class="popup__field">
-                <input type="text" name="name" spellcheck="false"> 
-                <label class="label">Nombre de la colección</label>
-                <input type="submit" name="newCollection" value="Añadir">
-            </form>
-            <i class="fa-solid fa-plus new"></i>
         </div>
     </div>
+
     <div class="notice" id="notification">
         <p>Enlace copiado al portapapeles!</p>
     </div>
@@ -365,12 +367,12 @@ if (isset($_SESSION['collectionId'])) {
         });
     </script>
     <script>
-        document.querySelector('.collection__add').addEventListener('click', function(){
-            document.querySelector('.popup__container').classList.add('visible');
+        document.querySelector('.collections__header__users').addEventListener('click', function(){
+            document.querySelector('.container__popup').classList.add('visible');
         })
 
         document.querySelector('.closePop').addEventListener('click', function(){
-            document.querySelector('.popup__container').classList.remove('visible');
+            document.querySelector('.container__popup').classList.remove('visible');
         });
 
         document.querySelector('.new').addEventListener('click', function(){

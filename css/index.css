@@ -9,6 +9,7 @@
 *{
     margin: 0;
     padding: 0;
+    outline: none;
 }
 
 a{
@@ -831,19 +832,10 @@ hr{
     color: var(--red);
 }
 
-/*::-webkit-scrollbar {
-    background-color: var(--blue);
-    width: 100%;
+.noData{
+    color: gray;
+    font-size: calc(1.2px + 1.2vw);
 }
-
-::-webkit-scrollbar-thumb {
-    background-color: var(--background);
-    border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background-color: #555;
-}*/
 
 /* TABLET */
 @media only screen and (min-width: 768px){

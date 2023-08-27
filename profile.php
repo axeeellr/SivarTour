@@ -83,6 +83,10 @@ if ($data['verified'] == 1) {
                         $noti = "SELECT * FROM notifications WHERE id_user = {$_SESSION['user_id']} LIMIT 5";
                         $runNoti = mysqli_query($connection, $noti);
 
+                        if (mysqli_num_rows($runNoti) == 0) {
+                            echo "<h4 class='noDataN'>No tienes notificaciones :c</h4>";
+                        }
+
                         while ($rowNoti = mysqli_fetch_array($runNoti)) {
                             switch ($rowNoti['type']) {
                                 case 1:
@@ -201,7 +205,7 @@ if ($data['verified'] == 1) {
                     $sql = "SELECT * FROM collections WHERE id_user = {$data['id']}";
                     $run = mysqli_query($connection, $sql);
                     
-                    $sqlll = "SELECT collections_share.id_collection, collections_share.id_user, collections.id, collections.name, collections.id_user FROM collections_share INNER JOIN collections ON collections_share.id_collection = collections.id WHERE collections_share.id_user != {$data['id']}";
+                    $sqlll = "SELECT collections_share.id_collection, collections_share.id_user, collections.id, collections.name, collections.id_user, collections_share.owner FROM collections_share INNER JOIN collections ON collections_share.id_collection = collections.id WHERE collections_share.id_user = {$data['id']} AND collections_share.owner != 1";
                     $runnn = mysqli_query($connection, $sqlll);
 
                     while ($dataCollec = mysqli_fetch_assoc($run)){

@@ -27,14 +27,13 @@ body{
     font-family: 'Prompt', sans-serif;
     background: radial-gradient(at center center, rgb(14, 24, 33), rgb(41, 65, 85));
     background-position: 100vh;
-    overfslow: hidden;
 }
 
 /*  HEADER */
 .header {
     width: 100%;
     height: 15vh;
-    posistion: absolute;
+    positiosn: absolute;
     color: white;
     display: flex;
     justify-content: space-between;
@@ -45,6 +44,8 @@ body{
 .header__logo{
     width: 10%;
     margin: calc(1px + 1vw);
+    display: flex;
+    align-items: center;
 }
 
 .header__logo img{
@@ -948,6 +949,11 @@ input:focus~label {
 .noData{
     color: #0a1117;
     font-size: calc(1.4px + 1.4vw);
+}
+
+.noDataN{
+    color: gray;
+    font-size: calc(1.2px + 1.2vw);
 }
 
   

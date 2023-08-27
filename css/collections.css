@@ -338,6 +338,7 @@ input:checked + label:after {
     font-size: calc(2.3px + 2.3vw);
     font-weight: bold;
     text-transform: uppercase;
+    cursor: default;
 }
 
 .userMore{
@@ -418,146 +419,81 @@ input:checked + label:after {
     display: none;
 }
 
-.popup__container{
-    display: none;
+.container__popup{
     position: fixed;
     top: 0;
     left: 0;
-    right: 0;
     bottom: 0;
+    right: 0;
     background-color: rgb(0, 0, 0, 0.5);
-    z-index: 99;
+    display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 200;
+    display: none;
+}
+
+.popup{
+    background: radial-gradient(at center center, rgb(152, 186, 223), rgb(206, 206, 141), rgb(152, 186, 223));
+    background-size: 100vh;
+    height: 60%;
+    width: 25%;
+    border-radius: 1.1em;
+    padding: calc(3px + 3vw) calc(2px + 2vw);
+    box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.60);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: calc(1px + 1vw);
+}
+
+.popup i{
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: calc(1px + 1vw);
+    font-size: calc(1.5px + 1.5vw);
+    color: var(--red);
+}
+
+.popup__user{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: calc(0.8px + 0.8vw);
+}
+
+.popup__user__img{
+    height: calc(4.5px + 4.5vw);
+    width: calc(4.5px + 4.5vw);
+    position: relative;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--blue);
+}
+
+.popup__user__img img{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.popup__user__img h1{
+    font-size: calc(2.3px + 2.3vw);
+    color: var(--red);
+    text-transform: uppercase;
+}
+
+.popup__user__name{
+    color: var(--background);
+    font-size: calc(1.7px + 1.7vw);
 }
 
 .visible{
     display: flex;
-}
-
-.popup{
-    position: absolute;
-    min-height: 30%;
-    width: 35%;
-    background: radial-gradient(at center center, rgb(152, 186, 223), rgb(206, 206, 141), rgb(152, 186, 223));
-    background-size: 90vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: calc(1.1px + 1.1vw);
-    border-radius: 7px;
-    box-shadow: 0px 0px 50px 0px rgba(0,0,0,0.75);
-    padding: calc(1.5px + 1.5vw) 0;
-}
-
-.popup h2{
-    color: var(--red);
-    font-size: calc(1.6px + 1.6vw);
-    width: 80%;
-    text-align: center;
-    margin-bottom: calc(1px + 1vw);
-}
-
-.collections__container__pop{
-    display: flex;
-    flex-direction: column;
-    gap: calc(1.1px + 1.1vw);
-}
-
-.collections{
-    padding: calc(0.7px + 0.7vw) calc(2.7px + 2.7vw);
-    min-width: calc(15px + 15vw);
-    border: none;
-    background-color: var(--background);
-    color: var(--white);
-    border-radius: 7px;
-    font-size: calc(1.2px + 1.2vw);
-    box-shadow: 0px 0px 25px 0px rgba(0,0,0,0.40);
-}
-
-.invisiblew{
-    display: none;
-}
-
-.new{
-    border: 2px solid var(--background);
-    border-radius: 50%;
-    padding: calc(0.5px + 0.5vw) calc(0.6px + 0.6vw);
-}
-
-.closePop{
-    position: absolute;
-    top: 0;
-    right: 0;
-    margin: calc(1px + 1vw);
-    font-size: calc(1.5px + 1.5vw);
-}
-
-
-.popup__field {
-    position: relative;
-    align-items: center;
-    gap: calc(1px + 1vw);
-    display: none;
-}
-
-.visiblew{
-    display: flex;
-}
-
-.popup__field input[type="text"] {
-    border: 2px solid var(--background);
-    background-color: transparent;
-    font-family: 'Prompt', sans-serif;
-    padding: calc(0.5px + 0.5vw) calc(0.5px + 0.5vw);
-    border-radius: 7px;
-    font-size: calc(1px + 1vw);
-}
-
-.label{
-    position: absolute;
-    top: 50%;
-    left: 15px;
-    transform: translateY(-50%);
-    color: var(--background);
-    font-size: calc(1px + 1vw);
-    pointer-events: none;
-    transition: 0.3s;
-}
-
-.popup__field i{
-    position: absolute;
-    right: 10px;
-}
-
-.popup__field input[type="text"]:focus {
-    border: 2px solid var(--background);
-}
-
-.popup__field input[type="text"]:focus~i{
-    color: var(--background);
-}
-
-.popup__field input[type="text"]:focus~.label {
-    top: -10px;
-    left: 0;
-    font-size: calc(1px + 1vw);
-    padding: 0 2px;
-    color: var(--background);
-}
-
-.popup__field input[type="submit"]{
-    padding: calc(0.5px + 0.5vw) calc(0.9px + 0.9vw);
-    border-radius: 15px;
-    border: none;
-    background-color: var(--background);
-    color: var(--white);
-    font-size: calc(1px + 1vw);
-    font-family: 'Prompt', sans-serif;
-    margin: 0;
-    cursor: pointer;
-    transition: 0.2s;
 }
 
 /* FOOTER */
@@ -703,4 +639,9 @@ input:checked + label:after {
 .noData{
     color: #060b10;
     font-size: calc(1.3px + 1.3vw);
+}
+
+.noDataN{
+    color: gray;
+    font-size: calc(1.2px + 1.2vw);
 }

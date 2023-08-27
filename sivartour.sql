@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-08-2023 a las 05:02:57
+-- Tiempo de generación: 27-08-2023 a las 07:10:33
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -42,7 +42,7 @@ CREATE TABLE `collections` (
 INSERT INTO `collections` (`id`, `id_user`, `name`, `type`, `url`) VALUES
 (2, 32, 'donde llevaré a mi mujer', 1, ''),
 (7, 38, 'Playas', 2, ''),
-(9, 1, 'Parquessss', 2, 'http://localhost/sivartour/join_collection.php?collection=76402bf7a5');
+(14, 1, 'Playitas', 2, 'http://localhost/sivartour/join_collection.php?collection=27e06beeac&p=1');
 
 -- --------------------------------------------------------
 
@@ -62,13 +62,11 @@ CREATE TABLE `collections_places` (
 --
 
 INSERT INTO `collections_places` (`id`, `id_user`, `id_collection`, `id_place`) VALUES
-(1, 1, 1, 3),
 (2, 32, 2, 31),
-(3, 1, 3, 2),
-(4, 1, 3, 15),
-(5, 1, 8, 11),
-(6, 1, 3, 17),
-(7, 1, 9, 32);
+(8, 1, 10, 20),
+(9, 1, 10, 29),
+(10, 1, 14, 27),
+(11, 1, 14, 17);
 
 -- --------------------------------------------------------
 
@@ -79,15 +77,18 @@ INSERT INTO `collections_places` (`id`, `id_user`, `id_collection`, `id_place`) 
 CREATE TABLE `collections_share` (
   `id` int(11) NOT NULL,
   `id_collection` int(11) NOT NULL,
-  `id_user` int(11) NOT NULL
+  `id_user` int(11) NOT NULL,
+  `owner` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `collections_share`
 --
 
-INSERT INTO `collections_share` (`id`, `id_collection`, `id_user`) VALUES
-(1, 9, 1);
+INSERT INTO `collections_share` (`id`, `id_collection`, `id_user`, `owner`) VALUES
+(9, 14, 1, 1),
+(10, 14, 44, 0),
+(11, 14, 43, 0);
 
 -- --------------------------------------------------------
 
@@ -332,7 +333,8 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `img`, `token`, `age`, `
 (42, 'pablo', 'pablo@gmail.com', '123456', '', '820018716679425695344', 0, '', 0, '', '', '', '', 0, 0, 0),
 (43, 'el ferxxo mor', 'ferxxo@gmail.com', '123456', '', '340314320154769686082', 0, '', 0, '', '', '', '', 0, 0, 0),
 (44, 'sael', 'sael@gmail.com', '123456', '', '959c49b50bbd05ae326d', 0, '', 0, '', '', '', '', 0, 0, 0),
-(45, 'mionca al bloquee', 'mionca@gmail.com', '1234567', '', '28d6ef260e2d30837026', 0, '', 0, '', '', '', '', 0, 0, 0);
+(45, 'mionca al bloquee', 'mionca@gmail.com', '1234567', '', '28d6ef260e2d30837026', 0, '', 0, '', '', '', '', 0, 0, 0),
+(46, 'alicia', 'alicia@gmail.com', '123456', '', '2b3b4584dd2756099873', 0, '', 0, '', '', '', '', 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -443,19 +445,19 @@ ALTER TABLE `user_ratings`
 -- AUTO_INCREMENT de la tabla `collections`
 --
 ALTER TABLE `collections`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `collections_places`
 --
 ALTER TABLE `collections_places`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `collections_share`
 --
 ALTER TABLE `collections_share`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `comments`
@@ -485,7 +487,7 @@ ALTER TABLE `restaurants`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT de la tabla `user_ratings`

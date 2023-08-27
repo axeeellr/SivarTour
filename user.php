@@ -69,6 +69,10 @@ $row = mysqli_fetch_assoc($run);
                         $noti = "SELECT * FROM notifications WHERE id_user = {$_SESSION['user_id']} LIMIT 5";
                         $runNoti = mysqli_query($connection, $noti);
 
+                        if (mysqli_num_rows($runNoti) == 0) {
+                            echo "<h4 class='noData'>No tienes notificaciones :c</h4>";
+                        }
+
                         while ($rowNoti = mysqli_fetch_array($runNoti)) {
                             switch ($rowNoti['type']) {
                                 case 1:

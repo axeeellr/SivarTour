@@ -1080,3 +1080,8 @@ hr{
     opacity: 1;
     color: var(--red);
 }
+
+.noData{
+    color: gray;
+    font-size: calc(1.2px + 1.2vw);
+}

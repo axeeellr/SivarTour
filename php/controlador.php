@@ -443,7 +443,7 @@ if (isset($_POST['newCollection'])) {
         $runn = mysqli_query($connection, $sqlll);
         $row = mysqli_fetch_assoc($runn);
 
-        $sqll = "INSERT INTO collections_share (id_collection, id_user) VALUES ('{$row['id']}', '{$_SESSION['user_id']}')";
+        $sqll = "INSERT INTO collections_share (id_collection, id_user, owner) VALUES ('{$row['id']}', '{$_SESSION['user_id']}', 1)";
         $runnn = mysqli_query($connection, $sqll);
 
         $sqllll = "INSERT INTO collections_places (id_user, id_collection, id_place) VALUES ('{$_SESSION['user_id']}', '{$row['id']}', '{$_GET['place']}')";
