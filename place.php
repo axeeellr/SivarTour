@@ -164,13 +164,6 @@
                                     <div class="slider__user__img"><?php echo substr($data['name'], 0, 1); ?></div>
                                     <input type="hidden" name="idUserComment" value="<?php echo $data['id']; ?>">
                                     <button type="submit" name="userComment" class="userProfile"><?php echo $data['name']; ?></button>
-                                    <div class="user__info">
-                                        <h3>Maestro viajero</h3>
-                                        <div class="info__points">
-                                            <i class="fa-solid fa-heart"></i>
-                                            <p>4.96</p>
-                                        </div>
-                                    </div>
                                 </form>
                                 <div class="slider__text">
                                     <p><?php echo $data['comment']; ?></p>

@@ -76,8 +76,8 @@
         <div class="header__logo"><img src="img/Logo SivarTour BN web.png"></div>
         <nav class="header__nav">
             <form method="post" class="header__ul">
-                <input type="submit" name="goLogin" class="header__li" data-section="Filtered" data-value="Registro" value="Registrarse" >
-                <input type="submit" name="goLogin" class="header__li" data-section="Filtered" data-value="Inicio Sesion" value="Iniciar Sesión">
+                <button type="submit" name="goLogin" class="header__li" data-section="Filtered" data-value="Registro">Registrarse</button>
+                <button type="submit" name="goLogin" class="header__li" data-section="Filtered" data-value="Inicio Sesion">Iniciar Sesión</button>
             </form>
         </nav>
         <div class="options__menu">
@@ -327,7 +327,7 @@
             <li class="menu__item"><a class="menu__link" href="#" data-section="Filtered" data-value="inicio">Inicio</a></li>
             <li class="menu__item"><a class="menu__link" href="#" data-section="Filtered" data-value="sobre nosotros">Acerca de</a></li>
             <li class="menu__item"><a class="menu__link" href="#" data-section="Filtered" data-value="faq">FAQ</a></li>
-            <li class="menu__item"><a class="menu__link" href="#" data-section="Filtered" data-value="contacto">Contáctanos</a></li>
+            <li class="menu__item"><a class="menu__link" href="#" value="Contáctanos" data-section="Filtered" data-value="contacto">Contáctanos</a></li>
         </ul>
     </footer>
 
@@ -335,59 +335,49 @@
     <script>
         var checkbox = document.getElementById('cambiar');
         var select = document.getElementById('department');
+        var language = localStorage.getItem('selectedLanguage') || 'es'; // Por defecto, español
 
         // Función para cambiar el idioma
         async function cambiarIdioma(selectedLanguage) {
             const imag = document.getElementById('hero__text');
             imag.src = selectedLanguage === 'en' ? 'img/exploraIngles.png' : 'img/explora.png';
 
-            const jsonFileName = selectedLanguage === 'en' ? 'filteredIngles.json' : 'filteredEspañol.json';
-            const requestJson = await fetch(`languages/${jsonFileName}`);
+            const requestJson = await fetch(`languages/filtered${selectedLanguage === 'en' ? 'Ingles' : 'Español'}.json`);
             const textosCambioIdioma = document.querySelectorAll("[data-section]");
             const textos = await requestJson.json();
+
+            
 
             for (const textosCambioIdiomaVariable of textosCambioIdioma) {
                 const secciones = textosCambioIdiomaVariable.dataset.section;
                 const valor = textosCambioIdiomaVariable.dataset.value;
 
                 if (textos[secciones] && textos[secciones][valor]) {
-                    if (textosCambioIdiomaVariable.value) {
-                        textosCambioIdiomaVariable.value = textos[secciones][valor];
-                    }
                     textosCambioIdiomaVariable.innerHTML = textos[secciones][valor];
                 }
             }
 
             elements.addEventListener("click", function (e) {
                 cambioIdioma(e.target.parentElement.dataset.language);
-                localStorage.setItem('selectedLanguage', selectedLanguage); // Guardar el idioma seleccionado
+                language = e.target.parentElement.dataset.language;
+                localStorage.setItem('selectedLanguage', language); // Guardar el idioma seleccionado
             });
         }
 
         // Event listener para el cambio de idioma
         checkbox.addEventListener('change', function () {
             const checked = checkbox.checked;
-            const selectedLanguage = checked ? 'en' : 'es';
-            cambiarIdioma(selectedLanguage);
-            if (checked) {
-                localStorage.setItem('selectedLanguage', selectedLanguage);
-            } else {
-                localStorage.removeItem('selectedLanguage');
-            }
+            language = checked ? 'en' : 'es';
+            cambiarIdioma(language);
+            localStorage.setItem('selectedLanguage', language); // Guardar el idioma seleccionado
         });
 
-        // Al cargar la página, cargar el idioma guardado si es inglés
+        // Al cargar la página, cargar el idioma guardado
         window.addEventListener('load', function () {
-            const selectedLanguage = localStorage.getItem('selectedLanguage');
-            if (selectedLanguage === 'en') {
-                checkbox.checked = true;
-                cambiarIdioma('en');
-            } else if (selectedLanguage === 'es') {
-                checkbox.checked = false;
-                cambiarIdioma('es');
-            }
+            cambiarIdioma(language);
         });
     </script>
+
 
 
     <script>
