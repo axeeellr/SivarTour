@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-08-2023 a las 07:10:33
+-- Tiempo de generación: 28-08-2023 a las 06:20:07
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -42,7 +42,8 @@ CREATE TABLE `collections` (
 INSERT INTO `collections` (`id`, `id_user`, `name`, `type`, `url`) VALUES
 (2, 32, 'donde llevaré a mi mujer', 1, ''),
 (7, 38, 'Playas', 2, ''),
-(14, 1, 'Playitas', 2, 'http://localhost/sivartour/join_collection.php?collection=27e06beeac&p=1');
+(14, 1, 'Playitas', 2, 'http://localhost/sivartour/join_collection.php?collection=27e06beeac&p=1'),
+(15, 47, 'Pueblitos', 2, 'http://localhost/sivartour/join_collection.php?collection=43618616a5&p=47');
 
 -- --------------------------------------------------------
 
@@ -66,7 +67,9 @@ INSERT INTO `collections_places` (`id`, `id_user`, `id_collection`, `id_place`) 
 (8, 1, 10, 20),
 (9, 1, 10, 29),
 (10, 1, 14, 27),
-(11, 1, 14, 17);
+(11, 1, 14, 17),
+(12, 47, 15, 16),
+(13, 47, 15, 7);
 
 -- --------------------------------------------------------
 
@@ -88,7 +91,8 @@ CREATE TABLE `collections_share` (
 INSERT INTO `collections_share` (`id`, `id_collection`, `id_user`, `owner`) VALUES
 (9, 14, 1, 1),
 (10, 14, 44, 0),
-(11, 14, 43, 0);
+(11, 14, 43, 0),
+(12, 15, 47, 1);
 
 -- --------------------------------------------------------
 
@@ -116,7 +120,8 @@ INSERT INTO `comments` (`id`, `id_user`, `id_place`, `comment`) VALUES
 (6, 1, 17, 'Me gusta esa playa'),
 (7, 41, 20, 'bonito centro comercial'),
 (8, 1, 30, 'linda playa'),
-(9, 1, 37, 'me gustaaa');
+(9, 1, 37, 'me gustaaa'),
+(10, 47, 16, 'Amazing place to make tourism!!');
 
 -- --------------------------------------------------------
 
@@ -183,7 +188,7 @@ INSERT INTO `places` (`id`, `id_user`, `name`, `description`, `direction`, `loca
 (13, 1, 'Tamanique', 'Pueblo pintoresco con hermosas vistas al océano y actividades como el parapente.', 'Tamanique, El Salvador', 'Tamanique, El Salvador', 'https://s3.us-east-2.amazonaws.com/sivartour/Tamanique/CASCADA.jpeg', 'https://s3.us-east-2.amazonaws.com/sivartour/Tamanique/cascadas-tamanique.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Tamanique/cascadas-de-tamanique-la-libertad-1133x850.jpg', 'La Libertad', 'Otro', 'Todo público', 0, 0, 1),
 (14, 1, 'Parque Nacional El Pital', 'Área natural protegida que incluye el punto más alto de El Salvador y ofrece senderos para caminatas', 'El Pital, El Salvador', 'El Pital, El Salvador', 'https://s3.us-east-2.amazonaws.com/sivartour/Parque%20Nacional%20El%20Pital/el-pital.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Parque%20Nacional%20El%20Pital/cerro-el-pital-1.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Parque%20Nacional%20El%20Pital/deac76d2050000f90e0ef95db95e81fao.jpg', 'Chalatenango', 'Montaña', 'Todo público', 0, 0, 1),
 (15, 1, 'Playa El Sunzal', 'Playa famosa por sus olas, ideal para el surf y con hermosos atardeceres.', 'Playa El Sunzal, El Salvador', 'Playa El Sunzal, El Salvador', 'https://s3.us-east-2.amazonaws.com/sivartour/Playa%20El%20Sunzal/ZUNZAL-1-scaled.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Playa%20El%20Sunzal/photo3jpg.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Playa%20El%20Sunzal/Conchal%E0%B8%81o-Alejandro-Martinez-scaled.jpg', 'La Libertad', 'Playa', 'Todo público', 1, 1, 1),
-(16, 1, 'Suchitoto', 'Encantador pueblo colonial con calles empedradas, iglesias y vista al lago Suchitlán', 'Suchitoto, El Salvador', 'Suchitoto, El Salvador', 'https://s3.us-east-2.amazonaws.com/sivartour/Suchitoto/f0.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Suchitoto/Suchitoto-4-1.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Suchitoto/cropped-Casa-de-la-Abuela-Suchitoto-.jpg', 'Cuscatlán', 'Otro', 'Todo público', 1, 1, 1),
+(16, 1, 'Suchitoto', 'Encantador pueblo colonial con calles empedradas, iglesias y vista al lago Suchitlán', 'Suchitoto, El Salvador', 'Suchitoto, El Salvador', 'https://s3.us-east-2.amazonaws.com/sivartour/Suchitoto/f0.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Suchitoto/Suchitoto-4-1.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Suchitoto/cropped-Casa-de-la-Abuela-Suchitoto-.jpg', 'Cuscatlán', 'Otro', 'Todo público', 1, 2, 1),
 (17, 1, 'Playa Costa del Sol', 'Playa popular y animada con resorts, restaurantes y actividades acuáticas.', 'Playa Costa del Sol, El Salvador', 'Playa Costa del Sol, El Salvador', 'https://s3.us-east-2.amazonaws.com/sivartour/Playa%20Costa%20del%20Sol/Costa-del-Sol.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Playa%20Costa%20del%20Sol/photo0jpg.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Playa%20Costa%20del%20Sol/las-hojas-resort-club.jpg', 'La Paz', 'Playa', 'Todo público', 1, 1, 1),
 (18, 1, 'Palacio Nacional', 'Imponente estructura de estilo neoclásico que alberga las oficinas del gobierno y es sede del Poder', 'Palacio Nacional de El Salvador, 4a Calle Poniente, San Salvador, El Salvador', 'Palacio Nacional de El Salvador, 4a Calle Poniente, San Salvador, El Salvador', 'https://s3.us-east-2.amazonaws.com/sivartour/Palacio%20Nacional/palacio-nacional-01.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Palacio%20Nacional/Centro-Historico-de-San-Salvador-18.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Palacio%20Nacional/Palacio_Nacional_de_El_Salvador_Centro_Historico.jpg', 'San Salvador', 'Otro', 'Todo público', 0, 0, 1),
 (19, 1, 'Ataco', 'Pueblo pintoresco en la Ruta de las Flores, conocido por sus murales coloridos, cafés y artesanías', 'Concepción de Ataco, El Salvador', 'Concepción de Ataco, El Salvador', 'https://s3.us-east-2.amazonaws.com/sivartour/Ataco/82006317_3146154935399564_3578059773087580160_n.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Ataco/Murales-representativos-Ataco-672x372.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Ataco/ataco-3.jpg', 'Ahuachapán', 'Otro', 'Todo público', 1, 1, 1),
@@ -334,7 +339,8 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `img`, `token`, `age`, `
 (43, 'el ferxxo mor', 'ferxxo@gmail.com', '123456', '', '340314320154769686082', 0, '', 0, '', '', '', '', 0, 0, 0),
 (44, 'sael', 'sael@gmail.com', '123456', '', '959c49b50bbd05ae326d', 0, '', 0, '', '', '', '', 0, 0, 0),
 (45, 'mionca al bloquee', 'mionca@gmail.com', '1234567', '', '28d6ef260e2d30837026', 0, '', 0, '', '', '', '', 0, 0, 0),
-(46, 'alicia', 'alicia@gmail.com', '123456', '', '2b3b4584dd2756099873', 0, '', 0, '', '', '', '', 0, 0, 0);
+(46, 'alicia', 'alicia@gmail.com', '123456', '', '2b3b4584dd2756099873', 0, '', 0, '', '', '', '', 0, 0, 0),
+(47, 'Cristhoper', 'cristhoper@gmail.com', '123456', '', '5b2388b49e59f0f4bbb7', 0, '', 0, '', '', '', '', 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -375,7 +381,8 @@ INSERT INTO `user_ratings` (`id`, `user_id`, `place_id`, `rating`) VALUES
 (28, 1, 11, 1),
 (29, 1, 17, 1),
 (30, 1, 30, 1),
-(31, 1, 28, 1);
+(31, 1, 28, 1),
+(32, 47, 16, 1);
 
 --
 -- Índices para tablas volcadas
@@ -445,25 +452,25 @@ ALTER TABLE `user_ratings`
 -- AUTO_INCREMENT de la tabla `collections`
 --
 ALTER TABLE `collections`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `collections_places`
 --
 ALTER TABLE `collections_places`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `collections_share`
 --
 ALTER TABLE `collections_share`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `notifications`
@@ -487,13 +494,13 @@ ALTER TABLE `restaurants`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT de la tabla `user_ratings`
 --
 ALTER TABLE `user_ratings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
