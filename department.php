@@ -52,7 +52,7 @@
             <div class="option notifications">
                 <div class="option__title">
                     <i class="fa-regular fa-bell"></i>
-                    <h3 data-section="Filtered" data-value="Notificaciones">Notificaciones</h3>
+                    <h3 data-section="department" data-value="Notificaciones">Notificaciones</h3>
                     <i class="fa-solid fa-chevron-down hideNotis"></i>
                 </div>
                 <div class="option__info__container hide">
@@ -71,8 +71,8 @@
                                     ?>
                                     <form method="post" class="option__info">
                                         <button type="submit" name="closeNoti" value="<?php echo $rowNoti['id'] ?>"><i class="fa-solid fa-xmark closeN"></i></button>
-                                        <h4 data-section="Filtered" data-value="Noti Aceptada">Publicación aceptada</h4>
-                                        <p data-section="Filtered" data-value="Mesg acepto">¡Enhorabuena! ¡Tu publicación ha sido aceptada!</p>
+                                        <h4 data-section="department" data-value="Noti Aceptada">Publicación aceptada</h4>
+                                        <p data-section="department" data-value="Mesg acepto">¡Enhorabuena! ¡Tu publicación ha sido aceptada!</p>
                                     </form>
                                     <?php
                                 break;
@@ -80,8 +80,8 @@
                                     ?>
                                     <form method="post" class="option__info">
                                         <button type="submit" name="closeNoti" value="<?php echo $rowNoti['id'] ?>"><i class="fa-solid fa-xmark closeN"></i></button>
-                                        <h4 data-section="Filtered" data-value="Noti Rechazada">Publicación rechazada</h4>
-                                        <p  data-section="Filtered" data-value="Mesg rechazo">¡Lo sentimos! ¡Tu publicación ha sido rechazada!</p>
+                                        <h4 data-section="department" data-value="Noti Rechazada">Publicación rechazada</h4>
+                                        <p  data-section="department" data-value="Mesg rechazo">¡Lo sentimos! ¡Tu publicación ha sido rechazada!</p>
                                     </form>
                                     <?php
                                 break;
@@ -89,8 +89,8 @@
                                     ?>
                                     <form method="post" class="option__info">
                                         <button type="submit" name="closeNoti" value="<?php echo $rowNoti['id'] ?>"><i class="fa-solid fa-xmark closeN"></i></button>
-                                        <h4 data-section="Filtered" data-value="Noti Eliminada">Publicación eliminada</h4>
-                                        <p data-section="Filtered" data-value="Mesg acepto">¡Vaya! ¡Tu publicación ha sido eliminada!</p>
+                                        <h4 data-section="department" data-value="Noti Eliminada">Publicación eliminada</h4>
+                                        <p data-section="department" data-value="Mesg acepto">¡Vaya! ¡Tu publicación ha sido eliminada!</p>
                                     </form>
                                     <?php
                                 break;
@@ -102,15 +102,15 @@
             </div>
             <div class="option profile">
                 <i class="fa-regular fa-circle-user"></i>
-                <h3 data-section="Filtered" data-value="perfil">Mi perfil</h3>
+                <h3 data-section="department" data-value="perfil">Mi perfil</h3>
             </div>
             <div class="option favorites">
                 <i class="fa-regular fa-star"></i>
-                <h3 data-section="Filtered" data-value="favs">Mis favoritos</h3>
+                <h3 data-section="department" data-value="favs">Mis favoritos</h3>
             </div>
             <form method="post" class="option link">
                 <i class="fa-solid fa-route"></i>
-                <a id="link" href="#" target="_blank">Mi ruta</a>
+                <a id="link" href="#" target="_blank" data-section="department" data-value="ruta">Mi ruta</a>
                 <button type="submit" name="deleteRoute"><i class="fa-regular fa-trash-can" id="delete"></i></button>
             </form>
             <div class="option translate">
@@ -128,7 +128,7 @@
                 <h1><?php echo $_GET['places'] ?></h1>
                 <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis, voluptatum! Laborum veniam eum nostrum sit harum fugit distinctio corrupti aut?</p>
             </div>
-            <button id="explorarButton">EXPLORAR</button>
+            <button id="explorarButton" data-section="department" data-value="boton">EXPLORAR</button>
         </div>
         <div class="container__right">
             <div class="right__cards">
@@ -184,10 +184,10 @@
             <li class="social-icon__item"><a class="social-icon__link" href="#"><i class="fa-regular fa-envelope"></i></a></li>
         </ul>
         <ul class="menu">
-            <li class="menu__item"><a class="menu__link" href="#" data-section="Index" data-value="inicio">Inicio</a></li>
-            <li class="menu__item"><a class="menu__link" href="#" data-section="Index" data-value="sobre nosotros">Sobre nosotros</a></li>
-            <li class="menu__item"><a class="menu__link" href="#" data-section="Index" data-value="faq">FAQ</a></li>
-            <li class="menu__item"><a class="menu__link" href="#" data-section="Index" data-value="contacto">Contáctanos</a></li>
+            <li class="menu__item"><a class="menu__link" href="#" data-section="department" data-value="inicio">Inicio</a></li>
+            <li class="menu__item"><a class="menu__link" href="#" data-section="department" data-value="sobre nosotros">Sobre nosotros</a></li>
+            <li class="menu__item"><a class="menu__link" href="#" data-section="department" data-value="faq">FAQ</a></li>
+            <li class="menu__item"><a class="menu__link" href="#" data-section="department" data-value="contacto">Contáctanos</a></li>
         </ul>
     </footer>
 
@@ -217,58 +217,58 @@
 
     <script>
         var checkbox = document.getElementById('cambiar');
-        var select =document.getElementById('department');
+        var select = document.getElementById('department');
 
-        checkbox.addEventListener('change', async function (){
-            var checked = checkbox.checked;
-            if(checked){
-                const requestJson = await fetch(`languages/departmentIngles.json`);
-                const textosCambioIdioma = document.querySelectorAll("[data-section]");
-                const textos = await requestJson.json();
-        
-                //For para hacer el cambio de valores
-                for (const textosCambioIdiomaVariable of textosCambioIdioma) {
-                    const secciones = textosCambioIdiomaVariable.dataset.section;
-                    const valor = textosCambioIdiomaVariable.dataset.value;
-                    // 
-                    //Condicion para cambiar los valores
-                    if (textos[secciones] && textos[secciones][valor]) {
-                        if (textosCambioIdiomaVariable.value) {
-                            textosCambioIdiomaVariable.value = textos[secciones][valor];
-                        }
-                        textosCambioIdiomaVariable.innerHTML = textos[secciones][valor];
+        // Función para cambiar el idioma
+        async function cambiarIdioma(selectedLanguage) {
+            const requestJson = await fetch(`languages/department${selectedLanguage === 'en' ? 'Ingles' : 'Español'}.json`);
+            const textosCambioIdioma = document.querySelectorAll("[data-section]");
+            const textos = await requestJson.json();
+
+            for (const textosCambioIdiomaVariable of textosCambioIdioma) {
+                const secciones = textosCambioIdiomaVariable.dataset.section;
+                const valor = textosCambioIdiomaVariable.dataset.value;
+
+                if (textos[secciones] && textos[secciones][valor]) {
+                    if (textosCambioIdiomaVariable.value) {
+                        textosCambioIdiomaVariable.value = textos[secciones][valor];
                     }
+                    textosCambioIdiomaVariable.innerHTML = textos[secciones][valor];
                 }
-                //Target para el cambio de elementos por los del json
-                elements.addEventListener("click", function (e) {
-                    cambioIdioma(e.target.parentElement.dataset.language);
-                    language = e.target.parentElement.dataset.language;
-                });
-            }else{
-                const requestJson = await fetch(`languages/departmentEspañol.json`);
-                const textosCambioIdioma = document.querySelectorAll("[data-section]");
-                const textos = await requestJson.json();
-            
+            }
 
-                for (const textosCambioIdiomaVariable of textosCambioIdioma) {
-                    const secciones = textosCambioIdiomaVariable.dataset.section;
-                    const valor = textosCambioIdiomaVariable.dataset.value;
-                
-                    if (textos[secciones] && textos[secciones][valor]) {
-                        if (textosCambioIdiomaVariable.value) {
-                            textosCambioIdiomaVariable.value = textos[secciones][valor];
-                        }
-                        textosCambioIdiomaVariable.innerHTML = textos[secciones][valor];
-                    }
-                }
+            elements.addEventListener("click", function (e) {
+                cambioIdioma(e.target.parentElement.dataset.language);
+                localStorage.setItem('selectedLanguage', selectedLanguage); // Guardar el idioma seleccionado
+            });
+        }
 
-                elements.addEventListener("click", function (e) {
-                    cambioIdioma(e.target.parentElement.dataset.language);
-                    language = e.target.parentElement.dataset.language;
-                });
+        // Event listener para el cambio de idioma
+        checkbox.addEventListener('change', function () {
+            const checked = checkbox.checked;
+            const selectedLanguage = checked ? 'en' : 'es';
+            cambiarIdioma(selectedLanguage);
+            if (checked) {
+                localStorage.setItem('selectedLanguage', selectedLanguage);
+            } else {
+                localStorage.removeItem('selectedLanguage');
+            }
+        });
+
+        // Al cargar la página, cargar el idioma guardado si es inglés
+        window.addEventListener('load', function () {
+            const selectedLanguage = localStorage.getItem('selectedLanguage');
+            if (selectedLanguage === 'en') {
+                checkbox.checked = true;
+                cambiarIdioma('en');
+            } else if (selectedLanguage === 'es') {
+                checkbox.checked = false;
+                cambiarIdioma('es');
             }
         });
     </script>
+
+
 
     <script>
         document.getElementById("explorarButton").addEventListener("click", function() {

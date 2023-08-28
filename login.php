@@ -31,46 +31,50 @@ if (isset($_SESSION['user_token'])) {
     <div class="loader__container">
         <div class="loader"></div>
     </div>
+    <div class="translate">
+        <input type="checkbox" id="cambiar">
+        <label for="cambiar">aquí se cambia el idioma</label>
+    </div>
     <div class="container">
         <div class="forms-container">
-        <?php
-            if ($error != "") {
-                ?>
-                <div class="notice" id="notification">
-                    <p><?php echo $error; ?></p>
-                </div>
-                <script>
-                    document.addEventListener('DOMContentLoaded', function () {
-                        const notice = document.getElementById('notification');
-                        
-                        // Mostrar la notificación después de un retraso
-                        setTimeout(function () {
-                            notice.classList.add('active');
-                        }, 10);
+            <?php
+                if ($error != "") {
+                    ?>
+                    <div class="notice" id="notification">
+                        <p><?php echo $error; ?></p>
+                    </div>
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function () {
+                            const notice = document.getElementById('notification');
+                            
+                            // Mostrar la notificación después de un retraso
+                            setTimeout(function () {
+                                notice.classList.add('active');
+                            }, 10);
 
-                        // Ocultar la notificación después de 3 segundos
-                        setTimeout(function () {
-                            notice.classList.remove('active');
-                            window.history.replaceState(null,null,window.location.href);
-                        }, 3000);
-                    });
-                </script>
-                <?php
-            }
-        ?>
+                            // Ocultar la notificación después de 3 segundos
+                            setTimeout(function () {
+                                notice.classList.remove('active');
+                                window.history.replaceState(null,null,window.location.href);
+                            }, 3000);
+                        });
+                    </script>
+                    <?php
+                }
+            ?>
             <div class="signin-signup">
                 <form method="post" class="sign-in-form">
-                    <h2 class="title">Iniciar Sesión</h2>
+                    <h2 class="title" data-section="Login" data-value="inicio">Iniciar Sesión</h2>
                     <div class="input-field">
                         <i class="fas fa-envelope"></i>
-                        <input type="email" name="email" placeholder="Correo" required/>
+                        <input type="email" name="email" placeholder="Correo" data-section="Login" data-value="correo" required/>
                     </div>
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
-                        <input type="password" name="password" placeholder="Contraseña" required/>
+                        <input type="password" name="password" placeholder="Contraseña" data-section="Login" data-value="password" required/>
                     </div>
-                    <input type="submit" value="Entrar" name="login" class="btn solid" />
-                    <p class="social-text">También puedes usar</p>
+                    <input type="submit" value="Entrar" name="login" data-section="Login" data-value="entrar" class="btn solid" />
+                    <p class="social-text" data-section="Login" data-value="so">También puedes usar</p>
                     <div class="social-media">
                         <a href="#" class="social-icon">
                             <i class="fab fa-facebook-f"></i>
@@ -83,21 +87,21 @@ if (isset($_SESSION['user_token'])) {
 
 
                 <form method="post" class="sign-up-form">
-                    <h2 class="title">Registrarse</h2>
+                    <h2 class="title" data-section="Login" data-value="registro">Registrarse</h2>
                     <div class="input-field">
                         <i class="fas fa-user"></i>
-                        <input type="text" name="name" placeholder="Nombre" required />
+                        <input type="text" name="name" placeholder="Nombre" data-section="Login" data-value="name" required />
                     </div>
                     <div class="input-field">
                         <i class="fas fa-envelope"></i>
-                        <input type="email" name="email" placeholder="Correo" required />
+                        <input type="email" name="email" placeholder="Correo" data-section="Login" data-value="correo1" required />
                     </div>
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
-                        <input type="password" name="password" placeholder="Contraseña" required />
+                        <input type="password" name="password" placeholder="Contraseña" data-section="Login" data-value="password1" required />
                     </div>
-                    <input type="submit" class="btn" name="register" value="Entrar" />
-                    <p class="social-text">También puedes usar</p>
+                    <input type="submit" class="btn" name="register" data-section="Login" data-value="entrar1" value="Entrar" />
+                    <p class="social-text" data-section="Login" data-value="so1">También puedes usar</p>
                     <div class="social-media">
                         <a href="#" class="social-icon">
                             <i class="fab fa-facebook-f"></i>
@@ -113,8 +117,8 @@ if (isset($_SESSION['user_token'])) {
         <div class="panels-container">
             <div class="panel left-panel">
                 <div class="content">
-                    <h3>¿Primera vez?</h3>
-                    <button class="btn_panel" id="sign-up-btn">
+                    <h3 data-section="Login" data-value="primera">¿Primera vez?</h3>
+                    <button class="btn_panel" id="sign-up-btn" data-section="Login" data-value="reg">
                         Registro
                     </button>
                 </div>
@@ -122,8 +126,8 @@ if (isset($_SESSION['user_token'])) {
             </div>
             <div class="panel right-panel">
                 <div class="content">
-                    <h3>¿Uno de nosotros?</h3>
-                    <button class="btn_panel" id="sign-in-btn">
+                    <h3 data-section="Login" data-value="uno">¿Uno de nosotros?</h3>
+                    <button class="btn_panel" id="sign-in-btn" data-section="Login" data-value="boton">
                         Iniciar Sesión
                     </button>
                 </div>
@@ -159,6 +163,69 @@ if (isset($_SESSION['user_token'])) {
             container.classList.remove("sign-up-mode");
         });
     </script>
+
+    <script>
+        var checkbox = document.getElementById('cambiar');
+        var select = document.getElementById('department');
+        var inputs = document.querySelectorAll('input[data-section][data-value]');
+
+        // Función para cambiar el idioma
+        async function cambiarIdioma(selectedLanguage) {
+            const requestJson = await fetch(`languages/forms${selectedLanguage === 'en' ? 'Ingles' : 'Español'}.json`);
+            const textosCambioIdioma = document.querySelectorAll("[data-section]");
+            const textos = await requestJson.json();
+
+            for (const textosCambioIdiomaVariable of textosCambioIdioma) {
+                const secciones = textosCambioIdiomaVariable.dataset.section;
+                const valor = textosCambioIdiomaVariable.dataset.value;
+
+                if (textos[secciones] && textos[secciones][valor]) {
+                    if (textosCambioIdiomaVariable.value) {
+                        textosCambioIdiomaVariable.value = textos[secciones][valor];
+                    }
+                    textosCambioIdiomaVariable.innerHTML = textos[secciones][valor];
+                }
+            }
+
+            inputs.forEach(input => {
+                const section = input.dataset.section;
+                const value = input.dataset.value;
+                if (textos[section] && textos[section][value]) {
+                    input.placeholder = textos[section][value];
+                }
+            });
+
+            elements.addEventListener("click", function (e) {
+                cambioIdioma(e.target.parentElement.dataset.language);
+                localStorage.setItem('selectedLanguage', selectedLanguage); // Guardar el idioma seleccionado
+            });
+        }
+
+        // Event listener para el cambio de idioma
+        checkbox.addEventListener('change', function () {
+            const checked = checkbox.checked;
+            const selectedLanguage = checked ? 'en' : 'es';
+            cambiarIdioma(selectedLanguage);
+            if (checked) {
+                localStorage.setItem('selectedLanguage', selectedLanguage);
+            } else {
+                localStorage.removeItem('selectedLanguage');
+            }
+        });
+
+        // Al cargar la página, cargar el idioma guardado si es inglés
+        window.addEventListener('load', function () {
+            const selectedLanguage = localStorage.getItem('selectedLanguage');
+            if (selectedLanguage === 'en') {
+                checkbox.checked = true;
+                cambiarIdioma('en');
+            } else if (selectedLanguage === 'es') {
+                checkbox.checked = false;
+                cambiarIdioma('es');
+            }
+        });
+    </script>
+
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {

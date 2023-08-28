@@ -1,0 +1,30 @@
+{
+    "place":{
+        "Notificaciones": "Notifications",
+        "Noti Rechazada": "Rejected post",
+        "Mesg rechazo": "We're sorry! Your post has been disapproved!",
+        "Noti Aceptada": "Accepted post",
+        "Mesg acepto": "Congratulations! Your post has been accepted!",
+        "perfil": "My profile",
+        "favs": "My favorites",
+        "ruta":"My route",
+        "escribe":"Type your comment",
+        "aun no":"No comments yet :c",
+        "agregar":"Add to route",
+        "inicio": "Home",
+        "sobre nosotros": "About us",
+        "faq": "FAQ",
+        "contacto": "Contact us",
+        "no hay": "No restaurants yet :c",
+        "agrega": "Add",
+        "a tus": " to your collections",
+        "nombre": "Collection name",
+        "privada": "Private",
+        "publica": "Public",
+        "foto": "Photo",
+        "total": "Remember the total of photos is 1",
+        "publica un": "Post a restaurant",
+        "sube": "Upload a photo and write the name of any restaurant in",
+        "nombre rest": "Name"
+    }
+}

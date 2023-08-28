@@ -75,7 +75,7 @@ if ($data['verified'] == 1) {
             <div class="option notifications">
                 <div class="option__title">
                     <i class="fa-regular fa-bell"></i>
-                    <h3 data-section="Filtered" data-value="Notificaciones">Notificaciones</h3>
+                    <h3 data-section="Profile" data-value="Notificaciones">Notificaciones</h3>
                     <i class="fa-solid fa-chevron-down hideNotis"></i>
                 </div>
                 <div class="option__info__container hide">
@@ -93,8 +93,8 @@ if ($data['verified'] == 1) {
                                     ?>
                                     <form method="post" class="option__info">
                                         <button type="submit" name="closeNoti" value="<?php echo $rowNoti['id'] ?>"><i class="fa-solid fa-xmark closeN"></i></button>
-                                        <h4 data-section="Filtered" data-value="Noti Aceptada">Publicación aceptada</h4>
-                                        <p data-section="Filtered" data-value="Mesg acepto">¡Enhorabuena! ¡Tu publicación ha sido aceptada!</p>
+                                        <h4 data-section="Profile" data-value="Noti Aceptada">Publicación aceptada</h4>
+                                        <p data-section="Profile" data-value="Mesg acepto">¡Enhorabuena! ¡Tu publicación ha sido aceptada!</p>
                                     </form>
                                     <?php
                                 break;
@@ -102,8 +102,8 @@ if ($data['verified'] == 1) {
                                     ?>
                                     <form method="post" class="option__info">
                                         <button type="submit" name="closeNoti" value="<?php echo $rowNoti['id'] ?>"><i class="fa-solid fa-xmark closeN"></i></button>
-                                        <h4 data-section="Filtered" data-value="Noti Rechazada">Publicación rechazada</h4>
-                                        <p  data-section="Filtered" data-value="Mesg rechazo">¡Lo sentimos! ¡Tu publicación ha sido rechazada!</p>
+                                        <h4 data-section="Profile" data-value="Noti Rechazada">Publicación rechazada</h4>
+                                        <p  data-section="Profile" data-value="Mesg rechazo">¡Lo sentimos! ¡Tu publicación ha sido rechazada!</p>
                                     </form>
                                     <?php
                                 break;
@@ -111,8 +111,8 @@ if ($data['verified'] == 1) {
                                     ?>
                                     <form method="post" class="option__info">
                                         <button type="submit" name="closeNoti" value="<?php echo $rowNoti['id'] ?>"><i class="fa-solid fa-xmark closeN"></i></button>
-                                        <h4 data-section="Filtered" data-value="Noti Eliminada">Publicación eliminada</h4>
-                                        <p data-section="Filtered" data-value="Mesg acepto">¡Vaya! ¡Tu publicación ha sido eliminada!</p>
+                                        <h4 data-section="Profile" data-value="Noti Eliminada">Publicación eliminada</h4>
+                                        <p data-section="Profile" data-value="Mesg acepto">¡Vaya! ¡Tu publicación ha sido eliminada!</p>
                                     </form>
                                     <?php
                                 break;
@@ -123,15 +123,15 @@ if ($data['verified'] == 1) {
             </div>
             <div class="option profile">
                 <i class="fa-regular fa-circle-user"></i>
-                <h3 data-section="Filtered" data-value="perfil">Mi perfil</h3>
+                <h3 data-section="Profile" data-value="perfil">Mi perfil</h3>
             </div>
             <div class="option favorites">
                 <i class="fa-regular fa-star"></i>
-                <h3 data-section="Filtered" data-value="favs">Mis favoritos</h3>
+                <h3 data-section="Profile" data-value="favs">Mis favoritos</h3>
             </div>
             <form method="post" class="option link">
                 <i class="fa-solid fa-route"></i>
-                <a id="link" href="#" target="_blank">Mi ruta</a>
+                <a id="link" href="#" target="_blank" data-section="Profile" data-value="ruta">Mi ruta</a>
                 <button type="submit" name="deleteRoute"><i class="fa-regular fa-trash-can" id="delete"></i></button>
             </form>
             <div class="option translate">
@@ -172,7 +172,7 @@ if ($data['verified'] == 1) {
         <div class="profile__left">
             <div class="left__lately">
                 <div class="lately__title">
-                    <h1>Vistos recientemente</h1>
+                    <h1 data-section="Profile" data-value="vistos">Vistos recientemente</h1>
                 </div>
                 <div class="lately__content">
                     <?php
@@ -188,18 +188,18 @@ if ($data['verified'] == 1) {
                             }
                         }
                         if (empty($lugaresVisitadosIDs)) {
-                            echo "<h3 class='noData'>Aún no hay lugares por mostrar :c</h3>";
+                            echo "<h3 class='noData' data-section='Profile' data-value='no hay'>Aún no hay lugares por mostrar :c</h3>";
                         }
                     ?>
                 </div>
             </div>
             <div class="left__saved">
                 <div class="saved__title">
-                    <h1>Mis colecciones</h1>
+                    <h1 data-section="Profile" data-value="colecciones">Mis colecciones</h1>
                 </div>
                 <div class="saved__content">
                     <form method="post" class="saved__collection">
-                        <button type="submit" name="favoritePage">Favoritos</button>
+                        <button type="submit" name="favoritePage" data-section="Profile" data-value="favos">Favoritos</button>
                     </form>
                     <?php
                     $sql = "SELECT * FROM collections WHERE id_user = {$data['id']}";
@@ -238,29 +238,29 @@ if ($data['verified'] == 1) {
                 <h1><?php echo $data['name'] ?></h1>
                 <h3><?php echo $data['email'] ?></h3>
                 <form method="post" class="info__buttons">
-                    <button type="submit" name="activeEmail" id="validar">Validar correo</button>
-                    <button type="submit" class="logout">Cerrar Sesión</button>
+                    <button type="submit" name="activeEmail" id="validar" data-section="Profile" data-value="validar">Validar correo</button>
+                    <button type="submit" class="logout" data-section="Profile" data-value="sessionclose">Cerrar Sesión</button>
                 </form>
             </div>
             <form method="post" class="right__edit">
                 <div class="input-field">
-                    <input type="number" min="10" max="99" name="age" spellcheck="false" onfocus="this.placeholder = 'Edad'" onblur="this.placeholder = ''"> 
-                    <label><?php echo empty($data['age']) ? "Edad" : $data['age'];?></label>
+                    <input type="number" data-section="Profile" data-value="age" min="10" max="99" name="age" spellcheck="false" onfocus="this.placeholder = 'Edad'" onblur="this.placeholder = ''"> 
+                    <label data-section="Profile" data-value="age"><?php echo empty($data['age']) ? "Edad" : $data['age'];?></label>
                     <i class="fa-solid fa-pen"></i>
                 </div>
                 <div class="input-field">
-                    <input type="text" name="sex" spellcheck="false" onfocus="this.placeholder = 'Sexo'" onblur="this.placeholder = ''"> 
-                    <label><?php echo empty($data['sex']) ? "Sexo" : $data['sex'];?></label>
+                    <input type="text" data-section="Profile" data-value="sex" name="sex" spellcheck="false" onfocus="this.placeholder = 'Sexo'" onblur="this.placeholder = ''"> 
+                    <label data-section="Profile" data-value="sex"><?php echo empty($data['sex']) ? "Sexo" : $data['sex'];?></label>
                     <i class="fa-solid fa-pen"></i>
                 </div>
                 <div class="input-field">
-                    <input type="number" name="number" spellcheck="false" onfocus="this.placeholder = 'Número telefónico'" onblur="this.placeholder = ''"> 
-                    <label><?php echo empty($data['number']) ? "Número telefónico" : $data['number'];?></label>
+                    <input type="number" data-section="Profile" data-value="number" name="number" spellcheck="false" onfocus="this.placeholder = 'Número telefónico'" onblur="this.placeholder = ''"> 
+                    <label data-section="Profile" data-value="number"><?php echo empty($data['number']) ? "Número telefónico" : $data['number'];?></label>
                     <i class="fa-solid fa-pen"></i>
                 </div>
                 <div class="input-field">
-                    <input type="text" name="language" spellcheck="false"onfocus="this.placeholder = 'Idioma'" onblur="this.placeholder = ''"> 
-                    <label><?php echo empty($data['language']) ? "Idioma" : $data['language'];?></label>
+                    <input type="text" data-section="Profile" data-value="idioma" name="language" spellcheck="false"onfocus="this.placeholder = 'Idioma'" onblur="this.placeholder = ''"> 
+                    <label data-section="Profile" data-value="idioma"><?php echo empty($data['language']) ? "Idioma" : $data['language'];?></label>
                     <i class="fa-solid fa-pen"></i>
                 </div>
                 <div class="input-field">
@@ -278,16 +278,16 @@ if ($data['verified'] == 1) {
                     <label><?php echo empty($data['whatsapp']) ? "Whatsapp" : $data['whatsapp'];?></label>
                     <i class="fa-solid fa-pen"></i>
                 </div>
-                <input type="submit" name="userData" value="Guardar">
+                <input type="submit" name="userData" data-section="Profile" data-value="guardar" value="Guardar">
             </form>
         </div>
     </div>
     <div class="right__code">
-        <h1>Ingresa el código de verificación</h1>
-        <p>Se ha enviado un código de verificación a <?php echo $data['email']; ?></p>
+        <h1 data-section="Profile" data-value="txt1">Ingresa el código de verificación</h1>
+        <p data-section="Profile" data-value="txt2">Se ha enviado un código de verificación a: <?php echo $data['email']; ?></p>
         <form method="post" class="form__code">
             <input type="text" name="code" id="">
-            <input type="submit" name="veriCode" value="Aceptar">
+            <input type="submit" data-section="Profile" data-value="aceptar" name="veriCode" value="Aceptar">
         </form>
     </div>
     <div class="popup__container__collection">
@@ -295,8 +295,8 @@ if ($data['verified'] == 1) {
             <i class="fa-solid fa-xmark closePop"></i>
             <form method="post" class="popup__field__collection">
                 <input type="text" name="name" spellcheck="false"> 
-                <label class="label">Nombre de la colección</label>
-                <input type="submit" name="newCollectionP" value="Añadir">
+                <label class="label" data-section="Profile" data-value="coleccionNombre">Nombre de la colección</label>
+                <input type="submit" name="newCollectionP" data-section="Profile" data-value="añadir" value="Añadir">
             </form>
         </div>
     </div>
@@ -306,10 +306,10 @@ if ($data['verified'] == 1) {
             <li class="social-icon__item"><a class="social-icon__link" href="#"><i class="fa-regular fa-envelope"></i></a></li>
         </ul>
         <ul class="menu">
-            <li class="menu__item"><a class="menu__link" href="#" data-section="Index" data-value="inicio">Inicio</a></li>
-            <li class="menu__item"><a class="menu__link" href="#" data-section="Index" data-value="sobre nosotros">Sobre nosotros</a></li>
-            <li class="menu__item"><a class="menu__link" href="#" data-section="Index" data-value="faq">FAQ</a></li>
-            <li class="menu__item"><a class="menu__link" href="#" data-section="Index" data-value="contacto">Contáctanos</a></li>
+            <li class="menu__item"><a class="menu__link" href="#" data-section="Profile" data-value="inicio">Inicio</a></li>
+            <li class="menu__item"><a class="menu__link" href="#" data-section="Profile" data-value="sobre nosotros">Sobre nosotros</a></li>
+            <li class="menu__item"><a class="menu__link" href="#" data-section="Profile" data-value="faq">FAQ</a></li>
+            <li class="menu__item"><a class="menu__link" href="#" data-section="Profile" data-value="contacto">Contáctanos</a></li>
         </ul>
     </footer>
 
@@ -317,57 +317,74 @@ if ($data['verified'] == 1) {
     <script>
         var checkbox = document.getElementById('cambiar');
         var select = document.getElementById('department');
+        var inputs = document.querySelectorAll('input[data-section][data-value]');
+        var labels = document.querySelectorAll('label[data-section][data-value]');
 
-        checkbox.addEventListener('change', async function (){
-            var checked = checkbox.checked;
-            if(checked){
-                const requestJson = await fetch(`languages/perfilIngles.json`);
-                const textosCambioIdioma = document.querySelectorAll("[data-section]");
-                const textos = await requestJson.json();
-        
-                //For para hacer el cambio de valores
-                for (const textosCambioIdiomaVariable of textosCambioIdioma) {
-                    const secciones = textosCambioIdiomaVariable.dataset.section;
-                    const valor = textosCambioIdiomaVariable.dataset.value;
-                    // 
-                    //Condicion para cambiar los valores
-                    if (textos[secciones] && textos[secciones][valor]) {
-                        if (textosCambioIdiomaVariable.value) {
-                            textosCambioIdiomaVariable.value = textos[secciones][valor];
-                        }
-                        textosCambioIdiomaVariable.innerHTML = textos[secciones][valor];
+        // Función para cambiar el idioma
+        async function cambiarIdioma(selectedLanguage) {
+            const requestJson = await fetch(`languages/perfil${selectedLanguage === 'en' ? 'Ingles' : 'Español'}.json`);
+            const textosCambioIdioma = document.querySelectorAll("[data-section]");
+            const textos = await requestJson.json();
+
+            for (const textosCambioIdiomaVariable of textosCambioIdioma) {
+                const secciones = textosCambioIdiomaVariable.dataset.section;
+                const valor = textosCambioIdiomaVariable.dataset.value;
+
+                if (textos[secciones] && textos[secciones][valor]) {
+                    if (textosCambioIdiomaVariable.value) {
+                        textosCambioIdiomaVariable.value = textos[secciones][valor];
                     }
+                    textosCambioIdiomaVariable.innerHTML = textos[secciones][valor];
                 }
-                //Target para el cambio de elementos por los del json
-                elements.addEventListener("click", function (e) {
-                    cambioIdioma(e.target.parentElement.dataset.language);
-                    language = e.target.parentElement.dataset.language;
-                });
-            }else{
-                const requestJson = await fetch(`languages/perfilEspañol.json`);
-                const textosCambioIdioma = document.querySelectorAll("[data-section]");
-                const textos = await requestJson.json();
-            
+            }
 
-                for (const textosCambioIdiomaVariable of textosCambioIdioma) {
-                    const secciones = textosCambioIdiomaVariable.dataset.section;
-                    const valor = textosCambioIdiomaVariable.dataset.value;
-                
-                    if (textos[secciones] && textos[secciones][valor]) {
-                        if (textosCambioIdiomaVariable.value) {
-                            textosCambioIdiomaVariable.value = textos[secciones][valor];
-                        }
-                        textosCambioIdiomaVariable.innerHTML = textos[secciones][valor];
-                    }
+            inputs.forEach(input => {
+                const section = input.dataset.section;
+                const value = input.dataset.value;
+                if (textos[section] && textos[section][value]) {
+                    input.placeholder = textos[section][value];
                 }
+            });
 
-                elements.addEventListener("click", function (e) {
-                    cambioIdioma(e.target.parentElement.dataset.language);
-                    language = e.target.parentElement.dataset.language;
-                });
+            labels.forEach(label => {
+                const section = label.dataset.section;
+                const value = label.dataset.value;
+                if (textos[section] && textos[section][value]) {
+                    label.textContent = textos[section][value];
+                }
+            });
+
+            elements.addEventListener("click", function (e) {
+                cambioIdioma(e.target.parentElement.dataset.language);
+                localStorage.setItem('selectedLanguage', selectedLanguage); // Guardar el idioma seleccionado
+            });
+        }
+
+        // Event listener para el cambio de idioma
+        checkbox.addEventListener('change', function () {
+            const checked = checkbox.checked;
+            const selectedLanguage = checked ? 'en' : 'es';
+            cambiarIdioma(selectedLanguage);
+            if (checked) {
+                localStorage.setItem('selectedLanguage', selectedLanguage);
+            } else {
+                localStorage.removeItem('selectedLanguage');
+            }
+        });
+
+        // Al cargar la página, cargar el idioma guardado si es inglés
+        window.addEventListener('load', function () {
+            const selectedLanguage = localStorage.getItem('selectedLanguage');
+            if (selectedLanguage === 'en') {
+                checkbox.checked = true;
+                cambiarIdioma('en');
+            } else if (selectedLanguage === 'es') {
+                checkbox.checked = false;
+                cambiarIdioma('es');
             }
         });
     </script>
+
 
 
     <!-- eliminar ruta -->

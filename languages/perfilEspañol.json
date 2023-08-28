@@ -7,7 +7,26 @@
         "Mesg acepto": "¡Enhorabuena! ¡Tu publicación ha sido aceptada!",
         "perfil": "Mi perfil",
         "favs": "Mis favoritos",
+        "ruta":"Mi ruta",
         "vistos": "Vistos Recientemente",
-        "colecciones":"Mis Colecciones"
+        "no hay":"Aún no hay lugares por mostrar :c",
+        "colecciones":"Mis Colecciones",
+        "favos":"Favoritos",
+        "validar":"Validar correo",
+        "sessionclose":"Cerrar Sesión",
+        "age":"Edad",
+        "sex":"Sexo",
+        "number":"Número telefónico",
+        "idioma":"Idioma",
+        "guardar":"Guardar",
+        "txt1":"Ingresa el código de verificación",
+        "txt2":"Se ha enviado un código de verificación a:",
+        "aceptar":"Aceptar",
+        "coleccionNombre":"Nombre de la coleccion",
+        "añadir":"Añadir",
+        "inicio": "Inicio",
+        "sobre nosotros": "Sobre nosotros",
+        "faq": "FAQ",
+        "contacto": "Contáctanos"
     }
 }

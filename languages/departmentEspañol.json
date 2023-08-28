@@ -8,6 +8,12 @@
         "Noti Aceptada": "Publicación aceptada",
         "Mesg acepto": "¡Enhorabuena! ¡Tu publicación ha sido aceptada!",
         "perfil": "Mi perfil",
-        "favs": "Mis favoritos"
+        "favs": "Mis favoritos",
+        "ruta":"Mi ruta",
+        "boton": "EXPLORAR",
+        "inicio": "Inicio",
+        "sobre nosotros": "Sobre nosotros",
+        "faq": "FAQ",
+        "contacto": "Contáctanos"
     }
 }

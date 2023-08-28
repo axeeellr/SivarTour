@@ -1,0 +1,30 @@
+{
+    "place":{
+        "Notificaciones": "Notificaciones",
+        "Noti Rechazada": "Publicación rechazada",
+        "Mesg rechazo": "¡Lo sentimos! ¡Tu publicación ha sido rechazada!",
+        "Noti Aceptada": "Publicación aceptada",
+        "Mesg acepto": "¡Enhorabuena! ¡Tu publicación ha sido aceptada!",
+        "perfil": "Mi perfil",
+        "favs": "Mis favoritos",
+        "ruta":"Mi ruta",
+        "escribe":"Escribe tu comentario",
+        "aun no":"Aún no se han hecho comentarios",
+        "agregar": "Agregar a la ruta",
+        "inicio": "Inicio",
+        "sobre nosotros": "Sobre nosotros",
+        "faq": "FAQ",
+        "contacto": "Contáctanos",
+        "no hay": "No hay restaurantes por mostrar :c",
+        "agrega": "Agrega",
+        "a tus": " a tus colecciones",
+        "nombre": "Nombre de la colección",
+        "privada": "Privada",
+        "publica": "Pública",
+        "foto": "Fotografía",
+        "total": "Recuerda que el total de fotos es 1",
+        "publica un": "Publica un restaurante!",
+        "sube": "Sube una foto y escribe el nombre de algún restaurante en",
+        "nombre rest": "Nombre"
+    }
+}

@@ -128,6 +128,8 @@
                                     break;
                                 }
                             }
+                        }else {
+                            echo "<h4 class='noData'>No tienes notificaciones :c</h4>";
                         }
                     ?>
                 </div>
@@ -142,7 +144,7 @@
             </div>
             <form method="post" class="option link">
                 <i class="fa-solid fa-route"></i>
-                <a id="link" href="#" target="_blank">Mi ruta</a>
+                <a id="link" href="#" target="_blank" data-section="Filtered" data-value="ruta">Mi ruta</a>
                 <button type="submit" name="deleteRoute"><i class="fa-regular fa-trash-can" id="delete"></i></button>
             </form>
             <div class="option translate">
@@ -172,7 +174,7 @@
             </g>
         </svg>
 
-        <img src="img/explora.png" alt="" class="hero__text">
+        <img src="img/explora.png" id="hero__text" class="hero__text">
         <i class="fa-solid fa-chevron-down"><a href="#filters"></a></i>
     </div>
     <hr>
@@ -212,7 +214,6 @@
         <select name="" id="public">
             <option data-section="Filtered" data-value="Público" value="">Público</option>
             <option data-section="Filtered" data-value="Todo" value="Todo público">Todo público</option>
-            <option data-section="Filtered" data-value="Solo" value="Solo mayores de 18">Solo mayores de 18</option>
             <option data-section="Filtered" data-value="Especial"value="Especial para niños">Especial para niños</option>
         </select>
     </div>
@@ -245,34 +246,34 @@
             <i class="fa-solid fa-xmark close__newplace"></i>
             <div class="newplace__img">
                 <input type="file" name="images[]" id="upload-button" required multiple accept="image/*" />
-                <label for="upload-button">
-                    <i class="fa-solid fa-upload" data-section="Filtered"></i>&nbsp; Escoge las fotos
+                <label for="upload-button" data-section="Filtered" data-value="escoge">
+                    <i class="fa-solid fa-upload" data-section="Filtered" ></i>&nbsp; Escoge las fotos
                 </label>
-                <p data-section="Filtered">Recuerda que el total de fotografías es 3</p>
+                <p data-section="Filtered" data-value="total">Recuerda que el total de fotografías es 3</p>
                 <div id="error"></div>
                 <div id="image-display"></div>
             </div>
             <div class="newplace__info">
             <div class="info__title">
-                    <h1 data-section="Filtered">Tú también puedes publicar lugares!</h1>
+                    <h1 data-section="Filtered" data-value="puedes">Tú también puedes publicar lugares!</h1>
                     <p data-section="Filtered">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eaque molestias id culpa amet impedit? Vero consequatur ipsum earum iure odio?</p>
                 </div>
                 <div class="input__field">
                     <input type="text" name="name" required spellcheck="false">
-                    <label data-section="Filtered">Nombre</label>
+                    <label data-section="Filtered" data-value="nombre">Nombre</label>
                 </div>
                 <div class="input__field">
                     <input type="text" name="description" required spellcheck="false">
-                    <label data-section="Filtered">Descripción</label>
+                    <label data-section="Filtered" data-value="descripción">Descripción</label>
                 </div>
                 <div class="input__field">
                     <input type="text" id="search-place" name="direction" placeholder="" required spellcheck="false">
                     <input type="hidden" name="location" id="location">
-                    <label data-section="Filtered">Ubicación</label>
+                    <label data-section="Filtered" data-value="ubicación">Ubicación</label>
                 </div>
                 <div class="input__field">
-                    <select name="department">
-                        <option value="">Departamento</option>
+                    <select name="Departmento">
+                        <option value="" data-section="Filtered" data-value="Departamento">Departamento</option>
                         <option value="Ahuachapán">Ahuachapán</option>
                         <option value="Cabañas">Cabañas</option>
                         <option value="Chalatenango">Chalatenango</option>
@@ -291,26 +292,26 @@
                 </div>
                 <div class="input__field">
                     <select name="type" id="">
-                        <option data-section="Filtered" value="" selected disabled>Tipo</option>
-                        <option data-section="Filtered" value="Playa">Playa</option>
-                        <option data-section="Filtered" value="Campo">Campo</option>
-                        <option data-section="Filtered" value="Cabañas">Cabañas</option>
-                        <option data-section="Filtered" value="Parque">Parque</option>
-                        <option data-section="Filtered"value="Bosque">Bosque</option>
-                        <option data-section="Filtered" value="Lago">Lago</option>
-                        <option data-section="Filtered" value="Sitio Arqueológico">Sitio Arqueológico</option>
-                        <option data-section="Filtered" value="Volcán">Volcán</option>
-                        <option data-section="Filtered" value="Centro Comercial">Centro Comercial</option>
-                        <option data-section="Filtered" value="Montaña">Montaña</option>
-                        <option data-section="Filtered" value="Otro">Otro</option>
+                        <option data-section="Filtered" data-value="Tipo" value="">Tipo</option>
+                        <option data-section="Filtered" data-value="Playa" value="Playa">Playa</option>
+                        <option data-section="Filtered" data-value="Campo" value="Campo">Campo</option>
+                        <option data-section="Filtered" data-value="Cabañas" value="Cabañas">Cabañas</option>
+                        <option data-section="Filtered" data-value="Parques" value="Parque">Parque</option>
+                        <option data-section="Filtered" data-value="Bosque" value="Bosque">Bosque</option>
+                        <option data-section="Filtered" data-value="Lago" value="Lago">Lago</option>
+                        <option data-section="Filtered" data-value="Sitio" value="Sitio Arqueológico">Sitio Arqueológico</option>
+                        <option data-section="Filtered" data-value="Volcán" value="Volcán">Volcán</option>
+                        <option data-section="Filtered" data-value="Centro" value="Centro Comercial">Centro Comercial</option>
+                        <option data-section="Filtered" data-value="Montaña" value="Montaña">Montaña</option>
+                        <option data-section="Filtered" data-value="Otro" value="Otro">Otro</option>
                     </select>
                 </div>
                 <div class="input__field">
                     <select name="public" id="">
-                        <option data-section="Filtered" value="" selected disabled>Público</option>
-                        <option data-section="Filtered" value="Todo público">Todo público</option>
-                        <option data-section="Filtered" value="Solo mayores de 18">Solo mayores de 18</option>
-                        <option data-section="Filtered" value="Especial para niños">Especial para niños</option>
+                        <option data-section="Filtered" data-value="Público" value="">Público</option>
+                        <option data-section="Filtered" data-value="Todo" value="Todo público">Todo público</option>
+                        <option data-section="Filtered" data-value="Solo" value="Solo mayores de 18">Solo mayores de 18</option>
+                        <option data-section="Filtered" data-value="Especial"value="Especial para niños">Especial para niños</option>
                     </select>
                 </div>
                 <input type="submit" data-section="Filtered" value="Enviar" name="newPlace">
@@ -323,10 +324,10 @@
             <li class="social-icon__item"><a class="social-icon__link" href="#"><i class="fa-regular fa-envelope"></i></a></li>
         </ul>
         <ul class="menu">
-            <li class="menu__item"><a class="menu__link" href="#" data-section="Filtered">Inicio</a></li>
-            <li class="menu__item"><a class="menu__link" href="#" data-section="Filtered">Acerca de</a></li>
-            <li class="menu__item"><a class="menu__link" href="#" data-section="Filtered">FAQ</a></li>
-            <li class="menu__item"><a class="menu__link" href="#" data-section="Filtered">Contáctanos</a></li>
+            <li class="menu__item"><a class="menu__link" href="#" data-section="Filtered" data-value="inicio">Inicio</a></li>
+            <li class="menu__item"><a class="menu__link" href="#" data-section="Filtered" data-value="sobre nosotros">Acerca de</a></li>
+            <li class="menu__item"><a class="menu__link" href="#" data-section="Filtered" data-value="faq">FAQ</a></li>
+            <li class="menu__item"><a class="menu__link" href="#" data-section="Filtered" data-value="contacto">Contáctanos</a></li>
         </ul>
     </footer>
 
@@ -335,65 +336,55 @@
         var checkbox = document.getElementById('cambiar');
         var select = document.getElementById('department');
 
-        checkbox.addEventListener('change', async function (){
-            var checked = checkbox.checked;
-            if(checked){
-                const requestJson = await fetch(`languages/filteredIngles.json`);
-                const textosCambioIdioma = document.querySelectorAll("[data-section]");
-                const textos = await requestJson.json();
-                for (let i = 0; i < select.options.length; i++) {
-                        const option = select.options[i];
-                            const valor = option.value;
-                            if (textos[valor]) {
-                    option.innerHTML = textos[valor];
-                    }
-                }
-                    
-                //For para hacer el cambio de valores
-                for (const textosCambioIdiomaVariable of textosCambioIdioma) {
-                    const secciones = textosCambioIdiomaVariable.dataset.section;
-                    const valor = textosCambioIdiomaVariable.dataset.value;
-                    // 
-                    //Condicion para cambiar los valores
-                    if (textos[secciones] && textos[secciones][valor]) {
-                        if (textosCambioIdiomaVariable.value) {
-                            textosCambioIdiomaVariable.value = textos[secciones][valor];
-                        }
-                        textosCambioIdiomaVariable.innerHTML = textos[secciones][valor];
-                    }
-                }
-                //Target para el cambio de elementos por los del json
-                elements.addEventListener("click", function (e) {
-                    cambioIdioma(e.target.parentElement.dataset.language);
-                    language = e.target.parentElement.dataset.language;
-                });
-            }else{
-                const requestJson = await fetch(`languages/filteredEspañol.json`);
-                const textosCambioIdioma = document.querySelectorAll("[data-section]");
-                const textos = await requestJson.json();
-                for (let i = 0; i < select.options.length; i++) {
-                        const option = select.options[i];
-                            const valor = option.value; if (textos[valor]) {
-                    option.innerHTML = textos[valor];
-                    }
-                    }
+        // Función para cambiar el idioma
+        async function cambiarIdioma(selectedLanguage) {
+            const imag = document.getElementById('hero__text');
+            imag.src = selectedLanguage === 'en' ? 'img/exploraIngles.png' : 'img/explora.png';
 
-                for (const textosCambioIdiomaVariable of textosCambioIdioma) {
-                    const secciones = textosCambioIdiomaVariable.dataset.section;
-                    const valor = textosCambioIdiomaVariable.dataset.value;
-                
-                    if (textos[secciones] && textos[secciones][valor]) {
-                        if (textosCambioIdiomaVariable.value) {
-                            textosCambioIdiomaVariable.value = textos[secciones][valor];
-                        }
-                        textosCambioIdiomaVariable.innerHTML = textos[secciones][valor];
-                    }
-                }
+            const jsonFileName = selectedLanguage === 'en' ? 'filteredIngles.json' : 'filteredEspañol.json';
+            const requestJson = await fetch(`languages/${jsonFileName}`);
+            const textosCambioIdioma = document.querySelectorAll("[data-section]");
+            const textos = await requestJson.json();
 
-                elements.addEventListener("click", function (e) {
-                    cambioIdioma(e.target.parentElement.dataset.language);
-                    language = e.target.parentElement.dataset.language;
-                });
+            for (const textosCambioIdiomaVariable of textosCambioIdioma) {
+                const secciones = textosCambioIdiomaVariable.dataset.section;
+                const valor = textosCambioIdiomaVariable.dataset.value;
+
+                if (textos[secciones] && textos[secciones][valor]) {
+                    if (textosCambioIdiomaVariable.value) {
+                        textosCambioIdiomaVariable.value = textos[secciones][valor];
+                    }
+                    textosCambioIdiomaVariable.innerHTML = textos[secciones][valor];
+                }
+            }
+
+            elements.addEventListener("click", function (e) {
+                cambioIdioma(e.target.parentElement.dataset.language);
+                localStorage.setItem('selectedLanguage', selectedLanguage); // Guardar el idioma seleccionado
+            });
+        }
+
+        // Event listener para el cambio de idioma
+        checkbox.addEventListener('change', function () {
+            const checked = checkbox.checked;
+            const selectedLanguage = checked ? 'en' : 'es';
+            cambiarIdioma(selectedLanguage);
+            if (checked) {
+                localStorage.setItem('selectedLanguage', selectedLanguage);
+            } else {
+                localStorage.removeItem('selectedLanguage');
+            }
+        });
+
+        // Al cargar la página, cargar el idioma guardado si es inglés
+        window.addEventListener('load', function () {
+            const selectedLanguage = localStorage.getItem('selectedLanguage');
+            if (selectedLanguage === 'en') {
+                checkbox.checked = true;
+                cambiarIdioma('en');
+            } else if (selectedLanguage === 'es') {
+                checkbox.checked = false;
+                cambiarIdioma('es');
             }
         });
     </script>

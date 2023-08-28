@@ -1,5 +1,5 @@
 {
-    "Index":{
+    "coll":{
         "Registro": "Sign In",
         "Inicio Sesion": "Log In",
         "Notificaciones": "Notifications",
@@ -8,16 +8,15 @@
         "Noti Aceptada": "Accepted post",
         "Mesg acepto": "Congratulations! Your post has been accepted!",
         "perfil": "My profile",
-        "favs": "My favorites",
+        "favs": "My favourites",
         "ruta":"My route",
-        "vamos":"LET'S START!",
-        "explora":"EXPLORE NOW!",
-        "text": "Explore the corners of the little thumb easier! Now you can select a department and find tourist sites even easier. Try it!",
+        "mis":"My favourites",
+        "priv":"Private collection",
+        "publi":"Public collection",
+        "no hay":"There are currently no places to display :c",
         "inicio": "Home",
         "sobre nosotros": "About us",
         "faq": "FAQ",
-        "contacto": "Contact us",
-        "Noti Eliminada": "Deleted post",
-        "Mesg eliminado": "Oh! Your post has been deleted!"
+        "contacto": "Contact us"
     }
 }

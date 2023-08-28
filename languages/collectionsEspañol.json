@@ -1,5 +1,5 @@
 {
-    "Index":{
+    "coll":{
         "Registro": "Registrarse",
         "Inicio Sesion": "Iniciar Sesión",
         "Notificaciones": "Notificaciones",
@@ -10,14 +10,13 @@
         "perfil": "Mi perfil",
         "favs": "Mis favoritos",
         "ruta":"Mi ruta",
-        "vamos":"COMENZAR",
-        "explora":"¡EXPLORA YA!",
-        "text": "¡Explora los rincones del pulgarcito mas facil! Ahora puedes seleccionar un departamento y encontrar los sitios turísticos aun mas facil ¡Pruebalo!",
+        "mis":"Mis favoritos",
+        "publi":"Colección pública",
+        "priv":"Colección privada",
+        "no hay":"No hay lugares por mostrar :c",
         "inicio": "Inicio",
         "sobre nosotros": "Sobre nosotros",
         "faq": "FAQ",
-        "contacto": "Contáctanos",
-        "Noti Eliminada": "Publicación eliminada",
-        "Mesg eliminado": "¡Vaya! ¡Tu publicación ha sido eliminada!"
+        "contacto": "Contáctanos"
     }
 }

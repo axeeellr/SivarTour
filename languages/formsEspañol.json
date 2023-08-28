@@ -1,0 +1,19 @@
+{
+    "Login":{
+        "inicio":"Iniciar Sesión",
+        "correo":"Correo",
+        "password":"Contraseña",
+        "entrar":"Entrar",
+        "so":"Tambien puedes usar: ",
+        "registro":"Registrarse",
+        "name": "Nombre",
+        "correo1": "Correo",
+        "password1":"Contraseña",
+        "entrar1":"ENTRAR",
+        "so1":"También puedes usar: ",
+        "primera":"¿Primera vez?",
+        "reg":"REGISTRO",
+        "uno":"Uno de nosotros?",
+        "boton":"INICIAR SESIÓN"
+    }
+}

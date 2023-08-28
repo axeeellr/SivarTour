@@ -121,6 +121,8 @@
                                     break;
                                 }
                             }
+                        }else {
+                            echo "<h4 class='noData'>No tienes notificaciones :c</h4>";
                         }
                     ?>
                 </div>
@@ -135,7 +137,7 @@
             </div>
             <form method="post" class="option link">
                 <i class="fa-solid fa-route"></i>
-                <a id="link" href="#" target="_blank">Mi ruta</a>
+                <a id="link" href="#" target="_blank" data-section="Index" data-value="ruta">Mi ruta</a>
                 <button type="submit" name="deleteRoute"><i class="fa-regular fa-trash-can" id="delete"></i></button>
             </form>
             <div class="option translate">
@@ -150,7 +152,7 @@
 
     <div class="hero">
         <div class="hero__container">
-            <img src="img/explora.png" alt="" class="hero__text">
+            <img src="img/explora.png" id="hero__text" class="hero__text">
             <svg id="visual" viewBox="0 0 960 540"  xmlns="http://www.w3.org/2000/svg"
                 xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">
                 <g transform="translate(447.1003487837197 265.51596821062077)">
@@ -249,58 +251,59 @@
 
     <script>
         var checkbox = document.getElementById('cambiar');
-        var select =document.getElementById('department');
+        var select = document.getElementById('department');
 
-        checkbox.addEventListener('change', async function (){
-            var checked = checkbox.checked;
-            if(checked){
-                const requestJson = await fetch(`languages/indexIngles.json`);
-                const textosCambioIdioma = document.querySelectorAll("[data-section]");
-                const textos = await requestJson.json();
-        
-                //For para hacer el cambio de valores
-                for (const textosCambioIdiomaVariable of textosCambioIdioma) {
-                    const secciones = textosCambioIdiomaVariable.dataset.section;
-                    const valor = textosCambioIdiomaVariable.dataset.value;
-                    // 
-                    //Condicion para cambiar los valores
-                    if (textos[secciones] && textos[secciones][valor]) {
-                        if (textosCambioIdiomaVariable.value) {
-                            textosCambioIdiomaVariable.value = textos[secciones][valor];
-                        }
-                        textosCambioIdiomaVariable.innerHTML = textos[secciones][valor];
+        // Función para cambiar el idioma
+        async function cambiarIdioma(selectedLanguage) {
+            const imag = document.getElementById('hero__text');
+            imag.src = selectedLanguage === 'en' ? 'img/exploraIngles.png' : 'img/explora.png';
+
+            const jsonFileName = selectedLanguage === 'en' ? 'indexIngles.json' : 'indexEspañol.json';
+            const requestJson = await fetch(`languages/${jsonFileName}`);
+            const textosCambioIdioma = document.querySelectorAll("[data-section]");
+            const textos = await requestJson.json();
+
+            for (const textosCambioIdiomaVariable of textosCambioIdioma) {
+                const secciones = textosCambioIdiomaVariable.dataset.section;
+                const valor = textosCambioIdiomaVariable.dataset.value;
+
+                if (textos[secciones] && textos[secciones][valor]) {
+                    if (textosCambioIdiomaVariable.value) {
+                        textosCambioIdiomaVariable.value = textos[secciones][valor];
                     }
+                    textosCambioIdiomaVariable.innerHTML = textos[secciones][valor];
                 }
-                //Target para el cambio de elementos por los del json
-                elements.addEventListener("click", function (e) {
-                    cambioIdioma(e.target.parentElement.dataset.language);
-                    language = e.target.parentElement.dataset.language;
-                });
-
-            } else {
-                const requestJson = await fetch(`languages/indexEspañol.json`);
-                const textosCambioIdioma = document.querySelectorAll("[data-section]");
-                const textos = await requestJson.json();
-            
-
-                for (const textosCambioIdiomaVariable of textosCambioIdioma) {
-                    const secciones = textosCambioIdiomaVariable.dataset.section;
-                    const valor = textosCambioIdiomaVariable.dataset.value;
-                
-                    if (textos[secciones] && textos[secciones][valor]) {
-                        if (textosCambioIdiomaVariable.value) {
-                            textosCambioIdiomaVariable.value = textos[secciones][valor];
-                        }
-                        textosCambioIdiomaVariable.innerHTML = textos[secciones][valor];
-                    }
-                }
-
-                elements.addEventListener("click", function (e) {
-                    cambioIdioma(e.target.parentElement.dataset.language);
-                    language = e.target.parentElement.dataset.language;
-                });
             }
-        });     
+
+            elements.addEventListener("click", function (e) {
+                cambioIdioma(e.target.parentElement.dataset.language);
+                localStorage.setItem('selectedLanguage', selectedLanguage); // Guardar el idioma seleccionado
+            });
+        }
+
+        // Event listener para el cambio de idioma
+        checkbox.addEventListener('change', function () {
+            const checked = checkbox.checked;
+            const selectedLanguage = checked ? 'en' : 'es';
+            cambiarIdioma(selectedLanguage);
+            if (checked) {
+                localStorage.setItem('selectedLanguage', selectedLanguage);
+            } else {
+                localStorage.removeItem('selectedLanguage');
+            }
+        });
+
+        // Al cargar la página, cargar el idioma guardado si es inglés
+        window.addEventListener('load', function () {
+            const selectedLanguage = localStorage.getItem('selectedLanguage');
+            if (selectedLanguage === 'en') {
+                checkbox.checked = true;
+                cambiarIdioma('en');
+            } else if (selectedLanguage === 'es') {
+                checkbox.checked = false;
+                cambiarIdioma('es');
+            }
+        });
     </script>
 
     <script>

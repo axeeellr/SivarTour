@@ -56,7 +56,7 @@ if (isset($_SESSION['collectionId'])) {
             <div class="option notifications">
                 <div class="option__title">
                     <i class="fa-regular fa-bell"></i>
-                    <h3 data-section="Filtered" data-value="Notificaciones">Notificaciones</h3>
+                    <h3 data-section="coll" data-value="Notificaciones">Notificaciones</h3>
                     <i class="fa-solid fa-chevron-down hideNotis"></i>
                 </div>
                 <div class="option__info__container hide">
@@ -74,8 +74,8 @@ if (isset($_SESSION['collectionId'])) {
                                     ?>
                                     <form method="post" class="option__info">
                                         <button type="submit" name="closeNoti" value="<?php echo $rowNoti['id'] ?>"><i class="fa-solid fa-xmark closeN"></i></button>
-                                        <h4 data-section="Filtered" data-value="Noti Aceptada">Publicación aceptada</h4>
-                                        <p data-section="Filtered" data-value="Mesg acepto">¡Enhorabuena! ¡Tu publicación ha sido aceptada!</p>
+                                        <h4 data-section="coll" data-value="Noti Aceptada">Publicación aceptada</h4>
+                                        <p data-section="coll" data-value="Mesg acepto">¡Enhorabuena! ¡Tu publicación ha sido aceptada!</p>
                                     </form>
                                     <?php
                                 break;
@@ -83,8 +83,8 @@ if (isset($_SESSION['collectionId'])) {
                                     ?>
                                     <form method="post" class="option__info">
                                         <button type="submit" name="closeNoti" value="<?php echo $rowNoti['id'] ?>"><i class="fa-solid fa-xmark closeN"></i></button>
-                                        <h4 data-section="Filtered" data-value="Noti Rechazada">Publicación rechazada</h4>
-                                        <p  data-section="Filtered" data-value="Mesg rechazo">¡Lo sentimos! ¡Tu publicación ha sido rechazada!</p>
+                                        <h4 data-section="coll" data-value="Noti Rechazada">Publicación rechazada</h4>
+                                        <p  data-section="coll" data-value="Mesg rechazo">¡Lo sentimos! ¡Tu publicación ha sido rechazada!</p>
                                     </form>
                                     <?php
                                 break;
@@ -92,8 +92,8 @@ if (isset($_SESSION['collectionId'])) {
                                     ?>
                                     <form method="post" class="option__info">
                                         <button type="submit" name="closeNoti" value="<?php echo $rowNoti['id'] ?>"><i class="fa-solid fa-xmark closeN"></i></button>
-                                        <h4 data-section="Filtered" data-value="Noti Eliminada">Publicación eliminada</h4>
-                                        <p data-section="Filtered" data-value="Mesg acepto">¡Vaya! ¡Tu publicación ha sido eliminada!</p>
+                                        <h4 data-section="coll" data-value="Noti Eliminada">Publicación eliminada</h4>
+                                        <p data-section="coll" data-value="Mesg acepto">¡Vaya! ¡Tu publicación ha sido eliminada!</p>
                                     </form>
                                     <?php
                                 break;
@@ -104,15 +104,15 @@ if (isset($_SESSION['collectionId'])) {
             </div>
             <div class="option profile">
                 <i class="fa-regular fa-circle-user"></i>
-                <h3 data-section="Filtered" data-value="perfil">Mi perfil</h3>
+                <h3 data-section="coll" data-value="perfil">Mi perfil</h3>
             </div>
             <div class="option favorites">
                 <i class="fa-regular fa-star"></i>
-                <h3 data-section="Filtered" data-value="favs">Mis favoritos</h3>
+                <h3 data-section="coll" data-value="favs">Mis favoritos</h3>
             </div>
             <form method="post" class="option link">
                 <i class="fa-solid fa-route"></i>
-                <a id="link" href="#" target="_blank">Mi ruta</a>
+                <a id="link" href="#" target="_blank" data-section="coll" data-value="ruta">Mi ruta</a>
                 <button type="submit" name="deleteRoute"><i class="fa-regular fa-trash-can" id="delete"></i></button>
             </form>
             <div class="option translate">
@@ -126,8 +126,8 @@ if (isset($_SESSION['collectionId'])) {
     </header>
     <div class="collections__container">
         <div class="collections__header">
-            <h1><?php echo isset($_GET['favorites']) ? "Mis Favoritos" : $row['name']; ?>&nbsp;<?php echo ($row['type'] == 1 || isset($_GET['favorites'])) ? '' : '<i class="fa-solid fa-link url" onclick="copyToClipboard(\''.$row['url'].'\')"></i>'; ?></h1>
-            <p><?php echo ($row['type'] == 1 || isset($_GET['favorites'])) ? "Colección privada" : "Colección pública"; ?></p>
+            <h1><?php echo isset($_GET['favorites']) ? "<span data-section='coll' data-value='mis'>Mis Favoritos</span>" : $row['name']; ?>&nbsp;<?php echo ($row['type'] == 1 || isset($_GET['favorites'])) ? '' : '<i class="fa-solid fa-link url" onclick="copyToClipboard(\''.$row['url'].'\')"></i>'; ?></h1>
+            <p><?php echo ($row['type'] == 1 || isset($_GET['favorites'])) ? "<span data-section='coll' data-value='priv'>Colección privada</span>" : "<span data-section='coll' data-value='publi'>Colección pública</span>"; ?></p>
             <div class="collections__header__users">
 
             <?php 
@@ -165,7 +165,7 @@ if (isset($_SESSION['collectionId'])) {
                     $runFavorites = mysqli_query($connection, $getFavorites);
 
                     if (mysqli_num_rows($runFavorites) == 0) {
-                        echo "<h3 class='noData'>No hay lugares por mostrar :(</h3>";
+                        echo "<h3 class='noData' data-section='coll' data-value='no hay'>No hay lugares por mostrar :c</h3>";
                     }
 
                     while($dataFavorites = mysqli_fetch_assoc($runFavorites)){
@@ -210,7 +210,7 @@ if (isset($_SESSION['collectionId'])) {
                     $runPlaces = mysqli_query($connection, $getPlaces);
     
                     if (mysqli_num_rows($runPlaces) == 0) {
-                        echo "<h3 class='noData'>No hay lugares por mostrar :(</h3>";
+                        echo "<h3 class='noData' data-section='coll' data-value='no hay'>No hay lugares por mostrar :c</h3>";
                     }
     
                     while($dataPlaces = mysqli_fetch_assoc($runPlaces)){
@@ -261,10 +261,10 @@ if (isset($_SESSION['collectionId'])) {
             <li class="social-icon__item"><a class="social-icon__link" href="#"><i class="fa-regular fa-envelope"></i></a></li>
         </ul>
         <ul class="menu">
-            <li class="menu__item"><a class="menu__link" href="#">Inicio</a></li>
-            <li class="menu__item"><a class="menu__link" href="#">Acerca de</a></li>
-            <li class="menu__item"><a class="menu__link" href="#">FAQ</a></li>
-            <li class="menu__item"><a class="menu__link" href="#">Contáctanos</a></li>
+            <li class="menu__item"><a class="menu__link" data-section='coll' data-value='inicio' href="#">Inicio</a></li>
+            <li class="menu__item"><a class="menu__link" data-section='coll' data-value='sobre nosotros' href="#">Acerca de</a></li>
+            <li class="menu__item"><a class="menu__link" data-section='coll' data-value='faq' href="#">FAQ</a></li>
+            <li class="menu__item"><a class="menu__link" data-section='coll' data-value='contacto' href="#">Contáctanos</a></li>
         </ul>
     </footer>
 
@@ -341,6 +341,61 @@ if (isset($_SESSION['collectionId'])) {
 
         link.href = "https://www.google.com/maps/dir/" + lugaresLinks
     </script>
+
+    <!-- Traductor -->
+    <script>
+        var checkbox = document.getElementById('cambiar');
+        var select = document.getElementById('department');
+
+        // Función para cambiar el idioma
+        async function cambiarIdioma(selectedLanguage) {
+            const requestJson = await fetch(`languages/collections${selectedLanguage === 'en' ? 'Ingles' : 'Español'}.json`);
+            const textosCambioIdioma = document.querySelectorAll("[data-section]");
+            const textos = await requestJson.json();
+
+            for (const textosCambioIdiomaVariable of textosCambioIdioma) {
+                const secciones = textosCambioIdiomaVariable.dataset.section;
+                const valor = textosCambioIdiomaVariable.dataset.value;
+
+                if (textos[secciones] && textos[secciones][valor]) {
+                    if (textosCambioIdiomaVariable.value) {
+                        textosCambioIdiomaVariable.value = textos[secciones][valor];
+                    }
+                    textosCambioIdiomaVariable.innerHTML = textos[secciones][valor];
+                }
+            }
+
+            elements.addEventListener("click", function (e) {
+                cambioIdioma(e.target.parentElement.dataset.language);
+                localStorage.setItem('selectedLanguage', selectedLanguage); // Guardar el idioma seleccionado
+            });
+        }
+
+        // Event listener para el cambio de idioma
+        checkbox.addEventListener('change', function () {
+            const checked = checkbox.checked;
+            const selectedLanguage = checked ? 'en' : 'es';
+            cambiarIdioma(selectedLanguage);
+            if (checked) {
+                localStorage.setItem('selectedLanguage', selectedLanguage);
+            } else {
+                localStorage.removeItem('selectedLanguage');
+            }
+        });
+
+        // Al cargar la página, cargar el idioma guardado si es inglés
+        window.addEventListener('load', function () {
+            const selectedLanguage = localStorage.getItem('selectedLanguage');
+            if (selectedLanguage === 'en') {
+                checkbox.checked = true;
+                cambiarIdioma('en');
+            } else if (selectedLanguage === 'es') {
+                checkbox.checked = false;
+                cambiarIdioma('es');
+            }
+        });
+    </script>
+
 
     <script>
         document.querySelector('.header__logo').addEventListener('click', function(){

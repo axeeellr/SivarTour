@@ -425,7 +425,7 @@ input:checked + label:after {
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    gap: calc(1.7px + 1.7vw);
+    gap: calc(1.8px + 1.8vw);
     margin: calc(3px + 3vw) auto;
 }
 

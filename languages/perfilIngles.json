@@ -7,7 +7,26 @@
         "Mesg acepto": "Congratulations! Your post has been accepted!",
         "perfil": "My profile",
         "favs": "My favourites",
+        "ruta":"My Route",
         "vistos":"Recently Viewed",
-        "colecciones":"My collections"
-}
+        "no hay":"There are currently no places to display :c",
+        "colecciones":"My collections",
+        "favos":"Favourites",
+        "validar":"Validate mail",
+        "sessionclose":"Logout",
+        "age":"Age",
+        "sex":"Sex",
+        "number":"Cellphone",
+        "idioma":"Language",
+        "guardar":"Save",
+        "txt1":"Enter the verification code",
+        "txt2":"A verification code has been sent to:",
+        "aceptar":"Accept",
+        "coleccionNombre":"Collection name",
+        "añadir":"Add",
+        "inicio": "Home",
+        "sobre nosotros": "About us",
+        "faq": "FAQ",
+        "contacto": "Contact us"
+    }
 }

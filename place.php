@@ -49,7 +49,7 @@
             <div class="option notifications">
                 <div class="option__title">
                     <i class="fa-regular fa-bell"></i>
-                    <h3 data-section="Filtered" data-value="Notificaciones">Notificaciones</h3>
+                    <h3 data-section="place" data-value="Notificaciones">Notificaciones</h3>
                     <i class="fa-solid fa-chevron-down hideNotis"></i>
                 </div>
                 <div class="option__info__container hide">
@@ -68,8 +68,8 @@
                                         ?>
                                         <form method="post" class="option__info">
                                             <button type="submit" name="closeNoti" value="<?php echo $rowNoti['id'] ?>"><i class="fa-solid fa-xmark closeN"></i></button>
-                                            <h4 data-section="Filtered" data-value="Noti Aceptada">Publicación aceptada</h4>
-                                            <p data-section="Filtered" data-value="Mesg acepto">¡Enhorabuena! ¡Tu publicación ha sido aceptada!</p>
+                                            <h4 data-section="place" data-value="Noti Aceptada">Publicación aceptada</h4>
+                                            <p data-section="place" data-value="Msg acepto">¡Enhorabuena! ¡Tu publicación ha sido aceptada!</p>
                                         </form>
                                         <?php
                                     break;
@@ -77,8 +77,8 @@
                                         ?>
                                         <form method="post" class="option__info">
                                             <button type="submit" name="closeNoti" value="<?php echo $rowNoti['id'] ?>"><i class="fa-solid fa-xmark closeN"></i></button>
-                                            <h4 data-section="Filtered" data-value="Noti Rechazada">Publicación rechazada</h4>
-                                            <p  data-section="Filtered" data-value="Mesg rechazo">¡Lo sentimos! ¡Tu publicación ha sido rechazada!</p>
+                                            <h4 data-section="place" data-value="Noti Rechazada">Publicación rechazada</h4>
+                                            <p  data-section="place" data-value="Mesg rechazo">¡Lo sentimos! ¡Tu publicación ha sido rechazada!</p>
                                         </form>
                                         <?php
                                     break;
@@ -86,8 +86,8 @@
                                         ?>
                                         <form method="post" class="option__info">
                                             <button type="submit" name="closeNoti" value="<?php echo $rowNoti['id'] ?>"><i class="fa-solid fa-xmark closeN"></i></button>
-                                            <h4 data-section="Filtered" data-value="Noti Eliminada">Publicación eliminada</h4>
-                                            <p data-section="Filtered" data-value="Mesg acepto">¡Vaya! ¡Tu publicación ha sido eliminada!</p>
+                                            <h4 data-section="place" data-value="Noti Eliminada">Publicación eliminada</h4>
+                                            <p data-section="place" data-value="Mesg acepto">¡Vaya! ¡Tu publicación ha sido eliminada!</p>
                                         </form>
                                         <?php
                                     break;
@@ -99,15 +99,15 @@
             </div>
             <div class="option profile">
                 <i class="fa-regular fa-circle-user"></i>
-                <h3 data-section="Filtered" data-value="perfil">Mi perfil</h3>
+                <h3 data-section="place" data-value="perfil">Mi perfil</h3>
             </div>
             <div class="option favorites">
                 <i class="fa-regular fa-star"></i>
-                <h3 data-section="Filtered" data-value="favs">Mis favoritos</h3>
+                <h3 data-section="place" data-value="favs">Mis favoritos</h3>
             </div>
             <form method="post" class="option link">
                 <i class="fa-solid fa-route"></i>
-                <a id="link" href="#" target="_blank">Mi ruta</a>
+                <a id="link" href="#" target="_blank" data-section="place" data-value="ruta">Mi ruta</a>
                 <button type="submit" name="deleteRoute"><i class="fa-regular fa-trash-can" id="delete"></i></button>
             </form>
             <div class="option translate">
@@ -145,7 +145,7 @@
             </div>
             <div class="body__left__review">
                 <form method="post" class="review__comment">
-                    <input type="text" name="comment" id="" placeholder="Escribe tu comentario">
+                    <input type="text" name="comment" id="" data-section="place" data-value="escribe" placeholder="Escribe tu comentario" placeholder="Escribe tu comentario">
                     <input type="submit" value="" name="newComment">
                 </form>
 
@@ -181,7 +181,7 @@
                         }
 
                         if (mysqli_num_rows($resultado) == 0) {
-                            echo "<h3 class='noDataC'>No hay comentarios por mostrar :c</h3>";
+                            echo "<h3 class='noDataC' data-section='place' data-value='aun no'>No hay comentarios por mostrar :c</h3>";
                         }
                     ?>
                 </div>
@@ -206,7 +206,7 @@
                 <button type="submit" name="route" id="btn-ruta">
                     <div class="route">
                         <i class="fa-solid fa-route"></i>
-                        <h2>Agregar a la ruta</h2>
+                        <h2 data-section="place" data-value="agregar">Agregar a la ruta</h2>
                         <input id="direccion" type="text" hidden value="<?= $dataPlace['direction'] ?>">
                     </div>
                 </button>
@@ -229,7 +229,7 @@
                 }
 
                 if (mysqli_num_rows($runn) == 0) {
-                    echo "<h3 class='noData'>No hay restaurantes por mostrar :c</h3>";
+                    echo "<h3 class='noData' data-section='place' data-value='no hay'>No hay restaurantes por mostrar :c</h3>";
                 }
             ?>
             
@@ -246,16 +246,16 @@
             <li class="social-icon__item"><a class="social-icon__link" href="#"><i class="fa-regular fa-envelope"></i></a></li>
         </ul>
         <ul class="menu">
-            <li class="menu__item"><a class="menu__link" href="#" data-section="Index" data-value="inicio">Inicio</a></li>
-            <li class="menu__item"><a class="menu__link" href="#" data-section="Index" data-value="sobre nosotros">Sobre nosotros</a></li>
-            <li class="menu__item"><a class="menu__link" href="#" data-section="Index" data-value="faq">FAQ</a></li>
-            <li class="menu__item"><a class="menu__link" href="#" data-section="Index" data-value="contacto">Contáctanos</a></li>
+            <li class="menu__item"><a class="menu__link" href="#" data-section="place" data-value="inicio">Inicio</a></li>
+            <li class="menu__item"><a class="menu__link" href="#" data-section="place" data-value="sobre nosotros">Sobre nosotros</a></li>
+            <li class="menu__item"><a class="menu__link" href="#" data-section="place" data-value="faq">FAQ</a></li>
+            <li class="menu__item"><a class="menu__link" href="#" data-section="place" data-value="contacto">Contáctanos</a></li>
         </ul>
     </footer>
     <div class="popup__container">
         <div class="popup">
             <i class="fa-solid fa-xmark closePop"></i>
-            <h2>Agrega <?php echo $dataPlace['name']; ?> a tus colecciones</h2>
+            <h2><span data-section="place" data-value="agrega">Agrega</span> <?php echo $dataPlace['name']; ?> <span data-section="place" data-value="a tus"> a tus colecciones</span></h2>
             <form method="post" class="collections__container">
             <?php
                 $sql = "SELECT collections.id, collections.name, collections.id_user, collections_places.id_place, collections_places.id_collection FROM collections INNER JOIN collections_places ON collections.id = collections_places.id_collection WHERE collections_places.id_place != {$_GET['place']} AND collections.id_user = '{$_SESSION['user_id']}'";
@@ -272,16 +272,16 @@
                 <div class="popu">
                     <div class="popupName">
                         <input type="text" name="name" spellcheck="false"> 
-                        <label class="label">Nombre de la colección</label>
+                        <label class="label" data-section="place" data-value="nombre">Nombre de la colección</label>
                     </div>
                     <div class="popupType">
                         <div class="type">
                             <input type="radio" class="checkType" name="type" id="private" value="1">
-                            <label for="private">Privada</label>
+                            <label for="private" data-section="place" data-value="privada">Privada</label>
                         </div>
                         <div class="type">
                             <input type="radio" class="checkType" name="type" id="public" value="2">
-                            <label for="public">Pública</label>
+                            <label for="public" data-section="place" data-value="publica">Pública</label>
                         </div>
                     </div>
                 </div>
@@ -297,21 +297,21 @@
             <i class="fa-solid fa-xmark close__newplace"></i>
             <div class="newplace__img">
                 <input type="file" name="image" id="upload-button" required accept="image/*" />
-                <label for="upload-button">
+                <label for="upload-button" data-section="place" data-value="foto">
                     <i class="fa-solid fa-upload"></i>&nbsp; Fotografía
                 </label>
-                <p>Recuerda que el total de fotos es 1</p>
+                <p data-section="place" data-value="total">Recuerda que el total de fotos es 1</p>
                 <div id="error"></div>
                 <div id="image-display"></div>
             </div>
             <div class="newplace__info">
                 <div class="info__title">
-                    <h1>Publica un restaurante!</h1>
-                    <p>Sube una foto y escribe el nombre de algún restaurante en <?php echo $dataPlace['name'];?>.</p>
+                    <h1 data-section="place" data-value="publica un">Publica un restaurante!</h1>
+                    <p><span data-section="place" data-value="sube">Sube una foto y escribe el nombre de algún restaurante en</span> <?php echo $dataPlace['name'];?>.</p>
                 </div>
                 <div class="input__field">
                     <input type="text" name="name" required spellcheck="false"> 
-                    <label>Nombre</label>
+                    <label data-section="place" data-value="nombre rest">Nombre</label>
                 </div>
                 <input type="hidden" name="placeId" value="<?php echo $dataPlace['id'];?>">
                 <input type="hidden" name="placeName" value="<?php echo $dataPlace['name'];?>">
@@ -390,6 +390,70 @@
             link.href = "https://www.google.com/maps/dir/" + lugaresLinks
         });
     </script>
+
+    <!-- Traductor -->
+    <script>
+        var checkbox = document.getElementById('cambiar');
+        var select = document.getElementById('department');
+        var inputs = document.querySelectorAll('input[data-section][data-value]');
+
+        // Función para cambiar el idioma
+        async function cambiarIdioma(selectedLanguage) {
+            const requestJson = await fetch(`languages/place${selectedLanguage === 'en' ? 'Ingles' : 'Español'}.json`);
+            const textosCambioIdioma = document.querySelectorAll("[data-section]");
+            const textos = await requestJson.json();
+
+            for (const textosCambioIdiomaVariable of textosCambioIdioma) {
+                const secciones = textosCambioIdiomaVariable.dataset.section;
+                const valor = textosCambioIdiomaVariable.dataset.value;
+
+                if (textos[secciones] && textos[secciones][valor]) {
+                    if (textosCambioIdiomaVariable.value) {
+                        textosCambioIdiomaVariable.value = textos[secciones][valor];
+                    }
+                    textosCambioIdiomaVariable.innerHTML = textos[secciones][valor];
+                }
+            }
+
+            inputs.forEach(input => {
+                const section = input.dataset.section;
+                const value = input.dataset.value;
+                if (textos[section] && textos[section][value]) {
+                    input.placeholder = textos[section][value];
+                }
+            });
+
+            elements.addEventListener("click", function (e) {
+                cambioIdioma(e.target.parentElement.dataset.language);
+                localStorage.setItem('selectedLanguage', selectedLanguage); // Guardar el idioma seleccionado
+            });
+        }
+
+        // Event listener para el cambio de idioma
+        checkbox.addEventListener('change', function () {
+            const checked = checkbox.checked;
+            const selectedLanguage = checked ? 'en' : 'es';
+            cambiarIdioma(selectedLanguage);
+            if (checked) {
+                localStorage.setItem('selectedLanguage', selectedLanguage);
+            } else {
+                localStorage.removeItem('selectedLanguage');
+            }
+        });
+
+        // Al cargar la página, cargar el idioma guardado si es inglés
+        window.addEventListener('load', function () {
+            const selectedLanguage = localStorage.getItem('selectedLanguage');
+            if (selectedLanguage === 'en') {
+                checkbox.checked = true;
+                cambiarIdioma('en');
+            } else if (selectedLanguage === 'es') {
+                checkbox.checked = false;
+                cambiarIdioma('es');
+            }
+        });
+    </script>
+
 
 
     <script>

@@ -1,0 +1,19 @@
+{
+    "Login":{
+        "inicio":"Log In",
+        "correo":"Email",
+        "password":"Password",
+        "entrar":"Enter",
+        "so":"Also you can use: ",
+        "registro":"Sign In",
+        "name": "Name",
+        "correo1": "Email",
+        "password1":"Password",
+        "entrar1":"START",
+        "so1":"Also you can use: ",
+        "primera":"First time?",
+        "reg":"SIGN IN",
+        "uno":"One of us?",
+        "boton":"LOG IN"
+    }
+}

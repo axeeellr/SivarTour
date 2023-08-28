@@ -9,6 +9,7 @@
         "Mesg acepto": "¡Enhorabuena! ¡Tu publicación ha sido aceptada!",
         "perfil": "Mi perfil",
         "favs": "Mis favoritos",
+        "ruta":"Mi ruta",
         "Departamento":"Departmento",
         "Tipo": "Tipo",
         "Playa":"Playa",
@@ -23,8 +24,19 @@
         "Montaña" : "Montaña",
         "Otro" : "Otro",
         "Público" : "Público",
-        "Todo" : "Solo mayores de 18",
-        "Solo" : "Adults only",
-        "Especial" : "Especial para niños" 
+        "Todo" : "Todo público",
+        "Especial" : "Especial para niños",
+        "inicio": "Inicio",
+        "sobre nosotros": "Sobre nosotros",
+        "faq": "FAQ",
+        "contacto": "Contáctanos",
+        "Noti Eliminada": "Publicación eliminada",
+        "Mesg eliminado": "¡Vaya! ¡Tu publicación ha sido eliminada!",
+        "escoge": "Escoge las fotos",
+        "total": "Recuerda que el total de fotografías es 3",
+        "puedes": "Tú también puedes publicar lugares!",
+        "nombre": "Nombre",
+        "ubicación": "Ubicación",
+        "descripción": "Descripción"
     }
 }

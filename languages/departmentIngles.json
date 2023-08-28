@@ -8,6 +8,12 @@
         "Noti Aceptada": "Accepted post",
         "Mesg acepto": "Congratulations! Your post has been accepted!",
         "perfil": "My profile",
-        "favs": "My favourites"
+        "favs": "My favourites",
+        "ruta":"My route",
+        "boton":"EXPLORE",
+        "inicio": "Home",
+        "sobre nosotros": "About us",
+        "faq": "FAQ",
+        "contacto": "Contact us"
     }
 }

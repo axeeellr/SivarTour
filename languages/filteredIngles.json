@@ -9,6 +9,7 @@
         "Mesg acepto": "Congratulations! Your post has been accepted!",
         "perfil": "My profile",
         "favs": "My favorites",
+        "ruta":"My route",
         "Departamento":"Department",
         "Tipo": "Type",
         "Playa":"Beach",
@@ -24,7 +25,18 @@
         "Otro" : "Other", 
         "Público" : "Public",
         "Todo" : "All",
-        "Solo" : "Adults only",
-        "Especial" : "Special for kids"
+        "Especial" : "Special for kids",
+        "inicio": "Home",
+        "sobre nosotros": "About us",
+        "faq": "FAQ",
+        "contacto": "Contact us",
+        "Noti Eliminada": "Deleted post",
+        "Mesg eliminado": "Oh! Your post has been deleted!",
+        "escoge": "Choose the photos",
+        "total": "Remember the total of photos is 3",
+        "puedes": "You can post places too!",
+        "nombre": "Name",
+        "ubicación": "Location",
+        "descripción": "Description"
     }
 }
