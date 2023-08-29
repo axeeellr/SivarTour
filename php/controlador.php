@@ -620,12 +620,7 @@ if (isset($_POST['favoritePage'])) {
 
 
 
-/****** C E R R A R   N O T I F I C A C I O N E S ******/
-if (isset($_POST['closeNoti'])) {
-    $sql = "DELETE FROM notifications WHERE id = {$_POST['closeNoti']}";
-    $run = mysqli_query($connection, $sql);
-    //header('Location: filtered.php', true, 303);
-}
+
 
 
 

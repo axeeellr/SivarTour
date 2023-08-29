@@ -348,25 +348,25 @@ input:checked + label:after {
     outline: none;
 }
 
-.filters select:nth-child(4){
-    order: 5;
-}
-
-.filters select:nth-child(3){
-    order: 4;
-}
-
-.filters input{
-    height: calc(4.3px + 4.3vw);
-    width: calc(4.3px + 4.3vw);
-    background-image: url(img/magnifiying.png);
-    background-repeat: no-repeat;
-    background-size: 3.5vw;
+.filters input[type="search"]{
     background-color: transparent;
-    background-position: center;
-    border-radius: 50%;
     border: none;
-    cursor: pointer;
+    font-size: calc(1.2px + 1.2vw);
+    color: var(--green);
+    border: 3px solid var(--blue);
+    padding: 10px 12px;
+    border-radius: 10px;
+}
+
+.filters input[type="search"]::placeholder{
+    color: #ffffffb4;
+}
+.filters input[type="search"]:focus{
+    border: 3px solid var(--green);
+}
+
+.filters input[type="search"]:focus::placeholder{
+    color: #cece8da8;
 }
 
 .filters a{

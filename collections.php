@@ -73,7 +73,7 @@ if (isset($_SESSION['collectionId'])) {
                                 case 1:
                                     ?>
                                     <form method="post" class="option__info">
-                                        <button type="submit" name="closeNoti" value="<?php echo $rowNoti['id'] ?>"><i class="fa-solid fa-xmark closeN"></i></button>
+                                        <button type="button" class="closeNoti" value="<?php echo $rowNoti['id'] ?>"><i class="fa-solid fa-xmark closeN"></i></button>
                                         <h4 data-section="coll" data-value="Noti Aceptada">Publicación aceptada</h4>
                                         <p data-section="coll" data-value="Mesg acepto">¡Enhorabuena! ¡Tu publicación ha sido aceptada!</p>
                                     </form>
@@ -82,7 +82,7 @@ if (isset($_SESSION['collectionId'])) {
                                 case 2:
                                     ?>
                                     <form method="post" class="option__info">
-                                        <button type="submit" name="closeNoti" value="<?php echo $rowNoti['id'] ?>"><i class="fa-solid fa-xmark closeN"></i></button>
+                                        <button type="button" class="closeNoti" value="<?php echo $rowNoti['id'] ?>"><i class="fa-solid fa-xmark closeN"></i></button>
                                         <h4 data-section="coll" data-value="Noti Rechazada">Publicación rechazada</h4>
                                         <p  data-section="coll" data-value="Mesg rechazo">¡Lo sentimos! ¡Tu publicación ha sido rechazada!</p>
                                     </form>
@@ -91,7 +91,7 @@ if (isset($_SESSION['collectionId'])) {
                                 case 3:
                                     ?>
                                     <form method="post" class="option__info">
-                                        <button type="submit" name="closeNoti" value="<?php echo $rowNoti['id'] ?>"><i class="fa-solid fa-xmark closeN"></i></button>
+                                        <button type="button" class="closeNoti" value="<?php echo $rowNoti['id'] ?>"><i class="fa-solid fa-xmark closeN"></i></button>
                                         <h4 data-section="coll" data-value="Noti Eliminada">Publicación eliminada</h4>
                                         <p data-section="coll" data-value="Mesg acepto">¡Vaya! ¡Tu publicación ha sido eliminada!</p>
                                     </form>
@@ -128,35 +128,35 @@ if (isset($_SESSION['collectionId'])) {
         <div class="collections__header">
             <h1><?php echo isset($_GET['favorites']) ? "<span data-section='coll' data-value='mis'>Mis Favoritos</span>" : $row['name']; ?>&nbsp;<?php echo ($row['type'] == 1 || isset($_GET['favorites'])) ? '' : '<i class="fa-solid fa-link url" onclick="copyToClipboard(\''.$row['url'].'\')"></i>'; ?></h1>
             <p><?php echo ($row['type'] == 1 || isset($_GET['favorites'])) ? "<span data-section='coll' data-value='priv'>Colección privada</span>" : "<span data-section='coll' data-value='publi'>Colección pública</span>"; ?></p>
-            <div class="collections__header__users">
-
+            
             <?php 
-                $sqlCollections = "SELECT * FROM collections_share INNER JOIN users ON collections_share.id_user = users.id WHERE collections_share.id_collection = {$_SESSION['collectionId']}";
-                $runCollections = mysqli_query($connection, $sqlCollections);
-
-                $totalResults = mysqli_num_rows($runCollections); // Obtener el total de resultados
-                $displayedResults = 0; // Contador de resultados mostrados
-
-                while ($dataCollectionsUsers = mysqli_fetch_array($runCollections)) {
-                    $letter = substr($dataCollectionsUsers['name'], 0, 1);
-                    echo ($dataCollectionsUsers['img'] == "") ? '<div class="userLetter" style="z-index: '.($displayedResults + 1).'; margin-left: calc(-1.2px - 1.2vw);">'.$letter.'</div>' : '<div class="user" style="z-index: '.($displayedResults + 1).'; margin-left: calc(-1.2px - 1.2vw);"><img src="'.$dataCollectionsUsers['img'].'" alt=""></div>';
-
-                    $displayedResults++;
-                    
-                    if ($displayedResults == 4 && $totalResults > 4) {
-                        $remainingResults = $totalResults - 4;
-                        echo '<div class="userMore">+' . $remainingResults . '</div>';
-                        break;
-                    }
+                if (!isset($_GET['favorites']) || $row['type'] === 2) {
+                    ?>
+                    <div class="collections__header__users">
+                        <?php
+                        $sqlCollections = "SELECT * FROM collections_share INNER JOIN users ON collections_share.id_user = users.id WHERE collections_share.id_collection = {$_SESSION['collectionId']}";
+                        $runCollections = mysqli_query($connection, $sqlCollections);
+        
+                        $totalResults = mysqli_num_rows($runCollections); // Obtener el total de resultados
+                        $displayedResults = 0; // Contador de resultados mostrados
+        
+                        while ($dataCollectionsUsers = mysqli_fetch_array($runCollections)) {
+                            $letter = substr($dataCollectionsUsers['name'], 0, 1);
+                            echo ($dataCollectionsUsers['img'] == "") ? '<div class="userLetter" style="z-index: '.($displayedResults + 1).'; margin-left: calc(-1.2px - 1.2vw);">'.$letter.'</div>' : '<div class="user" style="z-index: '.($displayedResults + 1).'; margin-left: calc(-1.2px - 1.2vw);"><img src="'.$dataCollectionsUsers['img'].'" alt=""></div>';
+        
+                            $displayedResults++;
+                            
+                            if ($displayedResults == 4 && $totalResults > 4) {
+                                $remainingResults = $totalResults - 4;
+                                echo '<div class="userMore">+' . $remainingResults . '</div>';
+                                break;
+                            }
+                        }
+                        ?>
+                    </div>
+                    <?php
                 }
             ?>
-
-
-                <!--<div class="user" style="z-index: 1"><img src="https://www.azureussl.com/wp-content/uploads/2022/01/conejo-cabeza-comiendo.jpg" alt=""></div>
-                <div class="userLetter" style="z-index: 2; margin-left: calc(-1.2px - 1.2vw);">A</div>
-                <div class="userLetter" style="z-index: 3; margin-left: calc(-1.2px - 1.2vw);">L</div>
-                <div class="user" style="z-index: 4; margin-left: calc(-1.2px - 1.2vw);"><img src="https://cdn-pro.elsalvador.com/wp-content/uploads/2021/12/SOYACITY-2.jpg" alt=""></div>-->
-            </div>
         </div>
         <div class="collections__body">
             <?php 
@@ -317,6 +317,30 @@ if (isset($_SESSION['collectionId'])) {
                 window.history.replaceState(null,null,window.location.href);
             }, 3000);
         }
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            // Evento para cerrar una notificación
+            $(document).on('click', '.closeNoti', function (e) {
+                e.preventDefault();
+                const notificationId = $(this).val();
+                const $notificationContainer = $(this).closest('.option__info');
+
+                $.ajax({
+                    method: 'POST',
+                    url: 'notis.php',
+                    data: { notificationId },
+                    success: function () {
+                        // Eliminar la notificación visualmente
+                        $notificationContainer.remove();
+                    },
+                    error: function (error) {
+                        console.error('Error al eliminar la notificación:', error);
+                    }
+                });
+            });
+        });
     </script>
 
     <!-- eliminar ruta -->

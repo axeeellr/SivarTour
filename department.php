@@ -70,7 +70,7 @@
                                 case 1:
                                     ?>
                                     <form method="post" class="option__info">
-                                        <button type="submit" name="closeNoti" value="<?php echo $rowNoti['id'] ?>"><i class="fa-solid fa-xmark closeN"></i></button>
+                                        <button type="button" class="closeNoti" value="<?php echo $rowNoti['id'] ?>"><i class="fa-solid fa-xmark closeN"></i></button>
                                         <h4 data-section="department" data-value="Noti Aceptada">Publicación aceptada</h4>
                                         <p data-section="department" data-value="Mesg acepto">¡Enhorabuena! ¡Tu publicación ha sido aceptada!</p>
                                     </form>
@@ -79,7 +79,7 @@
                                 case 2:
                                     ?>
                                     <form method="post" class="option__info">
-                                        <button type="submit" name="closeNoti" value="<?php echo $rowNoti['id'] ?>"><i class="fa-solid fa-xmark closeN"></i></button>
+                                        <button type="button" class="closeNoti" value="<?php echo $rowNoti['id'] ?>"><i class="fa-solid fa-xmark closeN"></i></button>
                                         <h4 data-section="department" data-value="Noti Rechazada">Publicación rechazada</h4>
                                         <p  data-section="department" data-value="Mesg rechazo">¡Lo sentimos! ¡Tu publicación ha sido rechazada!</p>
                                     </form>
@@ -88,7 +88,7 @@
                                 case 3:
                                     ?>
                                     <form method="post" class="option__info">
-                                        <button type="submit" name="closeNoti" value="<?php echo $rowNoti['id'] ?>"><i class="fa-solid fa-xmark closeN"></i></button>
+                                        <button type="button" class="closeNoti" value="<?php echo $rowNoti['id'] ?>"><i class="fa-solid fa-xmark closeN"></i></button>
                                         <h4 data-section="department" data-value="Noti Eliminada">Publicación eliminada</h4>
                                         <p data-section="department" data-value="Mesg acepto">¡Vaya! ¡Tu publicación ha sido eliminada!</p>
                                     </form>
@@ -214,6 +214,29 @@
         link.href = "https://www.google.com/maps/dir/" + lugaresLinks
     </script>
 
+    <script>
+        $(document).ready(function () {
+            // Evento para cerrar una notificación
+            $(document).on('click', '.closeNoti', function (e) {
+                e.preventDefault();
+                const notificationId = $(this).val();
+                const $notificationContainer = $(this).closest('.option__info');
+
+                $.ajax({
+                    method: 'POST',
+                    url: 'notis.php',
+                    data: { notificationId },
+                    success: function () {
+                        // Eliminar la notificación visualmente
+                        $notificationContainer.remove();
+                    },
+                    error: function (error) {
+                        console.error('Error al eliminar la notificación:', error);
+                    }
+                });
+            });
+        });
+    </script>
 
     <script>
         var checkbox = document.getElementById('cambiar');

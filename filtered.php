@@ -180,6 +180,7 @@
     <hr>
 
     <div class="filters" id="filters">
+        <input type="search" name="" id="" placeholder="Busca un lugar...">
         <select name="" id="department">
             <option data-section="Filtered" data-value="Departamento" value="">Departamento</option>
             <option value="Ahuachapán">Ahuachapán</option>
@@ -515,6 +516,12 @@
                 });
             }
 
+            // Función para filtrar lugares por nombre
+            function filterPlacesByName(searchTerm) {
+                const filteredByName = filteredData.filter(place => place.name.toLowerCase().includes(searchTerm.toLowerCase()));
+                return filteredByName;
+            }
+
             // Evento para cambiar de página
             $(document).on('click', '.current-page', function (e) {
                 e.preventDefault();
@@ -540,6 +547,20 @@
                     currentPage++;
                     loadPagination();
                     loadPlaces();
+                }
+            });
+
+            // Evento para el input de búsqueda
+            $('input[type="search"]').on('input', function () {
+                const searchTerm = $(this).val();
+                if (searchTerm.length > 2) { // Cambiar este valor según tus necesidades
+                    currentPage = 1;
+                    filteredData = filterPlacesByName(searchTerm);
+                    loadPagination();
+                    loadPlaces();
+                } else if (searchTerm.length === 0) {
+                    currentPage = 1;
+                    getFilteredPlaces();
                 }
             });
 

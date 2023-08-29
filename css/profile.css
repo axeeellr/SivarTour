@@ -947,7 +947,7 @@ input:focus~label {
 }
 
 .noData{
-    color: #0a1117;
+    color: gray;
     font-size: calc(1.4px + 1.4vw);
 }
 

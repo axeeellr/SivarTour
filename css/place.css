@@ -43,6 +43,8 @@ body{
 .header__logo{
     width: 10%;
     margin: calc(1px + 1vw);
+    display: flex;
+    align-items: center;
 }
 
 .header__logo img{

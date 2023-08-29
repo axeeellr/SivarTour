@@ -6,6 +6,8 @@ $department = $_POST['department'] ?? '';
 $type = $_POST['type'] ?? '';
 $public = $_POST['public'] ?? '';
 
+$searchTerm = $_POST['searchTerm'] ?? '';
+
 // Prepara la consulta SQL con los filtros seleccionados
 $sql = "SELECT * FROM places WHERE status = 1";
 if (!empty($department)) {
@@ -16,6 +18,9 @@ if (!empty($type)) {
 }
 if (!empty($public)) {
   $sql .= " AND public = '$public'";
+}
+if (!empty($searchTerm)) {
+  $sql .= " AND name LIKE '%$searchTerm%'";
 }
 
 // Ejecuta la consulta

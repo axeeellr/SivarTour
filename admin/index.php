@@ -388,7 +388,7 @@
             </div>
             <div class="users__gestion">
                 <div class="gestion__head">
-                    <h1>Usuarios baneados</h1>
+                    <h1>Usuarios bloqueados</h1>
                 </div>
                 <?php 
                 $users = "SELECT * FROM users WHERE banned = 1";
