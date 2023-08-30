@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-08-2023 a las 06:20:07
+-- Tiempo de generación: 30-08-2023 a las 06:04:02
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -134,15 +134,6 @@ CREATE TABLE `notifications` (
   `id_user` int(11) NOT NULL,
   `type` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `notifications`
---
-
-INSERT INTO `notifications` (`id`, `id_user`, `type`) VALUES
-(6, 1, 3),
-(7, 1, 1),
-(8, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -334,13 +325,14 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `img`, `token`, `age`, `sex`, `number`, `address`, `instagram`, `whatsapp`, `twitter`, `code`, `verified`, `banned`) VALUES
 (1, 'Axel Ramirez', 'axelramireezz@gmail.com', '', 'https://lh3.googleusercontent.com/a/AAcHTtdwud2oM0DUII2C1rQ4AKXbGFTtOOml7orFN75cJ1c6=s96-c', '107045247008393752346', 0, '', 0, '', 'axeellr', '79188652', 'axellmwyy', 39282, 1, 0),
-(41, 'pedro', 'pedro@gmail.com', '123456', '', '929608642180784375367', 0, '', 0, '', '', '', '', 0, 0, 0),
-(42, 'pablo', 'pablo@gmail.com', '123456', '', '820018716679425695344', 0, '', 0, '', '', '', '', 0, 0, 0),
-(43, 'el ferxxo mor', 'ferxxo@gmail.com', '123456', '', '340314320154769686082', 0, '', 0, '', '', '', '', 0, 0, 0),
-(44, 'sael', 'sael@gmail.com', '123456', '', '959c49b50bbd05ae326d', 0, '', 0, '', '', '', '', 0, 0, 0),
-(45, 'mionca al bloquee', 'mionca@gmail.com', '1234567', '', '28d6ef260e2d30837026', 0, '', 0, '', '', '', '', 0, 0, 0),
-(46, 'alicia', 'alicia@gmail.com', '123456', '', '2b3b4584dd2756099873', 0, '', 0, '', '', '', '', 0, 0, 0),
-(47, 'Cristhoper', 'cristhoper@gmail.com', '123456', '', '5b2388b49e59f0f4bbb7', 0, '', 0, '', '', '', '', 0, 0, 0);
+(41, 'pedro', 'pedro@gmail.com', '123456', 'img/man2.png', '929608642180784375367', 0, '', 0, '', '', '', '', 0, 0, 0),
+(42, 'pablo', 'pablo@gmail.com', '123456', 'img/man2.png', '820018716679425695344', 0, '', 0, '', '', '', '', 0, 0, 0),
+(43, 'el ferxxo mor', 'ferxxo@gmail.com', '123456', 'img/man1.png', '340314320154769686082', 0, '', 0, '', '', '', '', 0, 0, 0),
+(44, 'sael', 'sael@gmail.com', '123456', 'img/man1.png', '959c49b50bbd05ae326d', 0, '', 0, '', '', '', '', 0, 0, 0),
+(45, 'mionca al bloquee', 'mionca@gmail.com', '1234567', 'img/man1.png', '28d6ef260e2d30837026', 0, '', 0, '', '', '', '', 0, 0, 0),
+(46, 'alicia', 'alicia@gmail.com', '123456', 'img/woman2.png', '2b3b4584dd2756099873', 0, '', 0, '', '', '', '', 0, 0, 0),
+(47, 'Cristhoper', 'cristhoper@gmail.com', '123456', 'img/man1.png', '5b2388b49e59f0f4bbb7', 0, '', 0, '', '', '', '', 0, 0, 0),
+(48, 'chepe', 'chepe@gmail.com', '123456', 'img/man1.png', '5501511819987f16278d', 0, '', 0, '', '', '', '', 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -476,13 +468,13 @@ ALTER TABLE `comments`
 -- AUTO_INCREMENT de la tabla `notifications`
 --
 ALTER TABLE `notifications`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `places`
 --
 ALTER TABLE `places`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT de la tabla `restaurants`
@@ -494,7 +486,7 @@ ALTER TABLE `restaurants`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT de la tabla `user_ratings`
