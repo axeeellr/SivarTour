@@ -381,12 +381,16 @@ input:checked + label:after {
     width: calc(9px + 9vw);
     border-radius: 5px;
     background-color: var(--background);
-    color: var(--white);
-    font-size: calc(7.5px + 7.5vw);
     display: flex;
     justify-content: center;
     align-items: center;
-    text-transform: uppercase;
+    position: relative;
+}
+
+.right__info__img img{
+    position: absolute;
+    height: 100%;
+    width: 100%;
 }
 
 .right__info h1{

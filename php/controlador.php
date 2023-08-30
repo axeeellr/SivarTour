@@ -142,11 +142,56 @@ if(isset($_POST['register'])) {
     $nombre = $_POST['name']; 
     $correo = $_POST['email']; 
     $contraseña = $_POST['password'];
+    $imageLink = $_POST['avatar'];
     $token = bin2hex(random_bytes(10)); // Generar un token seguro
 
     if ($correo === 'admin777@gmail.com' && $contraseña === 'tetongas') {
         header('Location: login.php');
         die();
+    }
+
+    if (isset($_FILES['profilePic']['name']) && !empty($_FILES['profilePic']['name'])) {
+        $imageLink = '';
+        // Configuración del cliente de S3
+        $s3Client = new S3Client([
+            'version' => 'latest',
+            'region' => 'us-east-2', // Reemplaza con tu región deseada
+            'credentials' => [
+                'key' => $accessKey,
+                'secret' => $secretKey,
+            ],
+        ]);
+
+        // Nombre del bucket en S3
+        $bucketName = 'sivartour';
+
+        // Carpeta en S3
+        $s3FolderName = 'users/';
+
+        // Datos de la imagen
+        $file = $_FILES['profilePic']['name'];
+        $tempFilePath = $_FILES['profilePic']['tmp_name'];
+        $s3FileName = $s3FolderName . $file;
+
+        // Obtener el tipo de archivo MIME para la extensión de la imagen
+        $contentType = mime_content_type($tempFilePath);
+
+        try {
+            // Subida del archivo a S3 con el encabezado "Content-Type" adecuado
+            $result = $s3Client->putObject([
+                'Bucket' => $bucketName,
+                'Key' => $s3FileName,
+                'SourceFile' => $tempFilePath,
+                'ContentType' => $contentType,
+            ]);
+
+            // Obtener el enlace público del objeto subido a S3
+            $imageLink = $s3Client->getObjectUrl($bucketName, $s3FileName);
+
+        } catch (S3Exception $e) {
+            echo "Error al subir la imagen $file a S3: " . $e->getMessage() . "<br>";
+        }
+
     }
 
     // Verificar contraseña segura
@@ -158,9 +203,9 @@ if(isset($_POST['register'])) {
         $error = "El mínimo de caracteres es 5";
     } else {
         // Preparar consulta SQL con sentencia preparada
-        $consulta_sql = "INSERT INTO users (name, email, password, token) VALUES (?, ?, ?, ?)";
+        $consulta_sql = "INSERT INTO users (name, email, password, img, token) VALUES (?, ?, ?, ?, ?)";
         $stmt = mysqli_prepare($connection, $consulta_sql);
-        mysqli_stmt_bind_param($stmt, "ssss", $nombre, $correo, $contraseña, $token);
+        mysqli_stmt_bind_param($stmt, "sssss", $nombre, $correo, $contraseña, $imageLink, $token);
 
         // Verificar si el correo ya está registrado
         $validar = "SELECT * FROM users WHERE email = ?";

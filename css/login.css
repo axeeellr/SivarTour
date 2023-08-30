@@ -11,6 +11,11 @@
     --white: #f0f4ef;
 }
 
+i:hover{
+    transform: none;
+    box-shadow: none;
+}
+
 body{
     margin: 0;
     padding: 0;
@@ -360,6 +365,75 @@ form.sign-in-form {
 .invisiblee{
     display: none;
 }
+
+.input-field-avatars {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: calc(0.5px + 0.5vw);
+}
+
+.input-field-avatars h2{
+    max-width: 55%;
+    color: var(--blue);
+    text-align: center;
+    font-size: calc(1.2px + 1.2vw);
+}
+
+.avatars{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: calc(1px + 1vw);
+}
+
+.avatars label {
+    width: calc(5px + 5vw);
+    height: calc(5px + 5vw);
+    border-radius: 1em;
+    position: relative;
+    background-color: var(--blue);
+}
+
+.input-field-avatars input[type="radio"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.input-field-avatars img {
+    width: 100%;
+    height: 100%;
+    border-radius: 1em;
+    object-fit: cover;
+}
+
+.upload-label{
+    color: var(--blue);
+    border-radius: 1em;
+    background-color: transparent !important;
+    width: calc(3.6px + 3.6vw) !important;
+    height: calc(3.6px + 3.6vw) !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 3.5px solid var(--blue);
+    cursor: pointer;
+}
+
+.upload-label i {
+    font-size: calc(2.5px + 2.5vw);
+}
+
+#upload {
+    display: none;
+}
+  
 
 @media (max-width: 870px) {
     .container {

@@ -86,7 +86,7 @@ if (isset($_SESSION['user_token'])) {
                 </form>
 
 
-                <form method="post" class="sign-up-form">
+                <form method="post" class="sign-up-form" enctype="multipart/form-data">
                     <h2 class="title" data-section="Login" data-value="registro">Registrarse</h2>
                     <div class="input-field">
                         <i class="fas fa-user"></i>
@@ -99,6 +99,31 @@ if (isset($_SESSION['user_token'])) {
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
                         <input type="password" name="password" placeholder="Contraseña" data-section="Login" data-value="password1" required />
+                    </div>
+                    <div class="input-field-avatars">
+                        <h2>Escoge un avatar o sube tu propia foto</h2>
+                        <div class="avatars">
+                            <label>
+                                <input type="radio" value="img/woman1.png" id="av1" name="avatar" required>
+                                <img src="img/woman1.png" alt="">
+                            </label>
+                            <label>
+                                <input type="radio" value="img/man1.png" id="av2" name="avatar" required>
+                                <img src="img/man1.png" alt="">
+                            </label>
+                            <label>
+                                <input type="radio" value="img/woman2.png" id="av3" name="avatar" required>
+                                <img src="img/woman2.png" alt="Avatar 2">
+                            </label>
+                            <label>
+                                <input type="radio" value="img/man2.png" id="av4" name="avatar" required>
+                                <img src="img/man2.png" alt="">
+                            </label>
+                            <input type="file" id="upload" name="profilePic" accept="image/*" style="display: none;">
+                            <label for="upload" class="upload-label">
+                                <i class="fa-solid fa-plus"></i>
+                            </label>
+                        </div>
                     </div>
                     <input type="submit" class="btn" name="register" data-section="Login" data-value="entrar1" value="Entrar" />
                     <p class="social-text" data-section="Login" data-value="so1">También puedes usar</p>
@@ -147,6 +172,28 @@ if (isset($_SESSION['user_token'])) {
         document.querySelector('.close').addEventListener('click', function(){
             document.querySelector('.error__container').classList.add('invisiblee');
             window.history.replaceState(null,null,window.location.href);
+        });
+    </script>
+
+    <script>
+        // script.js
+        const avatarLabels = document.querySelectorAll('.avatars label:not(.upload-label)');
+
+        avatarLabels.forEach(label => {
+            label.addEventListener('click', () => {
+                avatarLabels.forEach(label => {
+                    label.style.border = 'none';
+                });
+                label.style.border = '3px dashed #f0f4ef';
+            });
+        });
+
+        const uploadLabel = document.querySelector('.upload-label');
+
+        uploadLabel.addEventListener('click', () => {
+            avatarLabels.forEach(label => {
+                label.style.border = 'none';
+            });
         });
     </script>
 

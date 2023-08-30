@@ -234,7 +234,7 @@ if ($data['verified'] == 1) {
         </div>
         <div class="profile__right">
             <div class="right__info">
-                <div class="right__info__img"><?php echo substr($data['name'], 0, 1); ?></div>
+                <div class="right__info__img"><?php echo '<img src="'.$data['img'].'">' ?></div>
                 <h1><?php echo $data['name'] ?></h1>
                 <h3><?php echo $data['email'] ?></h3>
                 <form method="post" class="info__buttons">
