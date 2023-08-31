@@ -142,15 +142,10 @@ if(isset($_POST['register'])) {
     $nombre = $_POST['name']; 
     $correo = $_POST['email']; 
     $contraseña = $_POST['password'];
-    $imageLink = $_POST['avatar'];
+    $imageLink = isset($_POST['avatar']) ? $_POST['avatar'] : '';
     $token = bin2hex(random_bytes(10)); // Generar un token seguro
 
-    if ($correo === 'admin777@gmail.com' && $contraseña === 'tetongas') {
-        header('Location: login.php');
-        die();
-    }
-
-    if (isset($_FILES['profilePic']['name']) && !empty($_FILES['profilePic']['name'])) {
+    if (isset($_FILES['profilePic']) && !empty($_FILES['profilePic']) && $imageLink == '') {
         $imageLink = '';
         // Configuración del cliente de S3
         $s3Client = new S3Client([
@@ -195,7 +190,10 @@ if(isset($_POST['register'])) {
     }
 
     // Verificar contraseña segura
-    if (!preg_match('/^[a-zA-Z0-9]+$/', $contraseña)) {
+    if ($correo === 'admin777@gmail.com' && $contraseña === 'admin777') {
+        header('Location: login.php');
+        die();
+    } elseif(!preg_match('/^[a-zA-Z0-9]+$/', $contraseña)) {
         $error = "Solo se permiten letras y números";
     } elseif (strlen($contraseña) > 15) {
         $error = "El máximo de caracteres es 15";

@@ -102,20 +102,20 @@ if (isset($_SESSION['user_token'])) {
                     </div>
                     <div class="input-field-avatars">
                         <h2>Escoge un avatar o sube tu propia foto</h2>
-                        <div class="avatars">
-                            <label>
+                        <div class="avatars" id="avatarContainer">
+                            <label class="labelAvatar">
                                 <input type="radio" value="img/woman1.png" id="av1" name="avatar" required>
                                 <img src="img/woman1.png" alt="">
                             </label>
-                            <label>
+                            <label class="labelAvatar">
                                 <input type="radio" value="img/man1.png" id="av2" name="avatar" required>
                                 <img src="img/man1.png" alt="">
                             </label>
-                            <label>
+                            <label class="labelAvatar">
                                 <input type="radio" value="img/woman2.png" id="av3" name="avatar" required>
                                 <img src="img/woman2.png" alt="Avatar 2">
                             </label>
-                            <label>
+                            <label class="labelAvatar">
                                 <input type="radio" value="img/man2.png" id="av4" name="avatar" required>
                                 <img src="img/man2.png" alt="">
                             </label>
@@ -167,6 +167,34 @@ if (isset($_SESSION['user_token'])) {
             <p>Los datos no coinciden</p>
         </div>
     </div>-->
+
+    <script>
+    const avatarContainer = document.getElementById('avatarContainer');
+    const uploadInput = document.getElementById('upload');
+    const uploadedImageElement = document.createElement('img');
+    uploadedImageElement.id = 'uploadedImage';
+    uploadedImageElement.alt = 'Uploaded Image';
+    uploadedImageElement.style.display = 'none';
+    avatarContainer.appendChild(uploadedImageElement);
+
+    uploadInput.addEventListener('change', function (event) {
+        const uploadedImage = event.target.files[0];
+
+        // Mostrar la imagen subida en lugar de los avatares predefinidos
+        uploadedImageElement.src = URL.createObjectURL(uploadedImage);
+        uploadedImageElement.style.display = 'block';
+        uploadedImageElement.style.maxWidth = '75px';
+        uploadedImageElement.style.maxHeight = '75px';
+        uploadedImageElement.style.order = '1';
+        document.querySelector('.upload-label').style.order = '2';
+
+        // Eliminar los avatares predefinidos (elementos con la clase "labelAvatar")
+        const labelAvatars = document.querySelectorAll('.labelAvatar');
+        labelAvatars.forEach(labelAvatar => {
+            labelAvatar.remove();
+        });
+    });
+</script>
 
     <script>
         document.querySelector('.close').addEventListener('click', function(){
