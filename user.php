@@ -131,7 +131,7 @@ $row = mysqli_fetch_assoc($run);
     </header>
     <div class="user__container">
         <div class="user__head">
-            <div class="head__img"><?php echo substr($row['name'], 0, 1); ?></div>
+            <div class="head__img"><?php echo '<img src="'.$row['img'].'">' ?></div>
             <h1><?php echo $row['name']; ?></h1>
             <p><?php echo $row['email']; ?></p>
             <div class="head__socials">

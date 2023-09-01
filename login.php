@@ -72,6 +72,7 @@ if (isset($_SESSION['user_token'])) {
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
                         <input type="password" name="password" placeholder="Contraseña" data-section="Login" data-value="password" required/>
+                        <i class="fa-solid fa-eye seePass"></i>
                     </div>
                     <input type="submit" value="Entrar" name="login" data-section="Login" data-value="entrar" class="btn solid" />
                     <p class="social-text" data-section="Login" data-value="so">También puedes usar</p>
@@ -99,6 +100,7 @@ if (isset($_SESSION['user_token'])) {
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
                         <input type="password" name="password" placeholder="Contraseña" data-section="Login" data-value="password1" required />
+                        <i class="fa-solid fa-eye seePass"></i>
                     </div>
                     <div class="input-field-avatars">
                         <h2>Escoge un avatar o sube tu propia foto</h2>
@@ -169,32 +171,58 @@ if (isset($_SESSION['user_token'])) {
     </div>-->
 
     <script>
-    const avatarContainer = document.getElementById('avatarContainer');
-    const uploadInput = document.getElementById('upload');
-    const uploadedImageElement = document.createElement('img');
-    uploadedImageElement.id = 'uploadedImage';
-    uploadedImageElement.alt = 'Uploaded Image';
-    uploadedImageElement.style.display = 'none';
-    avatarContainer.appendChild(uploadedImageElement);
+        const avatarContainer = document.getElementById('avatarContainer');
+        const uploadInput = document.getElementById('upload');
+        const uploadedImageElement = document.createElement('img');
+        uploadedImageElement.id = 'uploadedImage';
+        uploadedImageElement.alt = 'Uploaded Image';
+        uploadedImageElement.style.display = 'none';
+        avatarContainer.appendChild(uploadedImageElement);
 
-    uploadInput.addEventListener('change', function (event) {
-        const uploadedImage = event.target.files[0];
+        uploadInput.addEventListener('change', function (event) {
+            const uploadedImage = event.target.files[0];
 
-        // Mostrar la imagen subida en lugar de los avatares predefinidos
-        uploadedImageElement.src = URL.createObjectURL(uploadedImage);
-        uploadedImageElement.style.display = 'block';
-        uploadedImageElement.style.maxWidth = '75px';
-        uploadedImageElement.style.maxHeight = '75px';
-        uploadedImageElement.style.order = '1';
-        document.querySelector('.upload-label').style.order = '2';
+            // Mostrar la imagen subida en lugar de los avatares predefinidos
+            uploadedImageElement.src = URL.createObjectURL(uploadedImage);
+            uploadedImageElement.style.display = 'block';
+            uploadedImageElement.style.maxWidth = '75px';
+            uploadedImageElement.style.maxHeight = '75px';
+            uploadedImageElement.style.order = '1';
+            document.querySelector('.upload-label').style.order = '2';
 
-        // Eliminar los avatares predefinidos (elementos con la clase "labelAvatar")
-        const labelAvatars = document.querySelectorAll('.labelAvatar');
-        labelAvatars.forEach(labelAvatar => {
-            labelAvatar.remove();
+            // Eliminar los avatares predefinidos (elementos con la clase "labelAvatar")
+            const labelAvatars = document.querySelectorAll('.labelAvatar');
+            labelAvatars.forEach(labelAvatar => {
+                labelAvatar.remove();
+            });
         });
-    });
-</script>
+    </script>
+
+    <script>
+        // Función para alternar la visibilidad de la contraseña
+        function togglePasswordVisibility(passwordInput, showPassIcon) {
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                showPassIcon.classList.remove('fa-eye');
+                showPassIcon.classList.add('fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                showPassIcon.classList.remove('fa-eye-slash');
+                showPassIcon.classList.add('fa-eye');
+            }
+        }
+
+        // Obtener todos los elementos de contraseña y los íconos de mostrar/ocultar
+        const passwordInputs = document.querySelectorAll('input[type="password"]');
+        const showPassIcons = document.querySelectorAll('.seePass');
+
+        // Agregar evento a cada ícono para alternar la visibilidad de la contraseña
+        showPassIcons.forEach((icon, index) => {
+            icon.addEventListener('click', () => {
+                togglePasswordVisibility(passwordInputs[index], icon);
+            });
+        });
+    </script>
 
     <script>
         document.querySelector('.close').addEventListener('click', function(){

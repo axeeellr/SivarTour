@@ -31,7 +31,7 @@ if (isset($_SESSION['isLogin'])) {
 }
 
 if (isset($_SESSION['collectionId'])) {
-    $sql = "SELECT * FROM collections WHERE id = '{$_SESSION['collectionId']}'";
+    $sql = "SELECT * FROM collections WHERE id = {$_SESSION['collectionId']}";
     $run = mysqli_query($connection, $sql);
     $row = mysqli_fetch_assoc($run);
 }
@@ -126,11 +126,11 @@ if (isset($_SESSION['collectionId'])) {
     </header>
     <div class="collections__container">
         <div class="collections__header">
-            <h1><?php echo isset($_GET['favorites']) ? "<span data-section='coll' data-value='mis'>Mis Favoritos</span>" : $row['name']; ?>&nbsp;<?php echo ($row['type'] == 1 || isset($_GET['favorites'])) ? '' : '<i class="fa-solid fa-link url" onclick="copyToClipboard(\''.$row['url'].'\')"></i>'; ?></h1>
-            <p><?php echo ($row['type'] == 1 || isset($_GET['favorites'])) ? "<span data-section='coll' data-value='priv'>Colección privada</span>" : "<span data-section='coll' data-value='publi'>Colección pública</span>"; ?></p>
+            <h1><?php echo isset($_GET['favorites']) ? "<span data-section='coll' data-value='mis'>Mis Favoritos</span>" : $row['name']; ?>&nbsp;<?php echo (isset($_GET['favorites']) || $row['type'] == 1) ? '' : '<i class="fa-solid fa-link url" onclick="copyToClipboard(\''.$row['url'].'\')"></i>'; ?></h1>
+            <p><?php echo (isset($_GET['favorites']) || $row['type'] == 1) ? "<span data-section='coll' data-value='priv'>Colección privada</span>" : "<span data-section='coll' data-value='publi'>Colección pública</span>"; ?></p>
             
             <?php 
-                if (!isset($_GET['favorites']) || $row['type'] === 2) {
+                if (!isset($_GET['favorites']) && $row['type'] == 2) {
                     ?>
                     <div class="collections__header__users">
                         <?php
@@ -142,7 +142,7 @@ if (isset($_SESSION['collectionId'])) {
         
                         while ($dataCollectionsUsers = mysqli_fetch_array($runCollections)) {
                             $letter = substr($dataCollectionsUsers['name'], 0, 1);
-                            echo ($dataCollectionsUsers['img'] == "") ? '<div class="userLetter" style="z-index: '.($displayedResults + 1).'; margin-left: calc(-1.2px - 1.2vw);">'.$letter.'</div>' : '<div class="user" style="z-index: '.($displayedResults + 1).'; margin-left: calc(-1.2px - 1.2vw);"><img src="'.$dataCollectionsUsers['img'].'" alt=""></div>';
+                            echo '<div class="user" style="z-index: '.($displayedResults + 1).'; margin-left: calc(-1.2px - 1.2vw);"><img src="'.$dataCollectionsUsers['img'].'" alt=""></div>';
         
                             $displayedResults++;
                             
@@ -295,6 +295,48 @@ if (isset($_SESSION['collectionId'])) {
     </div>
 
     <script>
+        document.querySelector('.header__logo').addEventListener('click', function(){
+            location.href = 'index.php';
+        })
+
+        document.querySelector('.profile').addEventListener('click', function(e){
+            location.href = 'profile.php';
+        });
+
+        document.querySelector('.favorites').addEventListener('click', function(e){
+            location.href = 'collections.php?favorites';
+        });
+
+        document.querySelector('.showMenu').addEventListener('click', function(e){
+            document.querySelector('.options__menu').classList.toggle('show');
+            document.querySelector('.showMenu').classList.toggle('black');
+        });
+
+        document.querySelector('.hideNotis').addEventListener('click', function(e){
+            document.querySelector('.option__info__container').classList.toggle('hide');
+            document.querySelector('.hideNotis').classList.toggle('fa-chevron-down');
+            document.querySelector('.hideNotis').classList.toggle('fa-chevron-right');
+        });
+    </script>
+    <script>
+        document.querySelector('.collections__header__users').addEventListener('click', function(){
+            document.querySelector('.container__popup').classList.add('visible');
+        })
+
+        document.querySelector('.closePop').addEventListener('click', function(){
+            document.querySelector('.container__popup').classList.remove('visible');
+        });
+
+        document.querySelector('.new').addEventListener('click', function(){
+            document.querySelector('.popup__field').classList.add('visiblew');
+            document.querySelectorAll('.collections').forEach(function(elemento) {
+                elemento.classList.add('invisiblew');
+            });
+            document.querySelector('.new').classList.add('invisiblew');
+        });
+    </script>
+
+    <script>
         function copyToClipboard(text) {
             var tempInput = document.createElement("input");
             document.body.appendChild(tempInput);
@@ -417,49 +459,6 @@ if (isset($_SESSION['collectionId'])) {
                 checkbox.checked = false;
                 cambiarIdioma('es');
             }
-        });
-    </script>
-
-
-    <script>
-        document.querySelector('.header__logo').addEventListener('click', function(){
-            location.href = 'index.php';
-        })
-
-        document.querySelector('.profile').addEventListener('click', function(e){
-            location.href = 'profile.php';
-        });
-
-        document.querySelector('.favorites').addEventListener('click', function(e){
-            location.href = 'collections.php?favorites';
-        });
-
-        document.querySelector('.showMenu').addEventListener('click', function(e){
-            document.querySelector('.options__menu').classList.toggle('show');
-            document.querySelector('.showMenu').classList.toggle('black');
-        });
-
-        document.querySelector('.hideNotis').addEventListener('click', function(e){
-            document.querySelector('.option__info__container').classList.toggle('hide');
-            document.querySelector('.hideNotis').classList.toggle('fa-chevron-down');
-            document.querySelector('.hideNotis').classList.toggle('fa-chevron-right');
-        });
-    </script>
-    <script>
-        document.querySelector('.collections__header__users').addEventListener('click', function(){
-            document.querySelector('.container__popup').classList.add('visible');
-        })
-
-        document.querySelector('.closePop').addEventListener('click', function(){
-            document.querySelector('.container__popup').classList.remove('visible');
-        });
-
-        document.querySelector('.new').addEventListener('click', function(){
-            document.querySelector('.popup__field').classList.add('visiblew');
-            document.querySelectorAll('.collections').forEach(function(elemento) {
-                elemento.classList.add('invisiblew');
-            });
-            document.querySelector('.new').classList.add('invisiblew');
         });
     </script>
 </body>

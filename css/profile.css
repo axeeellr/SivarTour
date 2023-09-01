@@ -236,11 +236,11 @@ input[type=checkbox]{
     transition: 0.3s;
 }
   
-input:checked + label {
+.option input:checked + label {
     background: var(--green);
 }
   
-input:checked + label:after {
+.option input:checked + label:after {
     left: calc(100% - 5px);
     transform: translateX(-100%);
     background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Flag_of_the_United_Kingdom_%281-2%29.svg/1200px-Flag_of_the_United_Kingdom_%281-2%29.svg.png');
@@ -591,6 +591,102 @@ input:focus~label {
     display: flex;
 }
 
+.popup__field {
+    position: relative;
+    align-items: center;
+    gap: calc(1px + 1vw);
+    display: flex;  
+    flex-direction: column;
+}
+
+.visiblew{
+    display: flex;
+}
+
+.popupType{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: calc(1.5px + 1.5vw);
+    margin-top: calc(1px + 1vw);
+    color: var(--background);
+}
+
+.popupName{
+    position: relative;
+}
+
+.popupType input[type=radio] {
+    padding: calc(0.3px + 0.3vw);
+    appearance: none;
+    outline: 2px solid var(--background);
+    outline-offset: 2px;
+    margin-right: calc(0.1px + 0.1vw);
+}
+  
+.popupType input[type=radio]:checked {
+    display: inline-block;
+    background-color: var(--red);
+}
+
+.popupName input[type="text"] {
+    border: 2px solid var(--background);
+    background-color: transparent;
+    font-family: 'Prompt', sans-serif;
+    padding: calc(0.5px + 0.5vw) calc(0.5px + 0.5vw);
+    border-radius: 7px;
+    font-size: calc(1px + 1vw);
+}
+
+.label{
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    color: var(--background);
+    font-size: calc(1px + 1vw);
+    pointer-events: none;
+    transition: 0.3s;
+}
+
+.popup__field i{
+    position: absolute;
+    right: 10px;
+}
+
+.popupName input[type="text"]:focus {
+    border: 2px solid var(--background);
+}
+
+.popupName input[type="text"]:focus~i{
+    color: var(--background);
+}
+
+.popupName input[type="text"]:focus~.label {
+    top: -10px;
+    left: 0;
+    font-size: calc(1px + 1vw);
+    padding: 0 2px;
+    color: var(--background);
+}
+
+.popup__field input[type="submit"]{
+    padding: calc(0.5px + 0.5vw) calc(1px + 1vw);
+    border-radius: 10px;
+    border: none;
+    background-color: var(--background);
+    color: var(--white);
+    font-size: calc(1px + 1vw);
+    font-family: 'Prompt', sans-serif;
+    margin: 0;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.popup__field input[type="submit"]:hover{
+    background-color: #060a0f;
+}
+
 .popup{
     position: absolute;
     min-height: 35%;
@@ -666,7 +762,6 @@ input:focus~label {
     gap: calc(1.1px + 1.1vw);
     border-radius: 7px;
     box-shadow: 0px 0px 50px 0px rgba(0,0,0,0.75);
-    padding: calc(1.5px + 1.5vw) 0;
 }
 
 .popup__collection h2{

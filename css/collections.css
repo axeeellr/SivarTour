@@ -315,6 +315,8 @@ input:checked + label:after {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: var(--blue);
+    border-radius: 50%;
 }
 
 .user img{

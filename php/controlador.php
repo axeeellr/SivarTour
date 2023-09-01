@@ -245,7 +245,8 @@ if (isset($_POST['newComment'])) {
     $query = "INSERT INTO comments (id_user, id_place, comment) VALUES ('{$_SESSION['user_id']}', '$id_place', '$comment')";
 
     if (mysqli_query($connection, $query)) {
-        header('Location: ' . $_SESSION['urll'], true, 303);
+        $notice = "Se añadió el comentario!";
+        //header('Location: ' . $_SESSION['urll'], true, 303);
     } else {
         echo "Error al guardar el comentario: " . mysqli_error($connection);
     }
@@ -449,6 +450,8 @@ if (isset($_POST['newRestaurant'])) {
 
             $sql = "INSERT INTO restaurants (id_place, name, img) VALUES ('$idPlace','$name','$imageLink')";
             $run = mysqli_query($connection, $sql);
+
+            $notice = "Se añadió el restaurante!";
         } catch (S3Exception $e) {
             echo "Error al subir la imagen $file a S3: " . $e->getMessage() . "<br>";
         }
@@ -504,13 +507,28 @@ if (isset($_POST['newCollection'])) {
 if (isset($_POST['newCollectionP'])) {
     $id_user = $_SESSION['user_id'];
     $name = $_POST['name'];
+    $type = $_POST['type'];
 
-    $sql = "INSERT INTO collections (id_user, name) VALUES ('$id_user', '$name')";
+    if ($type == 2) {
+        $uniqueId = substr(md5(uniqid(rand(), true)), 0, 10);
+        $url = 'http://localhost/sivartour/join_collection.php?collection=' . $uniqueId . '&p=' . $id_user;
+    } else {
+        $url = '';
+    }
+
+    $sql = "INSERT INTO collections (id_user, name, type, url) VALUES ('$id_user', '$name', '$type', '$url')";
     $run = mysqli_query($connection, $sql);
 
     if ($run) {
+        $sqlll = "SELECT * FROM collections WHERE id_user = '{$_SESSION['user_id']}' ORDER BY id DESC LIMIT 1";
+        $runn = mysqli_query($connection, $sqlll);
+        $row = mysqli_fetch_assoc($runn);
+
+        $sqll = "INSERT INTO collections_share (id_collection, id_user, owner) VALUES ('{$row['id']}', '{$_SESSION['user_id']}', 1)";
+        $runnn = mysqli_query($connection, $sqll);
+
         $notice = "Colección creada exitosamente!";
-        //header('Location: profile.php', true, 303);
+        //header('Location: ' . $_SESSION['urll'], true, 303);
     }
 }
 

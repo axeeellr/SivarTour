@@ -106,6 +106,12 @@ form.sign-in-form {
     font-size: 1.1rem;
 }
 
+.seePass{
+    position: absolute;
+    right: 0;
+    margin: 0 calc(1px + 1vw);
+}
+
 .input-field input {
     background: none;
     outline: none;

@@ -161,7 +161,7 @@
                             ?>
                             <div class="slider__container <?php echo $claseActiva?>">
                                 <form method="post" class="slider__user">
-                                    <div class="slider__user__img"><?php echo substr($data['name'], 0, 1); ?></div>
+                                    <div class="slider__user__img"><?php echo '<img src="'.$data['img'].'">' ?></div>
                                     <input type="hidden" name="idUserComment" value="<?php echo $data['id']; ?>">
                                     <button type="submit" name="userComment" class="userProfile"><?php echo $data['name']; ?></button>
                                 </form>
@@ -251,7 +251,7 @@
             <h2><span data-section="place" data-value="agrega">Agrega</span> <?php echo $dataPlace['name']; ?> <span data-section="place" data-value="a tus"> a tus colecciones</span></h2>
             <form method="post" class="collections__container">
             <?php
-                $sql = "SELECT collections.id, collections.name, collections.id_user, collections_places.id_place, collections_places.id_collection FROM collections INNER JOIN collections_places ON collections.id = collections_places.id_collection WHERE collections_places.id_place != {$_GET['place']} AND collections.id_user = '{$_SESSION['user_id']}'";
+                $sql = "SELECT collections.id, collections.name, collections.id_user, collections_places.id_place, collections_places.id_collection FROM collections LEFT JOIN collections_places ON collections.id = collections_places.id_collection AND collections_places.id_place = {$_GET['place']} WHERE collections.id_user = {$_SESSION['user_id']} AND collections_places.id_collection IS NULL";
                 $run = mysqli_query($connection, $sql);
 
                 while ($dataCollec = mysqli_fetch_assoc($run)) {
@@ -530,14 +530,6 @@
             document.querySelector('.rating').classList.toggle('fa-regular');
             document.querySelector('.rating').classList.toggle('fa-solid');
         })
-    </script>
-
-
-    <script>
-        document.querySelector('.closeee').addEventListener('click', function(){
-            document.querySelector('.notice__container').classList.add('invisiblee');
-            window.history.replaceState(null,null,window.location.href);
-        });
     </script>
 
     <script>

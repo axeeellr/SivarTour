@@ -293,10 +293,26 @@ if ($data['verified'] == 1) {
     <div class="popup__container__collection">
         <div class="popup__collection">
             <i class="fa-solid fa-xmark closePop"></i>
-            <form method="post" class="popup__field__collection">
-                <input type="text" name="name" spellcheck="false"> 
-                <label class="label" data-section="Profile" data-value="coleccionNombre">Nombre de la colección</label>
-                <input type="submit" name="newCollectionP" data-section="Profile" data-value="añadir" value="Añadir">
+            <form method="post" class="popup__field">
+                <div class="popu">
+                    <div class="popupName">
+                        <input type="text" name="name" spellcheck="false"> 
+                        <label class="label" data-section="place" data-value="nombre">Nombre de la colección</label>
+                    </div>
+                    <div class="popupType">
+                        <div class="type">
+                            <input type="radio" class="checkType" name="type" id="private" value="1">
+                            <label for="private" data-section="place" data-value="privada">Privada</label>
+                        </div>
+                        <div class="type">
+                            <input type="radio" class="checkType" name="type" id="public" value="2">
+                            <label for="public" data-section="place" data-value="publica">Pública</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="field__btn">
+                    <input type="submit" name="newCollectionP" value="Añadir">
+                </div>
             </form>
         </div>
     </div>
