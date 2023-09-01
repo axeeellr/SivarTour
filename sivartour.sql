@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-08-2023 a las 06:04:02
+-- Tiempo de generación: 01-09-2023 a las 04:48:02
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -43,7 +43,11 @@ INSERT INTO `collections` (`id`, `id_user`, `name`, `type`, `url`) VALUES
 (2, 32, 'donde llevaré a mi mujer', 1, ''),
 (7, 38, 'Playas', 2, ''),
 (14, 1, 'Playitas', 2, 'http://localhost/sivartour/join_collection.php?collection=27e06beeac&p=1'),
-(15, 47, 'Pueblitos', 2, 'http://localhost/sivartour/join_collection.php?collection=43618616a5&p=47');
+(15, 47, 'Pueblitos', 2, 'http://localhost/sivartour/join_collection.php?collection=43618616a5&p=47'),
+(16, 56, 'no se', 0, ''),
+(17, 57, 'historia', 2, 'http://localhost/sivartour/join_collection.php?collection=5c2e38c4b5&p=57'),
+(18, 57, 'parques', 1, ''),
+(20, 57, 'collectionnnnndsd', 2, 'http://localhost/sivartour/join_collection.php?collection=cbc6b9cc59&p=57');
 
 -- --------------------------------------------------------
 
@@ -67,9 +71,14 @@ INSERT INTO `collections_places` (`id`, `id_user`, `id_collection`, `id_place`) 
 (8, 1, 10, 20),
 (9, 1, 10, 29),
 (10, 1, 14, 27),
-(11, 1, 14, 17),
 (12, 47, 15, 16),
-(13, 47, 15, 7);
+(13, 47, 15, 7),
+(14, 57, 17, 4),
+(15, 57, 18, 3),
+(16, 57, 19, 0),
+(17, 57, 20, 2),
+(18, 57, 18, 2),
+(19, 1, 14, 36);
 
 -- --------------------------------------------------------
 
@@ -92,7 +101,11 @@ INSERT INTO `collections_share` (`id`, `id_collection`, `id_user`, `owner`) VALU
 (9, 14, 1, 1),
 (10, 14, 44, 0),
 (11, 14, 43, 0),
-(12, 15, 47, 1);
+(12, 15, 47, 1),
+(13, 17, 57, 1),
+(14, 18, 57, 1),
+(15, 17, 56, 0),
+(17, 20, 57, 1);
 
 -- --------------------------------------------------------
 
@@ -121,7 +134,10 @@ INSERT INTO `comments` (`id`, `id_user`, `id_place`, `comment`) VALUES
 (7, 41, 20, 'bonito centro comercial'),
 (8, 1, 30, 'linda playa'),
 (9, 1, 37, 'me gustaaa'),
-(10, 47, 16, 'Amazing place to make tourism!!');
+(10, 47, 16, 'Amazing place to make tourism!!'),
+(11, 56, 2, 'Me gusta esa playaaa'),
+(12, 57, 24, 'me gusta el parque'),
+(13, 1, 2, 'holaaa');
 
 -- --------------------------------------------------------
 
@@ -165,7 +181,7 @@ CREATE TABLE `places` (
 
 INSERT INTO `places` (`id`, `id_user`, `name`, `description`, `direction`, `location`, `img1`, `img2`, `img3`, `department`, `type`, `public`, `rating`, `rating_count`, `status`) VALUES
 (1, 1, 'Lago de Coatepeque', 'Hermoso lago de origen volcánico rodeado de montañas y perfecto para actividades acuáticas.', 'Lago de Coatepeque, El Salvador', 'Lago de Coatepeque, El Salvador', 'https://s3.us-east-2.amazonaws.com/sivartour/Lago%20de%20Coatepeque/Lago-de-coatepeque-013.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Lago%20de%20Coatepeque/lago-de-coatepeque.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Lago%20de%20Coatepeque/Coatepeque_Vista1.jpg', 'Santa Ana', 'Lago', 'Todo público', 2, 6, 1),
-(2, 1, 'Playa El Tunco', 'Playa popular para practicar surf, con una vibrante vida nocturna y hermosas puestas de sol.', 'Playa El Tunco, El Salvador', 'Playa El Tunco, El Salvador', 'https://s3.us-east-2.amazonaws.com/sivartour/Playa%20El%20Tunco/35caaf3ca730c9347957838a20c989c2-1-e1605919240957.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Playa%20El%20Tunco/59.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Playa%20El%20Tunco/Eqmcs2eXcAIBV9c.jpg', 'La Libertad', 'Playa', 'Todo público', 2, 4, 1),
+(2, 1, 'Playa El Tunco', 'Playa popular para practicar surf, con una vibrante vida nocturna y hermosas puestas de sol.', 'El Tunco Beach, El Salvador', 'El Tunco Beach, El Salvador', 'https://s3.us-east-2.amazonaws.com/sivartour/Playa%20El%20Tunco/35caaf3ca730c9347957838a20c989c2-1-e1605919240957.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Playa%20El%20Tunco/59.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Playa%20El%20Tunco/Eqmcs2eXcAIBV9c.jpg', 'La Libertad', 'Playa', 'Todo público', 2, 4, 1),
 (3, 1, 'Parque Nacional Montecristo', 'Reserva natural con una gran diversidad de flora y fauna, ideal para el ecoturismo.', 'Parque Nacional Montecristo Trifinio, El Panal, El Salvador', '9JM8+P55, El Panal, El Salvador', 'https://s3.us-east-2.amazonaws.com/sivartour/Parque%20Nacional%20Montecristo/Montecristo-16-07-2021.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Parque%20Nacional%20Montecristo/montecristo-2.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Parque%20Nacional%20Montecristo/PARQUE-NACIONAL-MONTECRISTO-Parques-Nacionales-de-El-Salvador.jpg', 'Santa Ana', 'Bosque', 'Todo público', 1, 3, 1),
 (4, 1, 'Tazumal', 'Sitio arqueológico maya con pirámides y ruinas antiguas.', 'Tazumal, Calle Tazumal, Chalchuapa, El Salvador', 'C. Tazumal, Chalchuapa, El Salvador', 'https://s3.us-east-2.amazonaws.com/sivartour/Tazumal/SantaAna.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Tazumal/El-Tazumal5.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Tazumal/el_tazumal-700x350-1.jpg', 'Santa Ana', 'Sitio Arqueológico', 'Todo público', 1, 3, 1),
 (5, 1, 'El Boquerón', 'Volcán con un cráter impresionante y senderos para disfrutar de la naturaleza.', 'Parque Nacional El Boquerón, Santa Tecla, El Salvador', 'PPMC+J62, Santa Tecla, El Salvador', 'https://s3.us-east-2.amazonaws.com/sivartour/El%20Boquer%C3%B3n/el-boqueron-2.png', 'https://s3.us-east-2.amazonaws.com/sivartour/El%20Boquer%C3%B3n/sjhht.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/El%20Boquer%C3%B3n/a6.jpg', 'San Salvador', 'Montaña', 'Todo público', 1, 2, 1),
@@ -332,7 +348,14 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `img`, `token`, `age`, `
 (45, 'mionca al bloquee', 'mionca@gmail.com', '1234567', 'img/man1.png', '28d6ef260e2d30837026', 0, '', 0, '', '', '', '', 0, 0, 0),
 (46, 'alicia', 'alicia@gmail.com', '123456', 'img/woman2.png', '2b3b4584dd2756099873', 0, '', 0, '', '', '', '', 0, 0, 0),
 (47, 'Cristhoper', 'cristhoper@gmail.com', '123456', 'img/man1.png', '5b2388b49e59f0f4bbb7', 0, '', 0, '', '', '', '', 0, 0, 0),
-(48, 'chepe', 'chepe@gmail.com', '123456', 'img/man1.png', '5501511819987f16278d', 0, '', 0, '', '', '', '', 0, 0, 0);
+(48, 'chepe', 'chepe@gmail.com', '123456', 'img/man1.png', '5501511819987f16278d', 0, '', 0, '', '', '', '', 0, 0, 0),
+(51, 'aaaa', 'aaa@gmail.com', '123456', 'hola', 'f2ada8997e2a81545cf2', 0, '', 0, '', '', '', '', 0, 0, 0),
+(52, 'fffff', 'fff@fdf', '54545', 'https://s3.us-east-2.amazonaws.com/sivartour/users/ab67616100005174c9961730f0c082259ac0c22a.jpeg', '4b8df57386271e6c70d6', 0, '', 0, '', '', '', '', 0, 0, 0),
+(53, 'sd', 'sdd@fmsa', '434343', '', 'fa5a2cbe5a72155ac6c2', 0, '', 0, '', '', '', '', 0, 0, 0),
+(54, 'gfdfd', 'dfdf@fmsd', '4343434', 'https://s3.us-east-2.amazonaws.com/sivartour/users/77bce890467841.5e17e2e12db51.png', 'd8abdb66fa8ebc94db68', 0, '', 0, '', '', '', '', 0, 0, 0),
+(55, 'cxcx', 'cozx@gsds', '5454545', 'img/woman2.png', '312f245f1e30c39285a4', 0, '', 0, '', '', '', '', 0, 0, 0),
+(56, 'Mario Ernesto', 'mario@gmail.com', '123456', 'https://s3.us-east-2.amazonaws.com/sivartour/users/1581617516794.jfif', 'f2e3f6bddfa25b746ea7', 0, '', 0, '', '', '', '', 0, 0, 0),
+(57, 'jeff', 'jeff@gmail.com', '123456', 'img/man2.png', 'db8bfa04581b67e07a79', 0, '', 0, '', '', '', '', 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -444,25 +467,25 @@ ALTER TABLE `user_ratings`
 -- AUTO_INCREMENT de la tabla `collections`
 --
 ALTER TABLE `collections`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT de la tabla `collections_places`
 --
 ALTER TABLE `collections_places`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT de la tabla `collections_share`
 --
 ALTER TABLE `collections_share`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de la tabla `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `notifications`
@@ -486,7 +509,7 @@ ALTER TABLE `restaurants`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
 -- AUTO_INCREMENT de la tabla `user_ratings`
