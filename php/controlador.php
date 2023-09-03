@@ -664,6 +664,19 @@ if (isset($_POST['userComment'])) {
 
 
 
+/****** V E R   P E R F I L ******/
+if (isset($_POST['goUser'])) {
+    if ($_POST['idUserComment'] == $_SESSION['user_id']) {
+        header('Location: profile.php');
+    } else {
+        $_SESSION['idUserComment'] = $_POST['idUserComment'];
+        header('Location: user.php');
+    }
+}
+
+
+
+
 /****** V E R   C O L E C C I O N E S ******/
 if (isset($_POST['collectionPage'])) {
     $_SESSION['collectionId'] = $_POST['collectionId'];

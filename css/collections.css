@@ -465,6 +465,12 @@ input:checked + label:after {
     gap: calc(0.8px + 0.8vw);
 }
 
+.popup__user button{
+    background-color: transparent;
+    border: none;
+    font-family: 'Prompt', sans-serif;
+}
+
 .popup__user__img{
     height: calc(4.5px + 4.5vw);
     width: calc(4.5px + 4.5vw);

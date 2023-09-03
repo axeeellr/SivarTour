@@ -277,13 +277,14 @@ if (isset($_SESSION['collectionId'])) {
 
                 while ($dataCollectionsUserss = mysqli_fetch_assoc($runCollectionss)) {
                     ?>
-                        <div class="popup__user">
+                        <form method="post" class="popup__user">
                             <?php
                                 $letterr = substr($dataCollectionsUserss['name'], 0, 1);
+                                echo '<input type="hidden" name="idUserComment" value='.$dataCollectionsUserss['id_user'].'>';
                                 echo ($dataCollectionsUserss['img'] == "") ? '<div class="popup__user__img"><h1>'.$letterr.'</h1></div>' : '<div class="popup__user__img"><img src="'.$dataCollectionsUserss['img'].'" alt=""></div>';
-                                echo '<h1 class="popup__user__name">'.$dataCollectionsUserss["name"].'</h1>';
+                                echo '<button type="submit" name="goUser"><h1 class="popup__user__name">'.$dataCollectionsUserss["name"].'</h1></button>';
                             ?>
-                        </div>
+                        </form>
                     <?php
                 }
             ?>

@@ -22,6 +22,7 @@ if (isset($_SESSION['user_token'])) {
     <link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css&quot;>
     <!--JQuery-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" charset="utf-8"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!--FontAwesome-->
     <script src="https://kit.fontawesome.com/61fb4717c0.js" crossorigin="anonymous"></script>
     <title>Document</title>
@@ -87,7 +88,7 @@ if (isset($_SESSION['user_token'])) {
                 </form>
 
 
-                <form method="post" class="sign-up-form" enctype="multipart/form-data">
+                <form method="post" class="sign-up-form" id="registro-form" enctype="multipart/form-data">
                     <h2 class="title" data-section="Login" data-value="registro">Registrarse</h2>
                     <div class="input-field">
                         <i class="fas fa-user"></i>
@@ -95,7 +96,7 @@ if (isset($_SESSION['user_token'])) {
                     </div>
                     <div class="input-field">
                         <i class="fas fa-envelope"></i>
-                        <input type="email" name="email" placeholder="Correo" data-section="Login" data-value="correo1" required />
+                        <input type="email" name="email" id="email" placeholder="Correo" data-section="Login" data-value="correo1" required />
                     </div>
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
@@ -220,6 +221,28 @@ if (isset($_SESSION['user_token'])) {
         showPassIcons.forEach((icon, index) => {
             icon.addEventListener('click', () => {
                 togglePasswordVisibility(passwordInputs[index], icon);
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $('#registro-form').submit(function() {
+                // Obtener los datos del formulario
+                var datosFormulario = $(this).serialize();
+                console.log(datosFormulario);
+
+                // Obtener el correo electrónico del campo de entrada de correo
+                var email = $('#email').val();
+                console.log('Correo electrónico obtenido:', email);
+
+
+                // Enviar los datos mediante AJAX
+                $.ajax({
+                    type: 'POST',
+                    url: 'mailWelcome.php?email=' + email, // Archivo PHP que contiene el código para enviar el correo
+                    data: datosFormulario
+                });
             });
         });
     </script>

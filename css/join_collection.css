@@ -76,21 +76,21 @@ body{
     gap: calc(1px + 1vw);
 }
 
-.container__btn input[type="submit"]:nth-child(1){
+.container__btn input[type="submit"]:nth-child(4){
     background-color: var(--green);
     color: var(--background);
 }
 
-.container__btn input[type="submit"]:nth-child(2){
+.container__btn input[type="submit"]:nth-child(5){
     background-color: var(--red);
     color: var(--background);
 }
 
-.container__btn input[type="submit"]:nth-child(1):hover{
+.container__btn input[type="submit"]:nth-child(4):hover{
     background-color: #a3a356;
 }
 
-.container__btn input[type="submit"]:nth-child(2):hover{
+.container__btn input[type="submit"]:nth-child(5):hover{
     background-color: #d65d44;
 }
 

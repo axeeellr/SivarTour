@@ -306,10 +306,10 @@
                     <input type="submit" value="Enviar" name="newRestaurant">
                 </div>
             </form>
-            <div class="comments">
+            <!--<div class="comments">
                 <h1 class="title__comments">El Tunco</h1>
                 <div class="slider">
-                    <?php
+                    <?php/*
                         $query = "SELECT * FROM comments INNER JOIN users ON comments.id_user = users.id WHERE comments.id_place = '{$_GET['place']}'";
                         $resultado = mysqli_query($connection, $query);
 
@@ -336,7 +336,7 @@
                         </div>
                     <?php
                     $x++;
-                    }
+                    }*/
                     ?>
                 </div>
                 <nav class="slider-nav">
@@ -349,7 +349,7 @@
                         </li>
                     </ul>
                 </nav>
-            </div>
+            </div>-->
             <div class="users">
                 <div class="users__head">
                     <h2>ID</h2>

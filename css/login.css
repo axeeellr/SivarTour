@@ -378,6 +378,7 @@ form.sign-in-form {
     align-items: center;
     flex-direction: column;
     gap: calc(0.5px + 0.5vw);
+    margin-bottom: calc(1px + 1vw);
 }
 
 .input-field-avatars h2{
