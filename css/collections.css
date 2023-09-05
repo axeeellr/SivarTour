@@ -645,7 +645,7 @@ input:checked + label:after {
 }
 
 .noData{
-    color: #060b10;
+    color: gray;
     font-size: calc(1.3px + 1.3vw);
 }
 

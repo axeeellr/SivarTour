@@ -251,7 +251,23 @@
             <h2><span data-section="place" data-value="agrega">Agrega</span> <?php echo $dataPlace['name']; ?> <span data-section="place" data-value="a tus"> a tus colecciones</span></h2>
             <form method="post" class="collections__container">
             <?php
-                $sql = "SELECT collections.id, collections.name, collections.id_user, collections_places.id_place, collections_places.id_collection FROM collections LEFT JOIN collections_places ON collections.id = collections_places.id_collection AND collections_places.id_place = {$_GET['place']} WHERE collections.id_user = {$_SESSION['user_id']} AND collections_places.id_collection IS NULL";
+                $sql = "SELECT 
+                collections.id, 
+                collections.name, 
+                collections.id_user, 
+                collections_places.id_place, 
+                collections_places.id_collection 
+            FROM collections 
+            LEFT JOIN collections_places 
+                ON collections.id = collections_places.id_collection 
+                AND collections_places.id_place = {$_GET['place']} 
+            LEFT JOIN collections_share 
+                ON collections.id = collections_share.id_collection 
+                AND collections_share.id_user = {$_SESSION['user_id']} 
+            WHERE (collections.id_user = {$_SESSION['user_id']} 
+                   OR collections_share.id_user = {$_SESSION['user_id']}) 
+                  AND collections_places.id_collection IS NULL";
+    
                 $run = mysqli_query($connection, $sql);
 
                 while ($dataCollec = mysqli_fetch_assoc($run)) {

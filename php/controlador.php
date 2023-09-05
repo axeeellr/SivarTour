@@ -77,24 +77,27 @@ if (isset($_GET['code'])) {
         $userInfo = mysqli_fetch_assoc($run);
         $token = $userInfo['token'];
         $id = $userInfo['id'];
+        $_SESSION['user_token'] = $token;
+        $_SESSION['user_id'] = $id;
+        $_SESSION['isLogin'] = 'si';
 
     } else {
         //si no está registrado
         $sqll = "INSERT INTO users (name, email, password, img, token) VALUES ('{$userInfo['name']}', '{$userInfo['email']}', '', '{$userInfo['img']}', '{$userInfo['token']}')";
-        $run = mysqli_query($connection, $sqll);
+        $runn = mysqli_query($connection, $sqll);
+        $sqllll = "SELECT * FROM users WHERE email = '{$userInfo['email']}' ORDER BY id DESC LIMIT 1";
+        $runnnn = mysqli_query($connection, $sqllll);
+        $row = mysqli_fetch_assoc($runnnn);
 
-        if ($run) {
-            $token = $userInfo['token'];
-            $id = $userInfo['id'];
-        }else {
-            $error = "No se ha podido crear el usuario";
-            die();
+        if ($runn) {
+            $token = $row['token'];
+            $id = $row['id'];
+            $_SESSION['user_token'] = $token;
+            $_SESSION['user_id'] = $id;
+            $_SESSION['isLogin'] = 'si';
         }
     }
 
-    $_SESSION['user_token'] = $token;
-    $_SESSION['user_id'] = $id;
-    $_SESSION['isLogin'] = 'si';
 }
 
 
@@ -105,7 +108,7 @@ if(isset($_POST['login'])) {
     $correo = $_POST['email']; 
     $contraseña = $_POST['password'];
 
-    if ($correo === 'admin777@gmail.com' && $contraseña === 'tetongas') {
+    if ($correo === 'admin777@gmail.com' && $contraseña === 'admin777') {
         $_SESSION['admin'] = true;
         header('Location: admin/index.php', true, 303);
         die();
@@ -733,7 +736,7 @@ if (isset($_POST['acceptJoin'])) {
 
 /*  */
 if (isset($_POST['deniedJoin'])) {
-    
+    header('Location: index.php');
 }
 
 

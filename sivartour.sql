@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-09-2023 a las 04:48:02
+-- Tiempo de generación: 05-09-2023 a las 04:34:33
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -40,14 +40,8 @@ CREATE TABLE `collections` (
 --
 
 INSERT INTO `collections` (`id`, `id_user`, `name`, `type`, `url`) VALUES
-(2, 32, 'donde llevaré a mi mujer', 1, ''),
-(7, 38, 'Playas', 2, ''),
-(14, 1, 'Playitas', 2, 'http://localhost/sivartour/join_collection.php?collection=27e06beeac&p=1'),
-(15, 47, 'Pueblitos', 2, 'http://localhost/sivartour/join_collection.php?collection=43618616a5&p=47'),
-(16, 56, 'no se', 0, ''),
-(17, 57, 'historia', 2, 'http://localhost/sivartour/join_collection.php?collection=5c2e38c4b5&p=57'),
-(18, 57, 'parques', 1, ''),
-(20, 57, 'collectionnnnndsd', 2, 'http://localhost/sivartour/join_collection.php?collection=cbc6b9cc59&p=57');
+(1, 2, 'Malls', 2, 'http://localhost/sivartour/join_collection.php?collection=f6706706fc&p=2'),
+(2, 1, 'Crea J places <3', 2, 'http://localhost/sivartour/join_collection.php?collection=caf8f27b4f&p=1');
 
 -- --------------------------------------------------------
 
@@ -67,18 +61,10 @@ CREATE TABLE `collections_places` (
 --
 
 INSERT INTO `collections_places` (`id`, `id_user`, `id_collection`, `id_place`) VALUES
-(2, 32, 2, 31),
-(8, 1, 10, 20),
-(9, 1, 10, 29),
-(10, 1, 14, 27),
-(12, 47, 15, 16),
-(13, 47, 15, 7),
-(14, 57, 17, 4),
-(15, 57, 18, 3),
-(16, 57, 19, 0),
-(17, 57, 20, 2),
-(18, 57, 18, 2),
-(19, 1, 14, 36);
+(1, 2, 1, 20),
+(2, 2, 1, 25),
+(3, 1, 1, 29),
+(4, 3, 2, 12);
 
 -- --------------------------------------------------------
 
@@ -98,14 +84,10 @@ CREATE TABLE `collections_share` (
 --
 
 INSERT INTO `collections_share` (`id`, `id_collection`, `id_user`, `owner`) VALUES
-(9, 14, 1, 1),
-(10, 14, 44, 0),
-(11, 14, 43, 0),
-(12, 15, 47, 1),
-(13, 17, 57, 1),
-(14, 18, 57, 1),
-(15, 17, 56, 0),
-(17, 20, 57, 1);
+(1, 1, 2, 1),
+(2, 1, 1, 0),
+(3, 2, 1, 1),
+(4, 2, 3, 0);
 
 -- --------------------------------------------------------
 
@@ -125,19 +107,7 @@ CREATE TABLE `comments` (
 --
 
 INSERT INTO `comments` (`id`, `id_user`, `id_place`, `comment`) VALUES
-(1, 1, 4, 'Extraño ir de excursión ahí '),
-(2, 1, 1, 'Que lago tan bonito'),
-(3, 1, 2, 'Muchas piedras hay'),
-(4, 1, 15, 'Bonita playa para hacer surf'),
-(5, 1, 11, 'Que catedral mas bonita'),
-(6, 1, 17, 'Me gusta esa playa'),
-(7, 41, 20, 'bonito centro comercial'),
-(8, 1, 30, 'linda playa'),
-(9, 1, 37, 'me gustaaa'),
-(10, 47, 16, 'Amazing place to make tourism!!'),
-(11, 56, 2, 'Me gusta esa playaaa'),
-(12, 57, 24, 'me gusta el parque'),
-(13, 1, 2, 'holaaa');
+(1, 2, 20, 'Me gusta ir ahí con mi novie :)');
 
 -- --------------------------------------------------------
 
@@ -195,11 +165,11 @@ INSERT INTO `places` (`id`, `id_user`, `name`, `description`, `direction`, `loca
 (13, 1, 'Tamanique', 'Pueblo pintoresco con hermosas vistas al océano y actividades como el parapente.', 'Tamanique, El Salvador', 'Tamanique, El Salvador', 'https://s3.us-east-2.amazonaws.com/sivartour/Tamanique/CASCADA.jpeg', 'https://s3.us-east-2.amazonaws.com/sivartour/Tamanique/cascadas-tamanique.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Tamanique/cascadas-de-tamanique-la-libertad-1133x850.jpg', 'La Libertad', 'Otro', 'Todo público', 0, 0, 1),
 (14, 1, 'Parque Nacional El Pital', 'Área natural protegida que incluye el punto más alto de El Salvador y ofrece senderos para caminatas', 'El Pital, El Salvador', 'El Pital, El Salvador', 'https://s3.us-east-2.amazonaws.com/sivartour/Parque%20Nacional%20El%20Pital/el-pital.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Parque%20Nacional%20El%20Pital/cerro-el-pital-1.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Parque%20Nacional%20El%20Pital/deac76d2050000f90e0ef95db95e81fao.jpg', 'Chalatenango', 'Montaña', 'Todo público', 0, 0, 1),
 (15, 1, 'Playa El Sunzal', 'Playa famosa por sus olas, ideal para el surf y con hermosos atardeceres.', 'Playa El Sunzal, El Salvador', 'Playa El Sunzal, El Salvador', 'https://s3.us-east-2.amazonaws.com/sivartour/Playa%20El%20Sunzal/ZUNZAL-1-scaled.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Playa%20El%20Sunzal/photo3jpg.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Playa%20El%20Sunzal/Conchal%E0%B8%81o-Alejandro-Martinez-scaled.jpg', 'La Libertad', 'Playa', 'Todo público', 1, 1, 1),
-(16, 1, 'Suchitoto', 'Encantador pueblo colonial con calles empedradas, iglesias y vista al lago Suchitlán', 'Suchitoto, El Salvador', 'Suchitoto, El Salvador', 'https://s3.us-east-2.amazonaws.com/sivartour/Suchitoto/f0.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Suchitoto/Suchitoto-4-1.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Suchitoto/cropped-Casa-de-la-Abuela-Suchitoto-.jpg', 'Cuscatlán', 'Otro', 'Todo público', 1, 2, 1),
+(16, 1, 'Suchitoto', 'Encantador pueblo colonial con calles empedradas, iglesias y vista al lago Suchitlán', 'Suchitoto, El Salvador', 'Suchitoto, El Salvador', 'https://s3.us-east-2.amazonaws.com/sivartour/Suchitoto/f0.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Suchitoto/Suchitoto-4-1.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Suchitoto/cropped-Casa-de-la-Abuela-Suchitoto-.jpg', 'Cuscatlán', 'Otro', 'Todo público', 1, 3, 1),
 (17, 1, 'Playa Costa del Sol', 'Playa popular y animada con resorts, restaurantes y actividades acuáticas.', 'Playa Costa del Sol, El Salvador', 'Playa Costa del Sol, El Salvador', 'https://s3.us-east-2.amazonaws.com/sivartour/Playa%20Costa%20del%20Sol/Costa-del-Sol.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Playa%20Costa%20del%20Sol/photo0jpg.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Playa%20Costa%20del%20Sol/las-hojas-resort-club.jpg', 'La Paz', 'Playa', 'Todo público', 1, 1, 1),
 (18, 1, 'Palacio Nacional', 'Imponente estructura de estilo neoclásico que alberga las oficinas del gobierno y es sede del Poder', 'Palacio Nacional de El Salvador, 4a Calle Poniente, San Salvador, El Salvador', 'Palacio Nacional de El Salvador, 4a Calle Poniente, San Salvador, El Salvador', 'https://s3.us-east-2.amazonaws.com/sivartour/Palacio%20Nacional/palacio-nacional-01.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Palacio%20Nacional/Centro-Historico-de-San-Salvador-18.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Palacio%20Nacional/Palacio_Nacional_de_El_Salvador_Centro_Historico.jpg', 'San Salvador', 'Otro', 'Todo público', 0, 0, 1),
 (19, 1, 'Ataco', 'Pueblo pintoresco en la Ruta de las Flores, conocido por sus murales coloridos, cafés y artesanías', 'Concepción de Ataco, El Salvador', 'Concepción de Ataco, El Salvador', 'https://s3.us-east-2.amazonaws.com/sivartour/Ataco/82006317_3146154935399564_3578059773087580160_n.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Ataco/Murales-representativos-Ataco-672x372.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Ataco/ataco-3.jpg', 'Ahuachapán', 'Otro', 'Todo público', 1, 1, 1),
-(20, 1, 'La Gran Vía', 'Conocida por su vibrante ambiente y una amplia variedad de tiendas, restaurantes, cafés y centros co', 'La Gran Vía, Ciudad Merliot, El Salvador', 'Carretera Panamericana y Calle Chiltiupan Antiguo Cuscatlán, La Libertad Centroamérica, Cd Merliot, El Salvador', 'https://s3.us-east-2.amazonaws.com/sivartour/La%20Gran%20V%C3%ADa/120735237_4915450255161972_4515030060911127662_n.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/La%20Gran%20V%C3%ADa/4640943426_688dd5b4ba_b.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/La%20Gran%20V%C3%ADa/LGV%281%29.jpg', 'La Libertad', 'Centro Comercial', 'Todo público', 0, 0, 1),
+(20, 1, 'La Gran Vía', 'Conocida por su vibrante ambiente y una amplia variedad de tiendas, restaurantes, cafés y centros co', 'La Gran Vía, Ciudad Merliot, El Salvador', 'Carretera Panamericana y Calle Chiltiupan Antiguo Cuscatlán, La Libertad Centroamérica, Cd Merliot, El Salvador', 'https://s3.us-east-2.amazonaws.com/sivartour/La%20Gran%20V%C3%ADa/120735237_4915450255161972_4515030060911127662_n.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/La%20Gran%20V%C3%ADa/4640943426_688dd5b4ba_b.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/La%20Gran%20V%C3%ADa/LGV%281%29.jpg', 'La Libertad', 'Centro Comercial', 'Todo público', 1, 1, 1),
 (21, 1, 'Lago de Ilopango ', 'Conocido por su belleza escénica y su importancia histórica y natural.', 'Lago de Ilopango, El Salvador', 'Lago de Ilopango, El Salvador', 'https://s3.us-east-2.amazonaws.com/sivartour/Lago%20de%20Ilopango%20/GUANACOS-APULO-LAGO-DE-ILOPANGO-1024x768.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Lago%20de%20Ilopango%20/20210130_135810-1.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Lago%20de%20Ilopango%20/LAGO-DE-ILOPANGO-Lagos-de-El-Salvador.jpg', 'San Salvador', 'Lago', 'Todo público', 1, 1, 1),
 (22, 1, 'La Puerta del Diablo ', 'Mirador natural que ofrece vistas panorámicas espectaculares de los alrededores', 'Puerta del Diablo, Panchimalco, El Salvador', 'JRF5+F4Q, Panchimalco, El Salvador', 'https://s3.us-east-2.amazonaws.com/sivartour/La%20Puerta%20del%20Diablo%20/220395280_10159384381557618_5922345747777805271_n.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/La%20Puerta%20del%20Diablo%20/GUANACOS-LA-PUERTA-DEL-DIABLO-1024x512.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/La%20Puerta%20del%20Diablo%20/La-Puerta-del-Diablo.jpg', 'San Salvador', 'Montaña', 'Todo público', 1, 1, 1),
 (23, 1, 'Parque Nacional El Imposible ', 'Reserva natural con exuberante vegetación, cascadas y senderos para practicar senderismo.', 'Parque Nacional El Imposible, Caserío El Coco, El Salvador', 'Caserío El Coco, El Salvador', 'https://s3.us-east-2.amazonaws.com/sivartour/Parque%20Nacional%20El%20Imposible%20/10012021-El-Imposible-APPEX-5.jpg', 'https://s3.us-east-2.amazonaws.com/sivartour/Parque%20Nacional%20El%20Imposible%20/Mirador_Reserva_Natural_El_Imposible%20%281%29.jpeg', 'https://s3.us-east-2.amazonaws.com/sivartour/Parque%20Nacional%20El%20Imposible%20/maxresdefault%20%285%29.jpg', 'Ahuachapán', 'Montaña', 'Todo público', 0, 0, 1),
@@ -308,7 +278,46 @@ INSERT INTO `restaurants` (`id`, `id_place`, `name`, `img`) VALUES
 (69, 24, 'Don Lomito', 'https://s3.us-east-2.amazonaws.com/sivartour/Parque%20El%20Principito/2022-03-13.jpg'),
 (70, 24, 'La Espetada', 'https://s3.us-east-2.amazonaws.com/sivartour/Parque%20El%20Principito/2023-05-31.jpg'),
 (75, 24, 'Restaurante y Panadería San Martín', 'https://s3.us-east-2.amazonaws.com/sivartour/Parque%20El%20Principito/2022-07-28.jpg'),
-(76, 41, 'El Faro Clareño', 'https://s3.us-east-2.amazonaws.com/sivartour/Laguna%20de%20Apastepeque/19.jpg');
+(76, 41, 'El Faro Clareño', 'https://s3.us-east-2.amazonaws.com/sivartour/Laguna%20de%20Apastepeque/19.jpg'),
+(77, 25, 'The Coffee Cup', 'https://s3.us-east-2.amazonaws.com/sivartour/Multiplaza/jACCUGlmycSwltYjqj1uNsilhVQFGj3SbAcFsfeD.jpg'),
+(78, 25, 'Sushiitto', 'https://s3.us-east-2.amazonaws.com/sivartour/Multiplaza/b9Jf6i5vlMS2tf1SMlyUJQu5gtnF497IaR1TDLmI.jpg'),
+(79, 25, 'Flying Wings', 'https://s3.us-east-2.amazonaws.com/sivartour/Multiplaza/PXL_20230114_032839113.jpg'),
+(80, 26, 'La Corona', 'https://s3.us-east-2.amazonaws.com/sivartour/Paseo%20El%20Carmen/2018-10-16.jpg'),
+(81, 26, 'Carnitas Mama Chuz', 'https://s3.us-east-2.amazonaws.com/sivartour/Paseo%20El%20Carmen/2021-03-21.jpg'),
+(82, 26, 'Frida Mía', 'https://s3.us-east-2.amazonaws.com/sivartour/Paseo%20El%20Carmen/unnamed%20%282%29.jpg'),
+(83, 27, 'Rancho Mar y Sol', 'https://s3.us-east-2.amazonaws.com/sivartour/Playa%20San%20Diego/20210516_053808.jpg'),
+(84, 27, 'Rancho Brisas del Mar', 'https://s3.us-east-2.amazonaws.com/sivartour/Playa%20San%20Diego/2022-07-03.jpg'),
+(85, 27, 'Pulpo Beach', 'https://s3.us-east-2.amazonaws.com/sivartour/Playa%20San%20Diego/2020-11-08.jpg'),
+(86, 28, 'El Ático', 'https://s3.us-east-2.amazonaws.com/sivartour/Mirador%20Planes%20de%20Renderos/20230325_180932.jpg'),
+(87, 28, 'Casa Campo', 'https://s3.us-east-2.amazonaws.com/sivartour/Mirador%20Planes%20de%20Renderos/2023-01-29%20%281%29.jpg'),
+(88, 28, 'Los Boomwalos', 'https://s3.us-east-2.amazonaws.com/sivartour/Mirador%20Planes%20de%20Renderos/2021-10-05.jpg'),
+(89, 29, 'Tony Roma´s', 'https://s3.us-east-2.amazonaws.com/sivartour/Metrocentro%20San%20Salvador/2017-12-29.jpg'),
+(90, 29, 'San Martín', 'https://s3.us-east-2.amazonaws.com/sivartour/Metrocentro%20San%20Salvador/2022-01-08.jpg'),
+(91, 29, 'Pavito Criollo', 'https://s3.us-east-2.amazonaws.com/sivartour/Metrocentro%20San%20Salvador/2021-05-30.jpg'),
+(92, 30, 'La Dolce Vita', 'https://s3.us-east-2.amazonaws.com/sivartour/Playa%20San%20Blas/DSC08065.JPG'),
+(93, 30, 'Bello Sol', 'https://s3.us-east-2.amazonaws.com/sivartour/Playa%20San%20Blas/20230218_142159.jpg'),
+(94, 30, 'Las Rocas', 'https://s3.us-east-2.amazonaws.com/sivartour/Playa%20San%20Blas/2020-12-17.jpg'),
+(95, 31, 'Buffalo Wings', 'https://s3.us-east-2.amazonaws.com/sivartour/Plaza%20Mundo%20Soyapango/BUFFALO-WINGS.png'),
+(96, 31, 'Taco Club', 'https://s3.us-east-2.amazonaws.com/sivartour/Plaza%20Mundo%20Soyapango/2022-08-27.jpg'),
+(97, 31, 'Don Li', 'https://s3.us-east-2.amazonaws.com/sivartour/Plaza%20Mundo%20Soyapango/2022-01-16.jpg'),
+(98, 32, 'Rincón Salvaje', 'https://s3.us-east-2.amazonaws.com/sivartour/Furesa/2018-01-21.jpg'),
+(99, 32, 'Café Linda Vista', 'https://s3.us-east-2.amazonaws.com/sivartour/Furesa/2021-12-21.jpg'),
+(100, 32, 'Jipis Japis', 'https://s3.us-east-2.amazonaws.com/sivartour/Furesa/FB_IMG_1623372531364.jpg'),
+(101, 33, 'La Puerta del Sol', 'https://s3.us-east-2.amazonaws.com/sivartour/Catedral%20Nuestra%20Se%C3%B1ora%20de%20La%20Paz/2017-12-02.jpg'),
+(102, 33, 'China Wok', 'https://s3.us-east-2.amazonaws.com/sivartour/Catedral%20Nuestra%20Se%C3%B1ora%20de%20La%20Paz/IMG_20230311_214226.jpg'),
+(103, 33, 'Chengui Food', 'https://s3.us-east-2.amazonaws.com/sivartour/Catedral%20Nuestra%20Se%C3%B1ora%20de%20La%20Paz/2021-08-25.jpg'),
+(104, 34, 'Alicante', 'https://s3.us-east-2.amazonaws.com/sivartour/Termales%20de%20Santa%20Teresa/2022-06-23.jpg'),
+(105, 34, 'Los atoles de la Abue-Lita', 'https://s3.us-east-2.amazonaws.com/sivartour/Termales%20de%20Santa%20Teresa/2021-10-24.jpg'),
+(106, 34, 'De Las Flores', 'https://s3.us-east-2.amazonaws.com/sivartour/Termales%20de%20Santa%20Teresa/2021-05-16.jpg'),
+(107, 35, 'Tiestos Restaurant', 'https://s3.us-east-2.amazonaws.com/sivartour/La%20Casa%20de%20La%20Hacienda/2021-05-09.jpg'),
+(108, 35, 'La bodeguita del Cerdito', 'https://s3.us-east-2.amazonaws.com/sivartour/La%20Casa%20de%20La%20Hacienda/2022-05-30.jpg'),
+(109, 35, 'Khali', 'https://s3.us-east-2.amazonaws.com/sivartour/La%20Casa%20de%20La%20Hacienda/2021-04-03.jpg'),
+(110, 36, 'Restaurante Brandy', 'https://s3.us-east-2.amazonaws.com/sivartour/Parque%20Acu%C3%A1tico%20Amapulapa/2023-08-20.jpg'),
+(111, 36, 'El Rancho', 'https://s3.us-east-2.amazonaws.com/sivartour/Parque%20Acu%C3%A1tico%20Amapulapa/2021-05-07.jpg'),
+(112, 36, 'El Rincón del Sabor', 'https://s3.us-east-2.amazonaws.com/sivartour/Parque%20Acu%C3%A1tico%20Amapulapa/IMG_20190911_072355.jpg'),
+(113, 37, 'El Tenampa', 'https://s3.us-east-2.amazonaws.com/sivartour/Catedral%20de%20Sonsonate/20190503_163824.jpg'),
+(114, 37, 'Café La Casona', 'https://s3.us-east-2.amazonaws.com/sivartour/Catedral%20de%20Sonsonate/2023-04-30.jpg'),
+(115, 37, 'Dali Restaurant', 'https://s3.us-east-2.amazonaws.com/sivartour/Catedral%20de%20Sonsonate/20180801_102901.jpg');
 
 -- --------------------------------------------------------
 
@@ -340,22 +349,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `img`, `token`, `age`, `sex`, `number`, `address`, `instagram`, `whatsapp`, `twitter`, `code`, `verified`, `banned`) VALUES
-(1, 'Axel Ramirez', 'axelramireezz@gmail.com', '', 'https://lh3.googleusercontent.com/a/AAcHTtdwud2oM0DUII2C1rQ4AKXbGFTtOOml7orFN75cJ1c6=s96-c', '107045247008393752346', 0, '', 0, '', 'axeellr', '79188652', 'axellmwyy', 39282, 1, 0),
-(41, 'pedro', 'pedro@gmail.com', '123456', 'img/man2.png', '929608642180784375367', 0, '', 0, '', '', '', '', 0, 0, 0),
-(42, 'pablo', 'pablo@gmail.com', '123456', 'img/man2.png', '820018716679425695344', 0, '', 0, '', '', '', '', 0, 0, 0),
-(43, 'el ferxxo mor', 'ferxxo@gmail.com', '123456', 'img/man1.png', '340314320154769686082', 0, '', 0, '', '', '', '', 0, 0, 0),
-(44, 'sael', 'sael@gmail.com', '123456', 'img/man1.png', '959c49b50bbd05ae326d', 0, '', 0, '', '', '', '', 0, 0, 0),
-(45, 'mionca al bloquee', 'mionca@gmail.com', '1234567', 'img/man1.png', '28d6ef260e2d30837026', 0, '', 0, '', '', '', '', 0, 0, 0),
-(46, 'alicia', 'alicia@gmail.com', '123456', 'img/woman2.png', '2b3b4584dd2756099873', 0, '', 0, '', '', '', '', 0, 0, 0),
-(47, 'Cristhoper', 'cristhoper@gmail.com', '123456', 'img/man1.png', '5b2388b49e59f0f4bbb7', 0, '', 0, '', '', '', '', 0, 0, 0),
-(48, 'chepe', 'chepe@gmail.com', '123456', 'img/man1.png', '5501511819987f16278d', 0, '', 0, '', '', '', '', 0, 0, 0),
-(51, 'aaaa', 'aaa@gmail.com', '123456', 'hola', 'f2ada8997e2a81545cf2', 0, '', 0, '', '', '', '', 0, 0, 0),
-(52, 'fffff', 'fff@fdf', '54545', 'https://s3.us-east-2.amazonaws.com/sivartour/users/ab67616100005174c9961730f0c082259ac0c22a.jpeg', '4b8df57386271e6c70d6', 0, '', 0, '', '', '', '', 0, 0, 0),
-(53, 'sd', 'sdd@fmsa', '434343', '', 'fa5a2cbe5a72155ac6c2', 0, '', 0, '', '', '', '', 0, 0, 0),
-(54, 'gfdfd', 'dfdf@fmsd', '4343434', 'https://s3.us-east-2.amazonaws.com/sivartour/users/77bce890467841.5e17e2e12db51.png', 'd8abdb66fa8ebc94db68', 0, '', 0, '', '', '', '', 0, 0, 0),
-(55, 'cxcx', 'cozx@gsds', '5454545', 'img/woman2.png', '312f245f1e30c39285a4', 0, '', 0, '', '', '', '', 0, 0, 0),
-(56, 'Mario Ernesto', 'mario@gmail.com', '123456', 'https://s3.us-east-2.amazonaws.com/sivartour/users/1581617516794.jfif', 'f2e3f6bddfa25b746ea7', 0, '', 0, '', '', '', '', 0, 0, 0),
-(57, 'jeff', 'jeff@gmail.com', '123456', 'img/man2.png', 'db8bfa04581b67e07a79', 0, '', 0, '', '', '', '', 0, 0, 0);
+(1, 'Axel Ramirez', 'axelramireezz@gmail.com', '', 'https://lh3.googleusercontent.com/a/AAcHTtdwud2oM0DUII2C1rQ4AKXbGFTtOOml7orFN75cJ1c6=s96-c', '107045247008393752346', 0, '', 0, '', '', '', '', 0, 0, 0),
+(2, 'Lesly', 'lesslieparada@gmail.com', 'Lesly123', 'img/woman1.png', 'be471be68f2b01037de8', 0, '', 0, '', '', '', '', 0, 0, 0),
+(3, 'Rafaaaa', 'rafaa53@gmail.com', 'Rafa5563', 'https://s3.us-east-2.amazonaws.com/sivartour/users/R.jpeg', 'c14b51a269b9dc315779', 0, '', 0, '', '', '', '', 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -397,7 +393,9 @@ INSERT INTO `user_ratings` (`id`, `user_id`, `place_id`, `rating`) VALUES
 (29, 1, 17, 1),
 (30, 1, 30, 1),
 (31, 1, 28, 1),
-(32, 47, 16, 1);
+(32, 47, 16, 1),
+(33, 61, 16, 1),
+(34, 2, 20, 1);
 
 --
 -- Índices para tablas volcadas
@@ -467,25 +465,25 @@ ALTER TABLE `user_ratings`
 -- AUTO_INCREMENT de la tabla `collections`
 --
 ALTER TABLE `collections`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `collections_places`
 --
 ALTER TABLE `collections_places`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `collections_share`
 --
 ALTER TABLE `collections_share`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `notifications`
@@ -503,19 +501,19 @@ ALTER TABLE `places`
 -- AUTO_INCREMENT de la tabla `restaurants`
 --
 ALTER TABLE `restaurants`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=116;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `user_ratings`
 --
 ALTER TABLE `user_ratings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
