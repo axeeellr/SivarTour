@@ -272,21 +272,25 @@ if (isset($_SESSION['collectionId'])) {
         <div class="popup">
             <i class="fa-solid fa-xmark closePop"></i>
             <?php
-                $sqlCollectionss = "SELECT * FROM collections_share INNER JOIN users ON collections_share.id_user = users.id WHERE collections_share.id_collection = {$_SESSION['collectionId']}";
-                $runCollectionss = mysqli_query($connection, $sqlCollectionss);
-
-                while ($dataCollectionsUserss = mysqli_fetch_assoc($runCollectionss)) {
-                    ?>
-                        <form method="post" class="popup__user">
-                            <?php
-                                $letterr = substr($dataCollectionsUserss['name'], 0, 1);
-                                echo '<input type="hidden" name="idUserComment" value='.$dataCollectionsUserss['id_user'].'>';
-                                echo ($dataCollectionsUserss['img'] == "") ? '<div class="popup__user__img"><h1>'.$letterr.'</h1></div>' : '<div class="popup__user__img"><img src="'.$dataCollectionsUserss['img'].'" alt=""></div>';
-                                echo '<button type="submit" name="goUser"><h1 class="popup__user__name">'.$dataCollectionsUserss["name"].'</h1></button>';
-                            ?>
-                        </form>
-                    <?php
+                if (!isset($_GET['favorites']) || $row['type'] == 2) {
+                    $sqlCollectionss = "SELECT * FROM collections_share INNER JOIN users ON collections_share.id_user = users.id WHERE collections_share.id_collection = {$_SESSION['collectionId']}";
+                    $runCollectionss = mysqli_query($connection, $sqlCollectionss);
+    
+                    while ($dataCollectionsUserss = mysqli_fetch_assoc($runCollectionss)) {
+                        ?>
+                            <form method="post" class="popup__user">
+                                <?php
+                                    $letterr = substr($dataCollectionsUserss['name'], 0, 1);
+                                    echo '<input type="hidden" name="idUserComment" value='.$dataCollectionsUserss['id_user'].'>';
+                                    echo ($dataCollectionsUserss['img'] == "") ? '<div class="popup__user__img"><h1>'.$letterr.'</h1></div>' : '<div class="popup__user__img"><img src="'.$dataCollectionsUserss['img'].'" alt=""></div>';
+                                    echo '<button type="submit" name="goUser"><h1 class="popup__user__name">'.$dataCollectionsUserss["name"].'</h1></button>';
+                                ?>
+                            </form>
+                        <?php
+                    }
                 }
+
+
             ?>
         </div>
     </div>

@@ -9,7 +9,13 @@
     } else {
         $url = $_GET['collection'];
         $id = $_GET['p'];
-        $sql = "SELECT * FROM collections WHERE url = 'http://localhost/sivartour/join_collection.php?collection=$url&p=$id' AND id_user != {$_SESSION['user_id']}";
+        $sql = "SELECT *
+        FROM collections
+        INNER JOIN collections_share ON collections.id = collections_share.id_collection
+        WHERE collections.url = 'http://localhost/sivartour/join_collection.php?collection=$url&p=$id'
+          AND collections.id_user != '{$_SESSION['user_id']}'
+          AND collections_share.id_collection != collections.id
+          AND collections_share.id_user != '{$_SESSION['user_id']}'";
         $run = mysqli_query($connection, $sql);
 
         if (mysqli_num_rows($run) == 1) {
@@ -34,7 +40,7 @@
                         display: none;
                     }
 
-                    .container__btn input:nth-child(1), .container__btn input:nth-child(2){
+                    .container__btn input:nth-child(4), .container__btn input:nth-child(5){
                         display: none;
                     }
                 </style>

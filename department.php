@@ -23,6 +23,10 @@
     $sql = "SELECT * FROM places WHERE department = '{$_GET['places']}'";
     $run = mysqli_query($connection, $sql);
 
+    if (!mysqli_num_rows($run)) {
+        header("Location: index.php");
+    }
+
     if (isset($_SESSION['isLogin'])) {
         $sql = "SELECT * FROM users WHERE token = '{$_SESSION['user_token']}'";
         $runUser = mysqli_query($connection, $sql);

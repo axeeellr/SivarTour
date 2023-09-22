@@ -8,6 +8,11 @@
 
     $sql = "SELECT * FROM places WHERE id = '{$_GET['place']}'";
     $run = mysqli_query($connection, $sql);
+
+    if (!mysqli_num_rows($run)) {
+        header('Location: index.php');
+    }
+
     $dataPlace = mysqli_fetch_array($run);
 
     $sql2 = "SELECT * FROM user_ratings WHERE user_id = '{$_SESSION['user_id']}' AND place_id = '{$_GET['place']}'";

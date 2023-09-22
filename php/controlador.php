@@ -237,23 +237,42 @@ if(isset($_POST['register'])) {
 
 
 
-
 /****** A G R E G A R   C O M E N T A R I O ******/
 if (isset($_POST['newComment'])) {
     $_SESSION['hostt'] = $_SERVER["HTTP_HOST"];
     $_SESSION['urll'] = $_SERVER["REQUEST_URI"];
-    $comment = $_POST['comment'];
-    $id_place = $_GET['place'];
-
-    $query = "INSERT INTO comments (id_user, id_place, comment) VALUES ('{$_SESSION['user_id']}', '$id_place', '$comment')";
-
-    if (mysqli_query($connection, $query)) {
-        $notice = "Se añadió el comentario!";
-        //header('Location: ' . $_SESSION['urll'], true, 303);
+    
+    // Obtén el comentario y el ID del lugar, asegurándote de escapar las variables correctamente
+    $comment = mysqli_real_escape_string($connection, $_POST['comment']);
+    $id_place = mysqli_real_escape_string($connection, $_GET['place']);
+    
+    // Escapa el comentario para prevenir la ejecución de scripts maliciosos
+    $comment = htmlspecialchars($comment, ENT_QUOTES, 'UTF-8');
+    
+    // Utiliza una consulta preparada para evitar la inyección de SQL
+    $query = "INSERT INTO comments (id_user, id_place, comment) VALUES (?, ?, ?)";
+    
+    $stmt = mysqli_prepare($connection, $query);
+    
+    // Verifica si la preparación de la consulta fue exitosa
+    if ($stmt) {
+        // Vincula los parámetros y ejecuta la consulta
+        mysqli_stmt_bind_param($stmt, "iss", $_SESSION['user_id'], $id_place, $comment);
+        
+        if (mysqli_stmt_execute($stmt)) {
+            $notice = "Se añadió el comentario!";
+            //header('Location: ' . $_SESSION['urll'], true, 303);
+        } else {
+            $notice = "Error al guardar el comentario!";
+        }
+        
+        // Cierra la consulta preparada
+        mysqli_stmt_close($stmt);
     } else {
-        echo "Error al guardar el comentario: " . mysqli_error($connection);
+        $notice = "Error al guardar el comentario!";
     }
 }
+
 
 
 
@@ -710,7 +729,7 @@ if (isset($_POST['route'])) {
 
 
 
-/* E L I M I N A R   L U G A R   D E   R U T A */
+/* E L I M I N A R   R U T A */
 if (isset($_POST['deleteRoute'])) {
     $notice = "Se ha eliminado la ruta!";
 }
