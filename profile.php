@@ -525,7 +525,7 @@ if ($data['verified'] == 1) {
                 data: datosFormulario,
                 success: function(response) {
                     // Manejar la respuesta del servidor después del envío del correo
-                    if (response == 'si') {
+                    if (response.client = 220) {
                         $('#formulario')[0].reset(); // Limpiar el formulario si es necesario
                     } else {
                         alert('Error en el envío del correo. Por favor, inténtalo de nuevo.');

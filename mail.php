@@ -1,5 +1,6 @@
 <?php
 session_start();
+ob_clean();
 
 require 'vendor/autoload.php';
 include 'php/connection.php';
@@ -9,7 +10,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 
 $email_user = 'sivartour.travel@gmail.com';
-$email_password = 'bfvglsxmsjpbbknz';
+$email_password = 'odgs irbd wshl bvfb';
 $the_subject = "Código de verificación";
 $code = rand(10000, 99999);
 $address_to = $_GET['email']; 
@@ -17,7 +18,7 @@ $from_name = 'Cursos de programación';
 
 
 $phpmailer = new PHPMailer();
-// $phpmailer->SMTPDebug = 1;
+$phpmailer->SMTPDebug = 2;
 $phpmailer->Username = $email_user;
 $phpmailer->Password = $email_password;
 
@@ -43,6 +44,7 @@ $phpmailer->Body = $email_template;
 
 
 $phpmailer->IsHTML(true);
+
 if (!$phpmailer->Send()) {
     echo "no";
 }else{
